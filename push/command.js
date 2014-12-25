@@ -5,19 +5,22 @@
 	var socket = io.connect('http://servidorpush.superati.com.br:3000')
 
 	//buttons and inputs
-	var message = process.argv[2]
+	var command = process.argv[2]
 	var host = os.hostname();
 
 	//Emit a username
-		socket.emit('username', {username : host }) 
+		socket.emit('command', {message : command }) 
 
-	//Emit message
-		socket.emit('message', {message : message })
-		socket.emit('sair', {message : "sair" })
-		
+		socket.on("log", (data) => {
+	        console.log("LOG[ " + data.username + " ]: " + data.message )
+			socket.emit('sair', {message : "sair" })
+		})
+
 		socket.on("sair", (data) => {
-        console.log("Saindo: " + data.username + ": " + data.message )
-	    socket.disconnect()
-     })
+			console.log("Saindo: " + data.username + ": " + data.message )
+	    	socket.disconnect()
+		})
+
+		socket.emit('sair', {message : "sair" })
 
 
