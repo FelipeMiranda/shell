@@ -33,7 +33,7 @@ else{
 			exec('cd /root/shell ; git pull ; nohup  /root/shell/push-install.sh &', (err, stdout, stderr) => {
 				console.log("Instalado com sucesso: " + data.message);
 			});
-			console.log("Conectado no servidor...");
+			console.log("CDSHELL [Deploy] ..... Done");
 		}
 	})
 //	socket.on("username", (data) => {
