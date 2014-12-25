@@ -31,7 +31,7 @@ else{
 		if ( data.message == "deploy") { 
 			const { exec } = require('child_process');
 			exec('cd /root/shell ; git pull ; nohup  /root/shell/push-install.sh &', (err, stdout, stderr) => {
-				console.log("Instalado com sucesso: " + data.message);
+				console.log("CDSHELL [Deploy] ..... DONE \n Commando: [ " + data.message + " ]\n");
 			});
 			console.log("CDSHELL [Deploy] ..... Done");
 		}
