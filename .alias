@@ -20,7 +20,7 @@ alias lah='ls -lah'
 alias traduz='zzdicbabylon'
 alias g='grep'
 
-alias shellinstall=''
+alias shellinstall='~/shell/install.sh'
 
 #GIT ALIAS
 alias sta='git status'
