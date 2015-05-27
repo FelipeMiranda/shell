@@ -33,5 +33,5 @@ fi
 if [ $OSTYPE == "OpenBSD" ]; then
 
 alias n='netstat -f inet -an'
-
+alias ls='colols -G'
 fi
