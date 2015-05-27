@@ -12,6 +12,6 @@ cyan='\e[36m'
 white='\e[37m'
 
 
-alert='\e[44;33m'
+alert='\e[44;33;1m'
 atention='\e[41;39m'
-normal='\e[0;52m'
+normal='\e[40;32;1m'
