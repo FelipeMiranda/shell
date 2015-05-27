@@ -1,0 +1,32 @@
+#!/bin/bash
+
+OSTYPE=`uname`
+
+
+#OPCOES COMUNS
+
+alias ..='cd ..'
+alias cd..='cd ..'
+alias i='ifconfig'
+alias p='ps aux'
+alias +x='chmod +x' 
+alias vi='vim'
+alias rm='rm -f'
+alias rmdir='rm -rf'
+#alias
+
+#LINUX ALIAS
+if [ $OSTYPE == "Linux" ]; then
+
+alias n='netstat -antu'
+
+fi
+
+
+
+#OPENBSD ALIAS
+if [ $OSTYPE == "OpenBSD" ]; then
+
+alias n='netstat -f inet -an'
+
+fi
