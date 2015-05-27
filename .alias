@@ -27,6 +27,7 @@ alias sta='git status'
 alias com='git commit -a'
 alias pull='git pull'
 alias push='git push origin master'
+alias clone='git clone git@github.com:quirinobytes/shell.git'
 
 
 

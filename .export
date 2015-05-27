@@ -4,15 +4,16 @@ OSTYPE=`uname`
 
 HISTFILE=~/.bash_history
 HISTSIZE=2000
-
-export PS1="\u@\h \w> "
-
-
-
-export HISTFILE HISTSIZE
+VISUAL=vim
+EDITOR=vim
+PS1="\u@\h \w> "
 
 
 
+export HISTFILE HISTSIZE PS1 EDITOR VISUAL
+
+
+#CUSTOM OS
 if [ $OSTYPE == "OpenBSD" ]; then
 PATH=$PATH:~/shell/openbsd
 PKG_PATH=http://mirrors.unb.br/pub/OpenBSD/5.7/packages/i386/
