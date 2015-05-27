@@ -1,12 +1,13 @@
 #!/bin/bash
 
+source ~/shell/colors.sh
 OSTYPE=`uname`
 
 HISTFILE=~/.bash_history
 HISTSIZE=2000
 VISUAL=vim
 EDITOR=vim
-PS1="\u@\h \w> "
+PS1="$red\u$yellow@$green\h $cyan\w>$normal "
 
 
 
