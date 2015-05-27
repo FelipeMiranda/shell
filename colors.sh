@@ -1,14 +1,15 @@
 #!/bin/bash
 
+#Meu arquivo de cores para usar no ENVIROMENT
 
-black='\E[30;47m'
-red='\E[31;47m'
-green='\E[32;47m'
-yellow='\E[33;47m'
-blue='\E[34;47m'
-magenta='\E[35;47m'
-cyan='\E[36;47m'
-white='\E[37;47m'
+black		='\e[30m'
+red		='\e[31m'
+green		='\e[32m'
+yellow	='\e[33m'
+blue		='\e[34m'
+magenta	='\e[35m'
+cyan		='\e[36m'
+white		='\e[37m'
 
 
 alert='\e[44;33m'
