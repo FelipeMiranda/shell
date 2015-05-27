@@ -1,9 +1,6 @@
 #/bin/bash
 
 SHELL=~/shell
-
-
-
 echo -e "\n\n ### Shell Enviroment KRN ### \n\n"
 
 
@@ -25,4 +22,5 @@ cd -
 
 echo -e "\n\n Arquivos instalados com \033[31m sucesso\033[0;39m \n"
 
+#ja executa o bash para testar
 bash
