@@ -20,9 +20,12 @@ alias lah='ls -lah'
 alias traduz='zzdicbabylon'
 alias grep='grep --color'
 alias g='grep'
+
+
+#GIT ALIAS
 alias pull='git pull'
 alias com='git commit -a'
-
+alias sta='git status'
 
 
 
