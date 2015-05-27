@@ -3,6 +3,7 @@
 SHELL=~/shell
 
 
+
 echo -e "\n\n ### Shell Enviroment KRN ### \n\n"
 
 

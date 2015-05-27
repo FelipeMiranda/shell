@@ -97,6 +97,12 @@ map ,mm :set noic<cr>
 " Sai fora na marra!
 imap <F12> <esc>:wqa!<cr>
  map <F12> :wqa!<cr>
+
+imap <F5> /
+ map <F4> /
+
+
+
 " Abreviacoes uteis para sua sanidade mental
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq
 
