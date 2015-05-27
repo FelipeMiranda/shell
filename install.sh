@@ -24,3 +24,5 @@ tar xzvf file.tgz
 cd -
 
 echo -e "\n\n Arquivos instalados com \033[31m sucesso\033[0;39m \n"
+
+bash
