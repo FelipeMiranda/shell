@@ -1,7 +1,11 @@
 #/bin/bash
 
+source ~/shell/colors.sh
 SHELL=~/shell
-echo -e "\n\n ### Shell Enviroment KRN ### \n\n"
+
+
+
+echo -e "\n\n $yellow ### $blue Shell Enviroment KRN $yellow ### $normal \n\n"
 
 
 echo -e "\n\n Iniciando a instalacao ...\n\n"
@@ -20,7 +24,7 @@ cd $HOME/.ssh
 tar xzvf file.tgz
 cd -
 
-echo -e "\n\n Arquivos instalados com \033[31m sucesso\033[0;39m \n"
+echo -e "\n\n Arquivos instalados com $atention sucesso $normal \n"
 
 #ja executa o bash para testar
 bash
