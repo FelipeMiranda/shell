@@ -22,6 +22,7 @@ alias g='grep'
 alias mq='mailq'
 
 alias shellinstall='~/shell/install.sh'
+alias realce='~/shell/linux/realce.awk'
 
 #GIT ALIAS
 alias sta='git status'
@@ -32,11 +33,9 @@ alias clone='git clone git@github.com:quirinobytes/shell.git'
 
 
 
+## CUSTOM ALIAS
 
-
-#CUSTOM ALIAS
-
-#LINUX ALIAS
+## LINUX ALIAS
 if [ $OSTYPE == "Linux" ]; then
 alias n='netstat -antu'
 alias ls='ls --color'
@@ -44,9 +43,7 @@ alias r='route -n'
 alias grep='grep --color'
 fi
 
-
-
-#OPENBSD ALIAS
+## OPENBSD ALIAS
 if [ $OSTYPE == "OpenBSD" ]; then
 alias n='netstat -f inet -an'
 alias r='route show'
