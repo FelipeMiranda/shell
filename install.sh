@@ -1,5 +1,7 @@
 #/bin/bash
 
+SHELL=~/shell
+
 
 echo #Instador para o Shell Enviroment KRN"
 
@@ -14,7 +16,7 @@ cp .screenrc $HOME/
 
 echo -e "\n\n Instalando as chaves para o Git hub\n\n"
 mkdir -p $HOME/.ssh
-cp github/* $HOME/.ssh/
+cp $SHELL/github/* $HOME/.ssh/
 cd $HOME/.ssh
 tar xzvf file.tgz
 cd -
