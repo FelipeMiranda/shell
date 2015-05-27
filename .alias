@@ -18,6 +18,10 @@ alias l='ls -l'
 alias la='ls -la'
 alias lah='ls -lah'
 alias traduz='zzdicbabylon'
+alias grep='grep --color'
+alias g='grep'
+alias pull='git pull'
+alias com='git commit -a'
 
 
 
