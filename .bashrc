@@ -1,5 +1,7 @@
 # .bashrc
 
+
+
 # User specific aliases and functions
 
 alias rm='rm -i'

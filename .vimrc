@@ -98,8 +98,8 @@ map ,mm :set noic<cr>
 imap <F12> <esc>:wqa!<cr>
  map <F12> :wqa!<cr>
 
-imap <F5> /
- map <F4> /
+"imap <F5> /
+" map <F4> /
 
 
 
