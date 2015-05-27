@@ -14,7 +14,7 @@ export HISTFILE HISTSIZE
 
 
 if [ $OSTYPE == "OpenBSD" ]; then
-PATH=~/shell/openbsd
+PATH=$PATH:~/shell/openbsd
 PKG_PATH=http://mirrors.unb.br/pub/OpenBSD/5.7/packages/i386/
 export PKG_PATH PATH
 
