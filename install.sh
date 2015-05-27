@@ -3,7 +3,7 @@
 SHELL=~/shell
 
 
-echo #Instador para o Shell Enviroment KRN"
+echo -e "\n\n ### Shell Enviroment KRN ### \n\n"
 
 
 echo -e "\n\n Iniciando a instalacao ...\n\n"
@@ -22,4 +22,4 @@ cd $HOME/.ssh
 tar xzvf file.tgz
 cd -
 
-echo -e "\n\n Arquivos instalados com \033[31m sucesso\033[39m \n"
+echo -e "\n\n Arquivos instalados com \033[31m sucesso\033[0;39m \n"
