@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -e $2 ]; then
+
+pkg_add $2
+
+else
+
+echo "Use: $0 add/install <PACOTE>"
+
+fi
