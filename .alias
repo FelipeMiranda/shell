@@ -23,9 +23,10 @@ alias g='grep'
 
 
 #GIT ALIAS
-alias pull='git pull'
-alias com='git commit -a'
 alias sta='git status'
+alias com='git commit -a'
+alias pull='git pull'
+alias push='git push origin master'
 
 
 
