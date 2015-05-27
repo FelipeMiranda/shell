@@ -14,4 +14,4 @@ white='\e[37m'
 
 alert='\e[44;33;1m'
 atention='\e[41;39m'
-normal='\e[40;32;1m'
+normal='\e[0;32;1m'
