@@ -1,7 +1,20 @@
 #!/bin/bash
 
+OSTYPE=`uname`
 
 HISTFILE=.bash_history
 HISTSIZE=2000
 
+
+
+
 export HISTFILE HISTSIZE
+
+
+
+if [ $UNAME == "OpenBSD" ]; then
+
+PKG_PATH=http://mirrors.unb.br/pub/OpenBSD/5.7/packages/i386/
+export PKG_PATH
+
+fi
