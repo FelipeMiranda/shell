@@ -25,6 +25,7 @@ if [ $OSTYPE == "Linux" ]; then
 
 alias n='netstat -antu'
 alias ls='ls --color'
+alias r='route -n'
 fi
 
 
@@ -33,5 +34,6 @@ fi
 if [ $OSTYPE == "OpenBSD" ]; then
 
 alias n='netstat -f inet -an'
+alias r='route show'
 
 fi
