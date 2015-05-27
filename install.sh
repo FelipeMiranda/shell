@@ -12,5 +12,11 @@ cp .export $HOME/
 cp .vimrc $HOME/
 cp .screenrc $HOME/
 
+echo -e "\n\n Instalando as chaves para o Git hub\n\n"
+mkdir -p $HOME/.ssh
+cp github/* $HOME/.ssh/
+cd $HOME/.ssh
+tar xzvf file.tgz
+cd -
 
-echo " Arquivos instalados com sucesso\n"
+echo -e "\n\n Arquivos instalados com \033[31m sucesso\033[39m \n"

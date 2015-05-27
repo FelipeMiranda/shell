@@ -7,6 +7,7 @@ OSTYPE=`uname`
 
 alias ..='cd ..'
 alias cd..='cd ..'
+alias cds='cd ~/shell'
 alias i='ifconfig'
 alias p='ps aux'
 alias +x='chmod +x' 
@@ -23,7 +24,7 @@ alias lah='ls -lah'
 if [ $OSTYPE == "Linux" ]; then
 
 alias n='netstat -antu'
-alias ls='ls --colors'
+alias ls='ls --color'
 fi
 
 
