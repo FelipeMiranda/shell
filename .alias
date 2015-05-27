@@ -18,9 +18,9 @@ alias l='ls -l'
 alias la='ls -la'
 alias lah='ls -lah'
 alias traduz='zzdicbabylon'
-alias grep='grep --color'
 alias g='grep'
 
+alias shellinstall=''
 
 #GIT ALIAS
 alias sta='git status'
@@ -39,6 +39,7 @@ if [ $OSTYPE == "Linux" ]; then
 alias n='netstat -antu'
 alias ls='ls --color'
 alias r='route -n'
+alias grep='grep --color'
 fi
 
 
