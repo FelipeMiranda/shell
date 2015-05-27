@@ -9,10 +9,11 @@ echo #Instador para o Shell Enviroment KRN"
 echo -e "\n\n Iniciando a instalacao ...\n\n"
 
 
-cp .alias $HOME/
-cp .export $HOME/
-cp .vimrc $HOME/
-cp .screenrc $HOME/
+cp $SHELL/.alias $HOME/
+cp $SHELL/.export $HOME/
+cp $SHELL/.vimrc $HOME/
+cp $SHELL/.screenrc $HOME/
+cp $SHELL/.bashrc $HOME/
 
 echo -e "\n\n Instalando as chaves para o Git hub\n\n"
 mkdir -p $HOME/.ssh
