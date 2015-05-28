@@ -147,14 +147,17 @@ terminfo vt100 dl=5\E[M
 #select 1
 #
 #
-bindkey -k k3 next ## O LEGAL SERIA Control TAB no lugar de F3
+
+bindkey -k k1 screen 
+#bindkey -k k2 # JA Mapeado para Colocar e tirar coment[arios no .vimrc
+#bindkey -k k3 # JA Mapeado para Colocar e tirar coment[arios no .vimrc
 bindkey -k k4 remove
 bindkey -k k5 split
 bindkey -k k6 split -v
 bindkey -k k7 resize -1
 bindkey -k k8 resize +1
 bindkey -k k9 focus
-bindkey "^[[21~" next
+bindkey "^[[21~" next ## O LEGAL SERIA Control TAB no lugar de F10
 bindkey -k F1 kill
 
 
