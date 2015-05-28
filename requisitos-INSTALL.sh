@@ -22,7 +22,7 @@ fi
 if [ $OSTYPE == "OpenBSD" ]; then
 
 	pkg add screen vim lynx iftop 
-	pkg add ngrep
+	pkg add ngrep lynx
 
 fi
 
