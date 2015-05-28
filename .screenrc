@@ -61,13 +61,18 @@ bind M screen -t mp3 9 mp3 /mp3/punk     # mp3
 bind N stuff "$NOME"
 bind D stuff $DATA
 bind I stuff $ICQ
-bindkey -t  ec stuff $EMAILC
-bindkey -t  ev stuff $EMAILV
-bindkey -t  uc stuff $URLC
-bindkey -t  uv stuff $URLV
-bindkey -t  ur stuff http://txt2regex.sourceforge.net
-bindkey -t  ut stuff http://txt2tags.sourceforge.net
-bindkey -t  uz stuff http://funcoeszz.codigolivre.org.br
+#bindkey -t  ec stuff $EMAILC
+#bindkey -t  ev stuff $EMAILV
+#bindkey -t  uc stuff $URLC
+#bindkey -t  uv stuff $URLV
+#
+# DA PAU >>
+# #
+#bindkey -t  ur stuff http://txt2regex.sourceforge.net
+#bindkey -t  ut stuff http://txt2tags.sourceforge.net
+#bindkey -t  uz stuff http://funcoeszz.codigolivre.org.br
+# << PAU
+
 
 bind o screen 0 /usr/bin/play $HOME/pessoal/O-Oh.wav
 
@@ -110,7 +115,9 @@ bind 'K' kill
 
 #colocar \033k\033\134 no começo do PS1
 # permite prompt colorido mas bagunça quando chega na extrema direita
-shelltitle '] |_'
+# PAU >>
+#####shelltitle '] |_'
+######################### <<PAU
 
 # para colar no vim sem "identar"
 # ATENÇÃO: é ^a^] 
@@ -138,3 +145,12 @@ terminfo vt100 dl=5\E[M
 #screen -t zznoticias   4 bash -c "funcoeszz zznoticiaslinux; echo; echo ---FIM---; read"
 #screen -t artistas     5 bash -c "funcoeszz zzcasadosartistas; echo; echo ---FIM---; read"
 #select 1
+#
+#
+#
+bindkey -k k9 resize =
+bindkey -k k8 resize +1
+bindkey -k k7 resize -1
+bindkey -k k6 focus
+bindkey -k k5 split
+
