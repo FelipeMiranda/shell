@@ -23,6 +23,10 @@ alias mq='mailq'
 
 alias shellinstall='~/shell/install.sh'
 alias realce='~/shell/linux/realce.awk'
+alias postudo='cd && cd mail-benchmark && postal -m 1000 -M 100 -t 3 localhost to-foobar.br'
+alias postconsometudo='cd && cd mail-benchmark && rabid -p 10 localhost from-foobar.br'
+alias postzerafila='postsuper -d all'
+alias postrequeue='postqueue -f'
 
 #GIT ALIAS
 alias sta='git status'
