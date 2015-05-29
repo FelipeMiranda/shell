@@ -159,7 +159,9 @@ set ruler          "mostra a posicao do cursor, regua
 "set showcmd        "mostra o comando sendo executado
 set laststatus=2   "mostra N linhas de estado (status)
 "set textwidth=70   "quebra de linha
-set bs=0           "comportamento do backspace
+"set bs=2           "comportamento do backspace
+"set backspace=2
+set backspace=eol,indent,start
 set nosmartindent  "desligando pois esta padrao no CL40
 set visualbell     "pisca a tela ao inves de bipar
 "set wrap           "forca a quebra de linha
