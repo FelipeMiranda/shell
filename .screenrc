@@ -148,20 +148,18 @@ terminfo vt100 dl=5\E[M
 #
 #
 
-bindkey -k k1 screen 
-#bindkey -k k2 # JA Mapeado para Colocar e tirar coment[arios no .vimrc
-#bindkey -k k3 # JA Mapeado para Colocar e tirar coment[arios no .vimrc
-bindkey -k k4 remove
-bindkey -k k5 split
-bindkey -k k6 split -v
-bindkey -k k7 resize -1
-bindkey -k k8 resize +1
-bindkey -k k9 focus
-bindkey "^[[21~" next ## O LEGAL SERIA Control TAB no lugar de F10
-bindkey -k F1 kill
-
-
-
+bindkey -k k1 screen  	# F1 # Cria uma sessao = Crtl-a + c
+#bindkey -k k2 		# F2 # JA Mapeado para Colocar e tirar coment[arios no .vimrc
+#bindkey -k k3 		# F3 # JA Mapeado para Colocar e tirar coment[arios no .vimrc
+bindkey -k k4 remove  	# F4 # Desliga a exiubicao da Janela
+bindkey -k k5 split   	# F5 # Cria uma divisao horizontal
+bindkey -k k6 split -v 	# F6 # Cria uma divisao vertical
+bindkey -k k7 resize -1 # F7 # Aumenta o tamando da Janela Atual
+bindkey -k k8 resize +1 # F8 # Dominui o tamanho da Janela atual
+bindkey -k k9 focus     # F9 # Pula para proxima janela
+bindkey "^[[21~" next 	# F10# O LEGAL SERIA Control TAB no lugar de F10
+bindkey -k F1 kill    	# F11#  Encerrar o screen com todas as janelas e sessoes juntos
+# F12 # Usado no Vim para sair do arquivo salvando caso exista modificacoes, por esse motivo nao usei para kill aqui
 
 
 
