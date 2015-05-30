@@ -177,3 +177,8 @@ bindkey -k F1 kill    	# F11#  Encerrar o screen com todas as janelas e sessoes 
 #^$bindkey "^[[21~" select 10
 #^$bindkey "^[[23~" select 11
 #^$bindkey "^[[24~" select 12
+#
+
+
+#fazendo salvar o layout das regions em caso de Detach/RE-Atach nao perder os regions/windows
+layout save default

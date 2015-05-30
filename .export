@@ -17,7 +17,7 @@ cyan="\[$cyan\]"
 normal="\[$normal\]"
 #
 #
-PS1="$red\u$yellow@$green\h $cyan\w>$ $normal "
+PS1="$red\u$yellow@$green\h $cyan\w> $normal"
 
 
 
