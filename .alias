@@ -8,6 +8,7 @@ OSTYPE=`uname`
 alias ..='cd ..'
 alias cd..='cd ..'
 alias cds='cd ~/shell'
+alias cdh='cd ~/help/`uname`/help/'
 alias i='ifconfig | grep inet'
 alias p='ps aux'
 alias +x='chmod +x' 
@@ -21,6 +22,9 @@ alias dumax='du --max-depth=1 -h'
 alias traduz='zzdicbabylon'
 alias g='grep'
 alias mq='mailq'
+alias e0='ethstatus -i eth0 -s 10' # interface eth0 size throuput 10M
+alias e1='ethstatus -i eth1 -s 10' # interface eth0 size throuput 10M
+
 
 
 #PREGUICAS

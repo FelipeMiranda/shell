@@ -4,21 +4,22 @@
 "                       -------------------------
 "                   Copie, altere, arrume, use, venda
 "                 -------------------------------------
-"               http://aurelio.net/doc/dotfiles/vimrc.txt
-"
-"             ---------------------------------------------
-
-
-
+" http://quirinobytes.blogspot.com.br/2015/02/my-vimrc-quirinobytes.html
+"           ---------------------------------------------
 
 "...............................................................PSEUDO-FUNCOES
-" Exemplo de mapeamentos para serem usados por outros mapeamentos,
-" para evitar repeticao de codigo, como seu email ou a data atual.
-" O caractere '¤' é apenas um prefixo original para não confundir com texto.
-" Para ler variaveis de ambiente faca: imap ¤E <esc>:r! echo $VAR<cr>kJA
-imap ¤E verde (a) aurelio net
-imap ¤U http://aurelio.net
-imap ¤D <esc>:r!date '+\%Y-\%m-\%d'<cr>kJA
+" O caractere '®' é um prefixo apenas para não confundir com texto e" facil 
+" de digitar no teclado com AltGr + R. Para ler variaveis de ambiente faca, 
+" :imap ®e <esc>:r! echo $VAR<cr>kJA
+" onde as teclas kJA sao proprios comandos do vi para executar tmb. no caso eu
+" troquei aqui abaixo no ®d por v<end>d`bp<end>a<del> para visual<end>delete
+" marca b <end> adiciona depois da marca <del>.
+" CUIDADO COM USO DE imap ele mapeia as teclas usadas no modo insercao(imap) como
+" colagem de texto as vezes tem esses caracteres, ai da zica.
+"
+imap ®e quirinobytes (a) gmail com
+imap ®u http://quirinobytes.blogspot.com.br
+imap ®d <esc>mb:r!date '+\%Y-\%m-\%d'<cr>v<end>d`bp<end>a<del>
 
 
 ".........................................................................INFO
@@ -56,7 +57,7 @@ map ,mm :set noic<cr>
 "   zzz e uma outra com espacos.
 " "zzz que tal uma citacao?"
 
-"......................................................DICIONARIO & ORTOGRAFIA
+".....................................DICIONARIO & ORTOGRAFIA
 " vim 7 com spell de fabrica, esqueca tudo isso
 "
 " Dicionario para procurar o auto-complemento de palavras
@@ -76,7 +77,7 @@ map ,mm :set noic<cr>
 
 
 
-"................................................................SHELL-SCRIPTS
+"...........................................................SHELL-SCRIPTS
 " Cabecalho padrao para Shell-Scripts, exemplo:
 "   #!/bin/sh
 "   # meu-script.sh
@@ -98,14 +99,13 @@ map ,mm :set noic<cr>
 imap <F12> <esc>:wqa!<cr>
  map <F12> :wqa!<cr>
 
-"imap <F5> /
+"imap <ESC> <ESC> 
 " map <F4> /
 
 
 
 " Abreviacoes uteis para sua sanidade mental
-cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq
-
+cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq | cab q q!
 " Gravar selecao visual num arquivo ($TMP eh var de ambiente)
 " 1. Usando buffer novo
 "vmap <F5> y:new<cr>p:w!$TMP/vim<cr>:bd!<cr>
