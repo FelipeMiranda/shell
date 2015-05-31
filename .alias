@@ -35,7 +35,7 @@ alias postconsometudo='cd && cd mail-benchmark && rabid -p 10 localhost from-foo
 alias postzerafila='postsuper -d all'
 alias postflush='postqueue -f'
 alias scr='screen'
-alias miniman='man ~/help/`uname`/help/$1.man'
+alias miniman='~/shell/linux/miniman.sh'
 
 
 #GIT ALIAS

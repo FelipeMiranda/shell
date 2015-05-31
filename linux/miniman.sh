@@ -5,13 +5,14 @@
 # version: 1.0
 ############################
 
-if [ -z $OSTYPE ]; then
+OSTYPE=`uname`;
 
 
-	if [ -e ~/help/$OSTYPE/help/$1.man ]; then
-
-		man ~/help/$OSTYPE/help/$1.man
-
+if [ -n "$1" ]; then
+	
+	if [ -e ~/help/$OSTYPE/help/$1.1 ]; then
+	
+		man ~/help/$OSTYPE/help/$1.1
 	else
 		echo "Manual para $1 não existe no MINIMAN"
 	fi
@@ -19,3 +20,4 @@ if [ -z $OSTYPE ]; then
 else 
 	echo -e "Uso: $0 <comando-do-miniman>"
 fi
+
