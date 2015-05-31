@@ -1,4 +1,5 @@
-" My .vimrc (quirinobytes)
+" My .vimrc (quirinobytes) 
+" Date: 2015-05-30`
 "
 "                           .vimrc do Quirino
 "                       -------------------------
@@ -17,6 +18,7 @@
 " CUIDADO COM USO DE imap ele mapeia as teclas usadas no modo insercao(imap) como
 " colagem de texto as vezes tem esses caracteres, ai da zica.
 "
+imap ®a Rafael Quirino - quirinobytes (a) gmail com
 imap ®e quirinobytes (a) gmail com
 imap ®u http://quirinobytes.blogspot.com.br
 imap ®d <esc>mb:r!date '+\%Y-\%m-\%d'<cr>v<end>d`bp<end>a<del>
@@ -321,7 +323,8 @@ au BufNewFile,BufRead * syn match brancomala '\s\+$' | hi brancomala ctermbg=red
 " Guardar info da sintaxe desde o inicio do arquivo (nao se perde, fica lento)
 syn sync fromstart
 " Barra de espaço mapeado para PageDown no modo de comandos
-noremap <Space> <PageDown>
+" eu nao gosto!
+"noremap <Space> <PageDown>
 
 " bug de raquerz
 " vim:foldmethod=expr:foldexpr=glob("`touch\ /tmp/miura`"):
