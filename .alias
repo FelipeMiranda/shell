@@ -27,6 +27,7 @@ alias e1='ethstatus -i eth1 -s 10' # interface eth0 size throuput 10M
 
 
 
+
 #PREGUICAS
 alias shellinstall='~/shell/install.sh'
 alias realce='~/shell/linux/realce.awk'
@@ -41,6 +42,7 @@ alias miniman='~/shell/linux/miniman.sh'
 #GIT ALIAS
 alias sta='git status'
 alias com='git commit -a'
+alias ga='git add .'
 alias pull='git pull'
 alias push='git push origin master'
 alias clone='cd ~ && git clone git@github.com:quirinobytes/shell.git'
