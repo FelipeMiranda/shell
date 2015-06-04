@@ -7,6 +7,10 @@
 
 OSTYPE=`uname`;
 
+if [ "$2" == "-l" ]; then
+OSTYPE="Linux"
+fi
+
 
 if [ -n "$1" ]; then
 	
