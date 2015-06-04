@@ -1,11 +1,21 @@
 #!/bin/bash
 
-if [ ! -e $2 ]; then
 
+
+#Se nulo
+if [ -z "$1" ]; then
+
+echo -e "Use: $0 add/install <PACOTE>
+     $0 list\n"
+
+fi
+
+
+if [ "$1" == "add" ] || [ "$1" == "install" ]; then
 pkg_add $2
 
-else
+elif [ "$1" == "list" ]; then
 
-echo "Use: $0 add/install <PACOTE>"
+curl -s $PKG_PATH | cut -d'"' -f6 | egrep -v '(<|>)'
 
 fi
