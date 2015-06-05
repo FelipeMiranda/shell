@@ -16,6 +16,7 @@ cp $CDSHELL/.export $HOME/
 cp $CDSHELL/.vimrc $HOME/
 cp $CDSHELL/.screenrc $HOME/
 cp $CDSHELL/.bashrc $HOME/
+cp $CDSHELL/inputrc /etc/
 
 #Instalando as funcoesZZ
 if [ ! -e "/opt/funcoeszz/funcoeszz" ]; then
