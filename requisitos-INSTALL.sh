@@ -22,6 +22,6 @@ LISTA="git screen vim lynx iftop ngrep bash"
 for i in $LISTA; do
 pkg_add $i 
 done 
-echo -e "Se desejar alterar o shell do usuário:\n usermod -s /bin/bash $USER"
+echo -e "Se desejar alterar o shell do usuário:\n usermod -s /usr/local/bin/bash $USER"
 fi
 
