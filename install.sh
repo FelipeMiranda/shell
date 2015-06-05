@@ -40,6 +40,10 @@ echo -e "\n\n Arquivos instalados com $atention sucesso $normal \n"
 echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a instalação.$normal\n"
 
 if [ ! -e ~/.cdshell_req_installed ]; then
+	#Se nao exister o link para o bash no /bin entao cria ne, sempre!!!
+	if [ ! -e /bin/bash ];then
+	ln -s /usr/bin/bash /bin/bash
+	fi
 	$CDSHELL/requisitos-INSTALL.sh
 	touch ~/.cdshell_req_installed
 fi
