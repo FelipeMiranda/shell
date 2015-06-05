@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source ~/shell/colors.sh
+CDSHELL="~/shell" # VARIAVEL QUE CONTEM O RAIZ DO CDSHELL <- (CONFIGURE)
 OSTYPE=`uname`
 
 HISTFILE=~/.bash_history
@@ -20,11 +21,11 @@ normal="\[$normal\]"
 PS1="$red\u$yellow@$green\h $cyan\w> $normal"
 
 
+#DEFAULT EXPORT (all OSes)
+export HISTFILE HISTSIZE PS1 EDITOR VISUAL CDSHELL
 
-export HISTFILE HISTSIZE PS1 EDITOR VISUAL
 
-
-#CUSTOM OS
+# CUSTOM EXPORT per OSes
 if [ $OSTYPE == "OpenBSD" ]; then
 PATH=$PATH:~/shell/openbsd
 PKG_PATH=http://mirrors.unb.br/pub/OpenBSD/5.7/packages/i386/
