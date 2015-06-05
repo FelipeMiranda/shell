@@ -23,6 +23,6 @@ if [ -n "$1" ]; then
 	fi
 
 else 
-	echo -e "Uso: $0 <comando-do-miniman>"
+	echo -e "Uso: $0 <comando-do-miniman>\n ou miniman cdshell -> maiores informações."
 fi
 
