@@ -17,6 +17,10 @@ cp $SHELL/.vimrc $HOME/
 cp $SHELL/.screenrc $HOME/
 cp $SHELL/.bashrc $HOME/
 
+mkdir -p /opt/funcoeszz/
+cp $SHELL/funcoeszz/* /opt/funcoeszz/
+ln -s /opt/funcoeszz/* /opt/funcoeszz
+
 echo -e "\n\n Instalando as chaves para o Git hub\n\n"
 mkdir -p $HOME/.ssh
 cp $SHELL/github/* $HOME/.ssh/
