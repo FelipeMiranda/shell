@@ -1,5 +1,3 @@
-#!/bin/bash
-
 #Meu arquivo de cores para usar no ENVIROMENT
 
 black='\e[30m'

@@ -1,7 +1,6 @@
 # .bashrc
 
 
-
 # User specific aliases and functions
 
 alias rm='rm -i'
@@ -9,9 +8,6 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 # Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
 
 if [ -e ~/.alias ]; then
  	. ~/.alias
@@ -27,3 +23,7 @@ fi
 export ZZOFF=""  # desligue funcoes indesejadas
 export ZZPATH="/opt/funcoeszz/funcoeszz"  # script
 source "$ZZPATH"
+
+#Importa Cores
+export SHELLCOLOR="/root/shell/colors.sh"  # Cores para o CDSHELL
+source "$SHELLCOLOR"
