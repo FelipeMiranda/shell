@@ -9,6 +9,7 @@ OSTYPE=`uname`;
 
 if [ "$2" == "-l" ]; then
 OSTYPE="Linux"
+echo $OSTYPE
 fi
 
 

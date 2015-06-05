@@ -98,8 +98,8 @@ map ,mm :set noic<cr>
 
 "......................................................................ARQUIVO
 " Sai fora na marra!
-imap <F12> <esc>:wqa!<cr>
- map <F12> :wqa!<cr>
+imap <F10> <esc>:wqa!<cr>
+ map <F10> :wqa!<cr>
 
 "imap <ESC> <ESC> 
 " map <F4> /

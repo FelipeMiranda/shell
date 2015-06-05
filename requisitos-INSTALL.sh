@@ -21,8 +21,9 @@ fi
 
 if [ $OSTYPE == "OpenBSD" ]; then
 
-	pkg add screen vim lynx iftop 
-	pkg add ngrep
+	LISTA=git screen vim lynx iftop ngrep bash
+
+	pkg add 
 
 fi
 

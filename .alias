@@ -63,5 +63,10 @@ fi
 if [ $OSTYPE == "OpenBSD" ]; then
 alias n='netstat -f inet -an'
 alias r='route show'
-alias ls='colorls -G'
+
+#muito importante para nao setar errado caso nao tenha o programa colorls, senao vc nao vai ver nem um arquivo.
+	if [ -e /usr/bin/colorls ]; then
+	alias ls='colorls -G'
+	fi
+
 fi
