@@ -8,7 +8,7 @@ SHELL=~/shell
 echo -e "\n\n $yellow ### $blue Shell Enviroment KRN $yellow ### $normal \n\n"
 
 
-echo -e "\n\n Iniciando a instalacao ...\n\n"
+echo -e "\n\n Iniciando a instalação ...\n\n"
 
 
 cp $SHELL/.alias $HOME/
@@ -25,7 +25,7 @@ ln -s /opt/funcoeszz/* /opt/funcoeszz/funcoeszz
 fi
 
 
-echo -e "\n\n Instalando as chaves para o Git hub\n\n"
+echo -e "\n\n Instalando as chaves para o Github\n\n"
 mkdir -p $HOME/.ssh
 cp $SHELL/github/* $HOME/.ssh/
 cd $HOME/.ssh
@@ -37,6 +37,6 @@ echo -e "\n\n Arquivos instalados com $atention sucesso $normal \n"
 #ja executa o bash para testar
 
 #
-echo -e "\n$alert Em breve será preparada uma breve pagina de uso apos a instalacao$normal\n"
+echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a instalação.$normal\n"
 
 bash
