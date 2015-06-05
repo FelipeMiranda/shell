@@ -21,6 +21,9 @@ fi
 #Usando <TAB><TAB> após o comando cd somente mostra diretórios
 complete -d cd
 
+#Usando git bash_completion
+. /etc/bash_completion.d/git
+
 
 # Instalacao das Funcoes ZZ (www.funcoeszz.net)
 export ZZOFF=""  # desligue funcoes indesejadas

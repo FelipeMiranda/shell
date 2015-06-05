@@ -19,7 +19,7 @@ fi
 
 if [ $OSTYPE == "OpenBSD" ]; then
 #LISTA de requisitos para ser instalados no OpenBSD
-LISTA="git screen vim lynx iftop ngrep bash colors"
+LISTA="git screen vim lynx iftop ngrep bash colors wget"
 for i in $LISTA; do
 pkg_add $i 
 done 
