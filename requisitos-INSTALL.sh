@@ -23,7 +23,10 @@ if [ $OSTYPE == "OpenBSD" ]; then
 
 	LISTA=git screen vim lynx iftop ngrep bash
 
-	pkg add 
+	for i in $LISTA do
 
+	pkg_add $i 
+
+	done 
 fi
 
