@@ -19,6 +19,7 @@ O programa ainda está no começo e está na sua versão:
 ####################
 Funções do programa:
 
+- Escreva seus próprios manuais man pages, arquivo model.rd (Markdown)
 - melhora o funcionamento das teclas Pg-Up/Pg-Down
 - cd <TAB><TAB> : somente exibe nome de diretórios
 
