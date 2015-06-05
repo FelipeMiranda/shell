@@ -33,6 +33,6 @@ echo -e "\n\n Arquivos instalados com $atention sucesso $normal \n"
 #ja executa o bash para testar
 
 #
-echo -e "$alert \n em breve será preparada uma breve pagina de uso apos a instalacao\n $normal"
+echo -e "$alert \n em breve será preparada uma breve pagina de uso apos a instalacao$normal\n"
 
 bash
