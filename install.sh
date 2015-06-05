@@ -1,6 +1,6 @@
 #/bin/bash
 
-source colors.sh
+source /root/shell/colors.sh
 CDSHELL=~/shell
 
 
