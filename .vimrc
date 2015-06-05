@@ -212,8 +212,8 @@ au BufNewFile,BufRead *README,*NEWS,*TODO set ft=txt "spell
 
 " Txt2tags
 au BufNewFile,BufRead *.t2t   set ft=txt2tags "spell
-imap <F6> <esc>:!txt2tags %<cr>
-map <F6> :!txt2tags %<cr>
+imap <F6> <esc>:!ronn -r %<cr>
+map <F6> :!ronn -r %<cr>
 
 " Python: TAB colorido e outras configuracoes
 au FileType python set ts=8 tw=80 noet

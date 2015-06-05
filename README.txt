@@ -34,7 +34,7 @@ Funções do programa:
 - Funciona o Del e nao quebra as palavras
 - Funcão para inserir Nome/Email/Data com ®u ®e ®d
 - Mapeamento de teclas Wq
-
+- Salva posição onde parou na ultima edição do arquivo.
 
 
 
