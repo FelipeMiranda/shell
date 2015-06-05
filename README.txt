@@ -1,4 +1,19 @@
 
+#######
+CDSHELL - v.Charlie Brown
+
+O que é o CDSHELL?
+
+É um monte de alias e scripts para tornar o enviroment do usuário altamente
+produtivo e com as features úteis do dia a dia, como o miniman.
+
+
+########
+VERSAO
+
+O programa ainda está no começo e está na sua versão:
+
+- v 1.0   -> Release: Charlie Brown
 
 
 ####################
