@@ -46,7 +46,7 @@ if [ ! -e ~/.cdshell_req_installed ]; then
 fi
 
 #Mensagem final sobre o manual do cdshell: 
-echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a instalação.$normal\n$yellow  $> miniman cdshell\n\n tks ®\n"
+echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a instalação.$normal\n$yellow  $> miniman cdshell\n\n ® tks ®\n"
 
 
 #ja executa o bash para testar
