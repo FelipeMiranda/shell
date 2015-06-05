@@ -8,7 +8,7 @@ O que é o CDSHELL?
 produtivo e com as features úteis do dia a dia, como o miniman.
 
 
-########
+######
 VERSAO
 
 O programa ainda está no começo e está na sua versão:
@@ -19,10 +19,8 @@ O programa ainda está no começo e está na sua versão:
 ####################
 Funções do programa:
 
-
-
 - melhora o funcionamento das teclas Pg-Up/Pg-Down
-
+- cd <TAB><TAB> : somente exibe nome de diretórios
 
 
 
@@ -35,7 +33,6 @@ Funções do programa:
 - Funcão para inserir Nome/Email/Data com ®u ®e ®d
 - Mapeamento de teclas Wq
 - Salva posição onde parou na ultima edição do arquivo.
-
 
 
 ### >SCREENRC DO AURELIO + MELHORIAS ###

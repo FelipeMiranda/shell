@@ -18,6 +18,9 @@ if [ -e ~/.export ]; then
 fi
 
 
+#Usando <TAB><TAB> após o comando cd somente mostra diretórios
+complete -d cd
+
 
 # Instalacao das Funcoes ZZ (www.funcoeszz.net)
 export ZZOFF=""  # desligue funcoes indesejadas

@@ -9,7 +9,7 @@ OSTYPE=`uname`
 if [ $OSTYPE == "Linux" ]; then
 
 
-	yum install screen vim lynx iftop ifstatus
+	yum install screen vim lynx iftop ifstatus ronn
 
 	#CentOS 6.6
    rpm -hiv http://pkgs.repoforge.org/txt2tags/txt2tags-2.6-1.el6.rf.noarch.rpm
