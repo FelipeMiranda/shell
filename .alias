@@ -43,8 +43,8 @@ alias miniman='~/shell/linux/miniman.sh'
 alias sta='git status'
 alias com='git commit -a'
 alias ga='git add .'
-alias pull='git pull'
-alias push='git push origin master'
+alias pull='echo -e "puxando <- WWW\n" && git pull'
+alias push='echo -e "empurrando -> WWW\n" && git push origin master'
 alias clone='cd ~ && git clone git@github.com:quirinobytes/shell.git'
 
 
