@@ -24,6 +24,11 @@ LISTA="git vim lynx iftop ngrep bash colors wget nmon"
 for i in $LISTA; do
 pkg_add $i 
 done 
+
+#mudar o shell do usuário para bash
 echo -e "Se desejar alterar o shell do usuário:\n usermod -s /usr/local/bin/bash $USER"
+#Instalando o Bash mesmo para o root
+echo bash >> ~/.profile
+
 fi
 
