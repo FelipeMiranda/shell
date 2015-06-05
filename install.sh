@@ -17,9 +17,13 @@ cp $SHELL/.vimrc $HOME/
 cp $SHELL/.screenrc $HOME/
 cp $SHELL/.bashrc $HOME/
 
+#Instalando as funcoesZZ
+if [ ! -e "/opt/funcoeszz/funcoeszz" ]; then
 mkdir -p /opt/funcoeszz/
 cp $SHELL/funcoeszz/* /opt/funcoeszz/
 ln -s /opt/funcoeszz/* /opt/funcoeszz/funcoeszz
+fi
+
 
 echo -e "\n\n Instalando as chaves para o Git hub\n\n"
 mkdir -p $HOME/.ssh
