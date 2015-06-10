@@ -8,7 +8,7 @@
 OSTYPE=`uname`;
 
 if [ "$1" == "-ls" ]; then
-ls ~/help/$OSTYPE/help/*.1 | sed 's/.1//g'
+ls ~/help/$OSTYPE/help/*.1 | sed 's/.1//g' | sed 's/[a-zA-Z]*\///g'
 exit 0 # mostra os comandos possiveis e sai.
 fi
 
