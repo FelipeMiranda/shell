@@ -153,7 +153,7 @@ terminfo vt100 dl=5\E[M
 
 
 
-bindkey -k k1 screen  	# F1 # Cria uma sessao = Crtl-a + c
+#bindkey -k k1 screen  	# F1 # Cria uma sessao = Crtl-a + c
 #bindkey -k k2 		# F2 # JA Mapeado para Colocar e tirar coment[arios no .vimrc
 #bindkey -k k3 		# F3 # JA Mapeado para Colocar e tirar coment[arios no .vimrc
 bindkey -k k4 remove  	# F4 # Desliga a exiubicao da Janela
