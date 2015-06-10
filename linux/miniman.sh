@@ -16,6 +16,9 @@ fi
 if [ "$2" == "-l" ]; then
 OSTYPE="Linux"
 echo $OSTYPE
+fi
+
+
 if [ -n "$1" ]; then
 	
 	if [ -e ~/help/$OSTYPE/help/$1.1 ]; then
