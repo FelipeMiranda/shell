@@ -17,6 +17,10 @@ cp $CDSHELL/.vimrc $HOME/
 cp $CDSHELL/.screenrc $HOME/
 cp $CDSHELL/.bashrc $HOME/
 cp $CDSHELL/inputrc /etc/
+if [ ! -e /etc/bash_completion.d ]; then
+mkdir -p /etc/bash_completion.d
+fi
+cp $CDSHELL/etc+bash_completion.d+git /etc/bash_completion.d/git
 
 #Instalando as funcoesZZ
 if [ ! -e "/opt/funcoeszz/funcoeszz" ]; then
