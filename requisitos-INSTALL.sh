@@ -19,7 +19,7 @@ fi
 
 if [ $OSTYPE == "OpenBSD" ]; then
 #LISTA de requisitos para ser instalados no OpenBSD
-LISTA="git vim-7.4.475-no_x11-ruby lynx iftop ngrep bash colorls wget nmon autoconf-2.69p1 automake-1.9.6p11"
+LISTA="git vim-7.4.475-no_x11-ruby lynx iftop ngrep bash colorls wget autoconf-2.69p1 automake-1.9.6p11"
 
 for i in $LISTA; do
 pkg_add $i 
