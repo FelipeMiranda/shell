@@ -7,6 +7,11 @@ O que é o CDSHELL?
 É um monte de alias e scripts para tornar o enviroment do usuário altamente
 produtivo e com as features úteis do dia a dia, como o miniman.
 
+O que é o miniman.
+
+Miniman é um mini man. Ou seja um man(ual) mais simples, direto ao assunto
+e com exemplos práticos.
+
 
 ######
 VERSAO
