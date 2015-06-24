@@ -13,10 +13,22 @@ exit 0 # mostra os comandos possiveis e sai.
 fi
 
 
-if [ "$2" == "-l" ]; then
+if [ "$2" == "-L" ]; then
 OSTYPE="Linux"
 echo $OSTYPE
 fi
+
+if [ "$2" == "-A" ]; then
+OSTYPE="AIX"
+echo $OSTYPE
+fi
+
+if [ "$2" == "-O" ]; then
+OSTYPE="OpenBSD"
+echo $OSTYPE
+fi
+
+
 
 
 if [ -n "$1" ]; then
