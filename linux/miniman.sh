@@ -8,20 +8,16 @@ source ~/shell/colors.sh
 
 OSTYPE=`uname`;
 
-
 if [ "$2" == "-L" ]; then
 OSTYPE="Linux"
-echo $OSTYPE
 fi
 
 if [ "$2" == "-A" ]; then
 OSTYPE="AIX"
-echo $OSTYPE
 fi
 
 if [ "$2" == "-O" ]; then
 OSTYPE="OpenBSD"
-echo $OSTYPE
 fi
 
 #Isso tem que ficar embaixo dos opcoes -L -A -O pois depende do valor da variavel OSTYPE que pode ser mudada ali.
@@ -30,7 +26,6 @@ echo -e "Sistema Operacional:$red $OSTYPE $normal"
 ls ~/help/$OSTYPE/help/*.1 | sed 's/.1//g' | sed 's/[a-zA-Z]*\///g'
 exit 0 # mostra os comandos possiveis e sai.
 fi
-
 
 
 
