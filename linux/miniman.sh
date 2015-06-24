@@ -4,13 +4,9 @@
 # date:	2015-05-30 
 # version: 1.0
 ############################
+source ~/shell/colors.sh
 
 OSTYPE=`uname`;
-
-if [ "$1" == "-ls" ]; then
-ls ~/help/$OSTYPE/help/*.1 | sed 's/.1//g' | sed 's/[a-zA-Z]*\///g'
-exit 0 # mostra os comandos possiveis e sai.
-fi
 
 
 if [ "$2" == "-L" ]; then
@@ -28,6 +24,13 @@ OSTYPE="OpenBSD"
 echo $OSTYPE
 fi
 
+#Isso tem que ficar embaixo dos opcoes -L -A -O pois depende do valor da variavel OSTYPE que pode ser mudada ali.
+if [ "$1" == "-ls" ]; then
+echo -e "Sistema Operacional:$red $OSTYPE $normal"
+ls ~/help/$OSTYPE/help/*.1 | sed 's/.1//g' | sed 's/[a-zA-Z]*\///g'
+exit 0 # mostra os comandos possiveis e sai.
+fi
+
 
 
 
@@ -37,7 +40,9 @@ if [ -n "$1" ]; then
 	
 		man ~/help/$OSTYPE/help/$1.1
 	else
-		echo "Manual para $1 não existe no MINIMAN"
+		echo -e "Manual para $1 não existe no MINIMAN\n"
+	   echo -e "\n\n tente: miniman [COMANDO] <SIST.OPERACIONAL>\n"
+      echo -e "\n miniman -ls    -> Mostra os minimans disponiveis\n\n"
 	fi
 
 else 
