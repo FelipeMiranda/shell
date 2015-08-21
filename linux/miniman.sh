@@ -20,6 +20,11 @@ if [ "$2" == "-O" ]; then
 OSTYPE="OpenBSD"
 fi
 
+if [ "$2" == "-W" ]; then
+OSTYPE="Windows"
+fi
+
+
 #Isso tem que ficar embaixo dos opcoes -L -A -O pois depende do valor da variavel OSTYPE que pode ser mudada ali.
 if [ "$1" == "-ls" ]; then
 echo -e "Sistema Operacional:$red $OSTYPE $normal"
@@ -38,6 +43,10 @@ if [ -n "$1" ]; then
 		echo -e "Manual para $1 não existe no MINIMAN\n"
 	   echo -e "\n\n tente: miniman [COMANDO] <SIST.OPERACIONAL>\n"
       echo -e "\n miniman -ls    -> Mostra os minimans disponiveis\n\n"
+      echo -e "\n <SIST. OPERACIONAL> = -A  -> AIX "
+      echo -e "\n <SIST. OPERACIONAL> = -L  -> Linux "
+      echo -e "\n <SIST. OPERACIONAL> = -O  -> OpenBSD "
+      echo -e "\n <SIST. OPERACIONAL> = -W  -> Windows "
 	fi
 
 else 
