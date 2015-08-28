@@ -36,7 +36,7 @@
 msgwait 3
 sorendition 15 43 # Estrutura em amarelo
 sorendition 05 43
-hardstatus alwayslastline " %c | %Y%m%d |  %w"
+hardstatus alwayslastline " %c | %Y%m%d |  %w |F5=__ |F6= || |F7= - |F8= +|F9=TAB|F10=vi-exit&save|F11=quit|F12=next"
 
 # barra verde e preto, com códigos de cores literais
 #hardstatus alwayslastline "\033[m\033[42;30m%c\033[m \033[42;30m%Y%m%d\033[m \033[42;30m %w \033[m"
