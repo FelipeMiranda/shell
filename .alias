@@ -6,21 +6,22 @@ OSTYPE=`uname`
 #OPCOES COMUNS
 
 alias ..='cd ..'
-alias cd..='cd ..'
-alias cds='cd ~/shell'
-alias cdh='cd ~/help/`uname`/help/'
 alias i='ifconfig | grep inet'
+alias g='grep'
+alias l='ls -lh'
+alias m='more'
 alias p='ps aux'
 alias +x='chmod +x' 
+alias cd..='cd ..'
+alias cdh='cd ~/help/`uname`/help/'
+alias cds='cd ~/shell'
 alias vi='vim'
 alias rm='rm -f'
 alias rmdir='rm -rf'
-alias l='ls -lh'
 alias la='ls -la'
 alias lah='ls -lah'
 alias dumax='du --max-depth=1 -h'
 alias traduz='zzdicbabylon'
-alias g='grep'
 alias mq='mailq'
 alias e0='ethstatus -i eth0 -s 10' # interface eth0 size throuput 10M
 alias e1='ethstatus -i eth1 -s 10' # interface eth0 size throuput 10M
