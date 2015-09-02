@@ -54,7 +54,7 @@ alias clone='cd ~ && git clone git@github.com:quirinobytes/shell.git'
 
 ## LINUX ALIAS
 if [ $OSTYPE == "Linux" ]; then
-alias n='netstat -antu'
+alias n='netstat -antup'
 alias ls='ls --color'
 alias r='route -n'
 alias grep='grep --color'
