@@ -6,6 +6,7 @@ OSTYPE=`uname`
 #OPCOES COMUNS
 
 alias ..='cd ..'
+alias d='dig'
 alias i='ifconfig | grep inet'
 alias g='grep'
 alias l='ls -lh'
