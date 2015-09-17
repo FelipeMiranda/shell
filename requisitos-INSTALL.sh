@@ -32,3 +32,20 @@ echo -e "Se desejar alterar o shell do usuário:\n usermod -s /usr/local/bin/bas
 
 fi
 
+
+
+if [ $OSTYPE == "FreeBSD" ]; then
+#LISTA de requisitos para ser instalados no FreeBSD
+LISTA="git vim-7.4.475-no_x11-ruby lynx iftop ngrep bash colorls wget autoconf-2.69p1 automake-1.9.6p11"
+
+for i in $LISTA; do
+pkg_add $i
+done
+echo tentando instalar o screen no FreeBSD
+. $CDSHELL/openbsd/install-screen.sh
+
+#mudar o shell do usuário para bash
+echo -e "Se desejar alterar o shell do usuário:\n usermod -s /usr/local/bin/bash $USER"
+
+fi
+
