@@ -62,6 +62,12 @@ alias r='route -n'
 alias grep='grep --color'
 fi
 
+## FreeBSD ALIAS
+if [ $OSTYPE == "FreeBSD" ]; then
+alias n='netstat -f inet -an'
+alias r='route show'
+if
+
 ## OPENBSD ALIAS
 if [ $OSTYPE == "OpenBSD" ]; then
 alias n='netstat -f inet -an'
