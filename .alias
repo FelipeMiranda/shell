@@ -27,7 +27,7 @@ alias traduz='zzdicbabylon'
 alias mq='mailq'
 alias e0='ethstatus -i eth0 -s 10' # interface eth0 size throuput 10M
 alias e1='ethstatus -i eth1 -s 10' # interface eth0 size throuput 10M
-
+alias criadaemon=~/shell/linux/criadaemon.sh
 
 
 
