@@ -36,7 +36,7 @@ fi
 
 if [ $OSTYPE == "FreeBSD" ]; then
 #LISTA de requisitos para ser instalados no FreeBSD
-LISTA="git vim-7.4.475-no_x11-ruby lynx iftop ngrep bash colorls wget autoconf-2.69p1 automake-1.9.6p11"
+LISTA="git vim lynx iftop ngrep bash colorls wget autoconf automake binutils"
 
 for i in $LISTA; do
 pkg install $i
