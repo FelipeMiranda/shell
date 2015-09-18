@@ -39,7 +39,7 @@ if [ $OSTYPE == "FreeBSD" ]; then
 LISTA="git vim-7.4.475-no_x11-ruby lynx iftop ngrep bash colorls wget autoconf-2.69p1 automake-1.9.6p11"
 
 for i in $LISTA; do
-pkg_add $i
+pkg install $i
 done
 echo tentando instalar o screen no FreeBSD
 . $CDSHELL/openbsd/install-screen.sh
