@@ -188,3 +188,122 @@ bindkey -k F2 prev   	# F11#  Encerrar o screen com todas as janelas e sessoes j
 
 #fazendo salvar o layout das regions em caso de Detach/RE-Atach nao perder os regions/windows
 layout save default
+
+
+
+
+
+# debug         -       debugging info is written to /tmp/debug/
+# # dumptermcap   -       Termcap entry written to "/home/srot/tmp/.screen/.termcap".
+# # info          -       (1,3)/(270,37)+5000 -(-)flow bce UTF-8 6(hellopwd)
+# # dinfo         -       (270,77) UTF-8 color iso2022
+#
+# # ===============================================================
+# # Messages
+# # ===============================================================
+# # They are also the names of the commands that set the respective messages.  In every message there can be "meta
+# # strings" which are replaced by values.  A meta string starts with a percent sign and is then followed by one
+# # of the following letters: aAcCdDfFhHlmMnstuwWyY The meta strings usually refer to the current
+# # date and time or to a window title or number. There are also some specials like embedded branches (with %?),
+# # color codes (with %{xy}) and padding (with %=, %<, %>). you can find their description in the manual in section  "STRING ESCAPES":
+# #
+# #  %%      percent sign (the escape character itself)
+# #  %f      flags of the window
+# #  %F      sets %? to true if the window has the focus
+# #  %h      hardstatus of the window
+# #  %H      hostname of the system
+# #  %l      current load of the system
+# #  %n      window number
+# #  %t      window title
+# #  %u      all other users on this window
+# #  %w      all window numbers and names.
+# #  %-w     all window numbers up to the current window
+# #  %+w     all window numbers after the current window
+# #  %W      all window numbers and names except the current one
+# #
+# #  DATE VARS -- USELESS!
+# #  %a      either 'am' or 'pm' - according to the current time
+# #  %A      either 'AM' or 'PM' - according to the current time
+# #  %c      current time HH:MM in 24h format
+# #  %C      current time HH:MM in 12h format
+# #  %d      day number - number of current day
+# #  %D      Day's name - the weekday name of the current day
+# #  %m      month number
+# #  %M      month name
+# #  %s      seconds
+# #  %y      last two digits of the year number
+# #  %Y      full year number
+# # ===============================================================
+# vbell off                               # I like to hear the beep.
+# activity "%c activity -> %n%f %t^G"     # ^G makes it beep
+# bell "%c bell -> %n%f %t^G"             # likewise
+#
+# ###########################################################################################################################
+#  #
+#   # TERMINAL CONTROL
+#    # ae: Standout          # ct: Initialization    # es: Status Line
+#     # AL: Insdel Line       # cv: Cursor Motion     # ff: Cursor Motion
+#      # al: Insdel Line       # da: Scrolling         # fs: Status Line
+#      # am: Wrapping          # dB: Pad Specs         # gn: Basic
+#      # as: Standout          # db: Scrolling         # hc: Basic
+#      # bc: Cursor Motion     # dC: Pad Specs         # hd: Half-Line
+#      # bl: Bell              # DC: Insdel Char       # ho: Cursor Motion
+#      # bs: Cursor Motion     # dc: Insdel Char       # hs: Status Line
+#      # bt: Cursor Motion     # dF: Pad Specs         # hu: Half-Line
+#      # bw: Cursor Motion     # DL: Insdel Line       # hz: Basic
+#      # CC: Basic             # dl: Insdel Line       # i1: Initialization
+#      # cd: Clearing          # dm: Insdel Char       # i3: Initialization
+#      # ce: Clearing          # dN: Pad Specs         # IC: Insdel Char
+#      # ch: Cursor Motion     # DO: Cursor Motion     # ic: Insdel Char
+#      # cl: Clearing          # do: Cursor Motion     # if: Initialization
+#      # CM: Cursor Motion     # ds: Status Line       # im: Insdel Char
+#      # cm: Cursor Motion     # dT: Pad Specs         # in: Insdel Char
+#      # co: Screen Size       # ec: Clearing          # ip: Insdel Char
+#      # cr: Cursor Motion     # ed: Insdel Char       # is: Initialization
+#      # cS: Scrolling         # ei: Insdel Char       # it: Initialization
+#      # cs: Scrolling         # eo: Basic
+#      #
+#      termcapinfo * hs@
+#
+#      ###########################################################################################################################
+#      # COLOR:  colors codes are combinations of [attribute modifier] [color description]
+#      # the manual talks of "attribute/color modifiers".
+#      #
+#      # 0 Black             .    leave color unchanged
+#      # 1 Red               b    blue
+#      # 2 Green             c    cyan
+#      # 3 Brown / yellow    d    default color
+#      # 4 Blue              g    green           b    bold
+#      # 5 Purple            k    blacK           B    blinking
+#      # 6 Cyan              m    magenta         d    dim
+#      # 7 White             r    red             r    reverse
+#      # 8 unused/illegal    w    white           s    standout
+#      # 9 transparent       y    yellow          u    underline
+#      #
+#      # note: "dim" is not mentioned in the manual.
+#      #hardstatus string "%-Lw%{= G0}%50>%n%f* %t%{-}%+Lw%<"
+#
+#      #hardstatus string "%?%F%{-b bc}%:%{-b bb}%?%C|%D|%M %d|%H|%0`%?%F%{+u wb}%? %L=%-Lw%45>%{+b by}%n%f* %t%{-}%+Lw%-0<"
+#
+#      #yaption always "%?%F%{.R.}%?%3n %t%? [%h]%?"
+#      #caption always "%?%F%{-b bc}%:%{-b bb}%?%C|%D|%M %d|%H|%1`%?%F%{+u wb}%? %L=%-Lw%45>%{+b by}%n%f* %t%{-}%+Lw%-0<"
+#      #hardstatus alwayslastline
+#      #hardstatus string "%?%F%{-b bc}%:%{-b bb}%?%C|%D|%M %d|%H|%1`%?%F%{+u wb}%? %L=%-Lw%45>%{+b kG}%n%f* %t%{-}%+Lw%-0<"
+#      hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+#      # Make screen messages stand out a little more - black on bright green.
+#      #sorendition "= kG"
+#      #caption always "%{.wB}%-w%{.bW}%n %t%{-}%+w %=%{..Lw} %H %{..b} %m/%d %C%a "
+#      caption always "%{cK}$LOGNAME %{bK}(%d %M %Y, %c) %{-}%{bW} %-w%{bW}%50>%{= wb}%n%f %t%{-}%+w%< %{-}"
+#
+#
+#
+#      ###########################################################################################################################
+#      #
+#      # default windows
+#      # L - LOGGING
+#      # l - log to utmp
+#      # ln - nolog to utmp
+#      # O - better vt100 emul
+#      # a - all terminal caps
+#      # A - resize
+#      # h - scrol lines
