@@ -163,7 +163,8 @@ bindkey -k k7 resize -1 # F7 # Aumenta o tamando da Janela Atual
 bindkey -k k8 resize +1 # F8 # Dominui o tamanho da Janela atual
 bindkey -k k9 focus     # F9 # Pula para proxima janela
 #bindkey "^[[21~" next 	# F10# O LEGAL SERIA Control TAB no lugar de F10
-bindkey -k F1 kill    	# F11#  Encerrar o screen com todas as janelas e sessoes juntos
+#bindkey -k F1 kill    		# F11#  Encerrar o screen com todas as janelas e sessoes juntos
+bindkey -k F1 eval kill         # F11#  Encerrar o screen com todas as janelas e sessoes juntos, nao sei pq so kill nao funciona
 bindkey -k F2 prev   	# F11#  Encerrar o screen com todas as janelas e sessoes juntos
 # F12 # Usado no Vim para sair do arquivo salvando caso exista modificacoes, por esse motivo nao usei para kill aqui
 
