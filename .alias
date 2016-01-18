@@ -11,6 +11,7 @@ alias i='ifconfig | grep inet'
 alias g='grep -i'
 alias l='ls -lh'
 alias m='more'
+alias mp3=mplayer
 alias p='ps aux'
 alias t='tail -f'
 alias +x='chmod +x' 
