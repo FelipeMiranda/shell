@@ -18,17 +18,18 @@ alias +x='chmod +x'
 alias cd..='cd ..'
 alias cdh='cd ~/help/`uname`/help/'
 alias cds='cd ~/shell'
-alias vi='vim'
-alias rm='rm -f'
-alias rmdir='rm -rf'
-alias la='ls -la'
-alias lah='ls -lah'
+alias criadaemon=~/shell/linux/criadaemon.sh
 alias dumax='du --max-depth=1 -h'
-alias traduz='zzdicbabylon'
-alias mq='mailq'
 alias e0='ethstatus -i eth0 -s 10' # interface eth0 size throuput 10M
 alias e1='ethstatus -i eth1 -s 10' # interface eth0 size throuput 10M
-alias criadaemon=~/shell/linux/criadaemon.sh
+alias la='ls -la'
+alias lah='ls -lah'
+alias mq='mailq'
+alias q=exit
+alias rm='rm -f'
+alias rmdir='rm -rf'
+alias traduz='zzdicbabylon'
+alias vi='vim'
 
 
 
