@@ -162,11 +162,50 @@ bindkey -k k6 eval 'split -v' focus screen # F6 # Cria uma divisao vertical
 bindkey -k k7 resize -1 # F7 # Aumenta o tamando da Janela Atual
 bindkey -k k8 resize +1 # F8 # Dominui o tamanho da Janela atual
 bindkey -k k9 focus     # F9 # Pula para proxima janela
-#bindkey "^[[21~" next 	# F10# O LEGAL SERIA Control TAB no lugar de F10
+#bindkey "^[[21~" next 	# F10# O LEGAL SERIA Control TAB no lugar de F9
 #bindkey -k F1 kill    		# F11#  Encerrar o screen com todas as janelas e sessoes juntos
 bindkey -k F1 eval kill         # F11#  Encerrar o screen com todas as janelas e sessoes juntos, nao sei pq so kill nao funciona
 bindkey -k F2 prev   	# F11#  Encerrar o screen com todas as janelas e sessoes juntos
 # F12 # Usado no Vim para sair do arquivo salvando caso exista modificacoes, por esse motivo nao usei para kill aqui
+
+# easier scroll
+#bindkey "^[OA" eval 'copy' 'stuff ^b'  # PgUp | Enter copy/scrollback mode and page up
+#bindkey "^[OB" eval 'copy' "stuff ^f'  # PgDown | Enter copy/scrollback mode and page down
+
+defscrollback 100000
+
+
+
+# Scroll up
+#bindkey -d "^[[5S" eval copy "stuff 5\025"
+#bindkey -m "^[[5S" stuff 5\025
+#
+# # Scroll down
+#bindkey -d "^[[5T" eval copy "stuff 5\004"
+#bindkey -m "^[[5T" stuff 5\004
+#
+# # Scroll up more
+#bindkey -d "^[[25S" eval copy "stuff \025"
+#bindkey -m "^[[25S" stuff \025
+#
+# # Scroll down more
+#bindkey -d "^[[25T" eval copy "stuff \004"
+#bindkey -m "^[[25T" stuff \004
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -308,3 +347,4 @@ layout save default
 #      # a - all terminal caps
 #      # A - resize
 #      # h - scrol lines
+#

@@ -1,0 +1,3 @@
+192.168.1.166,root,xman,89MX1sPSys3P
+giant,krn,m0t0(#0$$,89MX1sPSys3P
+192.168.1.254,rogerio,xman,89MX1sPSys3P

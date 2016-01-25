@@ -1,0 +1,651 @@
+TechNetProductsIT ResourcesDownloadsTrainingSupport
+Microsoft TechNetUnited States (English)  Sign in
+
+Search TechNet with Bing
+ 
+Home Library Wiki Learn Gallery Downloads Support Forums Blogs
+Any suggestions? Export (0) Print
+TechNet Library
+TechNet Archive
+Script Center
+Windows Management Instrumentation (WMI)
+Secrets of Windows Management Instrumentation
+Troubleshooting and Tips
+Expand
+Troubleshooting and Tips
+
+Published: July 28, 2004 | Updated : September 10, 2004
+
+Note:  This document was originally published as "Windows Management Instrumentation: Frequently Asked Questions."
+On This Page
+Q 1. What is WMI and what can it do for me? 
+Q 2. On what platforms is WMI available? 
+Q 3. How can I tell if WMI exposes specific functionality? 
+Q 4. What can I do if WMI does not provide the capabilities I need? 
+Q 5. Where can I find sample scripts that use WMI? 
+Q 6. Why does my script run on one version of Windows but not on another? 
+Q 7. Why is a WMI operation returning an error? 
+Q 8. How do I set WMI namespace security? 
+Q 9. How do I manage remote computers using WMI? 
+Q 10. Why does my remote operation fail when it involves a third machine? 
+Q 11. Why are my queries taking such a long time to complete? 
+Q 12. How do I list all the installed applications on a given machine? 
+Q 13. How do I get performance counter data? 
+
+Q 1. What is WMI and what can it do for me?
+Windows Management Instrumentation is a core Windows management technology; you can use WMI to manage both local and remote computers. WMI provides a consistent approach to carrying out day-to-day management tasks with programming or scripting languages. For example, you can:
+Start a process on a remote computer.
+Schedule a process to run at specific times on specific days.
+Reboot a computer remotely.
+Get a list of applications installed on a local or remote computer.
+Query the Windows event logs on a local or remote computer.
+The word “Instrumentation” in WMI refers to the fact that WMI can get information about the internal state of computer systems, much like the dashboard instruments of cars can retrieve and display information about the state of the engine. WMI “instruments” by modeling objects such as disks, processes, or other objects found in Windows systems. These computer system objects are modeled using classes such as Win32_LogicalDisk or Win32_Process; as you might expect, the Win32_LogicalDisk class models the logical disks installed on a computer, and the Win32_Process class models any processes currently running on a computer. Classes are based on the extensible schema called the Common Information Model (CIM). The CIM schema is a public standard of the Distributed Management Task Force (http://www.dmtf.org).
+WMI capabilities also include eventing, remoting, querying, views, user extensions to the schema, instrumentation, and more.
+To learn more about WMI, go to http://msdn.microsoft.com/library/default.asp and search for the keyword phrase “About WMI.”
+Top of page 
+Q 2. On what platforms is WMI available?
+WMI is available in all recent versions of Windows. WMI is installed with Windows Me, Windows 2000, Windows XP and Windows Server 2003.
+For Windows 98 and Windows NT 4.0, WMI is available as an Internet download from http://www.microsoft.com/downloads. Search for the download “Windows Management Instrumentation (WMI) CORE 1.5 (Windows 95/98/NT 4.0).”
+Note that Windows NT 4.0 requires Service Pack 4 or later before you can install and run WMI.
+Additional software requirements for WMI include:
+Microsoft® Internet Explorer version 5.0 or later.
+Windows Script Host (WSH). WSH ships with Windows 2000, Windows XP, Windows Server 2003, and Windows Me, but not with Windows NT4 or Windows 98. You can download WSH from http://www.microsoft.com/downloads. The latest version -- which ships with Windows XP and Windows Server 2003 -- is WSH 5.6.
+Top of page 
+Q 3. How can I tell if WMI exposes specific functionality?
+MSDN is your best bet when looking for detailed reference information on WMI and its capabilities; see the WMI Reference at http://msdn.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/wmi_reference.asp. The WMI Reference contains information about most of the classes, scripting objects, and APIs available with a standard installation of WMI. Note that WMI providers that are not part of the operating system might create classes that either are not documented on MSDN or are documented elsewhere in the Platform SDK.
+After you familiarize yourself with how the information is categorized, you can easily search for the class you are looking for and find out if the functionality you want is available. Please be aware that you might need to use more than one class to accomplish a given task. For example, suppose you want to obtain basic system information for a computer. While you can retrieve information about available memory using the Win32_OperatingSystem class, you will have to use a second class (such as Win32_LogicalDisk) if you also need information about free disk space on the computer. See the question Why does my script run on one version of Windows but not on another? for more information on discovering what WMI can and cannot do.
+CIM Studio is a tool that enables you to browse WMI Classes on Windows 2000 and later platforms. For information on this tool and the download containing it (CIM Studio is one of the set of tools installed by WMITools.exe), go to http://www.microsoft.com and search for the keyword “WMI tools.” You can also run the unsupported Wbemtest.exe utility - which is automatically installed along with WMI -- to explore WMI data.
+On Windows XP or Windows Server 2003 you can use the following script, which searches for classes that have a specific word in the class name. Save the script to a text file named Search.vbs and then run the script, specifying the keyword you would like to search for. For example, to search for classes with “service
+in the class name, run the following command at the command prompt:
+
+
+cscript search.vbs service
+
+
+
+
+' Script for finding a class in WMI Repository
+ 
+Set args = wscript.arguments
+If args.Count <= 0 Then
+    Wscript.Echo "Tool to search for a matching class in the WMI Repository. " 
+    Wscript.Echo "USAGE: <keywordToSearch> [<namespaceToSearchIn>]"
+    Wscript.Echo "Example1: Cscript search.vbs service"
+    Wscript.Echo "Example2: Cscript search.vbs video root\cimv2"
+Else
+    ' If no Namespace is specified then the Default is the ROOT namespace
+    rootNamespace = "\\.\ROOT"
+    keyword = args(0)
+    If args.Count > 1 Then
+        rootNamespace = args(1)
+    End If    
+    EnumNameSpace rootNamespace 
+    Wscript.Echo vbNewLine
+End if
+  
+' Subroutine to recurse through the namespaces
+ 
+Sub EnumNameSpace(parentNamespaceName)
+ 
+Set objService = GetObject("winmgmts:" & parentNamespaceName)
+ 
+Set collMatchingClasses = objService.Execquery _
+    ("Select * From meta_class Where __class " & _
+    "Like '%" & keyword & "%'")
+If (collMatchingClasses.count > 0) Then
+    Wscript.Echo vbNewLine 
+    Wscript.Echo vbNewLine
+    Wscript.Echo "Matching Classes Under Namespace: " & parentNamespaceName
+ 
+    For Each matchingClass in collMatchingClasses 
+        Wscript.Echo "    " & matchingClass.Path_.CLASS
+    Next    
+End if
+ 
+Set collSubNamespaces = objService.Execquery _
+    ("select * from __namespace")
+For Each subNameSpace in collSubNamespaces 
+    EnumNameSpace subNameSpace.path_.namespace + _
+        "\" + subNameSpace.Name
+Next
+ 
+End Sub
+
+
+This script will only run on Windows XP or Server 2003. That’s because the LIKE operator, part of the WMI Query Language, is only available on those two platforms.
+Top of page 
+Q 4. What can I do if WMI does not provide the capabilities I need?
+Sooner or later you will want to script a task that WMI cannot do or cannot do very efficiently. In cases such as that, you should first see if another scripting technology included in the operating system provides the capabilities you need. For example, ADSI (Active Directory Service Interfaces) enables you to manage Active Directory; CDO (Collaboration Data Objects) provides the ability to send email from within a script. If no appropriate scripting interface is available in the Windows operating system, third-party software might be available that performs the functions you need.
+If no scripting interface exists you can, in theory, write a WMI provider that offers this functionality. However, WMI providers cannot be written in a scripting languages; providers must be written in C++ or C#. For information on how to do this, see “Using WMI” on MSDN, which directs you to topics on writing traditional WMI providers. If you want to write a provider using the .NET Frameworks, search the MSDN library for “Managing Applications Using WMI.”
+Many other companies market management software that extends WMI functionality. You can search on the Internet for third-party tools. You might also be able to get information through questions to newsgroups. See the question Where can I find sample scripts that use WMI?
+Top of page 
+Q 5. Where can I find sample scripts that use WMI?
+The Microsoft Developers Network (MSDN) and TechNet are both good sources of samples. Here are some links to useful locations on these sites:
+The TechNet Script Center
+Includes hundreds of sample scripts categorized by technology and administrative task.
+http://go.microsoft.com/fwlink/?LinkId=24771.  
+MSDN
+http://msdn.microsoft.com/library. 
+For WMI scripts, search for “WMI System Administration scripts.”
+For WMIC (the WMI Command Line Utility), see http://msdn.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/wmic.asp .
+The WMI Software Developers Kit (SDK) 
+For a set of problem solutions by category, see Using WMI > WMI Tasks for Scripts and Applications.http://www.microsoft.com/msdownload/platformsdk/sdkupdate 
+The Windows 2000 Scripting Guide online
+The complete text of the book, which includes many examples of WMI scripting.
+http://www.microsoft.com/technet/scriptcenter/guide/default.mspx 
+The "Tales from the Script" column on TechNet
+Basic and intermediate scripting topics.
+http://www.microsoft.com/technet/scriptcenter/resources/tales/default.mspx 
+The “Scripting Clinic” column on MSDN
+More advanced scripting topics. 
+http://msdn.microsoft.com/en-us/library/dd575521.aspx
+Forum
+Head over to The Official Scripting Guys Forum, where you can post and answer scripting questions.
+Top of page 
+Q 6. Why does my script run on one version of Windows but not on another?
+This is typically due to the fact that classes, properties, or methods introduced in newer versions of Windows might not be available on previous versions of the operating system. To verify availability, look in the Requirements section for each class in the WMI Software Developer Kit (SDK) in the MSDN library (http://msdn.microsoft.com/library/default.asp). For example, the requirements for the Win32_PingStatus class indicate that it requires Windows XP or Windows Server 2003.  Because of this, scripts that attempt to access the Win32_PingStatus class on Windows 2000 will fail with a “Class not found” error.
+Likewise, some WMI data providers, such as the SNMP Provider, are either not available in all operating systems or are not part of the default installation of WMI. SDK topics that refer to these providers have a note pointing to the topic “Operating System Availability of WMI Components” in the “About WMI” section.
+For a list of the standard WMI providers, see “WMI Providers” under the WMI Reference section.
+In general, when a new provider is added to a new version of Windows its functionality will not be made available to previous versions of Windows. For example, the Win32_PingStatus class defined by the Ping provider is unlikely to be made available for Windows 2000. This is usually due to the fact that the provider takes advantage of capabilities found in the new version of Windows that simply do not exist in previous versions.
+What if you have two computers, running the identical version of Windows, and a script runs on one machine but not the other? For information on troubleshooting problems such as this, see Why is a WMI operation returning an error?
+Top of page 
+Q 7. Why is a WMI operation returning an error?
+To begin with, make sure that the error in question is really a WMI error. WMI error numbers start with 8004xxxx (e.g., 80041001). You can look up WMI error numbers and return codes by going to http://msdn.microsoft.com/library/default.asp  and searching for "WMI Return Codes.” If you can’t find the information you need, try searching for the specific error number on MSDN.
+If you do not receive an error number when running the script, you can look for errors in the WMI log files found in the %windir%\system32\wbem\logs folder. If it is difficult to determine which errors resulted from the script you just ran, delete all the logs and run the script again. This should make it easier to find errors related to your script.
+If you can’t find any errors in the log files, you might need to reset the logging level for the logs. To get maximum information, set the logging level to verbose. On Windows 2000, Windows NT, and Windows Me/98/95 you need to restart WMI after changing the logging levels; this is not required for Windows XP and Windows Server 2003.  For detailed information on configuring the logging levels, go to http://msdn.microsoft.com/library/default.asp and search for "Logging WMI Activity.”
+Errors might also be recorded in the Windows event logs. Look for events with the source Winmgmt.
+On Windows XP or Windows Server 2003 you can use MSFT_WMIProvider classes to troubleshoot provider operations such as loading and unloading the provider, responding to a query, executing a method, etc. For example, WMI generates an instance of the class MSFT_WmiProvider_CancelQuery_Pre immediately before the provider cancels the response to a query. An instance of MSFT_WmiProvider_CancelQuery_Post is generated after the cancellation occurs.  If a query operation in a particular script is failing you can write a script to wait for instances of these event classes to be generated.  When your monitoring script receives one of these events, the data tells you the provider involved, the type of provider, the query being processed, and the namespace involved.  
+For more information, go to http://msdn.microsoft.com/library/default.asp and search for "Troubleshooting Classes.”
+Following is a sample script that troubleshoots problems with the Ping provider. The script reports all the actions that take place as part of a Ping operation, including such things as provider loading, query receipt, and error generation. This information can help you determine whether the problems you are having occurred in the provider or in the WMI service. In the output, look for events where the ResultCode is not equal to 0; in general an error code other than 0 indicates that an operation failed.
+Save the following code in a .VBS file and then run the script.
+
+
+Option Explicit
+ 
+Sub Sink_OnObjectReady(oInst, oCtx)
+    instcount = instCount+1
+    Wscript.echo "Event " & cstr(instCount) & vbTab & _
+        oInst.GetObjectText_ & vbNewLine        
+End Sub
+ 
+Sub Sink_OnCompleted(Hresult, oErr, oCtx)    
+End Sub
+ 
+'msftTroubleShooting.vbs starts here
+ 
+DIM oLctr, oSvc, OSink, instCount, SrvName, SrvUserName, SrvPswd, args, argcount 
+ 
+Set args = wscript.arguments
+ 
+SrvName = "."
+SrvUserName = Null
+SrvPswd = Null
+instcount = 0
+ 
+argcount = args.Count
+ 
+If (argcount > 0)  Then
+    If args(0) = "/?" or args(0) = "?"   Then
+        Wscript.Echo "Usage:        cscript msftTroubleShooting.vbs " _
+            [ServerName=Null|?] [UserName=Null] [Password=Null]"
+        Wscript.Echo "Example:    cscript msftTroubleShooting.vbs "
+        Wscript.Echo "Example:    cscript msftTroubleShooting.vbs computerABC"
+        Wscript.Echo "Example:    cscript msftTroubleShooting.vbs "
+        Wscript.Echo "computerABC admin adminPswd"
+        Wscript.Quit 1
+    End If 
+End If
+ 
+Set oLctr = createObject("WbemScripting.Swbemlocator")
+ 
+On Error Resume Next
+If argcount = 0 Then
+    Set oSvc = oLctr.ConnectServer(,"root\cimv2") 
+    SrvName = " Local Computer "
+Else
+    srvname = args(0)
+    If argcount >= 2 Then 
+        SrvUserName = args(1)
+    End If
+    If argcount >= 3 Then 
+        SrvPswd = args(2)
+    End If
+    Set oSvc = oLctr.ConnectServer(srvname,"root\cimv2",SrvUserName,SrvPswd)
+End If
+ 
+If Err = 0 Tthen
+    Wscript.Echo "Connection to " & srvname & " is thru"  & vbNewLine
+Else
+    Wscript.Echo "The Error is " & err.description & _
+        " and the Error number is " & err.number
+    Wscript.Quit 1
+End If
+ 
+On Error Goto 0
+ 
+Set oSink = WScript.CreateObject("WbemScripting.SWbemSink","Sink_")
+oSvc.ExecNotificationQueryAsync oSink, _
+    "Select * From MSFT_WmiProvider_OperationEvent Where " & _
+        "provider = 'WMIPingProvider'"
+ 
+Wscript.Echo "To stop the script press ctrl + C" & vbNewLine
+Wscript.Echo "Waiting for events......"  & vbNewLine
+ 
+While True
+    Wscript.Sleep 10000     
+Wend
+
+
+Top of page 
+Q 8. How do I set WMI namespace security?
+Setting namespace security using WMI Control
+The WMI Control provides one way to manage namespace security. You can start the WMI Control from the command prompt using this command:
+wmimgmt
+On Windows 9x or Windows NT4 computers that have WMI installed, type this command instead:
+wbemcntl.exe
+Alternatively, you can access the WMI Control and the Security tab by doing the following:
+Right-click on My Computer and click Manage.
+Double-click Services and Applications and then double-click WMI Control.
+Right-click WMI Control and then click Properties.
+In the WMI Control Properties dialog box click the Security tab.
+A folder named Root with a plus sign (+) next to it should now be visible. Expand this tree as necessary to locate the namespace for which you want to set permissions.
+Click the Security button.  A list of users and their permissions appears.  If the user is on that list, modify the permissions as appropriate.  If the user is not on the list, click the Add button, and add the user from the location (local machine, domain, etc.) where the account resides.
+Notes:
+In order to view and set namespace security, the user must have Read Security and Edit Security permissions.  Administrators have these permissions by default, and can assign the permissions to other user accounts as required.
+If this user needs to access the namespace remotely, you must select the Remote Enable permission.
+By default, user permissions set on a namespace apply only to that namespace.  If you want the user to have access to that namespace and all subnamespaces in the tree below it, or in subnamespaces only, click the Advanced button. Click Edit and specify the scope of access in the resulting dialog box.
+Top of page 
+Q 9. How do I manage remote computers using WMI?
+Generally speaking, any operation that WMI can perform on the local computer can also be performed on a remote computer where you have local administrator privileges. As long as you have rights to the remote namespace (see How do I set WMI namespace security?) and as long as the remote computer is remote-enabled you should be able to connect to a remote machine and perform any operations for which you have the requisite permissions. In addition, you can also use delegation if the remote computer is enabled for delegation. Delegation allows the remote computer to obtain information from a third computer, using the credentials supplied by the client.  In other words, you can run a script on Computer A and connect to Computer B; Computer B can then connect to Computer C using the user name and password supplied by the script running on Computer A. Delegation scenarios are dealt with under Why does my remote operation fail when it involves a third machine?
+To connect to a remote namespace using WMI tools
+To connect remotely using tools like CIM Studio or Wbemtest, you must specify a namespace in the form "\\<machinename>\root\<namespace>"
+For example: \\myserver\root\cimv2
+Authentication is handled either by Kerberos or NTLM. To use NTLM or default (non-Kerberos) authentication, specify the following:
+User: <domain>\<User>
+Password: <password>
+Authority: Either leave blank, or enter "NTLMDomain:<domain>" here. If you include the Authority parameter, leave "<domain>\" out of the User parameter designation, entering just the user name. For example:
+User: kenmyer
+Password: 45Tgfr98q
+Authority: NTLMDomain:fabrikam
+To use Kerberos authentication, specify the following:
+User: <domain>\<User>
+Password: <password>
+Authority: Enter "Kerberos:<domain>\<machinename>" here. For example:
+User: kenmyer
+Password: 45Tgfr98q
+Authority: Kerberos:fabrikam\atl-ws-01
+To connect to WMI on a remote computer using a script
+Before you begin, make sure you have the appropriate permissions on the remote namespace. If you have these permissions, you can connect to the remote machine without specifying user credentials. WMI will connect using the user credentials you logged on with.
+If you do not need to specify user credentials, you can connect to a remote computer using the short connection syntax known as a moniker string. For more information, go to http://msdn.microsoft.com/library/default.asp and search for “Constructing a Moniker String.” For example, this moniker connects you to the default namespace on a remote computer named TargetComputer (because no namespace is specified, the connection is automatically made to the default namespace):
+
+
+Set objWMIService = GetObject("winmgmts:\\TargetComputer")
+
+
+If TargetComputer is in a different domain than the one you are logged onto you must include the domain name in the moniker. If you don’t, you’ll get an Access Denied error. For example, this moniker connects you to a computer named TargetComputer in a domain named DomainName:
+
+
+Set objWMIService = GetObject("winmgmts:\\DomainName\TargetComputer")
+
+
+Although not always required, you can also specify the WMI namespace in the moniker itself. This is useful when working with different platforms, because the default namespace isn’t always the same on different versions of the operating system. For example, on Windows 2000, Windows XP, and Windows Server 2003, the default namespace is root\cimv2; however, on Windows NT 4.0 and Windows 98 the default namespace is root\default.
+This moniker connects to the root\cimv2 namespace on the remote computer TargetComputer:
+
+
+Set objWMIService = GetObject("winmgmts:\\TargetComputer\root\cimv2)
+
+
+If you are dealing with multiple platforms, you might also need to specify the Impersonation level; while the default Impersonation level on Windows 2000 and later versions of Windows is Impersonate, on previous versions of Windows the default Impersonation level is Identify. If you are working with Windows NT 4.0 and/or Windows 98 computers, you will need to include the Impersonation level in the moniker string; you will also need to include the Impersonation level when using delegation.
+The following moniker connects to the root\cimv2 namespace on the computer named TargetComputer, and specifies Impersonate as the Impersonation level:
+
+
+Set objWMIService =    GetObject _
+    ("winmgmts:{impersonationLevel=Impersonate}!\\TargetComputer\root\cimv2")
+
+
+Finally, you might need to set the Authentication level depending on what OS versions you are connecting to and from. The Authentication level enables you to request the type of DCOM authentication and privacy to be used throughout a connection. Settings range from no authentication to per-packet encrypted authentication.
+The following moniker connects to the root\cimv2 namespace on the computer named TargetComputer, and specifies Impersonate as the Impersonation level. In addition, it configures the Authentication level as pkt:
+
+
+Set objWMIService = GetObject("winmgmts:" _
+    & "{impersonationLevel=impersonate," _ &    
+         "authenticationLevel=pkt}!\\  _ 
+            TargetComputer\root\cimv2")
+
+
+It is also possible to specify user credentials within a script; this enables you to do such things as log on to a computer using a standard user account, yet still run a script that requires administrator privileges. For more information, go to http://msdn.microsoft.com/library/default.asp and search for “Creating a WMI Script.”
+
+
+wbemImpersonationLevelImpersonate = 3
+wbemAuthenticationLevelPktPrivacy = 6
+
+Set objLocator = CreateObject("WbemScripting.SWbemLocator")
+Set objService = objLocator.ConnectServer _
+    ("TargetComputer", "root\cimv2", "UserName", "Password")
+objService.Security_.ImpersonationLevel = wbemImpersonationLevelImpersonate
+objservices.Security_.AuthenticationLevel = wbemAuthenticationLevelPktPrivacy
+
+
+Note. Generally speaking, it’s not a good idea to hardcode an administrator password in a script. A better approach would have the script prompt you for the password each time it runs.
+For more information, go to http://msdn.microsoft.com/library/default.asp and search for “Connecting Between Different Operating Systems.”
+To connect to WMI using WMIC
+If you have rights to the remote namespace and if that computer is remote-enabled, then you do not have to specify a user name and password when connecting. Instead, WMIC will automatically use your current user credentials. For example:
+WMIC /NODE:"computer1" OS GET Caption,CSDVersion,CSName
+
+
+
+
+If you need to use delegation, then you should include /IMPLEVEL:Delegate and /AUTHORITY settings in the WMIC connection string. For example:
+WMIC /NODE:"computer1" /IMPLEVEL:Delegate /AUTHORITY:"Kerberos:domain\computer1" OS
+Alternatively, you can specify a user account and password to be when used when connecting via WMIC (as with WMI scripting, only administrators have WMI remote connection privileges by default). For example:
+WMIC /NODE:"computer1" /USER:"domainname\username" OS GET Caption,CSDVersion
+This sample command includes a password as well as a user name:
+WMIC /NODE:"computer1" /USER:"domainname\username" /PASSWORD:"userpassword" OS GET Caption,CSDVersion,CSName
+For further information on connecting remotely, go to http://msdn.microsoft.com/library/default.asp and search for “Connecting to WMI on a Remote Computer.”  
+What do “Access Denied” errors mean
+You might get an “Access Denied” error when trying to connect to a remote WMI namespace or object. There are several different Access Denied errors:
+0x80041003 (WBEM_E_ACCESS_DENIED) 
+This typically results when the process trying to access the namespace does not have the required WMI privileges. The account attempting remote access should be an administrator on the target computer; in addition, the account might need to have a specific privilege enabled. 
+To troubleshoot this error, check the namespace security on the remote namespace to see the privileges enabled for the account.
+0x80070005 (DCOM ACCESS_DENIED) 
+This error occurs when the connected user is not recognized or is restricted in some fashion by the remote server (for example, the user might be locked out). This happens most often when accounts are in different domains. Recent changes to WMI security can also cause this error to occur:
+Blank passwords, formerly permitted, are not allowed in Windows XP and Windows Server 2003.
+WMI does not allow asynchronous callbacks to a Windows 98 client. A call like SWbemServices.ExecNotificationQueryAsync from a Windows 98 computer to a Windows XP computer will result in an Access Denied error returned to the Windows 98 machine.
+The DCOM configuration access setting might have been changed.
+If the target computer is running Windows XP, the Forceguest value under the registry key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa might be set to force the Guest account off (value is zero).
+0x800706xx (DCOM RPC error)
+This often occurs when a firewall is configured on the remote computer. You will need to open the appropriate ports on the firewall to permit remote administration using DCOM.
+Alternatively, the computer might be having problems mapping the IP and the Hostname. To test that possibility, try using the IP address instead of the Hostname in your connection string:
+
+
+Set objWMIService = GetObject("winmgmts:\\192.168.1.1")
+
+
+To troubleshoot remote errors
+Check whether the user has access to the remote computer. From the command prompt, execute the following command:
+net user \\< remotecomputer >\\C$ /u:< domain\username > *
+Enable the verbose logging level on the remote computer and re-run the script. After running the script, examine the logs on the remote machine (%windir%\system32\wbem\Logs\).
+Enable audit events to determine which account is responsible for the failed connection. After auditing has been enabled, you will see events similar to this in the event log:
+Event Type:    Failure Audit
+Event Source:    Security
+Event Category:    Logon/Logoff
+Event ID:    529
+Date:        6/14/2004
+Time:        10:52:35 AM
+User:        NT AUTHORITY\SYSTEM
+Computer:    <remote machine>
+Description:
+Logon Failure:
+     Reason:        Unknown user name or bad password
+     User Name:    xuser
+     Domain:        NTDEV
+     Logon Type:    3
+     Logon Process:    NtLmSsp
+     Authentication Package:    MICROSOFT_AUTHENTICATION_PACKAGE_V1_0
+     Workstation Name:    <console Machine >
+Check the DCOM configuration for the Access\Launch permission; the user running the script must have this permission.
+If all the previous checks are OK, if the user is recognized by the remote computer, and if the connection still fails with a DCOM Access Denied error, then contact Product Support Services (http://support.microsoft.com/default.aspx) with the following information:
+The operating system each computer is running.
+The installation history
+The steps that reproduce the problem
+The script or tool code in which the failure occurs
+The user credentials used to make the WMI connection, including the authentication and impersonation levels.
+A zip file of %windir%\system32\wbem\logs from both computers
+Top of page 
+Q 10. Why does my remote operation fail when it involves a third machine?
+Delegation is required when a client computer (Computer A) needs to forward domain credentials from a remote server (Computer B) to a third machine (Computer C).  In cases such as this, when two or more network hops must be made for a given operation, delegation is required. Without delegation Computer B cannot forward credentials received from Computer A; as a result, the connection to Computer C fails.
+Here are two situations that require delegation.
+Enumerating printers from a WMI server computer. In this case, WMI attempts to gather properties from the remote printer attached to a printer server, an operation which requires delegation. You run a script on client Computer A, which connects to Print Server B. In turn, Print Server B tries to access a printer connected to Computer C.
+Connecting to SQL Server via NT authentication from the WMI server. Delegation is required so that WMI can forward the credentials from the server to SQL Server. If SQL Server is using SQL Server Standard Authentication (SQL Server-based security) instead of NT authentication, then the connection string for the connection to SQL server does not require delegation.
+For delegation to work in scenarios like these:
+All three computers must be running either Windows 2000, Windows XP, or Windows Server 2003. Delegation cannot be used with computers running Windows NT 4.0 or Windows 98.
+You must enable delegation for Computer B within Active Directory.
+You must specify Kerberos as the authentication authority in the connection from the WMI client process (Computer A) to the WMI server (Computer B). Specifying an authentication authority requires a call to SWbemLocator.ConnectServer. This method is part of the WMI Scripting API (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/swbemlocator_connectserver.asp).
+After these steps are completed, Computer B is trusted for delegation. For example, suppose Computer B sends a request to a remote file share located on Computer C. In this case, Computer C can use the forwarded credentials to authenticate the user originally specified in the client process on Computer A.
+Although available as an administrative option, delegation is typically not recommended because Computer A is providing credentials to Computer B. Delegation enables Computer B to then use those credentials elsewhere, which could be a security risk.
+The following script enables a computer account for delegation within Active Directory. The script was tested within a Windows Server 2003 domain using a domain administrator account. In addition:
+The WMI client computer (Computer A) was running Windows XP SP1 Professional.
+The WMI server computer (Computer B) was running Windows Server 2003.
+All three computers were in the same Active Directory domain. Delegation requires all the computers to be in the same domain.
+In this example, the file server share (Computer C) is on the same physical computer as the WMI client. However, the share could be on another computer in the same domain.
+
+
+'Purpose:    Script to enable delegation on a computer and 
+'then perform an operation that requires delegation
+
+'Requirements:  The client computer must be a member of the same Active Directory 
+'domain as the WMI Server specified in the argument to this script
+
+'Permissions required:  The user that runs this script should be a member of 
+'the Domain Administrators group in the Active Directory
+ 
+Const UF_TRUSTED_FOR_DELEGATION  = &H80000
+Set args  = Wscript.Arguments
+ 
+' Terminate unless two arguments are specified when starting
+'the script
+If args.Count <> 2 then
+    Wscript.Echo "You must provide a server name and delegation command line."
+    Wscript.Echo "For example, start the script using syntax similar to this:"
+    Wscript.Echo "cscript.exe this.vbs <WMI Server> <Delegation Command Line>"
+    Wscript.Echo "cscript.exe this.vbs computer2 "
+    Wscript.echo "\\computer1\c$\windows\system32\calc.exe"
+    Wscript.Quit 1
+end if
+ 
+serverName = args(0)
+argCommandLine = args(1)
+ 
+' Connect locally and get the domain and DS_Computer object to 
+' examine and/or modify
+Set svc = GetObject("winmgmts:root\cimv2")
+ 
+' Get some local machine variables to understand the environment we are working in
+
+Set objEnum = svc.ExecQuery _
+    ("Select domain, name From win32_computerSystem", "WQL", 48)
+ 
+For Each obj in objEnum
+    domain = obj.Domain
+    computerName = obj.Name
+Next
+ 
+' Get the connection to the root\directory\ldap namespace to enable delegation
+' on the remote computer from the local machine
+
+Set svc = GetObject("Winmgmts:root\directory\ldap")
+ 
+' Create the required context object
+
+Set octx = CreateObject("wbemscripting.swbemnamedvalueset")
+octx.Add "__PUT_EXT_PROPERTIES", Array("ds_userAccountControl")
+octx.Add "__PUT_EXTENSIONS", true
+octx.Add "__PUT_EXT_CLIENT_REQUEST", true
+ 
+' Variable to determine whether or not we have modified the userAccountControl 
+'and whether or not we have to modify it back when we are done
+
+modified = False
+ 
+Set objEnum = svc.ExecQuery _
+    ("Select * From ds_computer Where ds_cn = '" & serverName & "'", "WQL", 48)
+ 
+For Each obj in objEnum
+ 
+' Store this variable to memory for restoration after this operation completes
+
+    userAccountControlOriginal = obj.ds_userAccountControl
+ 
+' Test to see if the computer is already trusted for delegation
+    If CBool(userAccountControlOriginal And UF_TRUSTED_FOR_DELEGATION ) = False Then
+ 
+        Wscript.Echo "Computer account not trusted for delegation yet"
+                        
+        ' Resume On Error while we try this initially
+        On Error Resume Next
+ 
+        ' Add this constant value to the value contained already
+        obj.ds_userAccountControl = userAccountControlOriginal + _
+            UF_TRUSTED_FOR_DELEGATION
+ 
+        ' This should trust the computer account for delegation                
+        obj.Put_ 1, octx
+ 
+        If (Err.Number = 0) Then
+        ' Set the flag so we know to modify it back to original setting
+            modified = True             
+        Else 
+            Wscript.Echo Hex(Err.Number) & " " & _
+                Err.Description
+            Wscript.Quit 1
+        End If
+ 
+                On Error Goto 0:
+ 
+    Else
+    ' Already trusted for delegation so 
+    ' continue with delegation code here
+        Wscript.Echo "Computer account is trusted for delegation already"
+ 
+    End If
+ 
+    ' Get the locator object 
+    Set lctr = CreateObject("WbemScripting.SWbemLocator")
+ 
+    ' Get the service object from the remote server specifying the Kerberos authority
+    Set delegationService = lctr.ConnectServer _
+        (serverName, "root\cimv2", , , , _
+            "kerberos:" & trim(domain) & "\" & Trim(serverName))
+ 
+    ' Delegation level impersonation
+    delegationService.Security_.ImpersonationLevel = 4 
+ 
+    ' Get the object that will be used to test the delegation hop
+    Set process = delegationService.Get("win32_process")
+ 
+    ' Get the inparameter object for the method
+    Set inparams = process.methods_("Create").inparameters
+            
+    ' Set the inparameter commandline value
+    inparams.CommandLine = argCommandLine
+ 
+    ' Execute the method
+    Set oReturn = process.ExecMethod_("Create", inparams)
+ 
+    ' Echo the output
+    If (oReturn.ReturnValue = 0) Then
+        Wscript.Echo oReturn.ProcessId & _
+            " is the Process ID from the process " & _
+                "creation using delegation"
+    Else 
+        Wscript.Echo "An error occurred, the return value for the " & _
+            "Win32_Process.Create method is " & _
+                oReturn.ReturnValue
+    End If
+ 
+    ' Set the value back to the original value
+    If modified = True Then
+            
+        ' Subtract the added delegation privilege from the computer account       
+        obj.ds_userAccountControl = _
+            userAccountControlOriginal - UF_TRUSTED_FOR_DELEGATION
+ 
+        ' Restore the original setting
+        obj.put_ 1, octx
+ 
+    End If                        
+Next
+
+
+The preceding script will not work if either of the two member computers are running Windows NT 4.0 or Windows 98. The script will also fail if the target is located on a Windows NT 4.0 file share.
+You can manually trust a computer for delegation by doing the following:
+Click the Start button and then click All Programs.
+Point to Administrative Tools and then click Active Directory Users and Computers.
+In Active Directory Users and Computers, expand the Computers node and find the computer you want to trust for delegation
+Right-click that computer and click Properties.
+Select Trust computer for delegation and then click OK.
+For more information on delegation and remote connections, see Connecting to a 3rd Computer-Delegation (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/connecting_to_a_3rd_computer-delegation.asp) and Securing a Remote WMI Connection (http://msdn.microsoft.com/library/en-us/wmisdk/wmi/securing_a_remote_wmi_connection.asp).
+Also see the questions titled How do I manage remote computers using WMI? and How do I set WMI namespace security?
+Top of page 
+Q 11. Why are my queries taking such a long time to complete?
+Typically this is due to queries that return large amounts of data. If the query requests a very large dataset and you are only interested in a subset of the data, you can often speed up the operation by limiting the returned information.  WQL (the WMI Query Language) enables you to filter the set of instances (records) as well as the properties (fields) returned.  For examples, go to http://msdn.microsoft.com/library and search for "Querying with WQL” Also see the topic "SELECT Statement for Data Queries.”
+In some cases providers have been optimized to filter based on particular properties.  Specifying these in the WHERE clause can improve performance, because the provider can actively filter the result set instead of relying on WMI to post-filter the collection after the entire data space has been enumerated.  Refer to the particular class definition for optimization capabilities.  The Drive and Path properties of CIM_DataFile are examples of optimized properties.
+By default, WMI queries return an enumerator that allows the traversal of the collection multiple times and in both directions; among other things, this means you can loop through all the items in the collection and then, if you wish, loop through all the items a second or third time. When the returned data set is large, this type of enumerator might require so much memory that it affects performance.  You can work around this issue by specifying the WBEM_FLAG_FORWARD_ONLY flag when issuing the query.  Although you can loop through the collection just once using this type of enumerator, the memory for each object is released after use and thus performance will not degrade.  For more details see Making a Semisynchronous Call with VBScript (http://msdn.microsoft.com/library/en-us/wmisdk/wmi/making_a_semisynchronous_call_with_vbscript.asp).  
+While the performance of semisynchronous queries is comparable in most cases to asynchronous queries, very large queries might monopolize the main application thread or be throttled by WMI to avoid overloading the system. In these cases making the query asynchronous can improve performance.  However, you should be aware that the asynchronous calls are less secure in most operating systems. For more information, see Invoking an Asynchronous Query (http://msdn.microsoft.com/library/en-us/wmisdk/wmi/invoking_an_asynchronous_query.asp) and Setting Security on an Asynchronous Call (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/setting_security_on_an_asynchronous_call.asp).
+Top of page 
+Q 12. How do I list all the installed applications on a given machine?
+The Win32_Product WMI class represents applications installed by Windows Installer. However, this WMI class may not list all the installed applications that appear in Add or Remove Programs. One solution to this problem is to gather data on installed applications from the registry (note that not all applications write to the registry when they are installed). This topic shows two ways of doing this: using a script to directly read information from the registry, and using a MOF file and script to obtain this information from WMI.
+The following script lists installed applications on a computer. The script uses the WMI System Registry Provider to gather information directly from the registry:
+
+
+strHost = "."
+Const HKLM = &H80000002
+Set objReg = GetObject("winmgmts://" & strHost & _
+    "/root/default:StdRegProv")
+Const strBaseKey = _
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\"
+objReg.EnumKey HKLM, strBaseKey, arrSubKeys
+ 
+For Each strSubKey In arrSubKeys
+    intRet = objReg.GetStringValue(HKLM, strBaseKey & strSubKey, _
+        "DisplayName", strValue)
+    If intRet <> 0 Then
+        intRet = objReg.GetStringValue(HKLM, strBaseKey & strSubKey, _
+        "QuietDisplayName", strValue)
+    End If
+    If (strValue <> "") and (intRet = 0) Then
+        WScript.Echo strValue
+    End If
+Next
+
+
+Alternatively, the following MOF file with its accompanying script demonstrates another way to retrieve all the installed applications that register themselves in the registry. To use the MOF file, do the following:
+Step 1: Copy the following MOF syntax into Notepad and save it as a .MOF file (for example, products.mof).
+
+
+qualifier dynamic:ToInstance;
+qualifier ProviderClsid:ToInstance;
+qualifier ClassContext:ToInstance;
+qualifier propertycontext:ToInstance; 
+ 
+[dynamic, provider("RegProv"),
+ProviderClsid("{fe9af5c0-d3b6-11ce-a5b6-00aa00680c3f}"),
+ClassContext
+("local|HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall")
+] 
+class Products {
+   [key] string KeyName;
+   [read, propertycontext("DisplayName")]      string DisplayName;
+   [read, propertycontext("DisplayVersion")]      string  DisplayVersion;
+   [read, propertycontext("InstallLocation")]      string InstallLocation;
+};
+
+
+Step 2: At the command prompt, type mofcomp products.mof. This stores the MOF file in the WMI repository.
+Step 3: With the MOF stored in the repository, use the following script to get at the data.
+
+
+strComputer = "." 
+Set WMI = GetObject("winmgmts:\\" & strComputer & _
+    "\root\default")
+Set colItems = WMI.ExecQuery("Select * from Products")
+For Each objItem In colItems
+    WScript.Echo "DisplayName: "  & objItem.DisplayName
+    WScript.Echo "DisplayVersion: " & objItem.DisplayVersion
+    WScript.Echo "InstallLocation: " & objItem.InstallLocation
+    WScript.Echo "KeyName: " & objItem.KeyName
+Next
+
+
+Top of page 
+Q 13. How do I get performance counter data?
+Support for the Cooked Counter Provider - the quickest and easiest way to retrieve performance data using WMI - was first added in Windows XP. On Windows 2000 you can still retrieve performance data; however, because this data appears in “uncooked” format you must then format the data yourself to get useful values for most counters. By contrast, on Windows XP and Windows Server 2003 performance data can be obtained directly via the Win32_PerfFormattedData classes. For more information, see "Example: Obtaining Cooked Performance Data" at http://msdn.microsoft.com/library/en-us/wmisdk/wmi/example__obtaining_cookedperformance_data.asp.
+Because the Cooked Counter Provider is not available on Windows 2000, calculations must be made on the "raw" counter data to obtain meaningful performance information. For details on working with raw counter data, see "Example: Obtaining Raw Performance Data" at http://msdn.microsoft.com/library/en-us/wmisdk/wmi/example__obtaining_raw_performance_data.asp.  
+To find the correct formula for each counter type, first identify the numeric counter type for the property using either the WMI SDK ("Performance Counter Classes" topic) or the "countertype" qualifier for the property in question. The formula for that counter type can then be found under "WMI Performance Counter Types" at http://msdn.microsoft.com/library/en-us/wmisdk/wmi/wmi_performance_counter_types.asp.
+On pre-Windows 2000 systems, the Performance Monitoring Provider must be used to obtain performance counters using WMI. See "Monitoring Performance With the Performance Monitoring Provider" at http://msdn.microsoft.com/library/en-us/wmisdk/wmi/monitoring_performance_with_the_performance_monitoring_provider.asp.
+Top of page
+Was this page helpful?  Yes  No
+© 2016 Microsoft
+Manage Your Profile
+Newsletter |Contact Us |Privacy Statement |Terms of Use |Trademarks
+| Site Feedback Site Feedback
