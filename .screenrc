@@ -51,6 +51,10 @@ nethack on                               # msgs estilo nethack
 #defmonitor on                           # monitorar QUALQUER atividade
 #bind \034 hardcopy                      # mapeia PrintScreen
 caption splitonly "%2n %t"               # barra de janelas
+#fazendo salvar o layout das regions em caso de Detach/RE-Atach nao perder os regions/windows
+layout save default
+#Definindo um SCROLL BACK violentamente GRANDE porem mais leennntoooo.
+defscrollback 100000
 
 # programas carregados automaticamente
 bind c screen 1                          # janela nova
@@ -93,7 +97,7 @@ bind g hardstatus alwayslastline
 
 # mapeamentos para fazer redimensionamento de janelas divididas
 # com o Split.
-bind 'R' wrap
+#bind 'R' wrap
 bind 'r' resize
 bind '+' resize +5
 bind '-' resize -5
@@ -171,7 +175,7 @@ bindkey -k F2 prev   	        # F12# Usado no Vim para sair do arquivo salvando 
 #bindkey "^[OA" eval 'copy' 'stuff ^b'  # PgUp | Enter copy/scrollback mode and page up
 #bindkey "^[OB" eval 'copy' "stuff ^f'  # PgDown | Enter copy/scrollback mode and page down
 
-defscrollback 100000
+
 
 
 
@@ -198,17 +202,6 @@ defscrollback 100000
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 #^$#MAPEAMENTO DAS TECLAS F1 ATE F12 POR CODIGO, MELHOR IMPOSSIVEL
 #^$bindkey "^[[11~" select 1
 #^$bindkey "^[[12~" select 2
@@ -224,14 +217,15 @@ defscrollback 100000
 #^$bindkey "^[[24~" select 12
 
 # BIND DEPLOY NODES PUPPET TEST
-bindkey "^[[33~" sh -c "ssh dev1 puppet agent -t"
-bindkey "^[OQ" sh -c "ssh dev1 puppet agent -t"
+bindkey "^[[33~" screen ssh dev1 'puppet agent -t' ; echo pressione enter... ; read
 
-#
+# ja salvar e ja recarregar o .screenrc com Crtl+a R, MUITO bom principalmente quando edita ele e quer ja ir testando. vamos Crtl+a R
+bind R eval 'stuff "^[:w!^M"' "source $HOME/.screenrc" "echo '.screenrc Saved and Re-Loaded yeahh!'"
 
 
-#fazendo salvar o layout das regions em caso de Detach/RE-Atach nao perder os regions/windows
-layout save default
+
+
+
 
 
 
@@ -352,3 +346,5 @@ layout save default
 #      # A - resize
 #      # h - scrol lines
 #
+
+
