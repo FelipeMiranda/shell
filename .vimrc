@@ -97,17 +97,14 @@ map ,mm :set noic<cr>
 
 
 "......................................................................ARQUIVO
-" Sai fora na marra!
-imap <F10> <esc>:wqa!<cr>
- map <F10> :wqa!<cr>
+" F10 -> Salva !
+imap <F10> <esc>:wa!<cr>
+ map <F10> :wa!<cr>
 
 
-"SHIFT + F10 para SALVAR RAPIDO
-imap <SHIFT><F10> <esc>:WA!<CR>
- map <SHIFT><F10> :wa!<cr>
-      
-
-
+" F10 x2 -> Salva caso haja modificação e sai for na marra.
+imap <F10><F10> <esc>:wqa!<cr>
+noremap <F10><F10> :wqa!<cr>
 "imap <ESC> <ESC> 
 " map <F4> /
 
@@ -217,7 +214,7 @@ au BufNewFile,BufRead *.man set ft=nroff
 au BufNewFile,BufRead *.txt   set tw=75 ts=8 ft=txt "spell
 au BufNewFile,BufRead *README,*NEWS,*TODO set ft=txt "spell
 
-" Txt2tags
+" F1 GERADOR AUTOMATICO DE ARQUIVOS MINIMAN
 au BufNewFile,BufRead *.t2t   set ft=txt2tags "spell
 noremap <F1> <esc>:!ronn -r %<cr>
 noremap <F1> :!ronn -r %<cr>
