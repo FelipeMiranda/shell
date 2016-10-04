@@ -165,8 +165,7 @@ bindkey -k k9 focus     # F9 # Pula para proxima janela
 #bindkey "^[[21~" next 	# F10# O LEGAL SERIA Control TAB no lugar de F9
 #bindkey -k F1 kill    		# F11#  Encerrar o screen com todas as janelas e sessoes juntos
 bindkey -k F1 eval kill         # F11#  Encerrar o screen com todas as janelas e sessoes juntos, nao sei pq so kill nao funciona
-bindkey -k F2 prev   	# F11#  Encerrar o screen com todas as janelas e sessoes juntos
-# F12 # Usado no Vim para sair do arquivo salvando caso exista modificacoes, por esse motivo nao usei para kill aqui
+bindkey -k F2 prev   	        # F12# Usado no Vim para sair do arquivo salvando caso exista modificacoes, por esse motivo nao usei para kill aqui
 
 # easier scroll
 #bindkey "^[OA" eval 'copy' 'stuff ^b'  # PgUp | Enter copy/scrollback mode and page up
@@ -223,6 +222,11 @@ defscrollback 100000
 #^$bindkey "^[[21~" select 10
 #^$bindkey "^[[23~" select 11
 #^$bindkey "^[[24~" select 12
+
+# BIND DEPLOY NODES PUPPET TEST
+bindkey "^[[33~" sh -c "ssh dev1 puppet agent -t"
+bindkey "^[OQ" sh -c "ssh dev1 puppet agent -t"
+
 #
 
 
