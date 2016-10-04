@@ -101,6 +101,13 @@ map ,mm :set noic<cr>
 imap <F10> <esc>:wqa!<cr>
  map <F10> :wqa!<cr>
 
+
+"SHIFT + F10 para SALVAR RAPIDO
+imap <SHIFT><F10> <esc>:WA!<CR>
+ map <SHIFT><F10> :wa!<cr>
+      
+
+
 "imap <ESC> <ESC> 
 " map <F4> /
 
