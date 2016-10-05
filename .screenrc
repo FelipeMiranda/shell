@@ -36,7 +36,7 @@
 msgwait 3
 sorendition 15 43 # Estrutura em amarelo
 sorendition 05 43
-hardstatus alwayslastline " %c | %Y%m%d |  %w | F1=vi->miniman F4=close F5= -- F6= | F7= - F8= + F9=TAB F10=(vi/mc)->exit&save F11=kill F12=>>"
+hardstatus alwayslastline " %c | %Y%m%d |  %w | F1=vi->miniman F4=close F5= -- F6= | F7= - F8= + F9=TAB S+F9=kill F10=(vi/mc)->exit&save F11=deploy F12=>>"
 
 # barra verde e preto, com códigos de cores literais
 #hardstatus alwayslastline "\033[m\033[42;30m%c\033[m \033[42;30m%Y%m%d\033[m \033[42;30m %w \033[m"
@@ -167,9 +167,12 @@ bindkey -k k7 resize -1 # F7 # Aumenta o tamando da Janela Atual
 bindkey -k k8 resize +1 # F8 # Dominui o tamanho da Janela atual
 bindkey -k k9 focus     # F9 # Pula para proxima janela
 #bindkey "^[[21~" next 	# F10# O LEGAL SERIA Control TAB no lugar de F9
-#bindkey -k F1 kill    		# F11#  Encerrar o screen com todas as janelas e sessoes juntos
-bindkey -k F1 eval kill         # F11#  Encerrar o screen com todas as janelas e sessoes juntos, nao sei pq so kill nao funciona
-bindkey -k F2 prev   	        # F12# Usado no Vim para sair do arquivo salvando caso exista modificacoes, por esse motivo nao usei para kill aqui
+
+
+# BIND F11 -> DEPLOY 
+# F11 = FAZER O DEPLOY DO COMANDO ABAIXO, Ou linha de programa gravavel, quando melhorarmos a ideia. rode oq quizer como F11.
+bindkey -k F1 screen 8 ssh dev1 'puppet agent -t ; if [ $? == 1 ]; then echo pressione enter... ; read -n 1 ; fi '
+bindkey -k F2 prev      # F12# Usado no Vim para sair do arquivo salvando caso exista modificacoes, por esse motivo nao usei para kill aqui
 
 # easier scroll
 #bindkey "^[OA" eval 'copy' 'stuff ^b'  # PgUp | Enter copy/scrollback mode and page up
@@ -216,9 +219,8 @@ bindkey -k F2 prev   	        # F12# Usado no Vim para sair do arquivo salvando 
 #^$bindkey "^[[23~" select 11
 #^$bindkey "^[[24~" select 12
 
-# BIND DEPLOY NODES PUPPET TEST
-bindkey "^[[33~" screen ssh dev1 'puppet agent -t' ; echo pressione enter... ; read
-
+# SHIFT + F9 
+bindkey "^[[33~" eval kill         # F11#  Encerrar o screen com todas as janelas e sessoes juntos, nao sei pq so kill nao funciona
 # ja salvar e ja recarregar o .screenrc com Crtl+a R, MUITO bom principalmente quando edita ele e quer ja ir testando. vamos Crtl+a R
 bind R eval 'stuff "^[:w!^M"' "source $HOME/.screenrc" "echo '.screenrc Saved and Re-Loaded yeahh!'"
 
