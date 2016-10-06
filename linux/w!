@@ -1,0 +1,3 @@
+if [ $? == 0 ]; then 
+	echo -en "$green .screenrc salvo com sucesso! $normal \n" 
+fi
