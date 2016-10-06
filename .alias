@@ -40,7 +40,7 @@ alias postudo='cd && cd mail-benchmark && postal -m 1000 -M 100 -t 3 localhost t
 alias postconsometudo='cd && cd mail-benchmark && rabid -p 10 localhost from-foobar.br'
 alias postzerafila='postsuper -d all'
 alias postflush='postqueue -f'
-alias scr=screen -x || screen
+alias scr='screen -x || screen'
 alias miniman='~/shell/linux/miniman.sh'
 
 
