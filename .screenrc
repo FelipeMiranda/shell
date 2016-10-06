@@ -110,7 +110,8 @@ bind '-' resize -5
 # segurança: desligar algumas tecla perigosas
 bind k
 bind ^k
-bind ^x
+#bind '^\' trocado por: escape \0, parece que funciona!
+#escape ^\0
 bind z
 bind ^z
 bind x
