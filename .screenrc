@@ -181,8 +181,10 @@ bindkey -k F2 prev      # F12# Usado no Vim para sair do arquivo salvando caso e
 
 # SHIFT + F9 
 bindkey "^[[33~" eval kill         # F11#  Encerrar o screen com todas as janelas e sessoes juntos, nao sei pq so kill nao funciona
+
+#Um dos melhores exemplos para tentar entender a sequencia de execucao com ####  >>>> eval <<<<<  ##### atencao no final com echo.
 # ja salvar e ja recarregar o .screenrc com Crtl+a R, MUITO bom principalmente quando edita ele e quer ja ir testando. vamos Crtl+a R
-bind R eval 'stuff "^[:w!^M"' "source $HOME/.screenrc"
+bind R eval 'stuff "^[:w!^M"' "source $HOME/.screenrc" "echo '.screenrc salvo e carregado com sucesso!  Yeahh «®» «®» «®»'"
 #"echo '.screenrc Saved and Re-Loaded yeahh!'"
 
 
