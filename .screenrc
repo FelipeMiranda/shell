@@ -110,7 +110,7 @@ bind '-' resize -5
 # segurança: desligar algumas tecla perigosas
 bind k
 bind ^k
-bind '^\'
+bind ^x
 bind z
 bind ^z
 bind x
@@ -126,10 +126,8 @@ bind 'K' kill
 
 # para colar no vim sem "identar"
 # ATENÇÃO: é ^a^] 
-register [ "\033:set   paste
-a"
-register ] "\033:set nopaste
-a"
+register [ "\033:set   paste a"
+register ] "\033:set nopaste a"
 bind ^] paste [.]
 
 
