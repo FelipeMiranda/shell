@@ -171,12 +171,19 @@ bindkey -k k9 focus     # F9 # Pula para proxima janela
 
 # BIND F11 -> DEPLOY 
 # F11 = FAZER O DEPLOY DO COMANDO ABAIXO, Ou linha de programa gravavel, quando melhorarmos a ideia. rode oq quizer como F11.
-bindkey -k F1 screen 8 ssh dev1 'puppet agent -t ; if [ $? == 1 ]; then echo pressione enter... ; read -n 1 ; fi '
+bindkey -k F1 stuff select 0 screen 8 ssh dev1 'puppet agent -t ; if [ $? == 1 ]; then echo pressione enter... ; read -n 1 ; fi '
 bindkey -k F2 prev      # F12# Usado no Vim para sair do arquivo salvando caso exista modificacoes, por esse motivo nao usei para kill aqui
 
 # easier scroll
 #bindkey "^[OA" eval 'copy' 'stuff ^b'  # PgUp | Enter copy/scrollback mode and page up
 #bindkey "^[OB" eval 'copy' "stuff ^f'  # PgDown | Enter copy/scrollback mode and page down
+
+
+# SHIFT + F9 
+bindkey "^[[33~" eval kill         # F11#  Encerrar o screen com todas as janelas e sessoes juntos, nao sei pq so kill nao funciona
+# ja salvar e ja recarregar o .screenrc com Crtl+a R, MUITO bom principalmente quando edita ele e quer ja ir testando. vamos Crtl+a R
+bind R eval 'stuff "^[:w!^M"' "source $HOME/.screenrc" "echo '.screenrc Saved and Re-Loaded yeahh!'"
+
 
 
 
@@ -218,13 +225,6 @@ bindkey -k F2 prev      # F12# Usado no Vim para sair do arquivo salvando caso e
 #^$bindkey "^[[21~" select 10
 #^$bindkey "^[[23~" select 11
 #^$bindkey "^[[24~" select 12
-
-# SHIFT + F9 
-bindkey "^[[33~" eval kill         # F11#  Encerrar o screen com todas as janelas e sessoes juntos, nao sei pq so kill nao funciona
-# ja salvar e ja recarregar o .screenrc com Crtl+a R, MUITO bom principalmente quando edita ele e quer ja ir testando. vamos Crtl+a R
-bind R eval 'stuff "^[:w!^M"' "source $HOME/.screenrc" "echo '.screenrc Saved and Re-Loaded yeahh!'"
-
-
 
 
 

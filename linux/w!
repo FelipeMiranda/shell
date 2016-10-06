@@ -1,7 +1,5 @@
-# Esse arquivo serve apenas para ser executado, por engano kkkk.
-quando se deseja recarregar o .screenrc com a tecla de atalho Crtl+a R
-e nao esta mais no vi, esta em cima da janela do bash, pois no vi, ele teria enviado o comando para salvar o arquivo antes de reload, ja no shell chamara esse executavel para informar isso caso nao haja erros.
+# Esse arquivo serve apenas para ser executado, por engano kkkk. quando se deseja recarregar o .screenrc com a tecla de atalho ( Crtl+a R ) e nao esta mais no vi, esta em cima da janela do bash, pois no vi, ele teria enviado o comando para salvar o arquivo antes de reload, ja no shell chamara esse executavel para informar isso caso nao haja erros.
 
 if [ $? == 0 ]; then 
-	echo -en "$green .screenrc salvo com sucesso! $normal \n" 
+	echo -en "$green .screenrc carregado com sucesso! $normal \n" 
 fi
