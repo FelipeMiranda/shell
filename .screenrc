@@ -1,10 +1,15 @@
 # ~/.screenrc
 # vim: ft=sh
-#
+
+# Configurar o teclado no Putty:
+# HOME END keys = Standart
+# Modelo de terminal R6 XTerm.
+
 # explicações sobre as configurações e utilização geral do screen
-# estão em http://aurelio.net/coluna
+# estão em http://quirinobytes.wordpress.com/coluna
 #
-# 2015-05-30 quirinobytes (a) gmail com
+# date: 2015-05-30 quirinobytes (a) gmail com
+
 
 # dica: zombie
 #   :zombie kr
@@ -184,11 +189,15 @@ bindkey "^[[33~" eval kill         # F11#  Encerrar o screen com todas as janela
 
 #Um dos melhores exemplos para tentar entender a sequencia de execucao com ####  >>>> eval <<<<<  ##### atencao no final com echo.
 # ja salvar e ja recarregar o .screenrc com Crtl+a R, MUITO bom principalmente quando edita ele e quer ja ir testando. vamos Crtl+a R
-bind R eval 'stuff "^[:w!^M"' "source $HOME/.screenrc" "echo '.screenrc salvo e carregado com sucesso!  Yeahh «®» «®» «®»'"
+# Nao sei porque mas tem que enviar 3 vezes a tecla de atalho para recarregar o salvo.
+bind R eval 'stuff "^[:w!^M"' "source $HOME/.screenrc" "echo '.screenrc salvo e carregado com sucesso!  Yeahh «®» «®» «®» r'"
 #"echo '.screenrc Saved and Re-Loaded yeahh!'"
 
-
-
+#Mapeando as teclas de NAVEGACAO para ALT + Setas do Teclado
+bindkey "^[^[OA" focus up
+bindkey "^[^[OB" focus down
+bindkey "^[^[OC" focus right
+bindkey "^[^[OD" focus left  # Ctrl-left
 
 
 
