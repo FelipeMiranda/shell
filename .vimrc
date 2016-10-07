@@ -111,7 +111,8 @@ noremap <F10><F10> :wqa!<cr>
 
 
 " Abreviacoes uteis para sua sanidade mental
-cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq | cab q q!
+cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq 
+"cab q q!
 " Gravar selecao visual num arquivo ($TMP eh var de ambiente)
 " 1. Usando buffer novo
 "vmap <F5> y:new<cr>p:w!$TMP/vim<cr>:bd!<cr>
