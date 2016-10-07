@@ -37,7 +37,7 @@ cd $HOME/.ssh
 tar xzvf file.tgz
 cd -
 
-echo -e "\n\n Arquivos ${alert}CDSHELL${normal} instalados com $atention sucesso $normal \n"
+echo -e "\n\n Arquivos ${alert}CDSHELL${normal} versão $green `git rev-list HEAD | wc -l`  $normal instalados com $atention sucesso $normal \n"
 
 
 if [ ! -e ~/.cdshell_req_installed ]; then
