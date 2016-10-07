@@ -29,8 +29,8 @@ $if mode=emacs
 
 # for rxvt
 "\e[8~": end-of-line
-"\eOc": forward-word
-"\eOd": backward-word
+"\eOC": forward-word
+"\eOD": backward-word
 
 # for non RH/Debian xterm, can't hurt for RH/DEbian xterm
 "\eOH": beginning-of-line
