@@ -12,17 +12,17 @@ echo -e "\n\n Iniciando a instalação ...\n\n"
 
 mkdir -p ~/.saved
 
-cp $HOME/.alias : ~/.saved/
+cp $HOME/.alias ~/.saved/
 cp $CDSHELL/.alias $HOME/
-cp $HOME/.export : ~/.saved/
+cp $HOME/.export ~/.saved/
 cp $CDSHELL/.export $HOME/
-cp $HOME/.vimrc: ~/.saved/
+cp $HOME/.vimrc ~/.saved/
 cp $CDSHELL/.vimrc $HOME/
-cp $HOME/.screenrc: ~/.saved/
+cp $HOME/.screenrc ~/.saved/
 cp $CDSHELL/.screenrc $HOME/
-cp $HOME/.bashrc : ~/.saved/
+cp $HOME/.bashrc ~/.saved/
 cp $CDSHELL/.bashrc $HOME/
-cp $HOME/inputrc : ~/.saved/
+cp $HOME/inputrc ~/.saved/
 cp $CDSHELL/inputrc /etc/
 
 if [ ! -e /etc/bash_completion.d ]; then
