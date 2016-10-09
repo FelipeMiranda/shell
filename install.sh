@@ -55,7 +55,7 @@ cp $CDSHELL/etc+bash_completion.d+git /etc/bash_completion.d/git
 if [ ! -e "/opt/funcoeszz/funcoeszz" ]; then
 mkdir -p /opt/funcoeszz/
 cp $CDSHELL/funcoeszz/* /opt/funcoeszz/
-ln -s /opt/funcoeszz/* /opt/funcoeszz/funcoeszz
+ln -s /opt/funcoeszz/funcoeszz-13.2.sh /opt/funcoeszz/funcoeszz
 fi
 
 echo -e "Instalando as chaves para o Github\n\n"
