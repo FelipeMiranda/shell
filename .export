@@ -1,7 +1,16 @@
 #!/bin/bash
 
+USER=`whoami`
+
+
 source ~/shell/colors.sh
-CDSHELL="~/shell" # VARIAVEL QUE CONTEM O RAIZ DO CDSHELL <- (CONFIGURE)
+
+if [ $USER == 'root' ] ; then 
+	CDSHELL="/root/shell" # VARIAVEL QUE CONTEM O RAIZ DO CDSHELL <- (CONFIGURE)
+else
+	CDSHELL=/home/$USER/shell
+fi
+
 OSTYPE=`uname`
 PATH=$PATH:$CDSHELL/linux
 

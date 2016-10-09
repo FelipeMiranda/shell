@@ -2,7 +2,10 @@
 
 source /root/shell/colors.sh
 CDSHELL=~/shell
+BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
 
+
+if [ ! -d ~/$CDSHELL/.saved_files ] ; then mkdir -p $BACKUP_DIR ; fi
 
 
 echo -e "\n\n $yellow ### $blue Shell Enviroment KRN ® $yellow ### $normal \n\n"
@@ -12,18 +15,28 @@ echo -e "\n\n Iniciando a instalação ...\n\n"
 
 mkdir -p ~/.saved
 
-cp $HOME/.alias ~/.saved/
+if [ -e $HOME/.toprc ] ; 	then cp -f $HOME/.toprc $BACKUP_DIR/ ; fi
+cp $CDSHELL/.toprc $HOME/
+
+if [ -e $HOME/.alias ] ; 	then cp -f $HOME/.alias $BACKUP_DIR/ ; fi
 cp $CDSHELL/.alias $HOME/
-cp $HOME/.export ~/.saved/
+
+if [ -e $HOME/.export ] ; 	then cp -f $HOME/.export $BACKUP_DIR/ ; fi
 cp $CDSHELL/.export $HOME/
-cp $HOME/.vimrc ~/.saved/
+
+if [ -e $HOME/.vimrc ] ; 	then cp -f $HOME/.vimrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/.vimrc $HOME/
-cp $HOME/.screenrc ~/.saved/
+
+if [ -e $HOME/.screenrc ] ; then cp -f $HOME/.screenrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/.screenrc $HOME/
-cp $HOME/.bashrc ~/.saved/
+
+if [ -e $HOME/.bashrc ] ; then cp -f $HOME/.bashrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/.bashrc $HOME/
-cp $HOME/inputrc ~/.saved/
+
+if [ -e /etc/inputrc ] ; then cp -f /etc/inputrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/inputrc /etc/
+
+date > $BACKUP_DIR/data_ultima_instalação.txt
 
 if [ ! -e /etc/bash_completion.d ]; then
 mkdir -p /etc/bash_completion.d
