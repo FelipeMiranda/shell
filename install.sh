@@ -8,23 +8,15 @@ BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
 #Colocando o suporte as cores.
 source $CDSHELL/colors.sh
 
-<<<<<<< HEAD
-echo -e "\n\n $yellow ### $blue Shell Enviroment KRN ® $yellow ### $normal \n"
-=======
 #Titulo da instalação.
 clear
 echo -e "\n $yellow ### $blue Shell Enviroment KRN ® $yellow ### $normal \n\n"
->>>>>>> a0c3d61cbbd164fc3ff662fd673800bc2d7787c2
 
 #Testando para ver se já existe o diretório de BACKUP, crie caso não exista.
 if [ ! -d $BACKUP_DIR ] ; then mkdir -p $BACKUP_DIR ; echo "Criando diretório de backup: $BACKUP_DIR" ; fi
 
-<<<<<<< HEAD
-echo -e "\n Iniciando a instalação ...\n\n"
-=======
 #Avisando do inicio.
 echo -e "\n\n$green Iniciando a instalação ... $normal \n"
->>>>>>> a0c3d61cbbd164fc3ff662fd673800bc2d7787c2
 
 #verificando a existencia de arquivos pre-instalação, para salva-los em caso de algum erro poder voltar.
 if [ -e $HOME/.toprc ] ; 	then cp -f $HOME/.toprc $BACKUP_DIR/ ; fi
