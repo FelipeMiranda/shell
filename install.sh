@@ -43,6 +43,7 @@ cp $CDSHELL/inputrc /etc/
 #colocando a data da instalação.
 date > $BACKUP_DIR/data_ultima_instalação.txt
 
+
 #criando um link da pasta backup para .saved_files_befor_last_install
 if [ ! -s $CDSHELL/backup ] ; then ln -s $BACKUP_DIR backup ; echo Link para pasta backup criado:$BACKUP_DIR ; fi
 
