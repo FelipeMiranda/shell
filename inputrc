@@ -29,8 +29,14 @@ $if mode=emacs
 
 # for rxvt
 "\e[8~": end-of-line
-"\eOc": forward-word
-"\eOd": backward-word
+# pular palavras para direita para o PuTTY.
+"\eOC": forward-word
+# pular palavras para direita para o screenrc.
+"\e[C": forward-word
+# pular palavras para esqueda para o PuTTY.
+"\eOD": backward-word
+# pular palavras para esqueda para o screenrc.
+"\e[D": backward-word
 
 # for non RH/Debian xterm, can't hurt for RH/DEbian xterm
 "\eOH": beginning-of-line
