@@ -42,6 +42,8 @@ cp $CDSHELL/inputrc /etc/
 
 #colocando a data da instalação.
 date > $BACKUP_DIR/data_ultima_instalacao.txt
+VERSION=`git rev-list HEAD | wc -l `
+echo "Versão: $VERSION" >> $BACKUP_DIR/data_ultima_instalacao.txt
 
 
 #criando um link da pasta backup para .saved_files_befor_last_install
