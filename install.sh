@@ -40,10 +40,12 @@ cp $CDSHELL/.bashrc $HOME/
 if [ -e /etc/inputrc ] ; then cp -f /etc/inputrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/inputrc /etc/
 
+
 #colocando a data e versão da instalação.
+cd $CDSHELL
 DATA=$(date)
 VERSION=`git rev-list HEAD | wc -l `
-echo "Data da instalação: $Data" > $BACKUP_DIR/data_ultima_instalacao.txt
+echo "Data da instalação: $DATA" > $BACKUP_DIR/data_ultima_instalacao.txt
 echo "Versão: $VERSION" >> $BACKUP_DIR/data_ultima_instalacao.txt
 
 
@@ -84,6 +86,7 @@ fi
 #Mensagem final sobre o manual do cdshell: 
 echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a instalação.$normal\n$yellow  $> miniman cdshell\n\n ® tks ®\n"
 
+pwd
 
 #ja executa o bash para testar
 bash
