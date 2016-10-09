@@ -1,20 +1,24 @@
 #/bin/bash
 
-source /root/shell/colors.sh
+#Sessao de Configuração.
 CDSHELL=~/shell
 BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
 
 
-if [ ! -d ~/$CDSHELL/.saved_files ] ; then mkdir -p $BACKUP_DIR ; fi
+#Colocando o suporte as cores.
+source $CDSHELL/colors.sh
 
+#Titulo da instalação.
+clear
+echo -e "\n $yellow ### $blue Shell Enviroment KRN ® $yellow ### $normal \n\n"
 
-echo -e "\n\n $yellow ### $blue Shell Enviroment KRN ® $yellow ### $normal \n\n"
+#Testando para ver se já existe o diretório de BACKUP, crie caso não exista.
+if [ ! -d $BACKUP_DIR ] ; then mkdir -p $BACKUP_DIR ; echo "Criando diretório de backup: $BACKUP_DIR" ; fi
 
+#Avisando do inicio.
+echo -e "\n\n$green Iniciando a instalação ... $normal \n"
 
-echo -e "\n\n Iniciando a instalação ...\n\n"
-
-mkdir -p ~/.saved
-
+#verificando a existencia de arquivos pre-instalação, para salva-los em caso de algum erro poder voltar.
 if [ -e $HOME/.toprc ] ; 	then cp -f $HOME/.toprc $BACKUP_DIR/ ; fi
 cp $CDSHELL/.toprc $HOME/
 
@@ -36,7 +40,11 @@ cp $CDSHELL/.bashrc $HOME/
 if [ -e /etc/inputrc ] ; then cp -f /etc/inputrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/inputrc /etc/
 
+#colocando a data da instalação.
 date > $BACKUP_DIR/data_ultima_instalação.txt
+
+#criando um link da pasta backup para .saved_files_befor_last_install
+if [ ! -s $CDSHELL/backup ] ; then ln -s $BACKUP_DIR backup ; echo Link para pasta backup criado:$BACKUP_DIR ; fi
 
 if [ ! -e /etc/bash_completion.d ]; then
 mkdir -p /etc/bash_completion.d
@@ -50,8 +58,7 @@ cp $CDSHELL/funcoeszz/* /opt/funcoeszz/
 ln -s /opt/funcoeszz/* /opt/funcoeszz/funcoeszz
 fi
 
-
-echo -e "\n\n Instalando as chaves para o Github\n\n"
+echo -e "Instalando as chaves para o Github\n\n"
 mkdir -p $HOME/.ssh
 cp $CDSHELL/github/* $HOME/.ssh/
 cd $HOME/.ssh
