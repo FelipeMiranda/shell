@@ -5,10 +5,10 @@ CDSHELL=~/shell
 
 
 
-echo -e "\n\n $yellow ### $blue Shell Enviroment KRN ® $yellow ### $normal \n\n"
+echo -e "\n\n $yellow ### $blue Shell Enviroment KRN ® $yellow ### $normal \n"
 
 
-echo -e "\n\n Iniciando a instalação ...\n\n"
+echo -e "\n Iniciando a instalação ...\n\n"
 
 
 cp $CDSHELL/.alias $HOME/
