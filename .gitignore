@@ -1,2 +1,5 @@
 backup
 backup/*
+.saved_files_before_last_install/inputrc/*
+/root/shell/.saved_files_before_last_install/*
+/root/shell/.saved_files_before_last_install/.alias
