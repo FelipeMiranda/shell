@@ -19,6 +19,7 @@ alias cd..='cd ..'
 alias cdh='cd ~/help/`uname`/help/'
 alias cds='cd ~/shell'
 alias cdw='cd ~/workspace'
+alias cdp='cd /etc/puppet/'
 alias criadaemon=~/shell/linux/criadaemon.sh
 alias dumax='du --max-depth=1 -h'
 alias e0='ethstatus -i eth0 -s 10' # interface eth0 size throuput 10M
