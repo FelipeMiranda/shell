@@ -40,9 +40,10 @@ cp $CDSHELL/.bashrc $HOME/
 if [ -e /etc/inputrc ] ; then cp -f /etc/inputrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/inputrc /etc/
 
-#colocando a data da instalação.
-date > $BACKUP_DIR/data_ultima_instalacao.txt
+#colocando a data e versão da instalação.
+DATA=$(date)
 VERSION=`git rev-list HEAD | wc -l `
+echo "Data da instalação: $Data" > $BACKUP_DIR/data_ultima_instalacao.txt
 echo "Versão: $VERSION" >> $BACKUP_DIR/data_ultima_instalacao.txt
 
 
