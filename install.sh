@@ -1,7 +1,7 @@
 #/bin/bash
 
-source /root/shell/.bashrc
-source /root/shell/.export
+#source /root/shell/.bashrc
+#source /root/shell/.export
 
 #Sessao de Configuração.
 CDSHELL=~/shell
