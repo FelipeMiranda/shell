@@ -45,8 +45,9 @@ cp $CDSHELL/inputrc /etc/
 cd $CDSHELL
 DATA=$(date)
 VERSION=`git rev-list HEAD | wc -l `
-echo "Data da instalação: $DATA" > $BACKUP_DIR/data_ultima_instalacao.txt
+echo "CDSHELL  ®  quirinobytes " > $BACKUP_DIR/data_ultima_instalacao.txt
 echo "Versão: $VERSION" >> $BACKUP_DIR/data_ultima_instalacao.txt
+echo "Data da instalação: $DATA" >> $BACKUP_DIR/data_ultima_instalacao.txt
 
 
 #criando um link da pasta backup para .saved_files_befor_last_install
