@@ -6,7 +6,7 @@
 #Sessao de Configuração.
 CDSHELL=~/shell
 BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
-
+HOME='/root'
 
 #Colocando o suporte as cores.
 source $CDSHELL/colors.sh
