@@ -21,12 +21,12 @@ if [ ! -d $BACKUP_DIR ] ; then mkdir -p $BACKUP_DIR ; echo "Criando diretório d
 #Avisando do inicio.
 echo -e "\n\n$green Iniciando a instalação ... $normal \n"
 
-unalias cp
+alias cp=cp
 #verificando a existencia de arquivos pre-instalação, para salva-los em caso de algum erro poder voltar.
-if [ -e $HOME/.toprc ] ; 	then cp -f $HOME/.toprc $BACKUP_DIR/ ; fi
+if [ -e $HOME/.toprc ] ; 	then cp -f $HOME/.toprc $BACKUP_DIR/ ; rm -rf $HOME/.toprc; fi
 cp $CDSHELL/.toprc $HOME/
 
-if [ -e $HOME/.alias ] ; 	then cp -f $HOME/.alias $BACKUP_DIR/ ; fi
+if [ -e $HOME/.alias ] ; 	then cp -f $HOME/.alias $BACKUP_DIR/ ;  rm -rf $HOME/.alias; fi
 cp $CDSHELL/.alias $HOME/
 
 if [ -e $HOME/.export ] ; 	then cp -f $HOME/.export $BACKUP_DIR/ ; fi
