@@ -9,14 +9,14 @@ alias mv='mv -i'
 
 # Source global definitions
 
-if [ -e ~/.alias ]; then
- 	. ~/.alias
-fi
-
 if [ -e ~/.export ]; then
 	. ~/.export
 fi
 
+#como se usa variaveis dentro do .alias, nao se deve colocar ele antes do .export
+if [ -e ~/.alias ]; then
+ 	. ~/.alias
+fi
 
 #Usando <TAB><TAB> após o comando cd somente mostra diretórios
 complete -d cd
