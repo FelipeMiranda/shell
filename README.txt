@@ -21,12 +21,26 @@ O programa ainda está no começo e está na sua versão:
 - v 1.0   -> Release: Charlie Brown
 
 
+######
+Melhorias
+
+- adicionando git post-commit hook.
+- suporte a backup dos arquivos modificados.
+- Teclas de atalho de F4 ate F12 para screenrc.
+- Vim com varias frescuras, F10 salva , F10-F10 salva e sai.
+- .toprc salvo
+
+
+
+
 ####################
 Funções do programa:
 
 - Escreva seus próprios manuais man pages, arquivo model.rd (Markdown)
-- melhora o funcionamento das teclas Pg-Up/Pg-Down
+- melhora o funcionamento das teclas Pg-Up/Pg-Down e navegabilidade, alem
+  de permitir varios mapeamentos.
 - cd <TAB><TAB> : somente exibe nome de diretórios
+- suporte a git completion
 
 
 
