@@ -18,6 +18,7 @@ HISTFILE=~/.bash_history
 HISTSIZE=2000
 VISUAL=vim
 EDITOR=vim
+TZ='America/Sao_Paulo'
 
 #escapacoes \[\] para o PS1 funcionar: wrap line, backpacesem comer peda;os malucos kkkk
 #
@@ -32,7 +33,7 @@ PS1="$red\u$yellow@$green\h $cyan\w> $normal"
 
 
 #DEFAULT EXPORT (all OSes)
-export HISTFILE HISTSIZE PS1 EDITOR VISUAL CDSHELL PATH
+export HISTFILE HISTSIZE PS1 EDITOR VISUAL CDSHELL PATH TZ
 
 
 # CUSTOM EXPORT per OSes
