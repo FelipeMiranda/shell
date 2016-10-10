@@ -1,11 +1,6 @@
 #!/bin/bash
 
-#PATH=/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/shell/linux:/root/bin:/root/shell/linux:/root/bin:/root/shell/linux:/root/shell/linux:/root/shell/linux:/root/shell/linux:/root/shell/linux:/root/shell/linux
-#export PATH
-
-
 USER=`whoami`
-
 
 source ~/shell/colors.sh
 
@@ -39,10 +34,9 @@ PS1="$red\u$yellow@$green\h $cyan\w> $normal"
 export HISTFILE HISTSIZE PS1 EDITOR VISUAL CDSHELL PATH
 
 
-# CUSTOM EXPORT per OSes
+# CUSTOM EXPORT per OS'es
 if [ $OSTYPE == "OpenBSD" ]; then
-PATH=$PATH:~/shell/openbsd
-PKG_PATH=http://mirrors.unb.br/pub/OpenBSD/5.7/packages/i386/
-export PKG_PATH CDSHELL PATH
-
+	PATH=$PATH:~/shell/openbsd
+	PKG_PATH=http://mirrors.unb.br/pub/OpenBSD/5.7/packages/i386/
+	export PKG_PATH CDSHELL PATH
 fi

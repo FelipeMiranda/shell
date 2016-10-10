@@ -46,6 +46,10 @@ cp $CDSHELL/.bashrc $HOME/
 if [ -e /etc/inputrc ] ; then cp -f /etc/inputrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/inputrc /etc/
 
+if [ -e /opt/funcoeszz/funcoeszz ] ; then cp -f /opt/funcoeszz/funcoeszz $BACKUP_DIR/ ; else mkdir -p /opt/funcoeszz/ ; fi
+cp $CDSHELL/opt/funcoeszz/funcoeszz /opt/funcoeszz/
+
+
 
 #colocando a data e versão da instalação.
 cd $CDSHELL

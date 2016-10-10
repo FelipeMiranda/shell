@@ -1,19 +1,16 @@
 # .bashrc
 
+#Importa Cores para usar no bash e instalacao
+source "/root/shell/colors.sh"  # Cores para o CDSHELL
 
-# User specific aliases and functions
 
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-
-# Source global definitions
-
+# Caso exista, execute os exports personalizados em .export
 if [ -e ~/.export ]; then
 	. ~/.export
 fi
 
-#como se usa variaveis dentro do .alias, nao se deve colocar ele antes do .export
+# Caso exista, execute os alias personalizados em .alias
+# Atençao: "como se usa variaveis dentro do .alias, nao se deve colocar ele antes do .export acima"
 if [ -e ~/.alias ]; then
  	. ~/.alias
 fi
@@ -30,6 +27,4 @@ export ZZOFF=""  # desligue funcoes indesejadas
 export ZZPATH="/opt/funcoeszz/funcoeszz"  # script
 source "$ZZPATH"
 
-#Importa Cores
-export SHELLCOLOR="/root/shell/colors.sh"  # Cores para o CDSHELL
-source "$SHELLCOLOR"
+
