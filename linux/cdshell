@@ -1,0 +1,4 @@
+#!/bin/bash
+
+DATA=`cat $CDSHELL/backup/data_ultima_instalacao.txt`
+echo -en $DATA
