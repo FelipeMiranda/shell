@@ -15,6 +15,7 @@ e com exemplos práticos.
 ######
 VERSAO
 
+
 O programa ainda está no começo e está na sua versão:
 
 - v 1.0   -> Release: Charlie Brown
