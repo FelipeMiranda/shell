@@ -40,7 +40,7 @@ Funções do programa:
 - melhora o funcionamento das teclas Pg-Up/Pg-Down e navegabilidade, alem
   de permitir varios mapeamentos.
 - cd <TAB><TAB> : somente exibe nome de diretórios
-- suporte a git completion.
+- suporte a git completion
 
 
 
