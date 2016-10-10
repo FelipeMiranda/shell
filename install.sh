@@ -1,5 +1,7 @@
 #/bin/bash
 
+source .bashrc
+
 #Sessao de Configuração.
 CDSHELL=~/shell
 BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
