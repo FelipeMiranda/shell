@@ -12,7 +12,6 @@ O que é o miniman?
 Miniman é um mini man (manual) ou seja um man(ual) mais simples, direto ao assunto
 e com exemplos práticos.
 
-
 ######
 VERSAO
 
