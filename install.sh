@@ -43,11 +43,14 @@ cp $CDSHELL/inputrc /etc/
 
 #colocando a data e versão da instalação.
 cd $CDSHELL
-DATA=$(date)
+DATA=$(date +'%d/%m/%Y')
+MES=$(date +'%B')
+HORA=$(date +'%T')
 VERSION=`git rev-list HEAD | wc -l `
-echo "CDSHELL  ®  quirinobytes " > $BACKUP_DIR/data_ultima_instalacao.txt
-echo "Versão: $VERSION" >> $BACKUP_DIR/data_ultima_instalacao.txt
-echo "Data da instalação: $DATA" >> $BACKUP_DIR/data_ultima_instalacao.txt
+
+echo "CDSHELL $red  ®  $normal quirinobytes \n" > $BACKUP_DIR/data_ultima_instalacao.txt
+echo "Versão: $red $VERSION$normal.$blue.$yellow.$green.$MES $normal \n" >> $BACKUP_DIR/data_ultima_instalacao.txt
+echo "Data da instalação: $red $DATA $green $MES $yellow@$red$HORA $normal \n" >> $BACKUP_DIR/data_ultima_instalacao.txt
 
 
 #criando um link da pasta backup para .saved_files_befor_last_install
