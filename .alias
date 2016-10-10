@@ -17,6 +17,8 @@ alias t='tail -f'
 alias +x='chmod +x' 
 alias cd..='cd ..'
 alias cdh='cd ~/help/`uname`/help/'
+#Mostrar informaçoes do CDSHELL.
+alias cdshell="echo -en 'CDSHELL: $red $CDSHELL \n$green`cat $CDSHELL/backup/data_ultima_instalacao.txt `  \n '"
 alias cds='cd ~/shell'
 alias cdw='cd ~/workspace'
 alias cdp='cd /etc/puppet/'
