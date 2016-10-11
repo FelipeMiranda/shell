@@ -46,10 +46,6 @@ cp $CDSHELL/.bashrc $HOME/
 if [ -e /etc/inputrc ] ; then cp -f /etc/inputrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/inputrc /etc/
 
-if [ -e /opt/funcoeszz/funcoeszz ] ; then cp -f /opt/funcoeszz/funcoeszz $BACKUP_DIR/ ; else mkdir -p /opt/funcoeszz/ ; fi
-cp $CDSHELL/opt/funcoeszz/funcoeszz /opt/funcoeszz/
-
-
 
 #colocando a data e versão da instalação.
 cd $CDSHELL
@@ -74,9 +70,9 @@ cp $CDSHELL/etc+bash_completion.d+git /etc/bash_completion.d/git
 
 #Instalando as funcoesZZ
 if [ ! -e "/opt/funcoeszz/funcoeszz" ]; then
-mkdir -p /opt/funcoeszz/
-cp $CDSHELL/funcoeszz/* /opt/funcoeszz/
-ln -s /opt/funcoeszz/funcoeszz-13.2.sh /opt/funcoeszz/funcoeszz
+	mkdir -p /opt/funcoeszz/
+	cp $CDSHELL/funcoeszz/* /opt/funcoeszz/
+	ln -s /opt/funcoeszz/funcoeszz /opt/funcoeszz/funcoeszz-13.2.sh
 fi
 
 echo -e "Instalando as chaves para o Github\n\n"

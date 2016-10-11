@@ -1,9 +1,5 @@
 # .bashrc
 
-#Importa Cores para usar no bash e instalacao
-source "/root/shell/colors.sh"  # Cores para o CDSHELL
-
-
 # Caso exista, execute os exports personalizados em .export
 if [ -e ~/.export ]; then
 	. ~/.export
@@ -27,4 +23,7 @@ export ZZOFF=""  # desligue funcoes indesejadas
 export ZZPATH="/opt/funcoeszz/funcoeszz"  # script
 source "$ZZPATH"
 
+#Importa Cores # ATENCAO NAO SE PODE REMOVER ISSO SENAO DA ZICA NAS CORES, Teste com comando pull para ver, kkk
+export SHELLCOLOR="/root/shell/colors.sh"  # Cores para o CDSHELL
+source "$SHELLCOLOR"
 
