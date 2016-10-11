@@ -10,7 +10,7 @@ function exibe_versao(){
 
 
 case $1 in
-   "install") cd $CDSHELL ; . install.sh
+   "install" | "-i") cd $CDSHELL ; . install.sh
          ;;
    "-v") echo -en "Versão do comando cdshell: 1.0.0 \n"
 	 echo -en "Versão do Pacote CDSHELL: $green `cat $CDSHELL/backup/versao_ultima_instalacao.txt`\n $normal"

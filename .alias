@@ -21,7 +21,7 @@ alias cdh='cd ~/help/`uname`/help/'
 #alias cdshell="echo -en '`cat $CDSHELL/backup/data_ultima_instalacao.txt `  \n '"
 alias cds='cd ~/shell'
 alias cdw='cd ~/workspace'
-alias cdp='cd /etc/puppet/'
+alias cdp='cd /etc/puppet/environment/devel'
 alias criadaemon=~/shell/linux/criadaemon.sh
 alias dumax='du --max-depth=1 -h'
 alias e0='ethstatus -i eth0 -s 10' # interface eth0 size throuput 10M
