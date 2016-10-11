@@ -53,6 +53,10 @@ case $1 in
 	;;
 
    *) exibe_versao
+
+	if [ -e $2 ]; then
+		echo -en "O comando $red $2 $normal não existe."
+	fi
       exit 1
       ;;
 esac
