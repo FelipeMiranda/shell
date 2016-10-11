@@ -1,4 +1,22 @@
 #!/bin/bash
 
-DATA=`cat $CDSHELL/backup/data_ultima_instalacao.txt`
-echo -en "\n$DATA\n"
+function exibe_versao(){
+
+	DATA=`cat $CDSHELL/backup/data_ultima_instalacao.txt`
+	echo -en "\n$DATA\n"
+}
+
+
+case $1 in
+   "install") cd $CDSHELL ; . install.sh
+         ;;
+   "-v") echo "Versão 1.0.0"
+         ;;
+   "--help") echo "Digite miniman cdshell"
+	 ;;
+   *) exibe_versao
+      exit 1
+      ;;
+esac
+
+
