@@ -9,14 +9,49 @@ function exibe_versao(){
 }
 
 
+function assistir_versao(){
+
+begin=$(date +%s)
+echo "Starting Stopwatch... Press q to exit"
+while true; do
+   now=$(date +%s)
+   diff=$(($now - $begin))
+   mins=$(($diff / 60))
+   secs=$(($diff % 60))
+   hours=$(($diff / 3600))
+   days=$(($diff / 86400))
+
+   # \r  is a "carriage return" - returns cursor to start of line
+   # with \33[2K we clear the current line
+   printf "\33[2K\r%3d Days, %02d:%02d:%02d" $days $hours $mins $secs
+   exibe_versao
+   sleep 1
+   clear
+   # -n 1 to get one character at a time, -t 0.1 to set a timeout 
+   read -n 1 -t 0.1 input                  # so read doesn't hang
+   if [[ $input = "q" ]] || [[ $input = "Q" ]] 
+   then
+      echo # to get a newline after quitting
+      break
+   fi
+done
+}
+
 case $1 in
+
    "install" | "-i" | "--install") cd $CDSHELL ; . install.sh
          ;;
+
    "-v") echo -en "Versão do comando cdshell: 1.0.0 \n"
 	 echo -en "Versão do Pacote CDSHELL: $green `cat $CDSHELL/backup/versao_ultima_instalacao.txt`\n $normal"
          ;;
+
    "--help") echo "Digite miniman cdshell"
 	 ;;
+
+   "-w") assistir_versao	
+	;;
+
    *) exibe_versao
       exit 1
       ;;
