@@ -10,7 +10,9 @@ function exibe_versao(){
 
 
 function assistir_versao {
-
+ZERO=''
+VAR=''
+VAR=$1
 begin=$(date +%s)
 echo -en " Exibindo continuamente...Pressione $green 'q' $normal para sair!"
 while true; do
@@ -25,10 +27,10 @@ while true; do
    # with \33[2K we clear the current line
    printf "\33[2K\r%3d Days, %02d:%02d:%02d" $days $hours $mins $secs
    exibe_versao
-   if [ $1 != '' ] ; then
-	sleep $1 
-   else
+   if [ ! $VAR != '' ] ; then
 	sleep 1 
+   else
+	sleep $1 
    fi
 
    #tput reset   
