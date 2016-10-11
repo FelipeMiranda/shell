@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/shell/colors.sh
+
 function exibe_versao(){
 
 	DATA=`cat $CDSHELL/backup/data_ultima_instalacao.txt`
@@ -10,7 +12,8 @@ function exibe_versao(){
 case $1 in
    "install") cd $CDSHELL ; . install.sh
          ;;
-   "-v") echo "Versão 1.0.0"
+   "-v") echo -en "Versão do comando cdshell: 1.0.0 \n"
+	 echo -en "Versão do Pacote CDSHELL: $green `cat $CDSHELL/backup/versao_ultima_instalacao.txt`\n $normal"
          ;;
    "--help") echo "Digite miniman cdshell"
 	 ;;

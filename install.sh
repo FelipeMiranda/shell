@@ -53,6 +53,7 @@ DATA=$(date +'%d/%m/%Y')
 MES=$(date +'%B')
 HORA=$(date +'%T')
 VERSION=`git rev-list HEAD | wc -l `
+echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 
 #echo "CDSHELL $red  ®  $normal quirinobytes \n" > $BACKUP_DIR/data_ultima_instalacao.txt
 #echo "Versão: $red $VERSION$normal.$blue.$yellow.$green.$MES $normal \n" >> $BACKUP_DIR/data_ultima_instalacao.txt
