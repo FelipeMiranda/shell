@@ -105,10 +105,10 @@ if [ ! -e ~/.cdshell_req_installed ]; then
 	touch ~/.cdshell_req_installed
 fi
 
-#Mensagem final sobre o manual do cdshell: 
-echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a instalação.$normal\n\n$yellow \ttente: $> miniman cdshell\n\n ® by Quirino tks \n"
-
 echo -en $green "Instalado em:" $(pwd) "\n\n"
 
-#ja executa o bash para testar
-bash
+#Mensagem final sobre o manual do cdshell: 
+echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a instalação.$normal\n\n$yellow \ttente: $> miniman cdshell ou $> miniman atalhos \n\n\t ® Quirino tks 12/10/2016 - BSD Licensed \n"
+
+#ja recarrega o bash para testar
+
