@@ -40,7 +40,8 @@ Funções do programa:
   de permitir varios mapeamentos.
 - cd <TAB><TAB> : somente exibe nome de diretórios
 - suporte a git completion
-
+- suporte a completion do ssh, so poe os nomes de hosts que existem no
+  arquivo /etc/hosts
 
 
 
