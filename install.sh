@@ -93,7 +93,7 @@ cd $HOME/.ssh
 tar xzvf file.tgz
 cd -
 
-echo -e "\n\n Arquivos ${alert}CDSHELL${normal} versão $green `git rev-list HEAD | wc -l`  $normal instalados com $atention sucesso $normal \n"
+echo -e "\n\n Arquivos ${alert}CDSHELL${normal} versão $green `git rev-list HEAD | wc -l`  $normal copiados com $atention sucesso $normal \n"
 
 
 if [ ! -e ~/.cdshell_req_installed ]; then
@@ -106,9 +106,9 @@ if [ ! -e ~/.cdshell_req_installed ]; then
 fi
 
 #Mensagem final sobre o manual do cdshell: 
-echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a instalação.$normal\n$yellow  $> miniman cdshell\n\n ® tks ®\n"
+echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a instalação.$normal\n\n$yellow \ttente: $> miniman cdshell\n\n ® by Quirino tks \n"
 
-pwd
+echo -en $green "Instalado em:" $(pwd) "\n\n"
 
 #ja executa o bash para testar
 bash
