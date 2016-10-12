@@ -7,7 +7,7 @@ source ~/shell/colors.sh
 if [ $USER == 'root' ] ; then 
 	CDSHELL="/root/shell" # VARIAVEL QUE CONTEM O RAIZ DO CDSHELL <- (CONFIGURE)
 else
-	CDSHELL=/home/$USER/shell
+	CDSHELL=$HOME/shell
 fi
 
 OSTYPE=`uname`
