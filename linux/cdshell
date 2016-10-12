@@ -68,13 +68,15 @@ case $1 in
    "-w") assistir_versao $2
 	;;
 
+   "reset"|"--reset"|"-r") resetar_e_instalar_ultima_versao
+	;;
+
    *) exibe_versao 
 	if [ ! -z $1  ]; then
 		echo -en "O comando $red $1 $normal não existe."
 	fi
       exit 1
       ;;
-   "reset"|"--reset"|"-r") resetar_install_ultima_versao
 	
 esac
 
