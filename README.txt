@@ -1,7 +1,7 @@
 #######
 CDSHELL - v.Charlie Brown
 
-O que é o CDSHELL?
+Você sabe o que é o CDSHELL?
 
 É um monte de alias e scripts para tornar o enviroment do usuário altamente
 produtivo e com as features úteis do dia a dia, como o miniman.
