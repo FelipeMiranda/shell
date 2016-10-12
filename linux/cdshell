@@ -44,6 +44,15 @@ while true; do
 done
 }
 
+function resetar_instalar_ultima_versao(){
+	cdshell
+	git checkout 
+	cdshell install
+}
+
+
+
+
 case $1 in
 
    "install" | "-i" | "--install") cd $CDSHELL ; . install.sh
@@ -65,6 +74,8 @@ case $1 in
 	fi
       exit 1
       ;;
+   "reset"|"--reset"|"-r") resetar_install_ultima_versao
+	
 esac
 
 
