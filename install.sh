@@ -49,8 +49,8 @@ cp $CDSHELL/.bashrc $HOME/
 if [ -e /etc/inputrc ] ; then cp -f /etc/inputrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/inputrc /etc/
 
-if [ -e ~/.funcoes-cdshell.sh ] ; then cp -f ~/.funcoes-cdshell.sh $BACKUP_DIR/ ; fi
-cp $CDSHELL/funcoes-cdshell.sh ~/.funcoes-cdshell.sh
+if [ -e ~/funcoes-cdshell.sh ] ; then cp -f ~/funcoes-cdshell.sh $BACKUP_DIR/ ; fi
+cp $CDSHELL/funcoes-cdshell.sh ~/funcoes-cdshell.sh
 
 
 
