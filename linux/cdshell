@@ -25,8 +25,8 @@ while true; do
 
    # \r  is a "carriage return" - returns cursor to start of line
    # with \33[2K we clear the current line
-   printf "\33[2K\r%3d Days, %02d:%02d:%02d" $days $hours $mins $secs
-   exibe_versao
+    exibe_versao
+   printf "\33[2KTempo de execução: %3d Days, %02d:%02d:%02d\n $red (q) $normal -> sair\n" $days $hours $mins $secs
    if [ ! $VAR != '' ] ; then
 	sleep 1 
    else
