@@ -5,7 +5,7 @@ source ~/shell/colors.sh
 function exibe_versao(){
 
 	DATA=`cat $CDSHELL/backup/data_ultima_instalacao.txt`
-	echo -en "\n$DATA\n"
+	echo -en "\n$DATA"
 }
 
 
@@ -21,12 +21,12 @@ while true; do
    mins=$(($diff / 60))
    secs=$(($diff % 60))
    hours=$(($diff / 3600))
-   days=$(($diff / 86400))
+#   days=$(($diff / 86400))
 
    # \r  is a "carriage return" - returns cursor to start of line
    # with \33[2K we clear the current line
     exibe_versao
-   printf "\33[2KTempo de execução: %3d Days, %02d:%02d:%02d\n $red (q) $normal -> sair\n" $days $hours $mins $secs
+   printf "\33[2K____________________________\nTempo de execução:  %02d:%02d:%02d\n $red (q) $normal -> sair" $hours $mins $secs
    if [ ! $VAR != '' ] ; then
 	sleep 1 
    else
