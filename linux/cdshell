@@ -44,9 +44,9 @@ while true; do
 done
 }
 
-function resetar_instalar_ultima_versao(){
+function resetar_e_instalar_ultima_versao(){
 	cdshell
-	git checkout 
+	git checkout -f
 	cdshell install
 }
 
