@@ -56,7 +56,7 @@ alias com='git commit -a'
 alias ga='git add .'
 alias pull='echo -e "\n\t ${alert}PULL${normal} xando\n\n\t ${green}LOCAL <- ${yellow} WWW ${blue} ($(git config remote.origin.url)) ${normal}\n" && git pull '
 alias push='echo -e "\n\t ${alert}emPURRANDO${normal}\n\n\t ${yellow}LOCAL -> ${green} WWW ${blue} ($(git config remote.origin.url)) ${normal}\n" && git push origin master '
-alias clone='cd ~ && git clone git@github.com:quirinobytes/shell.git'
+alias clone='git clone git@github.com:quirinobytes/$1.git'
 
 
 
