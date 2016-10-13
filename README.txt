@@ -2,7 +2,6 @@
 CDSHELL - v.Charlie Brown
 
 
-
 Você sabe o que é o CDSHELL?
 
 É um monte de alias e scripts para tornar o enviroment do usuário altamente
