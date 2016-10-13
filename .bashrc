@@ -27,3 +27,7 @@ source "$ZZPATH"
 export SHELLCOLOR="/root/shell/colors.sh"  # Cores para o CDSHELL
 source "$SHELLCOLOR"
 
+source ~/funcoes-cdshell.sh
+
+
+
