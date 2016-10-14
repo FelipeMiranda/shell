@@ -2,7 +2,7 @@
 
 USER=`whoami`
 
-source ~/shell/colors.sh
+source ~/colors.sh
 
 if [ $USER == 'root' ] ; then 
 	CDSHELL="/root/shell" # VARIAVEL QUE CONTEM O RAIZ DO CDSHELL <- (CONFIGURE)

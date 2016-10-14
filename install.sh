@@ -47,7 +47,7 @@ if [ -e $HOME/.bashrc ] ; then cp -f $HOME/.bashrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/.bashrc $HOME/
 
 if [ -e $HOME/colors.sh ] ; then cp -f $HOME/colors.sh $BACKUP_DIR/ ; fi
-cp $CDSHELL/colors.sh $BACKUP_DIR/
+cp $CDSHELL/colors.sh $HOME/
 
 if [ -e /etc/inputrc ] ; then cp -f /etc/inputrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/inputrc /etc/
