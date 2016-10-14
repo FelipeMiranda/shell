@@ -66,13 +66,18 @@ HORA=$(date +'%T')
 VERSION=`git rev-list HEAD | wc -l `
 echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 
+
+#REMOVER NA PROXIMO COMMIT, pois funcionou abaixo. ++++>
 #echo "CDSHELL $red  ®  $normal quirinobytes \n" > $BACKUP_DIR/data_ultima_instalacao.txt
 #echo "Versão: $red $VERSION$normal.$blue.$yellow.$green.$MES $normal \n" >> $BACKUP_DIR/data_ultima_instalacao.txt
 #echo "Data da instalação: $red $DATA $green $MES $yellow@$red$HORA $normal \n" >> $BACKUP_DIR/data_ultima_instalacao.txt
 #echo "Diretório de Backup: $blue backup -> $red $BACKUP_DIR $normal \n"  >> $BACKUP_DIR/data_ultima_instalacao.txt
+# <++++++
+
+
 
 SAIDA="CDSHELL $red  ®  $normal quirinobytes \n\n"
-SAIDA=$SAIDA"Versão: $red $VERSION$normal.$blue.$yellow.$green.$MES $normal \n"
+SAIDA=$SAIDA"Versão: $yellow $VERSION$normal.$blue.$yellow.$green.$MES $normal \n"
 SAIDA=$SAIDA"Data da instalação: $red $DATA $green $MES $yellow@$red$HORA $normal \n"
 SAIDA=$SAIDA"Diretório de Backup: $blue backup -> $red $BACKUP_DIR $normal \n" 
 echo $SAIDA > $BACKUP_DIR/data_ultima_instalacao.txt
