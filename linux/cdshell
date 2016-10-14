@@ -2,12 +2,13 @@
 
 source ~/shell/colors.sh
 
-function exibe_versao(){
-
-	DATA=`cat $CDSHELL/backup/data_ultima_instalacao.txt`
-	echo -en "\n$DATA"
+function exibe_versao_cdshell(){
+		DATA=`cat $CDSHELL/backup/data_ultima_instalacao.txt`
+		echo -en "\n$DATA"
 }
-
+function exibe_versao_git_local_version(){
+	git rev-list HEAD | wc -l
+}
 
 function assistir_versao {
 ZERO=''
@@ -73,11 +74,19 @@ case $1 in
    "reset"|"--reset"|"-r") resetar_e_instalar_ultima_versao
 	;;
 
-   *) exibe_versao 
+   "-v") exibe_versao 
 	if [ ! -z $1  ]; then
 		echo -en "O comando $red $1 $normal não existe."
 	fi
-      exit 1
+      ;;
+
+   "-g") exibe_versao_git_local_version
+      ;;
+	
+   "" ) exibe_versao_cdshell
+      ;;
+   
+   * )echo -en "O comando $red $1 $normal não existe.\n"
       ;;
 	
 esac
