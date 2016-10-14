@@ -86,7 +86,7 @@ case $1 in
 	fi
       ;;
 
-   "-g") exibe_versao_git_local_version
+   "-g"|"--git"|--git-version) exibe_versao_git_local_version
       ;;
 	
    "" ) exibe_versao_cdshell
