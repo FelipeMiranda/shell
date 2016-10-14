@@ -7,7 +7,8 @@ function exibe_versao_cdshell(){
 		echo -en "\n$DATA"
 }
 function exibe_versao_git_local_version(){
-	git rev-list HEAD | wc -l
+VERSION=`git rev-list HEAD | wc -l`
+echo -en "Versão do repo local: $green $VERSION \n"
 }
 
 function assistir_versao {
