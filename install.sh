@@ -125,3 +125,4 @@ echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a
 
 #ja recarrega o bash para testar
 bash
+

@@ -24,8 +24,8 @@ export ZZPATH="/opt/funcoeszz/funcoeszz"  # script
 source "$ZZPATH"
 
 #Importa Cores # ATENCAO NAO SE PODE REMOVER ISSO SENAO DA ZICA NAS CORES, Teste com comando pull para ver, kkk
-export SHELLCOLOR="/root/shell/colors.sh"  # Cores para o CDSHELL
-source "$SHELLCOLOR"
+SHELLCOLOR="$CDSHELL/colors.sh"  # Cores para o CDSHELL
+source $SHELLCOLOR
 
 source ~/funcoes-cdshell.sh
 
