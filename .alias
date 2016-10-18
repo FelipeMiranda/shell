@@ -36,7 +36,7 @@ alias traduz='zzdicbabylon'
 alias vi='vim'
 alias cp='cp -i'
 alias mv='mv -i'
-
+alias ls='ls --color'
 
 
 #PREGUICAS
