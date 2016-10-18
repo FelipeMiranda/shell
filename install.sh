@@ -52,6 +52,7 @@ cp $CDSHELL/colors.sh $HOME/
 if [ -e /etc/inputrc ] ; then cp -f /etc/inputrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/inputrc /etc/
 
+
 if [ -e ~/funcoes-cdshell.sh ] ; then cp -f ~/funcoes-cdshell.sh $BACKUP_DIR/ ; fi
 cp $CDSHELL/funcoes-cdshell.sh ~/funcoes-cdshell.sh
 
@@ -65,13 +66,18 @@ HORA=$(date +'%T')
 VERSION=`git rev-list HEAD | wc -l `
 echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 
+
+#REMOVER NA PROXIMO COMMIT, pois funcionou abaixo. ++++>
 #echo "CDSHELL $red  ®  $normal quirinobytes \n" > $BACKUP_DIR/data_ultima_instalacao.txt
 #echo "Versão: $red $VERSION$normal.$blue.$yellow.$green.$MES $normal \n" >> $BACKUP_DIR/data_ultima_instalacao.txt
 #echo "Data da instalação: $red $DATA $green $MES $yellow@$red$HORA $normal \n" >> $BACKUP_DIR/data_ultima_instalacao.txt
 #echo "Diretório de Backup: $blue backup -> $red $BACKUP_DIR $normal \n"  >> $BACKUP_DIR/data_ultima_instalacao.txt
+# <++++++
+
+
 
 SAIDA="CDSHELL $red  ®  $normal quirinobytes \n\n"
-SAIDA=$SAIDA"Versão: $red $VERSION$normal.$blue.$yellow.$green.$MES $normal \n"
+SAIDA=$SAIDA"Versão: $yellow $VERSION$normal.$blue.$yellow.$green.$MES $normal \n"
 SAIDA=$SAIDA"Data da instalação: $red $DATA $green $MES $yellow@$red$HORA $normal \n"
 SAIDA=$SAIDA"Diretório de Backup: $blue backup -> $red $BACKUP_DIR $normal \n" 
 echo $SAIDA > $BACKUP_DIR/data_ultima_instalacao.txt
@@ -119,3 +125,4 @@ echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a
 
 #ja recarrega o bash para testar
 bash
+
