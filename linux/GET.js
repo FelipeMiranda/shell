@@ -2,8 +2,8 @@
 
 /* KRNGET */
 var debug = true;
-var keepalive = false;
-var verbose = false;
+var keepalive = true;
+var verbose = true;
 var porta;
 
 console.log("KRNGET 0.1 || HTTP GET http://" + process.argv[2] + "/ [no_porta] \n");
@@ -29,9 +29,9 @@ var now = new Date();
 var start = process.hrtime(); //marca o exato momento do inicio do processo, tipo para usar em um cronometro.
 
 if (keepalive)
-	var options = {  hostname: '',  port: porta,  path: '/',  method: 'GET'};
+	var options = {  hostname: process.argv[2],  port: porta,  path: '/',  method: 'GET'};
 else
-	var options = {  hostname: '',  port: porta,  path: '/',  method: 'GET',  agent: false};
+	var options = {  hostname: process.argv[2],  port: porta,  path: '/',  method: 'GET',  agent: false};
 
 options[0] = process.argv[2];
 
