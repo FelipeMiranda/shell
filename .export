@@ -40,3 +40,5 @@ if [ $OSTYPE == "OpenBSD" ]; then
 	PKG_PATH=http://mirrors.unb.br/pub/OpenBSD/5.7/packages/i386/
 	export PKG_PATH CDSHELL PATH
 fi
+
+TZ='America/Sao_Paulo'; export TZ
