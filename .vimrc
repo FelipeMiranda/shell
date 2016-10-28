@@ -157,7 +157,7 @@ set sm             "ShowMatch: mostra o par do parenteses/chaves recem fechado
 set hid            "HIDden: nao lembro pra que servia mas era massa
 set aw             "AutoWrite: gravacao automatica a cada alteracao
 "set ai             "AutoIndent: identacao automatica
-"set ts=4           "TabStop: numero de caracteres de avanco do TAB
+set ts=4           "TabStop: numero de caracteres de avanco do TAB
 set report=0       "reporta acoes com linhas
 set shm=filmnrwxt  "SHortMessages: encurta as mensagem do rodape
 "set et             "ExpandTab: troca TABs por espacos
