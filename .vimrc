@@ -154,6 +154,7 @@ set pastetoggle=<c-p>
 "(IncrementedSearch, HighLightedSearch, IgnoreCase, SmartCaSe)
 "-------------------------------------------------------------
 set ttyfast        "Envia mais caracteres ao terminal, melhorando o redraw de janelas.
+set sw=3           "numero de colunas para o comando > (ShiftWidth)
 set is hls ic scs magic   "opcoes espertas de busca
 set sm             "ShowMatch: mostra o par do parenteses/chaves recem fechado
 set hid            "HIDden: nao lembro pra que servia mas era massa
@@ -163,7 +164,7 @@ set ts=4           "TabStop: numero de caracteres de avanco do TAB
 set report=0       "reporta acoes com linhas
 set shm=filmnrwxt  "SHortMessages: encurta as mensagem do rodape
 "set et             "ExpandTab: troca TABs por espacos
-"retab              "converter os TABs ja existentes
+"retab              "converter os TABs ja existentes em espaços.
 set ruler          "mostra a posicao do cursor, regua
 "set showcmd        "mostra o comando sendo executado
 set laststatus=2   "mostra N linhas de estado (status)
@@ -175,7 +176,6 @@ set nosmartindent  "desligando pois esta padrao no CL40
 set visualbell     "pisca a tela ao inves de bipar
 "set wrap           "forca a quebra de linha
 set nojoinspaces   "! coloca 2 espacos apos o . quando usando o gq
-   set sw=3           "numero de colunas para o comando > (ShiftWidth)
    set wildmode=longest,list:full  "para completacao do TAB igual bash
    set number         "Mostrar o numero das linhas
 
