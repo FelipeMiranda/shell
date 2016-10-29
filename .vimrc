@@ -150,8 +150,10 @@ set pastetoggle=<c-p>
 " Tira as cores das ocorrências de busca e recoloca (booleano)
 "nno <S-F11> :set hls!<bar>set hls?<CR>
 
-"................................................................OPCOES DO SET
+"..................OPCOES DO SET..............................
 "(IncrementedSearch, HighLightedSearch, IgnoreCase, SmartCaSe)
+"-------------------------------------------------------------
+set ttyfast        "Envia mais caracteres ao terminal, melhorando o redraw de janelas.
 set is hls ic scs magic   "opcoes espertas de busca
 set sm             "ShowMatch: mostra o par do parenteses/chaves recem fechado
 set hid            "HIDden: nao lembro pra que servia mas era massa
@@ -173,9 +175,9 @@ set nosmartindent  "desligando pois esta padrao no CL40
 set visualbell     "pisca a tela ao inves de bipar
 "set wrap           "forca a quebra de linha
 set nojoinspaces   "! coloca 2 espacos apos o . quando usando o gq
-set sw=1           "numero de colunas para o comando > (ShiftWidth)
-set wildmode=longest,list:full  "para completacao do TAB igual bash
-set number         "Mostrar o numero das linhas
+   set sw=3           "numero de colunas para o comando > (ShiftWidth)
+   set wildmode=longest,list:full  "para completacao do TAB igual bash
+   set number         "Mostrar o numero das linhas
 
 "........................................................................CORES
 " Cores no terminal com a sintaxe
