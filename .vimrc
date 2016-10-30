@@ -97,9 +97,9 @@ map ,mm :set noic<cr>
 
 
 "......................................................................ARQUIVO
-" F10 -> Salva !
-imap <F10> <esc>:wa!<cr>
- map <F10> :wa!<cr>
+" F10 -> Salva ! sem perguntar e ja volta pro modo INSERT.
+imap <F10> <esc>:wa!<cr>i
+ map <F10> :wa!<cr>i
 
 
 " F10 x2 -> Salva caso haja modificação e sai for na marra.
