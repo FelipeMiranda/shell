@@ -42,3 +42,6 @@ if [ $OSTYPE == "OpenBSD" ]; then
 fi
 
 TZ='America/Sao_Paulo'; export TZ
+
+#Colocar o diretório corrente já no PATH, para nao precisar ficar toda hora digitando ./ e viva a preguiça.
+export PATH=$PATH:$(pwd)
