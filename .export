@@ -29,6 +29,8 @@ normal="\[$normal\]"
 #
 PS1="$red\u$yellow@$green\h $cyan\w> $normal"
 
+#Colocar o diretório corrente já no PATH, para nao precisar ficar toda hora digitando ./ e viva a preguiça.
+export PATH=.:$PATH
 
 #DEFAULT EXPORT (all OSes)
 export HISTFILE HISTSIZE PS1 EDITOR VISUAL CDSHELL PATH
@@ -43,5 +45,4 @@ fi
 
 TZ='America/Sao_Paulo'; export TZ
 
-#Colocar o diretório corrente já no PATH, para nao precisar ficar toda hora digitando ./ e viva a preguiça.
-export PATH=$PATH:$(pwd)
+
