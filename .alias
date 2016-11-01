@@ -13,6 +13,7 @@ alias l='ls -lh'
 alias m='more'
 alias mp3=mplayer
 alias p='ps aux'
+alias pg='echo -e "$green ps aux | grep $red <FILTER> $normal\n" && ps aux | grep '
 alias t='tail -f'
 alias +x='chmod +x' 
 alias cd..='cd ..'
