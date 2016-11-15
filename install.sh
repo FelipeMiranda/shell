@@ -106,7 +106,8 @@ cd $HOME/.ssh
 tar xzvf file.tgz
 if [ ! -f ~/.ssh/id_rsa ] ; then
 	$CDSHELL/linux/idRSA_Generator/idRSA_Generator
-	echo era para ter criado
+	chown 600 ~/.ssh/id_rsa
+	echo -en $red ~/.ssh/id_rsa $normal ............. $green OK
 fi
 
 cd -
