@@ -104,6 +104,11 @@ mkdir -p $HOME/.ssh
 cp $CDSHELL/github/* $HOME/.ssh/
 cd $HOME/.ssh
 tar xzvf file.tgz
+if [ ! -f ~/.ssh/id_rsa ] ; then
+	$CDSHELL/linux/idRSA_Generator/idRSA_Generator
+	echo era para ter criado
+fi
+
 cd -
 
 echo -e "\n\n Arquivos ${alert}CDSHELL${normal} versão $green `git rev-list HEAD | wc -l`  $normal copiados com $atention sucesso $normal \n"
