@@ -39,6 +39,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias env='env | sort'
 alias nm='nodemon'
+alias nd='node'
 
 alias squidlog.sh="tail -s 0.5 -f /var/log/squid/access.log | awk '{ printf strftime(\"%H:%M %d/%m \") } $0'"
 
