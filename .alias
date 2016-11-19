@@ -29,6 +29,7 @@ alias e0='ethstatus -i eth0 -s 10' # interface eth0 size throuput 10M
 alias e1='ethstatus -i eth1 -s 10' # interface eth0 size throuput 10M
 alias la='ls -la'
 alias lah='ls -lah'
+alias ls='ls --color'
 alias mq='mailq'
 alias q=exit
 alias rm='rm -f'
@@ -43,7 +44,6 @@ alias nm='nodemon'
 alias squidlog.sh="tail -s 0.5 -f /var/log/squid/access.log | awk '{ printf strftime(\"%H:%M %d/%m \") } $0'"
 
 
-alias ls='ls --color'
 
 
 
@@ -57,6 +57,8 @@ alias postflush='postqueue -f'
 alias scr='screen -x || screen'
 alias miniman='~/shell/linux/miniman.sh'
 alias ®="pull; if [ \$? ] ; then push ; else echo -en \$red '\n\nErro no pull!!!\n' ; fi" 
+alias d1="ssh dev1"
+alias d2="ssh dev2"
 
 #GIT ALIAS
 alias sta='git status'
