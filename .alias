@@ -9,7 +9,7 @@ alias ..='cd ..'
 alias d='dig'
 alias i='ifconfig | grep inet'
 alias g='grep -i'
-alias l='ls -lh'
+alias l='ls'
 alias m='more'
 alias mp3=mplayer
 alias p='ps aux'
@@ -44,7 +44,8 @@ alias nd='node'
 
 alias squidlog.sh="tail -s 0.5 -f /var/log/squid/access.log | awk '{ printf strftime(\"%H:%M %d/%m \") } $0'"
 
-
+#BLUEMONEY
+alias menu="cd /root/workspace/bolsa-systems/blueMoney/dataMining/ && menu.sh && cd -"
 
 
 
