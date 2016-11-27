@@ -9,7 +9,7 @@ alias ..='cd ..'
 alias d='dig'
 alias i='ifconfig | grep inet'
 alias g='grep -i'
-alias l='ls -lh'
+alias l='ls'
 alias m='more'
 alias mp3=mplayer
 alias p='ps aux'
@@ -44,7 +44,8 @@ alias nd='node'
 
 alias squidlog.sh="tail -s 0.5 -f /var/log/squid/access.log | awk '{ printf strftime(\"%H:%M %d/%m \") } $0'"
 
-
+#BLUEMONEY
+alias menu="cd /root/workspace/bolsa-systems/blueMoney/dataMining/ && menu.sh && cd -"
 
 
 
@@ -64,7 +65,7 @@ alias d2="ssh dev2"
 #GIT ALIAS
 alias sta='git status'
 alias com='git commit -a'
-alias ga='git add .'
+alias ga='git add . --all'
 alias pull='echo -e "\n\t ${alert}PULL${normal} xando\n\n\t ${green}LOCAL <- ${yellow} WWW ${blue} ($(git config remote.origin.url)) ${normal}\n" && git pull '
 alias push='echo -e "\n\t ${alert}emPURRANDO${normal}\n\n\t ${yellow}LOCAL -> ${green} WWW ${blue} ($(git config remote.origin.url)) ${normal}\n" && git push origin master '
 #alias clone='git clone git@github.com:quirinobytes/$1.git'
