@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+
+if [ ! -d ~/.lixeira ] ; then
+mkdir ~/.lixeira
+echo Diretório nao existia, foi criado com sucesso.
+
+else
+mv $1 ~/.lixeira/
+fi
+
