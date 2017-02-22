@@ -73,6 +73,16 @@ alias push='echo -e "\n\t ${alert}emPURRANDO${normal}\n\n\t ${yellow}LOCAL -> ${
 #alias clone='git clone git@github.com:quirinobytes/$1.git'
 
 
+##################
+#HOST BASED ALIAS# 
+##################
+# zaroio
+if [ `hostname` == 'zaroio' ]; then
+alias ssh='ssh -l tqi_rcastro'
+else
+echo nao estou no zaroio.
+fi
+
 
 ## CUSTOM ALIAS
 
