@@ -9,6 +9,9 @@ OSTYPE=`uname`
 ############ Linux ##############################
 if [ $OSTYPE == "Linux" ]; then
 
+	#instalar o colordiff
+	yum install colordiff -y
+
 	#instalar o rubydevel para funcionar o ronn
 	yum -y install gcc ruby-devel rubygems
 	
