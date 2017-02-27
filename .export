@@ -11,7 +11,7 @@ else
 fi
 
 OSTYPE=`uname`
-PATH=$PATH:$CDSHELL/linux
+PATH=$PATH:$CDSHELL/linux:/usr/local/bin
 
 HISTFILE=~/.bash_history
 HISTSIZE=2000
