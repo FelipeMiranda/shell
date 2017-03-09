@@ -65,6 +65,7 @@ alias ®="pull; if [ \$? ] ; then push ; else echo -en \$red '\n\nErro no pull!!
 alias ¢=®
 alias d1="ssh dev1"
 alias d2="ssh dev2"
+alias sshm="ssh m -p 22000 -l root"
 
 #GIT ALIAS
 alias sta='git status'
