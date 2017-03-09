@@ -4,10 +4,10 @@
 
 if [ -z $1 ] ; then
 
-netstat -atun
+netstat -atunop
 
 else
 
-netstat -atun | grep --color $1
+netstat -atunop | grep --color $1
 
 fi
