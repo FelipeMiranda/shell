@@ -68,6 +68,7 @@ alias ¢¢=®®
 alias d1="ssh dev1"
 alias d2="ssh dev2"
 alias sshm="ssh m -p 22000 -l root"
+alias trim="trim.sh"
 
 #GIT ALIAS
 alias sta='git status'
