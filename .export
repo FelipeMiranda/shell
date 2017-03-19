@@ -28,7 +28,7 @@ normal="\[$normal\]"
 #
 #
 
-if [ `hostname` == 'mmanzano' ] ; then
+if [ `hostname` == 'mmanzano' ] || [ `hostname` == 'dev2' ] ; then
 	PS1="$red\u$yellow@$blue\h $cyan\w> $normal"
 else
 	PS1="$red\u$yellow@$green\h $cyan\w> $normal"
