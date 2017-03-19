@@ -113,10 +113,10 @@ fi
 cd -
 
 # Instalacao do POST COMMIT do GIT HOOKS !
-echo -en "Instalando o Post commit Git Hooks"
+echo -en "Instalando o Post commit Git Hooks\n"
 cp $CDSHELL/githooks/post-commit $CDSHELL/.git/hooks/
 if [ -f $CDSHELL/.git/hooks/post-commit ] ; then
-	echo -en "Post commit Git Hooks ............ instalado com sucesso $green OK $normal"
+	echo -en "Post commit Git Hooks ........ instalado com sucesso $green OK $normal"
 else
 	echo -en "$red Falha ao instalar Post commit Git Hooks $normal" 
 fi
