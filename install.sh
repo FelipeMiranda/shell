@@ -112,7 +112,6 @@ fi
 
 cd -
 
-
 echo -en "Instalando o Post commit Git Hooks"
 cp $CDSHELL/githooks/post-commit $CDSHELL/.git/hooks/
 if [ -f $CDSHELL/.git/hooks/post-commit ] ; then
