@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# An example hook script that is called after a successful
+# commit is made.
+#
+# To enable this hook, rename this file to "post-commit".
+
+
+#: Nothing
+
+VERSION=`git rev-list HEAD | wc -l`
+#echo -en "\n\nVersão atualizada: $red localmente! $normal $VERSION\n\n"
+echo -en "\n\nVersão atualizada: \e[32m $VERSION \e[31m Somente localmente mande um \e[0;33m ® \e[31m na fé! \e[0;0m \n\n"
