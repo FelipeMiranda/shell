@@ -45,6 +45,7 @@ alias nm='nodemon'
 alias nd='node'
 alias sss='ss -s'
 alias Ps1_mini=$CDSHELL/linux/ps1_mini.sh
+alias mm="ssh mmanzano"
 
 alias squidlog.sh="tail -s 0.5 -f /var/log/squid/access.log | awk '{ printf strftime(\"%H:%M %d/%m \") } $0'"
 
