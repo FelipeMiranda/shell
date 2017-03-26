@@ -53,6 +53,7 @@ alias nm='nodemon'
 alias nd='node'
 alias sss='ss -s'
 alias ps1='source $CDSHELL/linux/ps1_mini.sh'
+alias ps2='source $CDSHELL/linux/ps2_normal.sh'
 alias mm="ssh mmanzano"
 alias install="yum install -y"
 
