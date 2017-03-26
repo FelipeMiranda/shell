@@ -1,4 +1,4 @@
 
 
-PS1="\W>"
+PS1="\W\n>"
 export PS1
