@@ -26,7 +26,7 @@ alias cdw='cd ~/workspace'
 alias cdp='cd /etc/puppet/environments/devel'
 alias cdco='cd ~/codigo-fonte'
 alias cdl='cd $CDSHELL/linux'
-/### USABLES ###
+### USABLES ###
 alias cdusr='cd /usr'
 alias cdvar='cd /var'
 alias cdlog='cd /var/log'
