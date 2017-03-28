@@ -1,6 +1,8 @@
 #!/usr/bin/expect
 
-set timeout 5
+# Se setar o timeout a probabilidade de digitar a senha qdo algum servidor atrasar é grande.
+
+#set timeout 5
 
 set arg1 [lindex $argv 0]
 set arg2 [lindex $argv 1]
