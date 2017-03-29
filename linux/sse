@@ -1,20 +1,22 @@
 #!/usr/bin/expect
 
-# Se setar o timeout a probabilidade de digitar a senha qdo algum servidor atrasar é grande.
+proc abort { } { send_user "Timeout!" ; exit 2 }
 
+# Se setar o timeout a probabilidade de digitar a senha qdo algum servidor atrasar é grande.
 #set timeout 5
 
 set arg1 [lindex $argv 0]
 set arg2 [lindex $argv 1]
 
-puts $arg2
+puts "Comando desejado: $arg2"
 
 set fd1 [open "~/padrao1.passwd"]
 set senha [read $fd1]
 
 
+#stty -echo; # Disable 'echo' here
 spawn ssh -o "StrictHostKeyChecking no" -l tqi_rcastro $arg1
-expect "*assword:"
+expect timeout abort "*assword:"
 send "$senha\r"
 
 expect "*$*"
