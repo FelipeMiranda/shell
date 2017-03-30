@@ -29,6 +29,7 @@ Melhorias
 - Teclas de atalho de F4 ate F12 para screenrc.
 - Vim com varias frescuras, F10 salva , F10-F10 salva e sai.
 - .toprc salvo
+- variavel HISTSIZE=2000
 
 
 
