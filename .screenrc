@@ -179,6 +179,13 @@ bindkey -k k9 focus     # F9 # Pula para proxima janela
 bindkey -k F1 screen -l 1 ssh dev1 'puppet agent -t ; if [ $? == 1 ]; then echo pressione enter... ; read -n 1 ; fi '
 bindkey -k F2 prev      # F12# Usado no Vim para sair do arquivo salvando caso exista modificacoes, por esse motivo nao usei para kill aqui
 
+#Também aproveitando o embalado e já criando um recurso legal com Crtl+ (<-)  , Crtl+(->) para next e prev(F12) nas janelas.
+bindkey "^[[D" prev
+bindkey "^[[C" next
+
+
+
+
 # easier scroll
 #bindkey "^[OA" eval 'copy' 'stuff ^b'  # PgUp | Enter copy/scrollback mode and page up
 #bindkey "^[OB" eval 'copy' "stuff ^f'  # PgDown | Enter copy/scrollback mode and page down
