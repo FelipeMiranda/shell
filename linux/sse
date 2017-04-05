@@ -23,7 +23,10 @@ expect "*$*"
 if [string match "" $arg2] {
 	send "sudo su -"
 } else {
-	send $arg2
+	send "sudo su - \r"
+	send "$arg2\r"
+	send "exit\r"
+	send "exit\r"
 }
 send "\r"
 interact
