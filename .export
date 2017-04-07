@@ -46,6 +46,7 @@ fi
 
 if [ `hostname` == 'zaroio' ]; then
 PATH=$PATH:/root/uol/cmdb-RESTful
+DISPLAY=172.19.2.134:0.0
 fi
 
 
@@ -53,7 +54,7 @@ fi
 export PATH=.:$PATH
 
 #DEFAULT EXPORT (all OSes)
-export HISTFILE HISTSIZE PS1 EDITOR VISUAL CDSHELL PATH
+export HISTFILE HISTSIZE PS1 EDITOR VISUAL CDSHELL PATH DISPLAY
 
 
 # CUSTOM EXPORT per OS'es
