@@ -93,7 +93,7 @@ bind o screen 0 /usr/bin/play $HOME/pessoal/O-Oh.wav
 #register z "$URLC/programas/bash/funcoesZZ"
 #register r "http://txt2regex.sourceforge.net"
 #register t "http://txt2tags.sourceforge.net"
-#bind E paste
+bindkey ^v  paste
 
 # to shit+(page up|page down) work
 bind h hardstatus ignore
@@ -154,9 +154,6 @@ terminfo vt100 dl=5\E[M
 #screen -t zznoticias   4 bash -c "funcoeszz zznoticiaslinux; echo; echo ---FIM---; read"
 #screen -t artistas     5 bash -c "funcoeszz zzcasadosartistas; echo; echo ---FIM---; read"
 #select 1
-#
-#
-
 
 
 
@@ -168,10 +165,9 @@ bindkey -k k4 remove  	# F4 # Desliga a exiubicao da Janela
 
 bindkey -k k5 eval split focus screen    # F5 # Cria uma divisao horizontal
 bindkey -k k6 eval 'split -v' focus screen # F6 # Cria uma divisao vertical
-bindkey -k k7 resize -5 # F7 # Aumenta o tamando da Janela Atual
+bindkey -k k7 resize -15 # F7 # Aumenta o tamando da Janela Atual
 bindkey ^[[31~ resize -1 # SHIFT-F7
-
-bindkey -k k8 resize +5 # F8 # Dominui o tamanho da Janela atual
+bindkey -k k8 resize +15 # F8 # Dominui o tamanho da Janela atual
 bindkey ^[[32~ resize +1 #SHIFT-F8
 
 bindkey -k k9 focus     # F9 # Pula para proxima janela
