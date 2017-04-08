@@ -63,7 +63,8 @@ cd $CDSHELL
 DATA=$(date +'%d/%m/%Y')
 MES=$(date +'%B')
 HORA=$(date +'%T')
-VERSION=`git rev-list HEAD | wc -l `
+V=`git rev-list HEAD | wc -l `
+VERSION=`echo "scale=2; $V/100" | bc`
 echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 
 
