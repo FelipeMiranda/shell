@@ -57,6 +57,7 @@ alias ps2='source $CDSHELL/linux/ps2_normal.sh'
 alias mm="ssh mmanzano"
 alias install="yum install -y"
 alias yi="yum install -y"
+alias tlog="tail -f /var/log/messages"
 
 alias squidlog.sh="tail -s 0.5 -f /var/log/squid/access.log | awk '{ printf strftime(\"%H:%M %d/%m \") } $0'"
 
