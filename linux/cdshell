@@ -8,6 +8,7 @@ function exibe_versao_cdshell(){
 }
 function exibe_versao_git_local_version(){
 VERSION=`git rev-list HEAD | wc -l`
+VERSION=`echo "scale=2; $VERSION" | bc`
 
 if [ $VERSION -eq 0 ]; then 
 		echo -en "Versão do repo local: $red $VERSION (Não existe repo aqui) \n"
