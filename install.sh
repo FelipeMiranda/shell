@@ -123,7 +123,7 @@ else
 fi
 
 # Exibindo a versao do cdshell
-echo -e "\n\n Arquivos ${alert}CDSHELL${normal} versão $green `git rev-list HEAD | wc -l`  $normal copiados com $atention sucesso $normal \n"
+echo -e "\n\n Arquivos ${alert}CDSHELL${normal} versão $green $VERSION $normal copiados com $atention sucesso $normal \n"
 
 
 if [ ! -e ~/.cdshell_req_installed ]; then
