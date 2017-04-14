@@ -108,10 +108,12 @@ fi
 
 ## LINUX ALIAS
 if [ $OSTYPE == "Linux" ]; then
-alias n=$CDSHELL/linux/netstat.sh
-alias ls='ls --color'
-alias r='route -n'
-alias grep='grep --color'
+   alias n=$CDSHELL/linux/netstat.sh
+   alias nL='n LISTEN'
+   alias nE='n ESTABLISHED'
+   alias ls='ls --color'
+   alias r='route -n'
+   alias grep='grep --color'
 fi
 
 ## OPENBSD ALIAS
