@@ -7,7 +7,7 @@ OSTYPE=`uname`
 
 alias ..='cd ..'
 alias d='dig'
-alias i='ifconfig | grep inet'
+alias i="ifconfig | grep UP -A1 | sed 's/flags.*$//g' | tr '\n' ' ' | sed 's/-/\n/' ; echo "
 alias g='grep -i'
 alias l='ls'
 alias m='more'
