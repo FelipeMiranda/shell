@@ -6,10 +6,12 @@ function exibe_versao_cdshell(){
 		DATA=`cat $CDSHELL/backup/data_ultima_instalacao.txt`
 		echo -en "\n$DATA"
 }
-function exibe_versao_git_local_version(){
-VERSION=`git rev-list HEAD | wc -l`
 
-if [ $VERSION -eq 0 ]; then 
+function exibe_versao_git_local_version(){
+V=`git rev-list HEAD | wc -l`
+VERSION=`echo "scale=2; $V/100" | bc`
+
+if [ $VERSION -gt 0 ]; then 
 		echo -en "Versão do repo local: $red $VERSION (Não existe repo aqui) \n"
 	else 
 		echo -en "Versão do repo local: $green $VERSION \n"

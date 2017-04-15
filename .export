@@ -38,11 +38,23 @@ else
 	fi
 fi
 
+
+##################
+#HOST BASED ALIAS#
+##################
+# zaroio
+
+if [ `hostname` == 'zaroio' ]; then
+PATH=$PATH:/root/uol/cmdb-RESTful
+DISPLAY=172.19.2.134:0.0
+fi
+
+
 #Colocar o diretório corrente já no PATH, para nao precisar ficar toda hora digitando ./ e viva a preguiça.
 export PATH=.:$PATH
 
 #DEFAULT EXPORT (all OSes)
-export HISTFILE HISTSIZE PS1 EDITOR VISUAL CDSHELL PATH
+export HISTFILE HISTSIZE PS1 EDITOR VISUAL CDSHELL PATH DISPLAY
 
 
 # CUSTOM EXPORT per OS'es

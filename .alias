@@ -7,7 +7,7 @@ OSTYPE=`uname`
 
 alias ..='cd ..'
 alias d='dig'
-alias i='ifconfig | grep inet'
+alias i="ifconfig | grep UP -A1 | sed 's/flags.*$//g' | tr '\n' ' ' | sed 's/-- /\n/g'| column | sed 's/      inet/\t=/' | sed 's/lo:/lo:\t/' | grep --color -E '= ([0-9]{1,3}[\.]){3}[0-9]{1,3}'  ; echo "
 alias g='grep -i'
 alias l='ls'
 alias m='more'
@@ -62,7 +62,7 @@ alias ys="yum search"
 alias ssyi="yum search"
 
 
-
+alias tlog="tail -f /var/log/messages"
 alias squidlog.sh="tail -s 0.5 -f /var/log/squid/access.log | awk '{ printf strftime(\"%H:%M %d/%m \") } $0'"
 
 #BLUEMONEY
@@ -112,10 +112,12 @@ fi
 
 ## LINUX ALIAS
 if [ $OSTYPE == "Linux" ]; then
-alias n=$CDSHELL/linux/netstat.sh
-alias ls='ls --color'
-alias r='route -n'
-alias grep='grep --color'
+   alias n=$CDSHELL/linux/netstat.sh
+   alias nL='n LISTEN'
+   alias nE='n ESTABLISHED'
+   alias ls='ls --color'
+   alias r='route -n'
+   alias grep='grep --color'
 fi
 
 ## OPENBSD ALIAS

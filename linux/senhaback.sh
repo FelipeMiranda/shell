@@ -1,6 +1,8 @@
 #!/bin/bash
 
 
+#sleep 10 && kill $$ &
+
 if [ ! -z $1 ] ; then
 
 	HOST=$1
