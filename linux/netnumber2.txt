@@ -1,0 +1,1 @@
+watch -n3 "echo $HOSTNAME ; netstat -atun | awk '{print \$6}' | sed '/[:lower:]/d' | sort -nr | uniq -c | sort -n"

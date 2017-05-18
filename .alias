@@ -86,6 +86,7 @@ alias ¢¢=®®
 alias d1="ssh dev1"
 alias d2="ssh dev2"
 alias sshm="ssh m -p 22000 -l root"
+alias nsse="senhaback.sh"
 alias trim="trim.sh"
 
 #GIT ALIAS
@@ -113,6 +114,11 @@ fi
 ## LINUX ALIAS
 if [ $OSTYPE == "Linux" ]; then
    alias n=$CDSHELL/linux/netstat.sh
+   alias netnumber="echo $(hostname) netstat -nat | awk '{print \$6}' | sort | uniq -c | sort -n"
+#EXEMPLOS DE COMANDOS RAPIDOS.
+   alias netnumber2="cat $CDSHELL/linux/netnumber2.txt"
+   alias inputrc2="cat $CDSHELL/linux/inputrc2.txt"
+
    alias nL='n LISTEN'
    alias nE='n ESTABLISHED'
    alias ls='ls --color'
