@@ -101,10 +101,12 @@ alias push='echo -e "\n\t ${alert}emPURRANDO${normal}\n\n\t ${yellow}LOCAL -> ${
 #HOST BASED ALIAS# 
 ##################
 # zaroio
-if [ `hostname` == 'zaroio' ]; then
+if [ $HOSTNAME == 'zaroio' ]; then
 alias ssh='ssh -l tqi_rcastro'
 else
-echo nao estou no zaroio.
+	if [ $HOSTNAME != 'mmanzano' ] ; then
+		echo nao estou no zaroio.
+	fi
 fi
 
 
