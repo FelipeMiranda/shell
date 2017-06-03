@@ -53,24 +53,32 @@ fi
 ## COMO NAO ENTROU EM NENHUMA OPCAO ACIMA E SAIU VIA FORCEPS COM EXIT, so sobrou executar o padrao.
 # Se passar um parametro, entao vamos la mostrar o miniman daquele comando, caso tenha!
 if [ -n "$1" ]; then
+MINIMAN_FILENAME=$1.md
+MINIMAN_NAME=$1	
 
 	if [ -e ~/help/$OSTYPE/help/$1.1 ]; then
 		man ~/help/$OSTYPE/help/$1.1
 	else
 		echo -en "\n${red}ERRO: Manual para esse $yellow $1 $red não existe no diretório de MINIMAN's $normal\n\n\n"
-		echo -en "\n\n\n${green}Criando o miniman...\n" 
+		echo -en "\n\n\n${green}Criando o miniman...$normal\n" 
 		
 			#se ja existe o .md criado, e ainda nao foi gerado o .1 entao alerte-o sobre o perigo de apagar algo ja criado!
 			if [ -e ~/help/$OSTYPE/help/$1.md ] && [ ! -e ~/help/$OSTYPE/help/$1.1 ]; then
 				echo -en "\n\t\t$alert#DANGER#$normal Já existe um md, mas ainda nao foi gerado o miniman $MINIMAN_NAME $alert#DANGER#$normal\n\n"
+				cd /$USER/help/Linux/help
+				cp model.md /tmp/$MINIMAN_FILENAME
+				sed -i "s/model/$MINIMAN_NAME/g" /tmp/$MINIMAN_FILENAME
+				diff /tmp/$MINIMAN_FILENAME ~/help/$OSTYPE/help/$1.md
+				if [ $? != 0 ]; then
+					echo E digo mais... ja houveram modificacoes no $1.md desde a copia do model.md... sua conta e risco.
+					rm /tmp/$MINIMAN_FILENAME -f
+					cd -
+				fi
 			fi
-		echo -en "- Deseja já copiar o modelo para -> ~/help/$OSTYPE/help/$1.md ?\n"
-		read -p "(S/N)" RESP
+		echo -en "- Deseja já copiar o modelo para -> ~/help/$OSTYPE/help/$1.md? (${green}S${normal}/${red}n${normal}) "
+		read RESP
 		if [ "$RESP" == "S" ] || [ "$RESP" == "s" ]; then
 			
-			#criando as variaveis necessarias para criar o nome do arquivo.
-			MINIMAN_FILENAME=$1.md
-			MINIMAN_NAME=$1	
 			cd /$USER/help/Linux/help
 			cp model.md $MINIMAN_FILENAME
 			sed -i "s/model/$MINIMAN_NAME/g" $MINIMAN_FILENAME
