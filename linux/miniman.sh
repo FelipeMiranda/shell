@@ -84,6 +84,13 @@ MINIMAN_NAME=$1
 			sed -i "s/model/$MINIMAN_NAME/g" $MINIMAN_FILENAME
 			cd -
 			echo -en "\nDone!\n\n ... $yellow $MINIMAN_FILENAME $normal criado com $green sucesso! \t $alert \o/ $normal\n\n" 
+			echo -en "\n\nDeseja já abrir o vi para editar o $red novo $normal MINIMAN ?  (${green}S${normal}/${red}n${normal}) "
+			read RESP
+			if [ "$RESP" == "S" ] || [ "$RESP" == "s" ]; then
+				cd /$USER/help/Linux/help
+				vi	$MINIMAN_FILENAME	
+				echo -en "\nArquivo editado com sucesso, nao esqueça de fazer $red git add $normal"	
+			fi
 			exit 0
 		fi 
 	   echo -e "\n\n Use: miniman [COMANDO] <SIST.OPERACIONAL>\n"

@@ -26,6 +26,7 @@ alias cds='cd ~/shell'
 alias cdw='cd ~/workspace'
 alias cdp='cd /etc/puppet/environments/devel'
 alias cdco='cd ~/codigo-fonte'
+alias cdc='cd ~/codigo-fonte'
 alias cdl='cd $CDSHELL/linux'
 ### USABLES ###
 alias cdusr='cd /usr'
@@ -61,6 +62,7 @@ alias yi="yum install -y"
 alias iiys="yum install -y"
 alias ys="yum search"
 alias ssyi="yum search"
+alias ctl="systemctl"
 
 
 alias tlog="tail -f /var/log/messages"
