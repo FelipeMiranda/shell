@@ -70,7 +70,7 @@ MINIMAN_NAME=$1
 				sed -i "s/model/$MINIMAN_NAME/g" /tmp/$MINIMAN_FILENAME
 				diff /tmp/$MINIMAN_FILENAME ~/help/$OSTYPE/help/$1.md
 				if [ $? != 0 ]; then
-					echo E digo mais... ja houveram modificacoes no $1.md desde a copia do model.md... sua conta e risco.
+					echo -en "$alert E digo mais... ja houveram modificacoes no $1.md desde a copia do model.md... sua conta e risco.\n$normal"
 					rm /tmp/$MINIMAN_FILENAME -f
 					cd -
 				fi

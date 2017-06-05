@@ -11,6 +11,13 @@ if [ -e ~/.alias ]; then
  	. ~/.alias
 fi
 
+# Caso exista, execute os alias personalizados em .alias
+# Atençao: "como se usa variaveis dentro do .alias, nao se deve colocar ele antes do .export acima"
+if [ -e $CDSHELL/hostScripts/${HOSTNAME} ]; then
+ 	. $CDSHELL/hostScripts/${HOSTNAME}
+fi
+
+
 #Usando <TAB><TAB> após o comando cd somente mostra diretórios
 complete -d cd
 

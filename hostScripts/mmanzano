@@ -1,0 +1,8 @@
+#!/bin/bash
+
+FILE_NAME=`ls /logs/hosts* | tail -n1`
+
+
+echo -en "IPs bloqueados:"
+cat $FILE_NAME
+echo -en "\n"
