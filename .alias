@@ -156,4 +156,4 @@ fi
 
 alias b64decode="cat | base64 -d <<<"
 alias b64encode="echo -n | base64 <<<"
-alias TCP-syn-list="tcpdump -Anvi $IF_INTERNET 'tcp[13]==2'"
+alias TCP-syn="tcpdump -Anvi $IF_INTERNET 'tcp[13]==2'"
