@@ -2,8 +2,7 @@
 
 FILE_NAME=`ls /logs/hosts* | tail -n1`
 
-/usr/bin/wc -l /etc/hosts.deny | tee /logs/hosts.deny$(date +%Y%m%d)
+/usr/bin/wc -l /etc/hosts.deny | tee /logs/hosts.deny$(date +%Y%m%d) > /dev/null
 
 echo -en "IPs bloqueados:"
 cat $FILE_NAME
-echo -en "\n"
