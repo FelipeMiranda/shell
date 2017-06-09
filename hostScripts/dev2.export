@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+
+IF_INTERNET="eth0"
+IF_REDEINTERNA=""
+
+export $IF_INTERNET $IF_REDEINTERNA
