@@ -13,8 +13,8 @@ fi
 
 # Caso exista, execute os alias personalizados em .alias
 # Atençao: "como se usa variaveis dentro do .alias, nao se deve colocar ele antes do .export acima"
-if [ -e $CDSHELL/hostScripts/${HOSTNAME} ]; then
- 	. $CDSHELL/hostScripts/${HOSTNAME}
+if [ -e $CDSHELL/hostScripts/${HOSTNAME}.alias ]; then
+ 	. $CDSHELL/hostScripts/${HOSTNAME}.alias
 fi
 
 

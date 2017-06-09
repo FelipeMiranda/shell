@@ -58,6 +58,7 @@ alias ps1='source $CDSHELL/linux/ps1_mini.sh'
 alias ps2='source $CDSHELL/linux/ps2_normal.sh'
 alias mm="ssh mmanzano"
 alias install="yum install -y"
+alias yr="yum remove"
 alias yi="yum install -y"
 alias iiys="yum install -y"
 alias ys="yum search"
