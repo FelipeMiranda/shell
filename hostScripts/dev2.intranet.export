@@ -2,6 +2,9 @@
 
 
 
+
+PATH=$PATH:~/sectools
+
 IF_INTERNET="eth0"
 IF_REDEINTERNA=""
 
