@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+
+
+
+##################
+#HOST BASED ALIAS# 
+##################
+# zaroio
+if [ $HOSTNAME == 'zaroio' ]; then
+alias ssh='ssh -l tqi_rcastro'
+else
+	if [ $HOSTNAME != 'mmanzano' ] ; then
+		echo nao estou no zaroio.
+	fi
+fi
+
+
