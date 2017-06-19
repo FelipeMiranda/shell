@@ -15,6 +15,7 @@ alias mp3=mplayer
 alias p='ps aux'
 alias pg='psauxgrep.sh'
 alias t='tail -f'
+alias tmessages='tail -f 100 /var/log/messages'
 alias +x='chmod +x' 
 alias cd..='cd ..'
 alias cd-='cd -'
