@@ -100,7 +100,8 @@ bind h hardstatus ignore
 bind g hardstatus alwayslastline
 
 
-# mapeamentos para fazer redimensionamento de janelas divididas
+
+# mapeamentos mais eficazes para redimensionar as janelas divididas
 # com o Split.
 #bind 'R' wrap
 bind 'r' resize
