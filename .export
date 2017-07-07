@@ -44,11 +44,6 @@ fi
 ##################
 # zaroio
 
-if [ `hostname` == 'zaroio' ]; then
-PATH=$PATH:/root/uol/cmdb-RESTful
-DISPLAY=172.19.2.134:0.0
-fi
-
 if [ -e $CDSHELL/hostScripts/$HOSTNAME.export ]; then
 	. $CDSHELL/hostScripts/$HOSTNAME.export
 fi
