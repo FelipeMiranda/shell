@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+# ZAROIO
+
+if [ `hostname` == 'zaroio' ]; then
+PATH=$PATH:/root/uol/cmdb-RESTful
+DISPLAY=172.19.2.134:0.0
+fi
+
+
