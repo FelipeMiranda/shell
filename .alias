@@ -93,6 +93,7 @@ alias d2="ssh dev2"
 alias sshm="ssh m -p 22000 -l root"
 alias nsse="senhaback.sh"
 alias trim="trim.sh"
+alias arroz="echo Gzuis"
 
 #GIT ALIAS
 alias sta='git status'
