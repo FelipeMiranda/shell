@@ -34,6 +34,7 @@ alias cdusr='cd /usr'
 alias cdvar='cd /var'
 alias cdlog='cd /var/log'
 alias cde='cd /etc/'
+alias c=cat
 ################
 
 alias criadaemon=~/shell/linux/criadaemon.sh
