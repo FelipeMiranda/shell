@@ -525,7 +525,8 @@ check_server_status() {
     else
         TLSFLAG=""
     fi
-
+	 HOST=${1}
+    #echo "GET /" | ${OPENSSL} s_client -servername ${HOST} --no_ssl3 -connect ${1}:${2} ${TLSFLAG} -crlf 2> ${ERROR_TMP} 1> ${CERT_TMP}
     echo "GET /" | ${OPENSSL} s_client -no_ssl3 -connect ${1}:${2} ${TLSFLAG} -crlf 2> ${ERROR_TMP} 1> ${CERT_TMP}
 
     if ${GREP} -i  "Connection refused" ${ERROR_TMP} > /dev/null
@@ -641,6 +642,14 @@ check_file_status() {
         printmacs ${HOST} ${PORT} "0" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
         RETCODE=0
     fi
+
+		  if [ "$HOST" != "$COMMONNAME" ]; then
+			prints ${HOST} ${PORT} "CN=Wrong" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
+			printmacs ${HOST} ${PORT} "2" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
+			RETCODE=2
+        fi 
+
+
 }
 
 #################################
