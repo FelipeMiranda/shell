@@ -85,6 +85,7 @@ alias postzerafila='postsuper -d all'
 alias postflush='postqueue -f'
 alias scr='screen -x || screen'
 alias miniman='~/shell/linux/miniman.sh'
+alias rr=®
 alias ®="pull; if [ \$? ] ; then push ; else echo -en \$red '\n\nErro no pull!!!\n' ; fi" 
 alias ®®="cdw && ® ;cds && ® ;cdh && ® ; cd; cd codigo-fonte && ® ;"
 alias ¢=®
