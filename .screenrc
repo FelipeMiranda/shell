@@ -166,9 +166,9 @@ bindkey -k k4 remove  	# F4 # Desliga a exiubicao da Janela
 
 bindkey -k k5 eval split focus screen    # F5 # Cria uma divisao horizontal
 bindkey -k k6 eval 'split -v' focus screen # F6 # Cria uma divisao vertical
-bindkey -k k7 resize -15 # F7 # Aumenta o tamando da Janela Atual
+bindkey -k k7 resize -10 # F7 # Aumenta o tamando da Janela Atual
 bindkey ^[[31~ resize -1 # SHIFT-F7
-bindkey -k k8 resize +15 # F8 # Dominui o tamanho da Janela atual
+bindkey -k k8 resize +10 # F8 # Dominui o tamanho da Janela atual
 bindkey ^[[32~ resize +1 #SHIFT-F8
 
 
