@@ -2,9 +2,9 @@
 
 OSTYPE=`uname`
 
+#rafael
 # UOL TIPs & trick Nicks
 alias puppet2=' echo "puppetd --server=auto-gt.intranet --no-daemonize --no-usecacheonfailure -o --factsync --report -v"'
-
 
 
 #OPCOES COMUNS
