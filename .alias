@@ -2,9 +2,12 @@
 
 OSTYPE=`uname`
 
+# UOL TIPs & trick Nicks
+alias puppet2=' echo "puppetd --server=auto-gt.intranet --no-daemonize --no-usecacheonfailure -o --factsync --report -v"'
+
+
 
 #OPCOES COMUNS
-
 alias ..='cd ..'
 alias d='dig'
 alias i="ifconfig | grep UP -A1 | sed 's/flags.*$//g' | tr '\n' ' ' | sed 's/-- /\n/g'| column | sed 's/      inet/\t=/' | sed 's/lo:/lo:\t/' | grep --color -E '= ([0-9]{1,3}[\.]){3}[0-9]{1,3}'  ; echo "
