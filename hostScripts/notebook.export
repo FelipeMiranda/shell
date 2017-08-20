@@ -3,7 +3,7 @@
 
 # ZAROIO
 
-if [ `hostname` == 'zaroio' ]; then
+if [ `hostname` == 'notebook' ]; then
 PATH=$PATH:/c/shell
 DISPLAY=localhost:0.0
 export DISPLAY PATH
