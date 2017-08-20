@@ -3,9 +3,11 @@
 OSTYPE=`uname`
 
 #rafael
+# UOL TIPs & trick Nicks
+alias puppet2=' echo "puppetd --server=auto-gt.intranet --no-daemonize --no-usecacheonfailure -o --factsync --report -v"'
+
 
 #OPCOES COMUNS
-
 alias ..='cd ..'
 alias d='dig'
 alias i="ifconfig | grep UP -A1 | sed 's/flags.*$//g' | tr '\n' ' ' | sed 's/-- /\n/g'| column | sed 's/      inet/\t=/' | sed 's/lo:/lo:\t/' | grep --color -E '= ([0-9]{1,3}[\.]){3}[0-9]{1,3}'  ; echo "
@@ -35,6 +37,7 @@ alias cdusr='cd /usr'
 alias cdvar='cd /var'
 alias cdlog='cd /var/log'
 alias cde='cd /etc/'
+alias c=cat
 ################
 
 alias criadaemon=~/shell/linux/criadaemon.sh
@@ -85,15 +88,18 @@ alias postzerafila='postsuper -d all'
 alias postflush='postqueue -f'
 alias scr='screen -x || screen'
 alias miniman='~/shell/linux/miniman.sh'
+alias rr=®
 alias ®="pull; if [ \$? ] ; then push ; else echo -en \$red '\n\nErro no pull!!!\n' ; fi" 
 alias ®®="cdw && ® ;cds && ® ;cdh && ® ; cd; cd codigo-fonte && ® ;"
 alias ¢=®
+alias R=®
 alias ¢¢=®®
 alias d1="ssh dev1"
 alias d2="ssh dev2"
-alias sshm="ssh m -p 22000 -l root"
+alias sshm="ssh superati.com.br -p 22000 -l root"
 alias nsse="senhaback.sh"
 alias trim="trim.sh"
+alias arroz="echo Gzuis"
 
 #GIT ALIAS
 alias sta='git status'
