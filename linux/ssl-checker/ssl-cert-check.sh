@@ -17,12 +17,12 @@
 #   - Add support for connecting to the mail sbmission port -- Luis E. Munoz
 #
 # Version 3.15
-#   - Adjusted the file checking logic to use the correct certificate -- Maciej Szudejko
+#   - Adjusted the file checking logic to use the correct certificate -- Maciej Szudejko 
 #   - Add sbin to the default search paths for OpenBSD compatibility -- Alex Popov
 #   - Use cut instead of substring processing to ensure compatibility -- Alex Popov
 #
 # Version 3.14
-#   - Fixed the Common Name parser to handle DN's where the CN is not the last item
+#   - Fixed the Common Name parser to handle DN's where the CN is not the last item 
 #     eg. EmailAddr -- Jason Brothers
 #   - Added the ability to grab the serial number -- Jason Brothers
 #   - Added the "-b" option to print results without a header -- Jason Brothers
@@ -31,7 +31,7 @@
 # Version 3.13
 #   - Updated the subject line to include the hostname as well as
 #     the common name embedded in the X509 certificate (if it's
-#     available) -- idea proposed by Mike Burns
+#     available) -- idea proposed by Mike Burns 
 #
 #  Version 3.12
 #   - Updated the license to allow redistribution and modification
@@ -52,7 +52,7 @@
 #    - Cleaned up the formatting
 #
 #  Version 3.7
-#    - Fixed bug in NAGIOS tests -- Ben Allen
+#    - Fixed bug in NAGIOS tests -- Ben Allen 
 #
 #  Version 3.6
 #    - Added support for certificates stored in PKCS#12 databases -- Ken Gallo
@@ -74,9 +74,9 @@
 #
 #  Version 3.3
 #   - Added common name from X.509 certificate file to E-mail body / header -- Doug Curtis
-#   - Fixed several documentation errors
+#   - Fixed several documentation errors 
 #   - Use mktemp to create temporary files
-#   - Convert printf, sed and awk to variables
+#   - Convert printf, sed and awk to variables 
 #   - Check for printf, sed, awk and mktemp binaries
 #   - Add additional logic to make sure mktemp returned a valid temporary file
 #
@@ -89,7 +89,7 @@
 #   - Removed extra spacing at end of script
 #
 #  Version 3.0
-#   - Added "-i" option to print certificate issuer
+#   - Added "-i" option to print certificate issuer  
 #   - Removed $0 from Subject line of outbound e-mails
 #   - Fixed some typographical errors
 #   - Removed redundant "-b" option
@@ -97,17 +97,17 @@
 #  Version 2.0
 #    - Fixed an issue with e-mails formatting incorrectly
 #    - Added additional space to host column -- Darren-Perot Spruell
-#    - Replaced GNU date dependency with CHRIS F. A. JOHNSON's
-#      date2julian shell function. This routine can be found on
-#      page 170 of Chris's book "Shell Scripting Recipes: A
-#      Problem-Solution Approach," ISBN #1590594711. Julian function
+#    - Replaced GNU date dependency with CHRIS F. A. JOHNSON's 
+#      date2julian shell function. This routine can be found on 
+#      page 170 of Chris's book "Shell Scripting Recipes: A 
+#      Problem-Solution Approach," ISBN #1590594711. Julian function 
 #      was created based on a post to comp.unix.shell by Tapani Tarvainen.
 #    - Cleaned up function descriptions
 #    - Removed several lines of redundant code
 #    - Adjusted the help message
-#
+#      
 #   Version 1.1
-#    - Added "-c" flag to report expiration status of a PEM encoded
+#    - Added "-c" flag to report expiration status of a PEM encoded 
 #      certificate -- Hampus Lundqvist
 #    - Updated the prints messages to display the reason a connection
 #      failed (connection refused, connection timeout, bad cert, etc)
@@ -123,12 +123,12 @@
 #
 # Last Updated: 01-22-2010
 #
-# Purpose:
+# Purpose: 
 #  ssl-cert-check checks to see if a digital certificate in X.509 format
 #  has expired. ssl-cert-check can be run in interactive and batch mode,
 #  and provides facilities to alarm if a certificate is about to expire.
 #
-# License:
+# License: 
 #  Copyright (C) 2007 Ryan Matteson <matty91 at gmail dot com>
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -142,8 +142,8 @@
 #
 # Requirements:
 #   Requires openssl
-#
-# Installation:
+# 
+# Installation: 
 #   Copy the shell script to a suitable location
 #
 # Tested platforms:
@@ -152,14 +152,14 @@
 #  -- OS X 10.4.2 using /bin/sh
 #  -- OpenBSD using /bin/sh
 #  -- FreeBSD using /bin/sh
-#  -- Redhat advanced server 3.0MU3 using /bin/sh
-#
+#  -- Redhat advanced server 3.0MU3 using /bin/sh 
+# 
 # Usage:
-#  Refer to the usage() sub-routine, or invoke ssl-cert-check
+#  Refer to the usage() sub-routine, or invoke ssl-cert-check 
 #  with the "-h" option.
-#
+# 
 # Examples:
-#   Please refer to the following site for documentation and
+#   Please refer to the following site for documentation and 
 #   examples:
 #      http://prefetch.net/articles/checkcertificate.html
 #
@@ -196,7 +196,7 @@ PRINTF=$(which printf)
 SED=$(which sed)
 MKTEMP=$(which mktemp)
 UNAME=$(which uname)
-CURL="$(which curl) -s"
+CURL=$(which curl)
 
 if [ -f /usr/bin/mailx ]
 then
@@ -225,17 +225,17 @@ date2julian() {
 
     if [ "${1} != "" ] && [ "${2} != ""  ] && [ "${3}" != "" ]
     then
-        ## Since leap years add aday at the end of February,
+        ## Since leap years add aday at the end of February, 
         ## calculations are done from 1 March 0000 (a fictional year)
         d2j_tmpmonth=$((12 * ${3} + ${1} - 3))
-
+        
         ## If it is not yet March, the year is changed to the previous year
         d2j_tmpyear=$(( ${d2j_tmpmonth} / 12))
-
+        
         ## The number of days from 1 March 0000 is calculated
-        ## and the number of days from 1 Jan. 4713BC is added
+        ## and the number of days from 1 Jan. 4713BC is added 
         echo $(( (734 * ${d2j_tmpmonth} + 15) / 24
-                 - 2 * ${d2j_tmpyear} + ${d2j_tmpyear}/4
+                 - 2 * ${d2j_tmpyear} + ${d2j_tmpyear}/4 
                  - ${d2j_tmpyear}/100 + ${d2j_tmpyear}/400 + $2 + 1721119 ))
     else
         echo 0
@@ -247,7 +247,7 @@ date2julian() {
 # Arguments:
 #   $1 -> Month name (e.g., Sep)
 #############################################################################
-getmonth()
+getmonth() 
 {
     case ${1} in
         Jan) echo 1 ;;
@@ -272,7 +272,7 @@ getmonth()
 #   $1 -> Date #1
 #   $2 -> Date #2
 #############################################################################
-date_diff()
+date_diff() 
 {
     if [ "${1}" != "" ] &&  [ "${2}" != "" ]
     then
@@ -288,7 +288,7 @@ date_diff()
 #   -o -> ok       - Envia email de status ok
 #   -w -> warning  - Envia email de alerta quando estiver perto de expirar
 #                    o certificado
-#   -c -> critical - certificado expirou
+#   -c -> critical - certificado expirou 
 #############################################################################
 send_email()
 {
@@ -296,7 +296,7 @@ send_email()
 DATE_CUR=$(${DATE} +'%d/%m/%Y as %H:%M')
 SRV=$(${UNAME} -n)
 
-case $1 in
+case $1 in 
 
      -o)
 
@@ -304,8 +304,8 @@ case $1 in
        RESULT="${SUBJECT}"
        STDOUT="$( cat ${STDOUT_TMP} )"
 
-       ${MAIL} -s "[${SRV}]: ${SUBJECT}" -u cronroot ${ADMIN} <<- EOM
-
+       ${MAIL} -s "[${SRV}]: ${SUBJECT}" -u cronroot ${ADMIN} <<- EOM 
+        
 E-mail automatico enviado pelo servidor ${SRV}.
 
 ${RESULT}
@@ -320,23 +320,23 @@ EOM
      ;;
 
 
-     -w)
+     -w)	
 
        SUBJECT="Existem certificados SSL proximos de expirar [status=WARNING]"
        RESULT="${SUBJECT}"
        STDOUT="$(cat ${STDOUT_TMP})"
 
        ${MAIL} -s "[${SRV}]: ${SUBJECT}" -u cronroot ${ADMIN} <<- EOM
-
+        
 E-mail automatico enviado pelo servidor ${SRV}.
 
 ${RESULT}
 
 ${STDOUT}
 
-Script:                         /export/scripts/ssl-cert-check.sh
+Script:				/export/scripts/ssl-cert-check.sh
 Execucao:                       ${DATE_CUR}
-Informarcoes:                   <l-tec-mail@uolinc.com>
+Informarcoes: 			<l-tec-mail@uolinc.com>
 
 EOM
      ;;
@@ -372,18 +372,18 @@ esac
 # Purpose: Print a line with the expiraton interval
 # Arguments:
 #   $1 -> Hostname
-#   $2 -> TCP Port
+#   $2 -> TCP Port 
 #   $3 -> Status of certification (e.g., expired or valid)
 #   $4 -> Date when certificate will expire
-#   $5 -> Days left until the certificate will expire
+#   $5 -> Days left until the certificate will expire 
 #   $6 -> Issuer of the certificate
 #####################################################################
-prints()
+prints() 
 {
     if [ "${QUIET}" != "TRUE" ] && [ "${ISSUER}" = "TRUE" ] && [ "${VALIDATION}" != "TRUE" ]
     then
         MIN_DATE=$(echo $4 | ${AWK} '{ print $1, $2, $4 }')
-        ${PRINTF} "%-35s %-17s %-8s %-11s %-4s %-30s\n" "$1:$2" "$6" "$3" "$MIN_DATE" "$5"
+        ${PRINTF} "%-35s %-17s %-8s %-11s %-4s %-30s\n" "$1:$2" "$6" "$3" "$MIN_DATE" "$5" 
 
     elif [ "${QUIET}" != "TRUE" ] && [ "${ISSUER}" = "TRUE" ] && [ "${VALIDATION}" == "TRUE" ]
     then
@@ -392,8 +392,8 @@ prints()
     elif [ "${QUIET}" != "TRUE" ] && [ "${VALIDATION}" != "TRUE" ]
     then
         MIN_DATE=$(echo $4 | ${AWK} '{ print $1, $2, $4 }')
-        ${PRINTF} "%-47s %-12s %-12s %-4s %-30s\n" "$1:$2" "$3" "$MIN_DATE" "$5"
-
+        ${PRINTF} "%-47s %-12s %-12s %-4s %-30s\n" "$1:$2" "$3" "$MIN_DATE" "$5" 
+    
     elif [ "${QUIET}" != "TRUE" ] && [ "${VALIDATION}" == "TRUE" ]
     then
         ${PRINTF} "%-35s %-35s %-32s\n" "$1:$2" "$7" "$8"
@@ -406,10 +406,10 @@ prints()
 # Arguments:
 #   None
 ####################################################
-print_heading()
+print_heading() 
 {
     if [ "${NOHEADER}" != "TRUE" ]
-    then
+    then 
        if [ "${QUIET}" != "TRUE" ] && [ "${ISSUER}" = "TRUE" ] && [ "${NAGIOS}" != "TRUE" ] && [ "${VALIDATION}" != "TRUE" ]
        then
            ${PRINTF} "\n%-35s %-17s %-8s %-11s %-4s\n" "Host" "Issuer" "Status" "Expires" "Days"
@@ -419,12 +419,12 @@ print_heading()
        then
            ${PRINTF} "\n%-35s %-35s %-32s %-17s\n" "Host" "Common Name" "Serial #" "Issuer"
            echo "----------------------------------- ----------------------------------- -------------------------------- -----------------"
-
+    
        elif [ "${QUIET}" != "TRUE" ] && [ "${NAGIOS}" != "TRUE" ] && [ "${VALIDATION}" != "TRUE" ]
        then
-           ${PRINTF} "\n%-47s %-12s %-12s %-4s\n" "Host" "Status" "Expires" "Days"
+           ${PRINTF} "\n%-47s %-12s %-12s %-4s\n" "Host" "Status" "Expires" "Days" 
            echo "----------------------------------------------- ------------ ------------ ----"
-
+    
        elif [ "${QUIET}" != "TRUE" ] && [ "${NAGIOS}" != "TRUE" ] && [ "${VALIDATION}" == "TRUE" ]
        then
            ${PRINTF} "\n%-35s %-35s %-32s\n" "Host" "Common Name" "Serial #"
@@ -451,7 +451,7 @@ fi
 
 #echo $exitstatus
 
-cat <<EOM | ${CURL}  POST -H 'Content-type: application/xml' -d @- $URL_QUEBEC
+cat <<EOM | ${CURL} -s -X POST -H 'Content-type: application/xml' -d @- $URL_QUEBEC  
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <carrierList>
     <carrier>
@@ -474,10 +474,10 @@ EOM
 # Arguments:
 #   None
 ##########################################
-usage()
+usage() 
 {
     echo "Usage: $0 [ -e email address ] [ -x days ] [-q] [-a] [-b] [-h] [-i] [-n] [-v]"
-    echo "       { [ -s common_name ] && [ -p port] } || { [ -f cert_file ] } || { [ -c certificate file ] }"
+    echo "       { [ -s common_name ] && [ -p port] } || { [ -f cert_file ] } || { [ -c certificate file ] }" 
     echo ""
     echo "  -a                : Send a warning message through E-mail"
     echo "  -b                : Will not print header"
@@ -514,7 +514,7 @@ check_server_status() {
     elif [ "_${2}" = "_pop3" -o "_${2}" = "_110" ]
     then
         TLSFLAG="-starttls pop3"
-
+    
     elif [ "_${2}" = "_imap" -o "_${2}" = "_143" ]
     then
         TLSFLAG="-starttls imap"
@@ -526,27 +526,29 @@ check_server_status() {
         TLSFLAG=""
     fi
 
-    echo "GET /" | ${OPENSSL} s_client -no_ssl3 -connect ${1}:${2} ${TLSFLAG} -crlf 2> ${ERROR_TMP} 1> ${CERT_TMP}
+    #echo "GET /" | ${OPENSSL} s_client -ssl3 -connect ${1}:${2} ${TLSFLAG} -crlf 2> ${ERROR_TMP} 1> ${CERT_TMP}
+    echo "GET /" | ${OPENSSL} s_client -tls1 -connect ${1}:${2} ${TLSFLAG} -crlf 2> ${ERROR_TMP} 1> ${CERT_TMP}
+
 
     if ${GREP} -i  "Connection refused" ${ERROR_TMP} > /dev/null
     then
-        prints ${1} ${2} "Connection refused" "Unknown"
-
+        prints ${1} ${2} "Connection refused" "Unknown"  
+    
     elif ${GREP} -i "gethostbyname failure" ${ERROR_TMP} > /dev/null
     then
-        prints ${1} ${2} "Cannot resolve domain" "Unknown"
-
+        prints ${1} ${2} "Cannot resolve domain" "Unknown" 
+    
     elif ${GREP} -i "Operation timed out" ${ERROR_TMP} > /dev/null
     then
-        prints ${1} ${2} "Operation timed out" "Unknown"
-
+        prints ${1} ${2} "Operation timed out" "Unknown"  
+ 
     elif ${GREP} -i "ssl handshake failure" ${ERROR_TMP} > /dev/null
     then
-        prints ${1} ${2} "SSL handshake failed" "Unknown"
+        prints ${1} ${2} "SSL handshake failed" "Unknown"  
 
     elif ${GREP} -i "connect: Connection timed out" ${ERROR_TMP} > /dev/null
     then
-        prints ${1} ${2} "Connection timed out" "Unknown"
+        prints ${1} ${2} "Connection timed out" "Unknown"  
     else
         check_file_status ${CERT_TMP} $1 $2
     fi
@@ -572,7 +574,7 @@ check_file_status() {
         RETCODE=1
         return
     fi
-
+      
     ### Grab the expiration date from the X.509 certificate
     if [ "${PKCSDBPASSWD}" != "" ]
     then
@@ -580,7 +582,7 @@ check_file_status() {
         # send the informational message to /dev/null
         ${OPENSSL} pkcs12 -nokeys -in ${CERTFILE} \
                   -out ${CERT_TMP} -password pass:${PKCSDBPASSWD} 2> /dev/null
-
+           
         # Extract the expiration date from the certificate
         CERTDATE=$(${OPENSSL} x509 -in ${CERT_TMP} -enddate -noout | \
                  ${SED} 's/notAfter\=//')
@@ -593,13 +595,13 @@ check_file_status() {
         ### Grab the common name (CN) from the X.509 certificate
         COMMONNAME=$(${OPENSSL} x509 -in ${CERT_TMP} -subject -noout | \
                    ${SED} -e 's/.*CN=//' | \
-                                   ${SED} -e 's/\/.*//')
-
-        ### Grab the serial number from the X.509 certificate
+				   ${SED} -e 's/\/.*//')
+        
+	### Grab the serial number from the X.509 certificate
         SERIAL=$(${OPENSSL} x509 -in ${CERT_TMP} -serial -noout | \
                    ${SED} -e 's/serial=//')
     else
-        # Extract the expiration date from the ceriticate
+        # Extract the expiration date from the certificate
         CERTDATE=$(${OPENSSL} x509 -in ${CERTFILE} -enddate -noout | \
                  ${SED} 's/notAfter\=//')
 
@@ -610,10 +612,13 @@ check_file_status() {
         ### Grab the common name (CN) from the X.509 certificate
         COMMONNAME=$(${OPENSSL} x509 -in ${CERTFILE} -subject -noout | \
                    ${SED} -e 's/.*CN=//' | \
-                                   ${SED} -e 's/\/.*//')
-        ### Grab the serial number from the X.509 certificate
+				   ${SED} -e 's/\/.*//')
+	### Grab the serial number from the X.509 certificate
         SERIAL=$(${OPENSSL} x509 -in ${CERTFILE} -serial -noout | \
                    ${SED} -e 's/serial=//')
+	SAN_NAMES=$(echo | ${OPENSSL} s_client -connect ${2}:${3} ${TLSFLAG} -crlf 2> /dev/null | \
+		  ${OPENSSL} x509 -noout -text | grep DNS: )
+
     fi
 
     ### Split the result into parameters, and pass the relevant pieces to date2julian
@@ -627,18 +632,23 @@ check_file_status() {
     if [ ${CERTDIFF} -lt 0 ]
     then
         prints ${HOST} ${PORT} "Expirou" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
-        printmacs ${HOST} ${PORT} "2" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
+	printmacs ${HOST} ${PORT} "2" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
         RETCODE=2
 
     elif [ ${CERTDIFF} -lt ${WARNDAYS} ]
     then
-        prints ${HOST} ${PORT} "Expirando" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
-        printmacs ${HOST} ${PORT} "2" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
+        prints ${HOST} ${PORT} "Expirando" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
+	printmacs ${HOST} ${PORT} "2" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
         RETCODE=1
-
+    elif ! echo ${SAN_NAMES} | grep ${HOST} -q
+    then 
+        prints ${HOST} ${PORT} "CN Error" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
+#       printmacs ${HOST} ${PORT} "2" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME} CN-ERROR" "${SERIAL}"
+        printmacs ${HOST} ${PORT} "2" "${CERTISSUER} *COMMON NAME ERROR*" "${CERTDIFF}" 
+        RETCODE=2
     else
         prints ${HOST} ${PORT} "Valido" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
-        printmacs ${HOST} ${PORT} "0" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
+	printmacs ${HOST} ${PORT} "0" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
         RETCODE=0
     fi
 }
@@ -746,8 +756,8 @@ then
     print_heading
     check_server_status "${HOST}" "${PORT}"
 
-### If a file is passed to the "-f" option on the command line, check
-### each certificate or server / port combination in the file to see if
+### If a file is passed to the "-f" option on the command line, check 
+### each certificate or server / port combination in the file to see if 
 ### they are about to expire
 elif [ -f "${SERVERFILE}" ]
 then
@@ -770,13 +780,13 @@ then
     then
     sed -i '/^$/d' ${STDOUT_TMP}
         if grep -qs "Expirou" ${STDOUT_TMP}
-        then
+        then 
             send_email -c
         elif grep -qs "Expirando" ${STDOUT_TMP}
-        then
+        then 
             send_email -w
         else
-            send_email -o
+            send_email -o 
         fi
     fi
 
@@ -801,3 +811,4 @@ if [ "${NAGIOS}" = "TRUE" ]; then
 else
     exit 0
 fi
+

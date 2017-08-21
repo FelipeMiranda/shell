@@ -3,6 +3,8 @@
 # Obs.: Nao deixar linhas em branco
 #
 #
+#PAGSEGURO
+imap.pagseguro.com 143
 #######################
 # IMAP
 #######################

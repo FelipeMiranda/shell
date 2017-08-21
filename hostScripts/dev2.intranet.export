@@ -7,5 +7,6 @@ PATH=$PATH:~/sectools
 
 IF_INTERNET="eth0"
 IF_REDEINTERNA=""
+GOPATH="/opt/go"
 
 export $IF_INTERNET $IF_REDEINTERNA
