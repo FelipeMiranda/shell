@@ -2,12 +2,16 @@
 
 OSTYPE=`uname`
 
+<<<<<<< HEAD
 # UOL/My TIPs & trick Nicks
+=======
+#rafael
+# UOL TIPs & trick Nicks
+>>>>>>> 5cd708fcc9edb358efec2360cd53404a029d0baa
 alias puppet2=' echo "puppetd --server=auto-gt.intranet --no-daemonize --no-usecacheonfailure -o --factsync --report -v"'
 alias netnumber2="cat $CDSHELL/linux/netnumber2.txt"
 alias netstat2=netnumber2
 alias inputrc2="cat $CDSHELL/linux/inputrc2.txt"
-
 
 
 
@@ -65,7 +69,7 @@ alias nd='node'
 alias sss='ss -s'
 alias ps1='source $CDSHELL/linux/ps1_mini.sh'
 alias ps2='source $CDSHELL/linux/ps2_normal.sh'
-alias mm="ssh mmanzano"
+alias mm="ssh superati.com.br -p 22000"
 alias install="yum install -y"
 alias yr="yum remove"
 alias yi="yum install -y"
@@ -92,6 +96,7 @@ alias postzerafila='postsuper -d all'
 alias postflush='postqueue -f'
 alias scr='screen -x || screen'
 alias miniman='~/shell/linux/miniman.sh'
+alias rr=®
 alias ®="pull; if [ \$? ] ; then push ; else echo -en \$red '\n\nErro no pull!!!\n' ; fi" 
 alias ®®="cdw && ® ;cds && ® ;cdh && ® ; cd; cd codigo-fonte && ® ;"
 alias ¢=®
