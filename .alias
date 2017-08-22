@@ -2,8 +2,12 @@
 
 OSTYPE=`uname`
 
-# UOL TIPs & trick Nicks
+# UOL/My TIPs & trick Nicks
 alias puppet2=' echo "puppetd --server=auto-gt.intranet --no-daemonize --no-usecacheonfailure -o --factsync --report -v"'
+alias netnumber2="cat $CDSHELL/linux/netnumber2.txt"
+alias netstat2=netnumber2
+alias inputrc2="cat $CDSHELL/linux/inputrc2.txt"
+
 
 
 
@@ -116,12 +120,14 @@ alias push='echo -e "\n\t ${alert}emPURRANDO${normal}\n\n\t ${yellow}LOCAL -> ${
 if [ $OSTYPE == "Linux" ]; then
    alias n=$CDSHELL/linux/netstat.sh
    alias netnumber="echo $(hostname) netstat -nat | awk '{print \$6}' | sort | uniq -c | sort -n"
-#EXEMPLOS DE COMANDOS RAPIDOS.
-   alias netnumber2="cat $CDSHELL/linux/netnumber2.txt"
-   alias inputrc2="cat $CDSHELL/linux/inputrc2.txt"
+
+   ####################################################
+   ######## #EXEMPLOS DE COMANDOS RAPIDOS.  ###########
+   ####################################################
 
    alias nL='n LISTEN'
    alias nE='n ESTABLISHED'
+
    alias ls='ls --color'
    alias r='route -n'
    alias grep='grep --color'
