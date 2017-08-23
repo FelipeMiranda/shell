@@ -2,17 +2,14 @@
 
 OSTYPE=`uname`
 
-<<<<<<< HEAD
 # UOL/My TIPs & trick Nicks
-=======
-#rafael
-# UOL TIPs & trick Nicks
->>>>>>> 5cd708fcc9edb358efec2360cd53404a029d0baa
 alias puppet2=' echo "puppetd --server=auto-gt.intranet --no-daemonize --no-usecacheonfailure -o --factsync --report -v"'
 alias netnumber2="cat $CDSHELL/linux/netnumber2.txt"
 alias netstat2=netnumber2
 alias inputrc2="cat $CDSHELL/linux/inputrc2.txt"
 
+# CLItxt
+alias clitxt='curl -F \"upfile=@-\" https://clitxt.com'
 
 
 #OPCOES COMUNS
