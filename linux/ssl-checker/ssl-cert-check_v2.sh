@@ -459,7 +459,7 @@ cat <<EOM | ${CURL} -s -X POST -H 'Content-type: application/xml' -d @- $URL_QUE
         <service>$1</service>
         <item>check_cert_ssl</item>
         <monitor>check_cert_ssl</monitor>
-        <value>$1:$2 - Expires in $5 days ($4)</value>
+        <value>$1:$2 $4</value>
         <timestamp>`date +%s`</timestamp>
         <match>false</match>
         <status>$exitstatus</status>
@@ -628,29 +628,38 @@ check_file_status() {
     # Convert the date to seconds, and get the diff between NOW and the expiration date
     CERTJULIAN=$(date2julian ${MONTH#0} ${2#0} ${4})
     CERTDIFF=$(date_diff ${NOWJULIAN} ${CERTJULIAN})
+    RETCODE=0
 
     if [ ${CERTDIFF} -lt 0 ]
     then
-        prints ${HOST} ${PORT} "Expirou" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
-	printmacs ${HOST} ${PORT} "2" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
+	DESCRIPTION="Expirou"
+        #prints ${HOST} ${PORT} "Expirou" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
+	#printmacs ${HOST} ${PORT} "2" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
         RETCODE=2
-
     elif [ ${CERTDIFF} -lt ${WARNDAYS} ]
     then
-        prints ${HOST} ${PORT} "Expirando" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
-	printmacs ${HOST} ${PORT} "2" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
+	DESCRIPTION="Expirando em $CERTDIFF dias"
+        #prints ${HOST} ${PORT} "Expirando" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
+	#printmacs ${HOST} ${PORT} "2" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
         RETCODE=1
-    elif ! echo ${SAN_NAMES} | grep ${HOST} -q
+    fi
+
+    if echo ${SAN_NAMES} | grep ${HOST} -q
     then 
-        prints ${HOST} ${PORT} "CN Error" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
-#       printmacs ${HOST} ${PORT} "2" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME} CN-ERROR" "${SERIAL}"
-        printmacs ${HOST} ${PORT} "2" "${CERTISSUER} *COMMON NAME ERROR*" "${CERTDIFF}" 
+	DESCRIPTION="${DESCRIPTION}|SAN-Error"
         RETCODE=2
-    else
+    fi
+	
+    if [ $RETCODE == 0 ]
+    then
         prints ${HOST} ${PORT} "Valido" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
 	printmacs ${HOST} ${PORT} "0" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
         RETCODE=0
+    else 
+        prints ${HOST} ${PORT} "$DESCRIPTION" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
+        printmacs ${HOST} ${PORT} "2" "$DESCRIPTION" 
     fi
+
 }
 
 #################################
