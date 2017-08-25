@@ -1,3 +1,0 @@
-banana.com.br 443
-tira-teima.as.uol.com.br 443
-afmail.uol.com.br 443

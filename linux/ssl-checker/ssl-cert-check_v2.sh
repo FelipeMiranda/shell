@@ -632,28 +632,28 @@ check_file_status() {
 
     if [ ${CERTDIFF} -lt 0 ]
     then
-	DESCRIPTION="Expirou"
+	 DESCRIPTION="Expirou"
         #prints ${HOST} ${PORT} "Expirou" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
-	#printmacs ${HOST} ${PORT} "2" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
+		  #printmacs ${HOST} ${PORT} "2" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
         RETCODE=2
     elif [ ${CERTDIFF} -lt ${WARNDAYS} ]
     then
-	DESCRIPTION="Expirando em $CERTDIFF dias"
+	 DESCRIPTION="Expirando em $CERTDIFF dias"
         #prints ${HOST} ${PORT} "Expirando" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
-	#printmacs ${HOST} ${PORT} "2" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
+		  #printmacs ${HOST} ${PORT} "2" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
         RETCODE=1
     fi
 
     if echo ${SAN_NAMES} | grep ${HOST} -q
     then 
-	DESCRIPTION="${DESCRIPTION}|SAN-Error"
+		  DESCRIPTION="${DESCRIPTION} + SAN-Error"
         RETCODE=2
     fi
 	
     if [ $RETCODE == 0 ]
     then
         prints ${HOST} ${PORT} "Valido" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
-	printmacs ${HOST} ${PORT} "0" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
+	 	  printmacs ${HOST} ${PORT} "0" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}" 
         RETCODE=0
     else 
         prints ${HOST} ${PORT} "$DESCRIPTION" "${CERTDATE}" "${CERTDIFF}" "${CERTISSUER}" "${COMMONNAME}" "${SERIAL}"
