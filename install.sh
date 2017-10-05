@@ -110,8 +110,15 @@ if [ ! -f ~/.ssh/id_rsa ] ; then
 	chown 600 ~/.ssh/id_rsa
 	echo -en $red ~/.ssh/id_rsa $normal ............. $green OK
 fi
-
 cd -
+
+#INSTALANDO .bash_completion.d/
+echo -e "Instalando .bash_completion.d/\n\n"
+if [ ! -d $HOME/.bash_completion.d ]; then
+	mkdir $HOME/.bash_completion.d
+fi
+cp $CDSHELL/.bash_completion.d/* $HOME/.bash_completion.d -R
+
 
 # Instalacao do POST COMMIT do GIT HOOKS !
 echo -en "Instalando o Post commit Git Hooks\n"

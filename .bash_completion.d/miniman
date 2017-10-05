@@ -1,0 +1,6 @@
+_minimanFunction()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "`ls /root/help/Linux/help/*.1 | cut -f1 -d. | awk -F'/' '{print $NF}' `" -- $cur) )
+}
+complete -F _minimanFunction miniman

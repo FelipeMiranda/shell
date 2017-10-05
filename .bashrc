@@ -36,5 +36,8 @@ source $SHELLCOLOR
 
 source ~/funcoes-cdshell.sh
 
+#Carregando os bash completions
+source ~/.bash_completion.d/*
+
 
 
