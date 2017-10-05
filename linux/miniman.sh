@@ -25,6 +25,14 @@ if [ "$2" == "-W" ]; then
 OSTYPE="Windows"
 fi
 
+if [ `uname -pa | cut -f1 -d' '` == "Linux" ]; then
+	MAN='man'
+elif  [ `uname -pa | cut -f1 -d' '` == "MINGW64_NT-6.1" ]; then
+	MAN='roff2text'
+fi
+
+
+
 
 #Isso tem que ficar embaixo dos opcoes -L -A -O pois depende do valor da variavel OSTYPE que pode ser mudada ali.
 if [ "$1" == "--ls" ] || [ "$1" == "-l" ] ; then
@@ -57,7 +65,7 @@ MINIMAN_FILENAME=$1.md
 MINIMAN_NAME=$1	
 
 	if [ -e ~/help/$OSTYPE/help/$1.1 ]; then
-		man ~/help/$OSTYPE/help/$1.1
+		$MAN ~/help/$OSTYPE/help/$1.1
 	else
 		echo -en "\n${red}ERRO: Manual para esse $yellow $1 $red não existe no diretório de MINIMAN's $normal\n\n\n"
 		echo -en "\n\n\n${green}Criando o miniman...$normal\n" 
