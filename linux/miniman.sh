@@ -28,9 +28,9 @@ fi
 
 #Isso tem que ficar embaixo dos opcoes -L -A -O pois depende do valor da variavel OSTYPE que pode ser mudada ali.
 if [ "$1" == "--ls" ] || [ "$1" == "-l" ] ; then
-echo -e "Sistema Operacional:$red $OSTYPE $normal"
-ls ~/help/$OSTYPE/help/*.1 | sed 's/.1//g' | sed 's/[a-zA-Z]*\///g'
-exit 0 # mostra os comandos possiveis e sai.
+	echo -e "Sistema Operacional:$red $OSTYPE $normal"
+	ls ~/help/$OSTYPE/help/*.1 | sed 's/.1//g' | sed 's/[a-zA-Z]*\///g'
+	exit 0 # mostra os comandos possiveis e sai.
 fi
 
 
@@ -94,7 +94,7 @@ MINIMAN_NAME=$1
 			exit 0
 		fi 
 	   echo -e "\n\n Use: miniman [COMANDO] <SIST.OPERACIONAL>\n"
-      echo -e "\n miniman --ls    -> Mostra os minimans disponiveis\n\n"
+      echo -e "\n miniman -l ou --ls        -> Mostra os minimans disponiveis para seu S.O, ou estipule um com [-A,-L,-W,-O]\n\n"
       echo -e "\n <SIST. OPERACIONAL> = -A  -> AIX "
       echo -e "\n <SIST. OPERACIONAL> = -L  -> Linux "
       echo -e "\n <SIST. OPERACIONAL> = -O  -> OpenBSD "
