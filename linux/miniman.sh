@@ -102,6 +102,6 @@ MINIMAN_NAME=$1
 	fi
 
 else 
-	echo -e "Uso: miniman <comando-do-miniman>\n ou $yellow miniman cdshell $normal -> maiores informações."
+	echo -e "Uso: miniman <TAB><TAB>\n ou $yellow miniman -h $normal -> maiores informações."
 fi
 
