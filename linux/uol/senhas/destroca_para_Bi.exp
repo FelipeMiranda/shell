@@ -1,0 +1,32 @@
+#!/usr/bin/expect -f
+
+proc abort { } { send_user "Timeout!" ; exit 2 }
+
+set server [lindex $argv 0]
+set timeout 5
+
+set fd1 [open "~/padrao1.passwd"] 
+set senha1 [read $fd1]
+set fd2 [open "~/padrao2.passwd"] 
+set senha2 [read $fd2]
+
+
+spawn ssh -l tqi_rcastro $server passwd
+
+expect timeout abort "*assword:"
+send "$senha2"
+send "\r"
+
+expect "(current)*:"
+send "$senha2"
+send "\r"
+expect "New*:"
+send "Bi8wlYq4vl"
+#send "$senha1"
+send "\r"
+expect "Retype*:"
+#send "$senha1"
+send "Bi8wlYq4vl"
+send "\r"
+#send "exit\rexit\r"
+interact
