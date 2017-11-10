@@ -4,7 +4,7 @@ source $HOME/.alias
 source $CDSHELL/colors.sh
 
 
-if [ -n $1 ] ; then
+if [ -z $1 ] ; then
 	echo -en "Digite algum comando para $red eternizar !!! $normal uhuu \n"
    exit 1
 else
