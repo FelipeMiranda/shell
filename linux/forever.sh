@@ -2,10 +2,12 @@
 
 source $HOME/.alias
 
-echo -en "Pressione" $green q $normal "para sair"
 
-if [ ! -n  ] ; then
+if [ -n $1 ] ; then
 	echo Digite alguma comando para eternizar !!! uhuu
+   exit 1
+else
+	echo -en "Pressione" $green q $normal "para sair"
 fi
 
 while(true) do
