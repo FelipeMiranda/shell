@@ -74,6 +74,7 @@ alias iiys="yum install -y"
 alias ys="yum search"
 alias ssyi="yum search"
 alias ctl="systemctl"
+alias forever="forever.sh"
 
 
 alias tlog="tail -f /var/log/messages"

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $HOME/.alias
+
 echo -en "Pressione" $green q $normal "para sair"
 
 if [ ! -n  ] ; then
