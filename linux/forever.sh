@@ -1,10 +1,11 @@
 #!/bin/bash
 
 source $HOME/.alias
+source $CDSHELL/colors.sh
 
 
 if [ -n $1 ] ; then
-	echo Digite alguma comando para eternizar !!! uhuu
+	echo -en "Digite algum comando para $red eternizar !!! $normal uhuu \n"
    exit 1
 else
 	echo -en "Pressione" $green q $normal "para sair"
