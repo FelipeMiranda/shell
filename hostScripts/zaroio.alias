@@ -23,6 +23,13 @@ alias Mcat=Mcat.sh
 
 
 
+# UOL Tools/Tips
+alias puppet2=' echo "puppetd --server=auto-gt.intranet --no-daemonize --no-usecacheonfailure -o --factsync --report -v"'
+alias netnumber2="cat $CDSHELL/linux/netnumber2.txt"
+alias netstat2=netnumber2
+alias inputrc2="cat $CDSHELL/linux/inputrc2.txt"
+
+
 
 else
 	if [ $HOSTNAME != 'mmanzano' ] ; then
