@@ -15,7 +15,7 @@ alias n2-check_linguem_fileserver=n2-check_linguem_fileserver.sh
 alias n2-imap-restart=n2-imap-restart.sh
 alias n2-imap-check=n2-imap-check.sh
 alias n2-puppet_client=n2-puppet_client.sh
-alias n2-puppet_client=n2-linguem-restart.sh
+alias n2-linguem-restart=n2-linguem-restart.sh
 alias M=Macs.sh
 alias Mcat=Mcat.sh
 
