@@ -1,11 +1,22 @@
 
-if [ "`echo $1 | grep yellow `" !=  "" ]; then
-	sse $1 "/export/scripts/ImapLogin.py -i pubhost -p 993 -l xtudao@bol.com.br -P uol12345 -d"
-elif [ "`echo $1 | grep yamato `" !=  "" ]; then
-	sse $1 "/export/scripts/ImapLogin.py -i pubhost -p 993 -l xtudao@bol.com.br -P uol12345 -d"
-elif [ "`echo $1 | grep yamaha `" !=  "" ]; then
-	sse $1 "/export/scripts/ImapLogin.py -i pubhost -p 993 -l xtudao@bol.com.br -P uol12345 -d"
+
+# UOL - Devops Mail 
+# Script: Modelo
+# Descript: template para uso comum
+# Data: 01/01/2018
+
+
+REMOTE_CMD=''
+
+if [ ! -z $1 ]; then
+	HOST=$1
+else
+	echo -en Digite um host para executar o comando: $green $REMOTE_CMD $normal
+	exit 1
 fi
+
+
+	sse $1 $REMOTE_CMD
 
 
 
