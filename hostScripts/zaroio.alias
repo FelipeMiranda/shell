@@ -18,6 +18,7 @@ alias n2-puppet_client=n2-puppet_client.sh
 alias n2-linguem-restart=n2-linguem-restart.sh
 alias M=Macs.sh
 alias Mcat=Mcat.sh
+alias status=status.sh
 
 
 
