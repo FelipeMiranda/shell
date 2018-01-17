@@ -1,12 +1,12 @@
 
 
 # UOL - Devops Mail 
-# Script: Modelo
+# Script: RESTART do /export/scripts/Log_Watch.sh
 # Descript: template para uso comum
 # Data: 01/01/2018
 
 
-REMOTE_CMD=''
+REMOTE_CMD='/export/scripts/Log_Watch.sh stop parse; /export/scripts/Log_Watch.sh start parse'
 
 if [ ! -z $1 ]; then
 	HOST=$1
