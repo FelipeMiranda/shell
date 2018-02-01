@@ -24,7 +24,7 @@ alias status=status.sh
 
 
 # UOL Tools/Tips
-alias puppet2=' echo "puppetd --server=auto-gt.intranet --no-daemonize --no-usecacheonfailure -o --fastsync --report -v"'
+alias puppet2='echo -en "puppetd --server=auto-gt.intranet --no-daemonize --no-usecacheonfailure -o --fastsync --report -v \n puppetd --server=auto-gt.intranet --no-daemonize --no-usecacheonfailure -o --pluginsync --report -v \n"'
 alias netnumber2="cat $CDSHELL/linux/netnumber2.txt"
 alias netstat2=netnumber2
 alias inputrc2="cat $CDSHELL/linux/inputrc2.txt"
