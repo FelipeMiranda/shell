@@ -19,6 +19,8 @@ alias n2-linguem-restart=n2-linguem-restart.sh
 alias M=Macs.sh
 alias Mcat=Mcat.sh
 alias status=status.sh
+alias geleia="sse geleia13"
+alias gemada="sse gemada12"
 
 
 
