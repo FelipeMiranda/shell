@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+if [ -z $1 ]; then
+
+	echo "Use $0 IDTPERSON | grep email-desejado"
+
+else 
+
+	OUTPUT=$(curl --silent "http://eas.mail.sys.intranet:8080/contact/$1/list/greylist?format=json" )
+	echo $OUTPUT
+
+
+fi

@@ -36,5 +36,7 @@ source $SHELLCOLOR
 
 source ~/funcoes-cdshell.sh
 
-
-
+#Carregando os bash completions
+for i in `ls $HOME/.bash_completion.d/` ; do 
+	source $HOME/.bash_completion.d/$i
+done

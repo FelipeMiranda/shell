@@ -25,12 +25,20 @@ if [ "$2" == "-W" ]; then
 OSTYPE="Windows"
 fi
 
+if [ `uname -pa | cut -f1 -d' '` == "Linux" ]; then
+	MAN='man'
+elif  [ `uname -pa | cut -f1 -d' '` == "MINGW64_NT-6.1" ]; then
+	MAN='roff2text'
+fi
+
+
+
 
 #Isso tem que ficar embaixo dos opcoes -L -A -O pois depende do valor da variavel OSTYPE que pode ser mudada ali.
 if [ "$1" == "--ls" ] || [ "$1" == "-l" ] ; then
-echo -e "Sistema Operacional:$red $OSTYPE $normal"
-ls ~/help/$OSTYPE/help/*.1 | sed 's/.1//g' | sed 's/[a-zA-Z]*\///g'
-exit 0 # mostra os comandos possiveis e sai.
+	echo -e "Sistema Operacional:$red $OSTYPE $normal"
+	ls ~/help/$OSTYPE/help/*.1 | sed 's/.1//g' | sed 's/[a-zA-Z]*\///g'
+	exit 0 # mostra os comandos possiveis e sai.
 fi
 
 
@@ -57,7 +65,7 @@ MINIMAN_FILENAME=$1.md
 MINIMAN_NAME=$1	
 
 	if [ -e ~/help/$OSTYPE/help/$1.1 ]; then
-		man ~/help/$OSTYPE/help/$1.1
+		$MAN ~/help/$OSTYPE/help/$1.1
 	else
 		echo -en "\n${red}ERRO: Manual para esse $yellow $1 $red não existe no diretório de MINIMAN's $normal\n\n\n"
 		echo -en "\n\n\n${green}Criando o miniman...$normal\n" 
@@ -94,7 +102,7 @@ MINIMAN_NAME=$1
 			exit 0
 		fi 
 	   echo -e "\n\n Use: miniman [COMANDO] <SIST.OPERACIONAL>\n"
-      echo -e "\n miniman --ls    -> Mostra os minimans disponiveis\n\n"
+      echo -e "\n miniman -l ou --ls        -> Mostra os minimans disponiveis para seu S.O, ou estipule um com [-A,-L,-W,-O]\n\n"
       echo -e "\n <SIST. OPERACIONAL> = -A  -> AIX "
       echo -e "\n <SIST. OPERACIONAL> = -L  -> Linux "
       echo -e "\n <SIST. OPERACIONAL> = -O  -> OpenBSD "
@@ -102,6 +110,6 @@ MINIMAN_NAME=$1
 	fi
 
 else 
-	echo -e "Uso: miniman <comando-do-miniman>\n ou $yellow miniman cdshell $normal -> maiores informações."
+	echo -e "Uso: miniman <TAB><TAB>\n ou $yellow miniman -h $normal -> maiores informações."
 fi
 
