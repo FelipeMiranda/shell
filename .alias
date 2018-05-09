@@ -70,7 +70,7 @@ alias iiys="yum install -y"
 alias ys="yum search"
 alias ssyi="yum search"
 alias ctl="systemctl"
-alias dk=docker
+alias dk="docker"
 alias forever="forever.sh"
 
 
