@@ -1,0 +1,9 @@
+interface "any"
+variable "intranet" "net 192.168.1.0/24"
+rule "host 192.168.1.254" "host 192.168.1.254"
+rule "host www.linux.org" "host www.linux.org"
+rule "PROTO IPv6" "ip6"
+rule "port 80" "port 80"
+rule "tcp and port 80" "tcp and port 80"
+local_aggregation none
+remote_aggregation none

@@ -27,7 +27,6 @@ alias cdh='cd ~/help/`uname`/help/'
 alias dmesg="dmesg --color"
 #Mostrar informaçoes do CDSHELL.
 #alias cdshell="echo -en '`cat $CDSHELL/backup/data_ultima_instalacao.txt `  \n '"
-alias cds='cd ~/shell'
 alias cdw='cd ~/workspace'
 alias cdp='cd /etc/puppet/environments/devel'
 alias cdco='cd ~/codigo-fonte'
