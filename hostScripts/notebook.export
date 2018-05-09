@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+# ZAROIO
+
+if [ `hostname` == 'notebook' ]; then
+
+
+#escapacoes \[\] para o PS1 funcionar: wrap line, backpacesem comer peda;os malucos kkkk
+        PS1="$green\u@\h:$white\w> $normal"
+
+
+
+PATH=$PATH:/c/shell
+DISPLAY=localhost:0.0
+export DISPLAY PATH
+fi
+
+

@@ -1,9 +1,14 @@
 #!/bin/bash
 
-echo -en "Pressione" $green q $normal "para sair"
+source $HOME/.alias
+source $CDSHELL/colors.sh
 
-if [ ! -n  ] ; then
-	echo Digite alguma comando para eternizar !!! uhuu
+
+if [ -z $1 ] ; then
+	echo -en "Digite algum comando para $red eternizar !!! $normal uhuu \n"
+   exit 1
+else
+	echo -en "Pressione" $green q $normal "para sair"
 fi
 
 while(true) do

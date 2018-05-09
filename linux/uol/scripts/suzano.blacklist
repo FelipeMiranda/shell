@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+
+	echo "Use $0 IDTPERSON | grep email-desejado"
+
+else
+#	echo -en "Show whitelist for IDT=$1\n"
+	OUTPUT=$(curl --silent "http://eas.mail.sys.intranet:8080/contact/$1/list/blacklist?format=json"   )
+	echo $OUTPUT
+fi

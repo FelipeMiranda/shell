@@ -2,9 +2,9 @@
 
 OSTYPE=`uname`
 
-#rafael
-# UOL TIPs & trick Nicks
-alias puppet2=' echo "puppetd --server=auto-gt.intranet --no-daemonize --no-usecacheonfailure -o --factsync --report -v"'
+
+# CLItxt
+alias clitxt='curl -F \"upfile=@-\" https://clitxt.com'
 
 
 #OPCOES COMUNS
@@ -12,6 +12,7 @@ alias ..='cd ..'
 alias d='dig'
 alias i="ifconfig | grep UP -A1 | sed 's/flags.*$//g' | tr '\n' ' ' | sed 's/-- /\n/g'| column | sed 's/      inet/\t=/' | sed 's/lo:/lo:\t/' | grep --color -E '= ([0-9]{1,3}[\.]){3}[0-9]{1,3}'  ; echo "
 alias g='grep -i'
+alias e='EGREP.sh'
 alias l='ls'
 alias m='more'
 alias mp3=mplayer
@@ -26,7 +27,6 @@ alias cdh='cd ~/help/`uname`/help/'
 alias dmesg="dmesg --color"
 #Mostrar informaçoes do CDSHELL.
 #alias cdshell="echo -en '`cat $CDSHELL/backup/data_ultima_instalacao.txt `  \n '"
-alias cds='cd ~/shell'
 alias cdw='cd ~/workspace'
 alias cdp='cd /etc/puppet/environments/devel'
 alias cdco='cd ~/codigo-fonte'
@@ -38,6 +38,7 @@ alias cdvar='cd /var'
 alias cdlog='cd /var/log'
 alias cde='cd /etc/'
 alias c=cat
+alias mx="dig mx"
 ################
 
 alias criadaemon=~/shell/linux/criadaemon.sh
@@ -61,7 +62,7 @@ alias nd='node'
 alias sss='ss -s'
 alias ps1='source $CDSHELL/linux/ps1_mini.sh'
 alias ps2='source $CDSHELL/linux/ps2_normal.sh'
-alias mm="ssh mmanzano"
+alias mm="ssh superati.com.br -p 22000"
 alias install="yum install -y"
 alias yr="yum remove"
 alias yi="yum install -y"
@@ -70,6 +71,7 @@ alias ys="yum search"
 alias ssyi="yum search"
 alias ctl="systemctl"
 alias dk=docker
+alias forever="forever.sh"
 
 
 alias tlog="tail -f /var/log/messages"
@@ -91,7 +93,7 @@ alias scr='screen -x || screen'
 alias miniman='~/shell/linux/miniman.sh'
 alias rr=®
 alias ®="pull; if [ \$? ] ; then push ; else echo -en \$red '\n\nErro no pull!!!\n' ; fi" 
-alias ®®="cdw && ® ;cds && ® ;cdh && ® ; cd; cd codigo-fonte && ® ;"
+alias ®®="cdw && ® ;cds && ® ;cdh && ® ; cd ; cd codigo-fonte && ® ;"
 alias ¢=®
 alias R=®
 alias ¢¢=®®
@@ -118,12 +120,14 @@ alias push='echo -e "\n\t ${alert}emPURRANDO${normal}\n\n\t ${yellow}LOCAL -> ${
 if [ $OSTYPE == "Linux" ]; then
    alias n=$CDSHELL/linux/netstat.sh
    alias netnumber="echo $(hostname) netstat -nat | awk '{print \$6}' | sort | uniq -c | sort -n"
-#EXEMPLOS DE COMANDOS RAPIDOS.
-   alias netnumber2="cat $CDSHELL/linux/netnumber2.txt"
-   alias inputrc2="cat $CDSHELL/linux/inputrc2.txt"
+
+   ####################################################
+   ######## #EXEMPLOS DE COMANDOS RAPIDOS.  ###########
+   ####################################################
 
    alias nL='n LISTEN'
    alias nE='n ESTABLISHED'
+
    alias ls='ls --color'
    alias r='route -n'
    alias grep='grep --color'

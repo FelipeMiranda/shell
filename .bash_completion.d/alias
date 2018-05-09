@@ -1,0 +1,6 @@
+_aliasFunction()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "`alias | cut -f2 -d' ' | cut -f1 -d'='`" -- $cur) )
+}
+complete -F _aliasFunction alias

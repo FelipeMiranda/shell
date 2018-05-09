@@ -1,0 +1,7 @@
+#!/bin/bash
+
+
+alias esx="ssh root@esx"
+alias mail="ssh root@mail"
+alias cds=$CDSHELL/linux/cds
+alias i="ipconfig | grep IP"
