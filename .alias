@@ -69,6 +69,7 @@ alias iiys="yum install -y"
 alias ys="yum search"
 alias ssyi="yum search"
 alias ctl="systemctl"
+alias dk=docker
 
 
 alias tlog="tail -f /var/log/messages"
