@@ -352,3 +352,9 @@ map ,u8 :set encoding=utf-8 termencoding=latin1<cr>
 
 "Usando 3 caracteres no TAB para arquivos .sh - to testando ainda
 au BufNewFile,BufRead *.sh   set ts=3
+
+
+"Testando
+"Fazendo o scroll do mouse funcionar no VIM dentro do screen
+set mouse=a             " hold shift to copy xterm
+set ttymouse=xterm2     " necessary for gnu screen & mouse

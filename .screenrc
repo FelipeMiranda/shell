@@ -93,7 +93,7 @@ bind o screen 0 /usr/bin/play $HOME/pessoal/O-Oh.wav
 #register z "$URLC/programas/bash/funcoesZZ"
 #register r "http://txt2regex.sourceforge.net"
 #register t "http://txt2tags.sourceforge.net"
-bindkey ^v  paste
+bindkey [.] [.] ^v  paste [.]
 
 # to shit+(page up|page down) work
 bind h hardstatus ignore
@@ -143,7 +143,8 @@ termcap  facit|vt100|xterm LP:G0
 terminfo facit|vt100|xterm LP:G0
 #the vt100 description does not mention "dl". *sigh*
 termcap  vt100 dl=5\E[M
-terminfo vt100 dl=5\E[M
+terminfo vt100 key [.] [.]6\E[M
+termcapinfo xterm* ti@:te@
 ###
 
 # disprando programas automaticamente ao iniciar o screen
