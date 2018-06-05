@@ -160,24 +160,24 @@ set sm             "ShowMatch: mostra o par do parenteses/chaves recem fechado
 set hid            "HIDden: nao lembro pra que servia mas era massa
 set aw             "AutoWrite: gravacao automatica a cada alteracao
 "set ai             "AutoIndent: identacao automatica
-set ts=4           "TabStop: numero de caracteres de avanco do TAB
-set report=0       "reporta acoes com linhas
-set shm=filmnrwxt  "SHortMessages: encurta as mensagem do rodape
+set ts=4           	"TabStop: numero de caracteres de avanco do TAB
+set report=0       	"reporta acoes com linhas
+set shm=filmnrwxt  	"SHortMessages: encurta as mensagem do rodape
 "set et             "ExpandTab: troca TABs por espacos
 "retab              "converter os TABs ja existentes em espaços.
-set ruler          "mostra a posicao do cursor, regua
+set ruler          	"mostra a posicao do cursor, regua
 "set showcmd        "mostra o comando sendo executado
-set laststatus=2   "mostra N linhas de estado (status)
+set laststatus=2   	"mostra N linhas de estado (status)
 "set textwidth=70   "quebra de linha
 "set bs=2           "comportamento do backspace
 "set backspace=2
 set backspace=eol,indent,start
-set nosmartindent  "desligando pois esta padrao no CL40
-set visualbell     "pisca a tela ao inves de bipar
+set smartindent  	"Ligando pois NAO esta padrao no mundo *N?X 
+set visualbell     	"pisca a tela ao inves de bipar
 "set wrap           "forca a quebra de linha
-set nojoinspaces   "! coloca 2 espacos apos o . quando usando o gq
-   set wildmode=longest,list:full  "para completacao do TAB igual bash
-   set number         "Mostrar o numero das linhas
+set nojoinspaces   	"! coloca 2 espacos apos o . quando usando o gq
+set wildmode=longest,list:full  "para completacao do TAB igual bash
+set number         	"Mostrar o numero das linhas
 
 "........................................................................CORES
 " Cores no terminal com a sintaxe
@@ -204,7 +204,7 @@ au FileType sh let b:is_bash=1
 
 " Palavras-chave para destacar em qualquer tipo de arquivo
 syn case ignore
-syn keyword p_c aurélio aurelio marinho jargas verde
+syn keyword p_c rafael quirino castro quirinobytes
 hi p_c ctermbg=white ctermfg=black
 
 " Mail: Configuracoes especiais para arquivos de email
@@ -217,7 +217,7 @@ au BufNewFile,BufRead *.man set ft=nroff
 au BufNewFile,BufRead *.txt   set tw=75 ts=8 ft=txt "spell
 au BufNewFile,BufRead *README,*NEWS,*TODO set ft=txt "spell
 
-" F1 GERADOR AUTOMATICO DE ARQUIVOS MINIMAN
+" F1 - GERADOR AUTOMATICO DE ARQUIVOS MINIMAN
 au BufNewFile,BufRead *.t2t   set ft=txt2tags "spell
 noremap <F1> <esc>:!ronn -r %<cr>
 noremap <F1> :!ronn -r %<cr>
@@ -255,8 +255,9 @@ au FileType php set list listchars=tab:··
 
 " HTML: Funcoes particulares para editar arquivos HTML
 "au BufNewFile,BufRead *.html,*.shtml so ~/.vimrc-html
+
 " Cria um esqueleto de arquivo HTML ao abrir um arquivo novo .html
-"au BufNewFile *.html read ~/www/doc/vim/skel.html
+au BufNewFile *.html read ~/shell/HTML-skeleton.html
 
 " Src: Define arquivos .src como tipo HTML
 "au BufNewFile,BufRead *.src set ft=html
@@ -278,7 +279,7 @@ au BufNewFile,BufRead coluna??.txt set tw=72
 " PageMaker: colorir as marcações
 au BufNewFile,BufRead *.pm6   set ft=pm6
 
-" Markdown
+" Set *.md as Markdown Files
 au BufNewFile,BufRead *.md   set ft=markdown
 
 ".................................................................LIGA/DESLIGA
@@ -349,5 +350,5 @@ map ,en :set spell spelllang=en<cr>
 map ,u8 :set encoding=utf-8 termencoding=latin1<cr>
 
 
-" temp
+"Usando 3 caracteres no TAB para arquivos .sh - to testando ainda
 au BufNewFile,BufRead *.sh   set ts=3
