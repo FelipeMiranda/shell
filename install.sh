@@ -76,11 +76,13 @@ echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 # <++++++
 
 
-
-SAIDA="CDSHELL $red  ®  $normal quirinobytes \n\n"
-SAIDA=$SAIDA"Versão: $yellow $VERSION$normal.$blue.$yellow.$green.$MES $normal \n"
-SAIDA=$SAIDA"Data da instalação: $red $DATA $green $MES $yellow@$red$HORA $normal \n"
-SAIDA=$SAIDA"Diretório de Backup: $blue backup -> $red $BACKUP_DIR $normal \n" 
+SAIDA="$alert ________________________________________________________________________ $normal \n"
+SAIDA=$SAIDA"$blue#$normal CDSHELL $red  ®  $normal quirinobytes \t\t\t\t\t\t $blue# $normal \n"
+SAIDA=$SAIDA"$blue##########################################################################$normal \n"
+SAIDA=$SAIDA"$blue#$normal Versão: $yellow $VERSION$normal.$blue.$yellow.$green.$MES $normal \n"
+SAIDA=$SAIDA"$blue#$normal Data da instalação: $red $DATA $green $MES $yellow@$red$HORA $normal \n"
+SAIDA=$SAIDA"$blue#$normal  Diretório de Backup: $red $BACKUP_DIR $normal \n"
+SAIDA=$SAIDA"$blue##########################################################################$normal \n"
 echo $SAIDA > $BACKUP_DIR/data_ultima_instalacao.txt
 
 
