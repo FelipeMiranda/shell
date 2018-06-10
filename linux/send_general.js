@@ -22,7 +22,7 @@ var options = { method: 'POST',
     headers: 
 	   { 'Postman-Token': 'ea5ba04e-8fd4-4859-9d0b-e6898b8ccad4',
 	        'Cache-Control': 'no-cache' },
-			  body: '{"text": "'+msg+'"}' };
+			  body: '{"text": "'+msg+'","username": "MoneyBusters","icon_url": "http://www.superati.com.br/img/fundo.png","icon_emoji": ":ghost:"}' };
 
 			  request(options, function (error, response, body) {
 				   if (error) throw new Error(error);
