@@ -84,6 +84,7 @@ SAIDA=$SAIDA"$blue#$normal Data da instalação: $red $DATA $green $MES $yellow@
 SAIDA=$SAIDA"$blue#$normal  Diretório de Backup: $red $BACKUP_DIR $normal \n"
 SAIDA=$SAIDA"$blue##########################################################################$normal \n"
 echo $SAIDA > $BACKUP_DIR/data_ultima_instalacao.txt
+echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 
 
 
@@ -149,7 +150,7 @@ echo -en $green "Instalado em:" $(pwd) "\n\n"
 #Mensagem final sobre o manual do cdshell: 
 echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a instalação.$normal\n\n$yellow \ttente: $> miniman cdshell ou $> miniman atalhos \n\n\t © Quirino tks 12/10/2016 - BSD Licensed \n"
 
-$CDSHELL/linux/send_general.js "`hostname`: nova instalação $DATA \n Versão: $VERSION"
+$CDSHELL/linux/send_general.js "`hostname`: nova instalação *$DATA* \n Versão: $VERSION"
 
 #ja recarrega o bash para testar
 bash
