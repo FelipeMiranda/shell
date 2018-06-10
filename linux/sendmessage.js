@@ -6,7 +6,7 @@ if (! process.argv[2] )
 	return
 
 else{
-	console.log('Enviando mensangem: '+process.argv[2]);
+	console.log('Enviando mensagem: '+process.argv[2]);
 	msg =  process.argv[2];
 }
 
