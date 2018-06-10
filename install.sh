@@ -150,7 +150,7 @@ echo -en $green "Instalado em:" $(pwd) "\n\n"
 #Mensagem final sobre o manual do cdshell: 
 echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a instalação.$normal\n\n$yellow \ttente: $> miniman cdshell ou $> miniman atalhos \n\n\t © Quirino tks 12/10/2016 - BSD Licensed \n"
 
-$CDSHELL/linux/send_general.js "`hostname`: nova instalação *$DATA* \n Versão: $VERSION"
+$CDSHELL/linux/send_general.js "`hostname`: nova instalação *$DATA* \n Versão: $VERSION" > /dev/null
 
 #ja recarrega o bash para testar
 bash
