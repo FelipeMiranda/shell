@@ -23,6 +23,7 @@ alias tmessages='tail -f 100 /var/log/messages'
 alias +x='chmod +x' 
 alias cd..='cd ..'
 alias cd-='cd -'
+alias cds='cd $CDSHELL'
 alias cdh='cd ~/help/`uname`/help/'
 alias dmesg="dmesg --color"
 #Mostrar informaçoes do CDSHELL.
