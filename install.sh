@@ -40,6 +40,11 @@ cp $CDSHELL/.export $HOME/
 if [ -e $HOME/.vimrc ] ; 	then cp -f $HOME/.vimrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/.vimrc $HOME/
 
+if [ ! -d $HOME/.vim/undo.save/ ]; then
+	mkdir $HOME/.vim/undo.save/ -p
+fi
+
+
 if [ -e $HOME/.screenrc ] ; then cp -f $HOME/.screenrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/.screenrc $HOME/
 

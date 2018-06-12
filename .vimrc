@@ -105,9 +105,17 @@ imap <F10> <esc>:wa!<cr>i
 " F10 x2 -> Salva caso haja modificação e sai for na marra.
 imap <F10><F10> <esc>:wqa!<cr>
 noremap <F10><F10> :wqa!<cr>
+
+"qdo der F10 em modo INSERT nao escreve <F10> na tela, uuurgh!!!
+inoremap <F10> <ESC>
+
 "imap <ESC> <ESC> 
 " map <F4> /
 
+"Guardando as ultimas modificacoes ao sair, para funcionar <u>ndo qdo voltar.
+set hidden
+set undofile
+set undodir=/root/.vim/undo.save/
 
 
 " Abreviacoes uteis para sua sanidade mental
