@@ -102,15 +102,13 @@ imap <F10> <esc>:wa!<cr>i
  map <F10> :wa!<cr>i
 
 
-" F10 x2 -> Salva caso haja modificação e sai for na marra.
+"F10 x2 -> Salva caso haja modificação e sai for na marra.
 imap <F10><F10> <esc>:wqa!<cr>
 noremap <F10><F10> :wqa!<cr>
 
-"qdo der F10 em modo INSERT nao escreve <F10> na tela, uuurgh!!!
+"modo INSERT F10 nao escreve <F10> na tela, uuurgh!!!
 inoremap <F10> <ESC>
 
-"imap <ESC> <ESC> 
-" map <F4> /
 
 "Guardando as ultimas modificacoes ao sair, para funcionar <u>ndo qdo voltar.
 set hidden
@@ -118,9 +116,12 @@ set undofile
 set undodir=/root/.vim/undo.save/
 
 
+"salvando os comandos para deixar disponivel via busca Up-arraw or Crtl+p
+
 " Abreviacoes uteis para sua sanidade mental
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq 
-"cab q q!
+cab qq q!
+
 " Gravar selecao visual num arquivo ($TMP eh var de ambiente)
 " 1. Usando buffer novo
 "vmap <F5> y:new<cr>p:w!$TMP/vim<cr>:bd!<cr>
@@ -155,8 +156,8 @@ nmap g* g*zz
 nmap g# g#zz
 " No modo Insert, Ctrl-P liga/desliga o "paste"
 set pastetoggle=<c-p>
-" Tira as cores das ocorrências de busca e recoloca (booleano)
-"nno <S-F11> :set hls!<bar>set hls?<CR>
+
+
 
 "..................OPCOES DO SET..............................
 "(IncrementedSearch, HighLightedSearch, IgnoreCase, SmartCaSe)
@@ -168,6 +169,14 @@ set sm             "ShowMatch: mostra o par do parenteses/chaves recem fechado
 set hid            "HIDden: nao lembro pra que servia mas era massa
 set aw             "AutoWrite: gravacao automatica a cada alteracao
 "set ai             "AutoIndent: identacao automatica
+
+" qdo estiver identando no modo VISUAL nao perde o selection, pode identar varias vezes  >>> (identa x 3)
+" Dica: No modo VISUAL (=) qdo estiver tudo selecionado para igualar identacao com o ultimo paragrafo.
+vnoremap > >gv
+vnoremap < <gv
+
+
+
 set ts=4           	"TabStop: numero de caracteres de avanco do TAB
 set report=0       	"reporta acoes com linhas
 set shm=filmnrwxt  	"SHortMessages: encurta as mensagem do rodape
@@ -365,7 +374,16 @@ au BufNewFile,BufRead *.sh   set ts=3
 vmap r "_dP       // it's a capital 'p' on the end
 
 
-"Testando
 "Fazendo o scroll do mouse funcionar no VIM dentro do screen
 "set mouse=a             " hold shift to copy xterm
 set ttymouse=xterm2     " necessary for gnu screen & mouse
+
+
+"TESTES
+" Tira as cores das ocorrências de busca e recoloca (booleano)
+"nno <S-F11> :set hls!<bar>set hls?<CR>
+
+
+"Nao sei oq faz ao certo, ver como fica com o PASTE do mouse em INSERT e "VISUAL mode
+vnoremap <RightMouse> :set paste
+
