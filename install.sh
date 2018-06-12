@@ -94,7 +94,7 @@ echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 
 
 #criando um link da pasta backup para .saved_files_befor_last_install
-if [ ! -s $CDSHELL/backup ] ; then ln -s $BACKUP_DIR backup ; echo Link para pasta backup criado:$BACKUP_DIR ; fi
+if [ ! -e $CDSHELL/backup ] ; then ln -s $BACKUP_DIR backup ; echo Link para pasta backup criado:$BACKUP_DIR ; fi
 
 if [ ! -e /etc/bash_completion.d ]; then
 mkdir -p /etc/bash_completion.d
