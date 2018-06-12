@@ -25,10 +25,24 @@ if [ "$2" == "-W" ]; then
 OSTYPE="Windows"
 fi
 
+
 if [ `uname -pa | cut -f1 -d' '` == "Linux" ]; then
 	MAN='man'
+	SO='linux'
 elif  [ `uname -pa | cut -f1 -d' '` == "MINGW64_NT-6.1" ]; then
 	MAN='roff2text'
+	SO='windows'
+fi
+
+if [ "$1" == "-e" ]; then
+	if [ $SO == "linux" ]; then
+			cd /root/help/Linux/help
+			if [ -n "$2" ]; then
+				vi $2.md
+				cd -
+				exit 0
+			fi
+	fi
 fi
 
 
