@@ -1,31 +1,26 @@
-# F11 - deploy cmd
-##################
+# .F11.cmd - Config
+###################
+
 source $HOME/colors.sh
-
-
-# Define variables
-##################
 DISPLAY=192.168.15.2:0
-COMANDO='echo -en "$red\n\t\t Teve algum erro acima $normal\n\n"'
 export DISPLAY
-##################
+COMANDO="echo -en '\n\n$green\n\t\t <COLOQUE SEU COMANDO AQUI> $normal\n\n'"
+COMANDO="/root/codigo-fonte/python/artificialInteligence/stockprediction/stockprediction.py"
 
 
 
+# execute
+$COMANDO
 
 
-
-SAIDA=$($COMANDO)
-false
-
-if [ $? ]; then
-	echo -en "$red\n\t\t Teve algum erro acima $normal\n\n"
-
-	#congelar tela somente se ERROS na execuçao COMANDO
-	read -n 1
+#testar comando e so para se houver erro.
+if [ $? != 0 ]; then
+			# print ERROR and wait press key to see output
+			echo -en "$red\n\t\t Teve algum erro no COMANDO acima $normal\n\n"
+			echo -en "$blue\n\t pause...$normal"
+			read -n 1
+else
+			# OK printing result
+			echo -en $SAIDA
+			read -n 1
 fi
-
-
-
-
-
