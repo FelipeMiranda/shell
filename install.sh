@@ -61,6 +61,13 @@ cp $CDSHELL/inputrc /etc/
 if [ -e ~/funcoes-cdshell.sh ] ; then cp -f ~/funcoes-cdshell.sh $BACKUP_DIR/ ; fi
 cp $CDSHELL/funcoes-cdshell.sh ~/funcoes-cdshell.sh
 
+#Copiando os skeleton do vim e todos que tiverem la... git 
+if [ -e ~/skeleton ] ; then 
+	cp -f $CDSHELL/skeleton/* $HOME/skeleton/ -R
+else 
+	mkdir $HOME/skeleton
+	cp -f $CDSHELL/skeleton $HOME/ -R
+fi
 
 
 #colocando a data e versão da instalação.
