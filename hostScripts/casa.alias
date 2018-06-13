@@ -1,9 +1,0 @@
-#!/bin/bash
-
-alias esx="ssh root@esx"
-alias halt="shutdown -s -f -t 0"
-alias mail="ssh root@mail.intranet"
-alias notebook="ssh notebook.intranet"
-alias nas4free="ssh nas4free.intranet"
-alias freenas="ssh root@freenas.intranet"
-alias i="ipconfig /all"
