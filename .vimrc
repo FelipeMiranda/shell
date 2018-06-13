@@ -278,10 +278,10 @@ au FileType php set list listchars=tab:··
 
 "########## SKELETON FILES ###########################################
 " Cria um esqueleto de arquivo HTML ao abrir um arquivo novo *.html
-au BufNewFile *.html read ~/skeleton/vim/HTML.skeleton
+au BufNewFile *.html read ~/skeleton/vim/html.skeleton
 "
 " Cria um esqueleto de arquivo MarkDown ao abrir um arquivo novo *.md
-au BufNewFile *.md read ~/skeleton/vim/MD.skeleton
+au BufNewFile *.md read ~/skeleton/vim/md.skeleton
 "####################################################################
 
 
