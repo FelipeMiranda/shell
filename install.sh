@@ -73,9 +73,18 @@ else
 	cp -f $CDSHELL/skeleton $HOME/ -R
 fi
 
-if [ ! -e ~/.F11.cmd ]; then
-	 cp -f $CDSHELL/skeleton/F11.cmd $HOME/.F11.cmd
-	 chmod +x ~/.F11.cmd
+if [ -e ~/.F11.cmd ]; then
+	 #verifica se arquivo do CDSHELL e mais novo que do HOME, se for faz um backup e sobrescreva-o.
+	 if [[ ~/.F11.cmd -ot $CDSHELL/skeleton/F11.cmd ]]; then
+		  	 cp ~/.F11.cmd $BACKUP_DIR/
+		  	 rm ~/.F11.cmd
+			 cp -f $CDSHELL/skeleton/F11.cmd ~/.F11.cmd
+			 chmod +x ~/.F11.cmd
+	 fi
+	 else
+		   #Se nao existe, crie-o
+		  	cp -f $CDSHELL/skeleton/F11.cmd ~/.F11.cmd
+			chmod +x ~/.F11.cmd
 fi
 
 #colocando a data e versão da instalação.
@@ -112,8 +121,9 @@ echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 if [ ! -e $CDSHELL/backup ] ; then ln -s $BACKUP_DIR backup ; echo Link para pasta backup criado:$BACKUP_DIR ; fi
 
 if [ ! -e /etc/bash_completion.d ]; then
-mkdir -p /etc/bash_completion.d
+	mkdir -p /etc/bash_completion.d
 fi
+
 cp $CDSHELL/etc+bash_completion.d+git /etc/bash_completion.d/git
 
 #Instalando as funcoesZZ
