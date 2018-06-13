@@ -47,8 +47,8 @@ if [ "$1" == "-e" ]; then
 	fi
 fi
 
-#miniman open file to (E)dit
-if [ "$1" == "-rr" ]; then
+#miniman (R)eset manual - exclude generatefiles
+if [ "$1" == "-r" ]; then
 	if [ $SO == "linux" ]; then
 			cd /root/help/Linux/help
 			if [ -n "$2" ]; then
@@ -56,11 +56,28 @@ if [ "$1" == "-rr" ]; then
 				rm $2.*.html
 				rm $2.1
 				cd -
-				echo "man files $LS"
+				echo -en "$alert Arquivos apagados com sucesso!\n$normal$green$LS$normal\n\n"
 				exit 0
 			fi
 	fi
 fi
+
+#miniman (B)uild manual files of command x
+if [ "$1" == "-b" ]; then
+	if [ $SO == "linux" ]; then
+			cd /root/help/Linux/help
+			if [ -n "$2" ]; then
+				LS=$(ls -1 *$2*| grep -v '.md')
+				rm $2.*.html
+				rm $2.1
+				ronn -r -5 $2.md
+				cd -
+				echo -en "$alert REGENERADOS!!!\n$normal$green$LS$normal\n\n"
+				exit 0
+			fi
+	fi
+fi
+
 
 
 #Isso tem que ficar embaixo dos opcoes -L -A -O pois depende do valor da variavel OSTYPE que pode ser mudada ali.
@@ -126,7 +143,7 @@ MINIMAN_NAME=$1
 			if [ "$RESP" == "S" ] || [ "$RESP" == "s" ]; then
 				cd /$USER/help/Linux/help
 				vi	$MINIMAN_FILENAME	
-				echo -en "\nArquivo editado com sucesso, nao esqueça de fazer $red git add $normal"	
+				echo -en "\nArquivo editado com sucesso, nao esqueça de fazer \t\t $yellow ##$red git add $yellow ##$normal\n\n"	
 			fi
 			exit 0
 		fi 
