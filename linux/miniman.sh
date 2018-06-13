@@ -70,7 +70,12 @@ if [ "$1" == "-b" ]; then
 				LS=$(ls -1 *$2*| grep -v '.md')
 				rm $2.*.html
 				rm $2.1
-				ronn -r -5 $2.md
+				MESSAGE=$(ronn -r -5 $2.md 2> /tmp/miniman.BUILD.error.msg)
+				if [ $? ]; then
+					echo -en "\n\t\t $red Deu erro no ronn$normal\n\n"
+					echo -en "\t\t $alert`cat /tmp/miniman.BUILD.error.msg`$normal \n\n"
+					exit 0
+				fi
 				cd -
 				echo -en "$alert REGENERADOS!!!\n$normal$green$LS$normal\n\n"
 				exit 0

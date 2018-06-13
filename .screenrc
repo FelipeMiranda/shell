@@ -183,8 +183,11 @@ bindkey -k k9 focus     # F9 # Pula para proxima janela
 #bindkey -k F1 screen -l 1 ssh dev1 'puppet agent -t ; if [ $? == 1 ]; then echo pressione enter... ; read -n 1 ; fi '
 bindkey -k F1 screen -l 1 /root/F11-deploy.cmd
 
+#Mapeando cdshell -i para SHIFT+F3
+bindkey ^[[25~ screen -l 1 cdshell -i ; exit
+
 #F12
-bindkey -k F2 prev      # F12# Usado no Vim para sair do arquivo salvando caso exista modificacoes, por esse motivo nao usei para kill aqui
+bindkey -k F2 prev      # F12# Usado no Vim para sair do arquivo salvando caso exista modificacoes, por esse motivo nao usei para kill aquI
 
 #Também aproveitando o embalado e já criando um recurso legal com Crtl+ (<-)  , Crtl+(->) para next e prev(F12) nas janelas.
 bindkey "^[[D" prev
