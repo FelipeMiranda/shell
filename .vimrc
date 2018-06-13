@@ -273,14 +273,19 @@ au FileType php set list listchars=tab:··
 " HTML: Funcoes particulares para editar arquivos HTML
 "au BufNewFile,BufRead *.html,*.shtml so ~/.vimrc-html
 
-"########## SKELETON FILES ##################################
-"			##############
+
+
+
+"########## SKELETON FILES ###########################################
 " Cria um esqueleto de arquivo HTML ao abrir um arquivo novo *.html
-au BufNewFile *.html read ~/skeleton/HTML-skeleton.html
+au BufNewFile *.html read ~/skeleton/vim/HTML.skeleton
 "
-" Cria um esqueleto de arquivo MarketData ao abrir um arquivo novo *.md
-au BufNewFile *.md read ~/skeleton/MARKETDATA-skeleton.md
-"###########################################################
+" Cria um esqueleto de arquivo MarkDown ao abrir um arquivo novo *.md
+au BufNewFile *.md read ~/skeleton/vim/MD.skeleton
+"####################################################################
+
+
+
 
 
 " Src: Define arquivos .src como tipo HTML
