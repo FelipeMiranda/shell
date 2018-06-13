@@ -1,4 +1,4 @@
-" My .vimrc (quirinobytes) 
+" my enhanced beauty .vimrc by (quirinobytes) 
 " Date: 2015-05-30`
 "
 "                           .vimrc do Quirino
@@ -129,6 +129,7 @@ set undodir=/root/.vim/undo.save/
 " Abreviacoes uteis para sua sanidade mental
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq 
 cab qq q!
+cab QQ q!
 
 " Gravar selecao visual num arquivo ($TMP eh var de ambiente)
 " 1. Usando buffer novo
@@ -159,9 +160,6 @@ nmap * *zz
 nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
-" No modo Insert, Ctrl-P liga/desliga o "paste"
-set pastetoggle=<c-p>
-
 
 
 "..................OPCOES DO SET..............................
@@ -386,17 +384,21 @@ au BufNewFile,BufRead *.sh   set ts=3
 "Deleting - Nao copia para area de TX
 vmap r "_dP       // it's a capital 'p' on the end
 
+" No modo Insert, Ctrl-P liga/desliga o "paste"
+set pastetoggle=<c-p>
 
 "Fazendo o scroll do mouse funcionar no VIM dentro do screen
 "set mouse=a             " hold shift to copy xterm
 set ttymouse=xterm2     " necessary for gnu screen & mouse
 
-
 "TESTES
 " Tira as cores das ocorrências de busca e recoloca (booleano)
 "nno <S-F11> :set hls!<bar>set hls?<CR>
 
-
 "Nao sei oq faz ao certo, ver como fica com o PASTE do mouse em INSERT e "VISUAL mode
 vnoremap <RightMouse> :set paste
 
+
+"map serve para mapear a tecla Q seguida da Q novamente para <ESC>:q! (Enter)
+"<- loco né
+:map QQ :q!<cr>
