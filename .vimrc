@@ -96,17 +96,25 @@ map ,mm :set noic<cr>
 "map ,bu IUso(){ echo "uso: $0 param" ; exit 1 ; }<cr>[ "$1" ] \|\| Uso<cr>
 
 
-"......................................................................ARQUIVO
-" F10 -> Salva ! sem perguntar e ja volta pro modo INSERT.
+"F1 - GERADOR AUTOMATICO DE ARQUIVOS MINIMAN - gera manual pages e html pages
+au BufNewFile,BufRead *.t2t   set ft=txt2tags "spell
+noremap <F1> <esc>:!ronn -r -5 %<cr>
+noremap <F1> :!ronn -r -5 %<cr>
+
+"F2 - Para 'ocultar' os comentarios do arquivo atual
+noremap <F2> :hi Comment ctermfg=black guifg=black<cr>
+
+"F3- Para voltar os comentarios
+noremap <F3> :hi Comment term=bold ctermfg=cyan guifg=cyan<cr>
+
+"F10 -> Salva ! sem perguntar e ja volta pro modo INSERT.
 imap <F10> <esc>:wa!<cr>i
  map <F10> :wa!<cr>i
-
 
 "F10 x2 -> Salva caso haja modificação e sai for na marra.
 imap <F10><F10> <esc>:wqa!<cr>
 noremap <F10><F10> :wqa!<cr>
-
-"modo INSERT F10 nao escreve <F10> na tela, uuurgh!!!
+"F10(i) - No modo INSERT para o F10 nao escreve <F10> na tela, uuurgh!!!
 inoremap <F10> <ESC>
 
 
@@ -139,9 +147,6 @@ cab qq q!
 " HtmlData: atualiza data no fim do arquivo HTML
 "map ,hd G:?^$<cr>O<pre><cr>--<cr>
 "       \¤D ¤U<esc>:r!echo ${PWD\#*/html}/%<cr>kJxo</pre>
-" Para 'ocultar' e voltar os comentarios do arquivo atual
-noremap <F2> :hi Comment ctermfg=black guifg=black<cr>
-noremap <F3> :hi Comment term=bold ctermfg=cyan guifg=cyan<cr>
 " Busca colorida em verde
 hi    Search ctermbg=green ctermfg=black
 hi IncSearch ctermbg=black ctermfg=cyan
@@ -234,10 +239,6 @@ au BufNewFile,BufRead *.man set ft=nroff
 au BufNewFile,BufRead *.txt   set tw=75 ts=8 ft=txt "spell
 au BufNewFile,BufRead *README,*NEWS,*TODO set ft=txt "spell
 
-" F1 - GERADOR AUTOMATICO DE ARQUIVOS MINIMAN
-au BufNewFile,BufRead *.t2t   set ft=txt2tags "spell
-noremap <F1> <esc>:!ronn -r %<cr>
-noremap <F1> :!ronn -r %<cr>
 
 " Python: TAB colorido e outras configuracoes
 au FileType python set ts=8 tw=80 noet
