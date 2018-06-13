@@ -139,18 +139,9 @@ cab QQ q!
 " 2. Colando no fim do arquivo e tirando
 "vmap <F5> yGo<esc>p:.,$w!$TMP/vim<cr>u``
 
-
-".......................................................................OUTROS
 " Alterna entre janelas sem sair do modo insercao (depois do :split)
 "imap <F4> <esc><c-w><c-w>i
-" DiffApaga: apagar uma entrada num arquivao DIFF
-"map ,di :.,/diff -[uNr]/-d<cr>
-" HtmlSyntaxe: carregar uma sintaxe HTML alternativa
-"map ,hs :so ~/.vim/synload.vim<cr>:so ~/.vim/html.vim<cr>
-" HtmlData: atualiza data no fim do arquivo HTML
-"map ,hd G:?^$<cr>O<pre><cr>--<cr>
-"       \¤D ¤U<esc>:r!echo ${PWD\#*/html}/%<cr>kJxo</pre>
-"
+
 " Busca colorida em AMARELO
 hi Search ctermbg=yellow ctermfg=black
 
@@ -168,6 +159,8 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
+
+"Faz o reload apos salvar o arquivo .vimrc
 if has ('autocmd') " Remain compatible with earlier versions
  augroup vimrc     " Source vim configuration upon save
     autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
@@ -179,7 +172,7 @@ endif " has autocmd
 "(IncrementedSearch, HighLightedSearch, IgnoreCase, SmartCaSe)
 "-------------------------------------------------------------
 set ttyfast        "Envia mais caracteres ao terminal, melhorando o redraw de janelas.
-set sw=3           "numero de colunas para o comando > (ShiftWidth)
+set sw=4           "numero de colunas para o comando > (ShiftWidth):   INDENTAR (>>)
 set is hls ic scs magic   "opcoes espertas de busca
 set sm             "ShowMatch: mostra o par do parenteses/chaves recem fechado
 set hid            "HIDden: nao lembro pra que servia mas era massa
@@ -187,7 +180,7 @@ set aw             "AutoWrite: gravacao automatica a cada alteracao
 "set ai             "AutoIndent: identacao automatica
 
 " qdo estiver identando no modo VISUAL nao perde o selection, pode identar varias vezes  >>> (identa x 3)
-" Dica: No modo VISUAL (=) qdo estiver tudo selecionado para igualar identacao com o ultimo paragrafo.
+" Dica -> No modo VISUAL (=) qdo estiver tudo selecionado para igualar identacao com o ultimo paragrafo.
 vnoremap > >gv
 vnoremap < <gv
 
@@ -199,7 +192,7 @@ set shm=filmnrwxt  	"SHortMessages: encurta as mensagem do rodape
 "set et             "ExpandTab: troca TABs por espacos
 "retab              "converter os TABs ja existentes em espaços.
 set ruler          	"mostra a posicao do cursor, regua
-"set showcmd        "mostra o comando sendo executado
+set showcmd        "mostra o comando sendo executado
 set laststatus=2   	"mostra N linhas de estado (status)
 "set textwidth=70   "quebra de linha
 "set bs=2           "comportamento do backspace
@@ -207,7 +200,7 @@ set laststatus=2   	"mostra N linhas de estado (status)
 set backspace=eol,indent,start
 set smartindent  	"Ligando pois NAO esta padrao no mundo *N?X 
 set visualbell     	"pisca a tela ao inves de bipar
-"set wrap           "forca a quebra de linha
+set nowrap           "forca a quebra de linha
 set nojoinspaces   	"! coloca 2 espacos apos o . quando usando o gq
 set wildmode=longest,list:full  "para completacao do TAB igual bash
 set number         	"Mostrar o numero das linhas
@@ -227,7 +220,7 @@ set background=dark     "eh importante o bg estar ANTES do terminfo
 "  set t_Sb=m
 "endif
 syntax on               "ligando a sintaxe colorida
-syn sync minlines=500
+syn sync minlines=5000
 
 
 ".........................................................COMANDOS AUTOMATICOS
@@ -297,9 +290,6 @@ au BufNewFile *.md read ~/skeleton/vim/md.skeleton
 "####################################################################
 
 
-
-
-
 " Src: Define arquivos .src como tipo HTML
 "au BufNewFile,BufRead *.src set ft=html
 
@@ -330,6 +320,14 @@ au BufNewFile,BufRead *.md   set ft=markdown
 "map ,si :set ai!<cr>:echo "autoIndent="&ai<cr>
 "map ,sc :set ic!<cr>:echo "ignoreCase="&ic<cr>
 "map ,sc :set ic! ic?<cr>
+
+" DiffApaga: apagar uma entrada num arquivao DIFF
+"map ,di :.,/diff -[uNr]/-d<cr>
+" HtmlSyntaxe: carregar uma sintaxe HTML alternativa
+"map ,hs :so ~/.vim/synload.vim<cr>:so ~/.vim/html.vim<cr>
+" HtmlData: atualiza data no fim do arquivo HTML
+"map ,hd G:?^$<cr>O<pre><cr>--<cr>
+"       \¤D ¤U<esc>:r!echo ${PWD\#*/html}/%<cr>kJxo</pre>
 
 ".....................................................................POTFILES
 " Copia texto em ingles para a area da traducao
