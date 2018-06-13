@@ -73,6 +73,10 @@ else
 	cp -f $CDSHELL/skeleton $HOME/ -R
 fi
 
+if [ ! -e ~/.F11.cmd ]; then
+	 cp -f $CDSHELL/skeleton/F11.cmd $HOME/.F11.cmd
+	 chmod +x ~/.F11.cmd
+fi
 
 #colocando a data e versão da instalação.
 cd $CDSHELL
