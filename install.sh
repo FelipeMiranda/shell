@@ -18,7 +18,7 @@ source $CDSHELL/colors.sh
 #Titulo da instalação.
 clear
 echo -e "\n $yellow ### $blue Shell Enviroment KRN ® $yellow ### $normal \n\n"
-echo -e "Instalando no diretõrio: $CDSHELL"
+echo -en "Instalando $blue CDSHELL$normal em: $CDSHELL"
 
 
 

@@ -399,7 +399,7 @@ set ttymouse=xterm2     " necessary for gnu screen & mouse
 
 "TESTES
 " Tira as cores das ocorrências de busca e recoloca (booleano)
-"nno <S-F11> :set hls!<bar>set hls?<CR>
+nno <S-F4> :set hls!<bar>set hls?<CR>
 
 "Nao sei oq faz ao certo, ver como fica com o PASTE do mouse em INSERT e "VISUAL mode
 vnoremap <RightMouse> :set paste

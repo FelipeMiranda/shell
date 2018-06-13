@@ -16,6 +16,7 @@ export DISPLAY
 
 
 SAIDA=$($COMANDO)
+echo -en $SAIDA
 false
 
 if [ $? ]; then
