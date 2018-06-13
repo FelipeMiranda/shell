@@ -39,10 +39,9 @@ else
 fi
 
 
-##################
-#HOST BASED ALIAS#
-##################
-# zaroio
+####################
+# HOST BASED ALIAS #
+####################
 
 if [ -e $CDSHELL/hostScripts/$HOSTNAME.export ]; then
 	. $CDSHELL/hostScripts/$HOSTNAME.export
@@ -66,3 +65,9 @@ fi
 TZ='America/Sao_Paulo'; export TZ
 
 
+
+
+###################
+#	  Node.JS	  #
+###################
+export NODE_PATH=/lib/node_modules

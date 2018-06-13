@@ -14,5 +14,8 @@
   "license": "BSD",
   "bugs": {
     "url": "https://github.com/quirinobytes/workspace/issues"
+  },
+  "dependencies": {
+    "request": "^2.87.0"
   }
 }

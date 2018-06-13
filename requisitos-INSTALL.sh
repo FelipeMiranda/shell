@@ -24,7 +24,8 @@ if [ $OSTYPE == "Linux" ]; then
 	#CentOS 6.6
    rpm -hiv http://pkgs.repoforge.org/txt2tags/txt2tags-2.6-1.el6.rf.noarch.rpm
 
-
+	#Htop
+	yum install htop
 
 fi
 
