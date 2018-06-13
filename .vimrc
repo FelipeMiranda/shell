@@ -106,19 +106,25 @@ noremap <F2> :hi Comment ctermfg=black guifg=black<cr>
 noremap <F3> :hi Comment term=bold ctermfg=cyan guifg=cyan<cr>
 
 "F10 -> Salva ! sem perguntar e ja volta pro modo INSERT.
-imap <F10> <esc>:wa!<cr>
-"mesma coisa do de cima mas volta pro INSERT no final.
-map <F10> :wa!<cr>i
-
+imap <F10> <esc>:wa!<cr>i 
+noremap <F10> <esc>:wa!<cr>
+inoremap <F10> <esc>:wa!<cr>i
 
 
 
 "F10 x2 -> Salva caso haja modificação e sai for na marra.
 imap <F10><F10> <esc>:wqa!<cr>
 noremap <F10><F10> :wqa!<cr>
-"F10(i) - No modo INSERT para o F10 nao escreve <F10> na tela, uuurgh!!!
-inoremap <F10> <ESC>
 
+"F10(i) - No modo INSERT para o F10 nao escreve <F10> na tela, uuurgh!!!
+"inoremap <F10> <ESC>
+
+" Busca colorida em AMARELO
+hi Search ctermbg=yellow  ctermfg=black
+" Busca colorida em AMARELO
+hi IncSearch ctermbg=black ctermfg=cyan
+" Ruler e cursor sempre em branco
+hi StatusLine ctermfg=white
 
 "Guardando as ultimas modificacoes ao sair, para funcionar <u>ndo qdo voltar.
 set hidden
@@ -126,11 +132,10 @@ set undofile
 set undodir=/root/.vim/undo.save/
 
 
-"salvando os comandos para deixar disponivel via busca Up-arraw or Crtl+p
-
 " Abreviacoes uteis para sua sanidade mental
 cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq 
 cab qq q!
+" QQ sai fudendo!
 cab QQ q!
 
 " Gravar selecao visual num arquivo ($TMP eh var de ambiente)
@@ -141,16 +146,6 @@ cab QQ q!
 
 " Alterna entre janelas sem sair do modo insercao (depois do :split)
 "imap <F4> <esc><c-w><c-w>i
-
-" Busca colorida em AMARELO
-hi Search ctermbg=yellow ctermfg=black
-
-" Busca colorida em AMARELO
-hi IncSearch ctermbg=black ctermfg=cyan
-
-" Ruler e cursor sempre em branco
-hi StatusLine ctermfg=white
-
 " Faz os resultados da busca aparecerem no meio da tela
 nmap n nzz
 nmap N Nzz
