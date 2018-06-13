@@ -64,7 +64,6 @@ alias nd='node'
 alias sss='ss -s'
 alias ps1='source $CDSHELL/linux/ps1_mini.sh'
 alias ps2='source $CDSHELL/linux/ps2_normal.sh'
-alias mm="ssh superati.com.br -p 22000"
 alias install="yum install -y"
 alias yr="yum remove"
 alias yi="yum install -y"
@@ -99,9 +98,14 @@ alias ®®="cdw && ® ;cds && ® ;cdh && ® ; cd ; cd codigo-fonte && ® ;"
 alias ¢=®
 alias R=®
 alias ¢¢=®®
+
+# Shortcuts para SERVIDORES
 alias d1="ssh dev1"
 alias d2="ssh dev2"
 alias sshm="ssh superati.com.br -p 22000 -l root"
+alias mm="ssh superati.com.br -p 22000"
+alias manzano="ssh manzano"
+
 alias nsse="senhaback.sh"
 alias trim="trim.sh"
 alias arroz="echo Gzuis"
