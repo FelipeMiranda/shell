@@ -1,0 +1,16 @@
+
+class git {
+
+     package {'git':
+        ensure => installed,
+	#ensure => $version, # Using the class parameter from above
+        #before => File['/etc/httpd.conf'],
+     }
+
+
+    create_resources(git::config, git_config_hash($configs), $configs_defaults)
+
+
+
+
+}

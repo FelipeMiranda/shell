@@ -1,0 +1,10 @@
+class private_keys {
+
+	ssh_authorized_key { 'quirinobyte@gmail.com':
+	  user => 'root',
+	  type => 'ssh-rsa',
+	  key  => 'AAAAB3NzaC1yc2EAAAABIwAAAgEA5qoSJmj9TnHRzpdgWJxECS8pcpwC4PPK5qtrhEhEXiPI/gyIYX8+GfMXkzcD43RgHICnpym3ou/VPCSHZw7nQATH8uN31b+LrnWRwnWb1+Mw0+1cqfTC5qdR2GA3b7egAPDGNpRMhSqmv986aJ3emwGQRsxBtF1U9ObJXPA/eVOnBirE0wujckjK0o+KLRxKY0xoI6+dcPN5l+miFAlTBa1PYeXD1qoVucK3VgYtSrF3+hSuVe9+r8lqrMwyYLa+Z1lsnZXiT7m/0FjZOgWa6NrkviJvD6d++dn+KJwwmpD1UHG5rt6Z2MD9PpTHV3TFjq/mM8RTz4PvSpA19BfoBJQ+4wox6JorptEy4HwOcug0YH4LmrJWhRVm+wglpdiSuOI8BWzmkY05fIQ2tduovwszC4PnJ0nsRVnYP7ljHuK3p8QUBaYHHH7kmJjW/06naFYPdfbclRe4ddSPtoMmOnTvHAvvYr9Aj7nZDpQBY/MZGEehwYhrXf7qcqIvPE20J1SYSVlUb0ZRnis5KlK0CMEceiAyTp7vFL2YgD92pXp5LidD69l6sucUiNQAD1MdiSZA9W0NSMAC4yu5XZs+wkJLfzLkEv0oYz5xj02xoj2NwN5e9MBzYh2ssebceqBDE/w4tHT7KdBg+F3R/IJfGfDvxpkQfZ6RYopNR3KknKE=',
+	}
+
+
+}
