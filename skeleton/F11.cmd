@@ -1,5 +1,6 @@
 # F11 - deploy cmd
 ##################
+source $HOME/colors.sh
 
 
 # Define variables
@@ -14,7 +15,9 @@ export DISPLAY
 
 
 
-$COMANDO ; false
+SAIDA=$($COMANDO)
+false
+
 if [ $? ]; then
 	echo -en "$red\n\t\t Teve algum erro acima $normal\n\n"
 
