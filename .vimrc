@@ -57,7 +57,7 @@ map ,mm :set noic<cr>
 "
 "       zzz frase com um TAB na frente.
 "   zzz e uma outra com espacos.
-" "zzz que tal uma citacao?"
+" zzz que tal uma citacao?"
 
 ".....................................DICIONARIO & ORTOGRAFIA
 " vim 7 com spell de fabrica, esqueca tudo isso
@@ -76,8 +76,6 @@ map ,mm :set noic<cr>
 "map <F6> :!ispell -b %^M ^M^M :e ^M :new %.bak ^M <F4> gg
 " Ispell no modo visual (miura)
 ":vmap <F12> <ESC>:w! $HOME/spell.tmp <ESC>:new <ESC>^W15-<ESC>:r !spell $HOME/spell.tmp <ESC>^Wji<ESC>^Wr
-
-
 
 "...........................................................SHELL-SCRIPTS
 " Cabecalho padrao para Shell-Scripts, exemplo:
@@ -108,8 +106,12 @@ noremap <F2> :hi Comment ctermfg=black guifg=black<cr>
 noremap <F3> :hi Comment term=bold ctermfg=cyan guifg=cyan<cr>
 
 "F10 -> Salva ! sem perguntar e ja volta pro modo INSERT.
-imap <F10> <esc>:wa!<cr>i
- map <F10> :wa!<cr>i
+imap <F10> <esc>:wa!<cr>
+"mesma coisa do de cima mas volta pro INSERT no final.
+map <F10> :wa!<cr>i
+
+
+
 
 "F10 x2 -> Salva caso haja modificação e sai for na marra.
 imap <F10><F10> <esc>:wqa!<cr>
@@ -148,11 +150,16 @@ cab QQ q!
 " HtmlData: atualiza data no fim do arquivo HTML
 "map ,hd G:?^$<cr>O<pre><cr>--<cr>
 "       \¤D ¤U<esc>:r!echo ${PWD\#*/html}/%<cr>kJxo</pre>
-" Busca colorida em verde
-hi    Search ctermbg=green ctermfg=black
+"
+" Busca colorida em AMARELO
+hi Search ctermbg=yellow ctermfg=black
+
+" Busca colorida em AMARELO
 hi IncSearch ctermbg=black ctermfg=cyan
+
 " Ruler e cursor sempre em branco
 hi StatusLine ctermfg=white
+
 " Faz os resultados da busca aparecerem no meio da tela
 nmap n nzz
 nmap N Nzz
@@ -161,6 +168,12 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
+if has ('autocmd') " Remain compatible with earlier versions
+ augroup vimrc     " Source vim configuration upon save
+    autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
+    autocmd! BufWritePost $MYGVIMRC if has('gui_running') | so % | echom "Reloaded " . $MYGVIMRC | endif | redraw
+  augroup END
+endif " has autocmd
 
 "..................OPCOES DO SET..............................
 "(IncrementedSearch, HighLightedSearch, IgnoreCase, SmartCaSe)
@@ -399,6 +412,11 @@ set ttymouse=xterm2     " necessary for gnu screen & mouse
 vnoremap <RightMouse> :set paste
 
 
-"map serve para mapear a tecla Q seguida da Q novamente para <ESC>:q! (Enter)
+"O (:map) abaixo serve para mapear a tecla Q seguida da Q novamente para <ESC>:q! (Enter)
 "<- loco né
 :map QQ :q!<cr>
+
+
+
+
+
