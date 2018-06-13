@@ -34,18 +34,33 @@ elif  [ `uname -pa | cut -f1 -d' '` == "MINGW64_NT-6.1" ]; then
 	SO='windows'
 fi
 
+
+#miniman open file to (E)dit
 if [ "$1" == "-e" ]; then
 	if [ $SO == "linux" ]; then
 			cd /root/help/Linux/help
 			if [ -n "$2" ]; then
-				vi $2.md
+				vi -c "echo 'Editando o arquivo'" $2.md
 				cd -
 				exit 0
 			fi
 	fi
 fi
 
-
+#miniman open file to (E)dit
+if [ "$1" == "-rr" ]; then
+	if [ $SO == "linux" ]; then
+			cd /root/help/Linux/help
+			if [ -n "$2" ]; then
+				LS=$(ls -1 *$2*| grep -v '.md')
+				rm $2.*.html
+				rm $2.1
+				cd -
+				echo "man files $LS"
+				exit 0
+			fi
+	fi
+fi
 
 
 #Isso tem que ficar embaixo dos opcoes -L -A -O pois depende do valor da variavel OSTYPE que pode ser mudada ali.
