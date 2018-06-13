@@ -1,5 +1,9 @@
 #/bin/bash
 
+if [ -n "$1" ]; then
+	BACKUP_FROM_RUNDIR="$1"
+fi
+
 #source /root/shell/.bashrc
 #source /root/shell/.export
 
@@ -164,6 +168,6 @@ echo -e "\n  * ${alert}Em breve será preparada uma breve página de uso após a
 
 $CDSHELL/linux/send_general.js "`hostname`: nova instalação *$DATA* \n Versão: $VERSION" > /dev/null
 
-#ja recarrega o bash para testar
-bash
+#ja recarrega o bash para testar no mesmo diretorio que foi chamado.
+cd $BACKUP_FROM_RUNDIR;bash
 

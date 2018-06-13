@@ -65,8 +65,8 @@ function resetar_e_instalar_ultima_versao(){
 
 
 case $1 in
-
-   "install" | "-i" | "--install") cd $CDSHELL ; . install.sh
+	# aqui para enviar o diretorio para instalacao como parametro e ja voltar no mesmo lugar que chamou
+   "install" | "-i" | "--install") SAVEDIR=$PWD ; cd $CDSHELL ; . install.sh $SAVEDIR
          ;;
 
    "-v") echo -en "Versão do comando cdshell: 1.0.0 \n"
