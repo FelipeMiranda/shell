@@ -240,7 +240,7 @@ END=$(date +%s)
 RUNTIME=$(expr $END - $START)
 
 # Exibindo a versao do cdshell
-echo -e "\n ${alert} CDSHELL ${normal} v.$atention$VERSION$normal instalado$normal em ${yellow}${RUNTIME}${normal} segundo`if [ "$RUNTIME" >= 2 ]; then echo -en s ; else echo -en " "; fi;` .... $green Done\n"
+echo -e "\n ${alert} CDSHELL ${normal} v.$atention$VERSION$normal instalado$normal em ${yellow}${RUNTIME}${normal} segundo`if [ $RUNTIME -gt 1 ]; then echo -en "s" ; else echo -en " "; fi;` .... $green Done\n"
 
 #Mensagem final sobre o manual do cdshell: 
 echo -en "\n ${alert} Existe uma página help feita com miniman $normal\n    $yellow $> miniman cdshell ou cdshell -h\n\n"
