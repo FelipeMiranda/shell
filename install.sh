@@ -36,7 +36,7 @@ fi
 echo -en "\n Diretório de instalação 	->	$yellow $CDSHELL $normal\n"
 
 # Verificando a existencia de arquivos pre-instalação, para salva-los em caso de algum erro poder voltar.
-echo -en "\n Diretório de backup 		-> 	$yellow $BACKUP_DIR $normal\n"
+echo -en "\n Diretório de backup 		-> 	$yellow cd \$CDSHELL/backup $normal\n"
 echo -en "\n\n Iniciando backup ."
 
 # Testando para ver se já existe o diretório de BACKUP, então crie caso não exista.
@@ -111,7 +111,7 @@ fi
 echo -en "............ $green Done $normal\n"
 
 # Instalando as funcoesZZ @ aurelio.verde
-echo -en "\n Instalando $yellow funcoesZZ $normal ...."
+echo -en "\n Instalando$yellow funcoesZZ$normal ......"
 if [ ! -e "/opt/funcoeszz/funcoeszz" ]; then
 	mkdir -p /opt/funcoeszz/
 	cp $CDSHELL/funcoeszz/* /opt/funcoeszz/ 2>&1 > /dev/null
@@ -215,12 +215,12 @@ fi
 cd - > /dev/null
 
 # Configurando bash_completion
-echo -en "\n Configurando $yellow .bash_completion.d $normal ....."
+echo -en "\n Configurando$yellow bash_completion.d$normal ........"
 cp $CDSHELL/etc+bash_completion.d+git /etc/bash_completion.d/git
 echo -en "....... $green Done $normal\n"
 
 # Instalando .bash_completion.d/
-echo -en "\n Copiando arquivos do $yellow .bash_completion.d $normal .."
+echo -en "\n Copiando arquivos$yellow bash_completion.d$normal ........"
 if [ ! -d $HOME/.bash_completion.d ]; then
 	mkdir $HOME/.bash_completion.d
 fi
@@ -239,8 +239,8 @@ if [ ! -e ~/.cdshell_req_installed ]; then
 	touch ~/.cdshell_req_installed
 fi
 
-#Envia mensagem para canal install do SLACK
-echo -en "\n Enviando mensagem para $yellow slack$normal ................ $green Done$normal\n"
+#Envia mensagem para canal install @ slack
+echo -en "\n Enviando mensagem para ${magenta}install${blue}@${magenta}slack$normal ......... $green Done$normal\n"
 $CDSHELL/linux/send_install.js "*$DATA* Nova instalação de CDSHELL em $HOSTNAME* | Versão: $VERSION" 2>&1 > /dev/null
 
 # Exibindo dados da instalacao e tempo gasto.
@@ -249,7 +249,7 @@ RUNTIME=$(expr $END - $START)
 echo -e "\n ${alert} CDSHELL ${normal} ${atention}v_${VERSION}${normal} instalado$normal em ${yellow}${RUNTIME}${normal} segundo`if [ $RUNTIME -gt 1 ]; then echo -en "s" ; else echo -en " "; fi;` .... $green Done\n"
 
 #Mensagem final sobre o manual de ajuda. 
-echo -en "\n ${alert} Existe uma página help feita com miniman $normal\n    $yellow $> miniman cdshell ou cdshell -h\n\n"
+echo -en "\n     ${alert} Existe uma página help feita com miniman $normal\n       $yellow $> miniman cdshell ou cdshell -h\n\n"
 
 #Carregar o bash e testar, ja fica aberto.
 cd $BACKUP_FROM_RUNDIR;bash
