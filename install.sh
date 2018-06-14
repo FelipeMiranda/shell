@@ -140,10 +140,10 @@ VERSION=`echo "scale=2; $V/100" | bc 2>&1 > /dev/null `
 echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 echo -en ".......... $green Done $normal\n"
 
-if [ -z $VERSION ]; then
+if [ -z "$VERSION" ]; then
 	 VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
-	 if [ -z $VERSION ]; then
-	 	echo -en "\n $redERROR: Não criou a versão, verifique se o bc está instalado$normal\n"
+	 if [ -z "$VERSION" ]; then
+	 	echo -en "\n$redi ERROR: Não criou a versão, verifique se o bc está instalado$normal\n"
 	 fi
 fi
 
