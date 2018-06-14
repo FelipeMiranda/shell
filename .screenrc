@@ -42,9 +42,8 @@ msgwait 3
 sorendition 15 43 # Estrutura em amarelo
 sorendition 05 43
 hardstatus alwayslastline " %c | %Y%m%d |  %w | F1=vi->miniman F4=close F5= -- F6= | F7= - F8= + F9=TAB S+F9=kill F10=(vi/mc)->exit&save F11=deploy F12=>>"
-
-# barra verde e preto, com códigos de cores literais
-#hardstatus alwayslastline "\033[m\033[42;30m%c\033[m \033[42;30m%Y%m%d\033[m \033[42;30m %w \033[m"
+# para desabilitar a Barra de Status(hardstatus) faça (Crtl-A):hardstatus ignore (enter)
+#hardstatus ignore
 
 vbell on                                 # bipe visual
 bell "  %n %t apitando!"                 # msg bipe

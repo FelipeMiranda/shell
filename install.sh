@@ -136,7 +136,7 @@ echo -en .
 V=`git rev-list HEAD | wc -l `
 echo -en . 
 
-VERSION=`echo "scale=2; $V/100" | bc 2&>1 > /dev/null `
+VERSION=`echo "scale=2; $V/100" | bc 2>&1 > /dev/null `
 echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 echo -en ".......... $green Done $normal\n"
 
@@ -234,7 +234,7 @@ fi
 
 echo -en "\n Enviando mensagem para $yellow slack$normal ................ $green Done$normal\n"
 #Envia mensagem para canal install do SLACK
-$CDSHELL/linux/send_install.js "*$DATA* Nova instalação de CDSHELL em $HOSTNAME* | Versão: $VERSION" 2&>1 > /dev/null
+$CDSHELL/linux/send_install.js "*$DATA* Nova instalação de CDSHELL em $HOSTNAME* | Versão: $VERSION" 2>&1 > /dev/null
 
 END=$(date +%s)
 RUNTIME=$(expr $END - $START)
