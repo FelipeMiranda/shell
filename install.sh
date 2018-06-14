@@ -1,78 +1,99 @@
 #/bin/bash
 
+####################################################
+#	CDSHELL - Install.sh										#
+#  Arquivo de instalação do CDSHELL						#
+####################################################
+
+CDSHELL=~/shell
+BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
+
+#Garantindo que o cp nao está com alias cp -i
+alias cp=cp
+
+# Recebendo RUNDIR de execução, qdo é passado, via parametro $1
 if [ -n "$1" ]; then
 	BACKUP_FROM_RUNDIR="$1"
 fi
 
-#source /root/shell/.bashrc
-#source /root/shell/.export
-
-#Sessao de Configuração.
-CDSHELL=~/shell
-BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
-HOME=$HOME
-
-#Colocando o suporte as cores.
+# Suporte as cores. (cdshell -c) para ver cores do CDSHELL
 source $CDSHELL/colors.sh
-
-#Titulo da instalação.
 clear
-echo -e "\n $yellow ### $blue Shell Enviroment KRN ® $yellow ### $normal \n\n"
-echo -en "Instalando $blue CDSHELL$normal em: $CDSHELL"
 
+#Cabeçalho da instalação.
+echo -en "\n $yellow ### $blue Shell Enviroment KRN ® $yellow ### $normal\n"a
+echo -en "$blue ------------------------------------------------------ $normal\n"
+
+#Avisando que salvou o RUNDIR para voltar no mesmo lugar que chamou o install.
+if [ -n $BACKUP_FROM_RUNDIR ]; then
+	 echo -en "\n Diretório corrente $blue(RUNDIR)$normal 	= $yellow $BACKUP_FROM_RUNDIR $normal\n"
+fi
+echo -en "\n Diretório de instalação 	= $yellow $CDSHELL $normal\n"
 
 
 #Testando para ver se já existe o diretório de BACKUP, crie caso não exista.
-if [ ! -d $BACKUP_DIR ] ; then mkdir -p $BACKUP_DIR ; echo "Criando diretório de backup: $BACKUP_DIR" ; fi
+if [ ! -d $BACKUP_DIR ] ; then mkdir -p $BACKUP_DIR ; echo -en "\nCriando diretório de backup: $yellow $BACKUP_DIR $normal ... " ; fi
 
-#Avisando do inicio.
-echo -e "\n\n$green Iniciando a instalação ... $normal \n"
-
-#garantindo que o cp nao está com alias cp -i
-alias cp=cp
 
 #verificando a existencia de arquivos pre-instalação, para salva-los em caso de algum erro poder voltar.
+echo -en "\n Diretório de backup 		= $yellow $BACKUP_DIR $normal\n"
+
+echo -en "\n\n Iniciando backup ."
+
 if [ -e $HOME/.toprc ] ; 	then cp -f $HOME/.toprc $BACKUP_DIR/ ; fi
 cp $CDSHELL/.toprc $HOME/
+echo -en ..
 
 if [ -e $HOME/.alias ] ; 	then cp -f $HOME/.alias $BACKUP_DIR/ ;  fi
 cp $CDSHELL/.alias $HOME/
+echo -en ..
 
 if [ -e $HOME/.export ] ; 	then cp -f $HOME/.export $BACKUP_DIR/ ; fi
 cp $CDSHELL/.export $HOME/
+echo -en ..
 
 if [ -e $HOME/.vimrc ] ; 	then cp -f $HOME/.vimrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/.vimrc $HOME/
-
-if [ ! -d $HOME/.vim/undo.save/ ]; then
-	mkdir $HOME/.vim/undo.save/ -p
-fi
-
+echo -en ..
 
 if [ -e $HOME/.screenrc ] ; then cp -f $HOME/.screenrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/.screenrc $HOME/
+echo -en ..
 
 if [ -e $HOME/.bashrc ] ; then cp -f $HOME/.bashrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/.bashrc $HOME/
+echo -en ..
 
 if [ -e $HOME/colors.sh ] ; then cp -f $HOME/colors.sh $BACKUP_DIR/ ; fi
 cp $CDSHELL/colors.sh $HOME/
+echo -en ..
 
 if [ -e /etc/inputrc ] ; then cp -f /etc/inputrc $BACKUP_DIR/ ; fi
 cp $CDSHELL/inputrc /etc/
+echo -en ..
 
+echo -en ".. -> $green Done $normal\n"
+
+#garantindo o diretorio para o vim salvar historicos de edicoes dos arquivos.
+if [ ! -d $HOME/.vim/undo.save/ ]; then
+	mkdir $HOME/.vim/undo.save/ -p
+fi
 
 if [ -e ~/funcoes-cdshell.sh ] ; then cp -f ~/funcoes-cdshell.sh $BACKUP_DIR/ ; fi
 cp $CDSHELL/funcoes-cdshell.sh ~/funcoes-cdshell.sh
 
 #Copiando os skeleton do vim e todos que tiverem la... git 
-if [ -e ~/skeleton ] ; then 
-	cp -f $CDSHELL/skeleton/* $HOME/skeleton/ -R
+if [ -e ~/skeleton ] ; then
+	echo -en "\n Atualizando os skeletons ..."
+	cp -f $CDSHELL/skeleton/* $HOME/skeleton/ -Ra
+	echo -en "...... -> $green Done $normal\n"
 else 
+	echo -en "\n Criando os skeletons $yellow pela primeira vez $normal"
 	mkdir $HOME/skeleton
 	cp -f $CDSHELL/skeleton $HOME/ -R
 fi
 
+echo -en "\nAtualizando F11.cmd ..."
 if [ -e ~/.F11.cmd ]; then
 	 #verifica se arquivo do CDSHELL e mais novo que do HOME, se for faz um backup e sobrescreva-o.
 	 if [[ ~/.F11.cmd -ot $CDSHELL/skeleton/F11.cmd ]]; then
@@ -86,6 +107,7 @@ if [ -e ~/.F11.cmd ]; then
 		  	cp -f $CDSHELL/skeleton/F11.cmd ~/.F11.cmd
 			chmod +x ~/.F11.cmd
 fi
+echo -en " ... -> $green Done $normal\n"
 
 #colocando a data e versão da instalação.
 cd $CDSHELL
@@ -96,7 +118,7 @@ V=`git rev-list HEAD | wc -l `
 VERSION=`echo "scale=2; $V/100" | bc`
 echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 
-
+y
 #REMOVER NA PROXIMO COMMIT, pois funcionou abaixo. ++++>
 #echo "CDSHELL $red  ®  $normal quirinobytes \n" > $BACKUP_DIR/data_ultima_instalacao.txt
 #echo "Versão: $red $VERSION$normal.$blue.$yellow.$green.$MES $normal \n" >> $BACKUP_DIR/data_ultima_instalacao.txt
