@@ -181,10 +181,6 @@ echo -en .
 echo -en "........... $green Done $normal\n"
 
 
-# Configurando bash_completion
-echo -en "\n Configurando $yellow .bash_completion.d $normal ....."
-cp $CDSHELL/etc+bash_completion.d+git /etc/bash_completion.d/git
-echo -en "....... $green Done $normal\n"
 
 # Instalando as funcoesZZ @ aurelio.verde
 echo -en "\n Instalando $yellow funcoesZZ $normal ...."
@@ -212,6 +208,11 @@ if [ ! -f $HOME/.ssh/id_rsa ] ; then
 fi
 cd - > /dev/null
 
+# Configurando bash_completion
+echo -en "\n Configurando $yellow .bash_completion.d $normal ....."
+cp $CDSHELL/etc+bash_completion.d+git /etc/bash_completion.d/git
+echo -en "....... $green Done $normal\n"
+
 # Instalando .bash_completion.d/
 echo -en "\n Copiando arquivos do $yellow .bash_completion.d $normal .."
 if [ ! -d $HOME/.bash_completion.d ]; then
@@ -221,39 +222,30 @@ cp $CDSHELL/.bash_completion.d/* $HOME/.bash_completion.d -R
 echo -en ".. $green Done $normal\n"
 
 
-# Instalação do POST COMMIT do GIT HOOKS !
-echo -en "\n Instalando o Git Hooks ........"
-cp $CDSHELL/githooks/post-commit $CDSHELL/.git/hooks/
-if [ -f $CDSHELL/.git/hooks/post-commit ] ; then
-	echo -en "............... $green Done $normal\n"
-else
-	echo -en "\n$red ERROR: Erro ao instalar Post commit do Git Hooks$normal\n" 
-fi
-
-
+# Somente a primeira vez instala os REQUISITOS
 if [ ! -e ~/.cdshell_req_installed ]; then
+
 	#Se nao exister o link para o bash no /bin entao cria ne, sempre!!!
 	if [ ! -e /bin/bash ];then
-	ln -s /usr/local/bin/bash /bin/bash
+		ln -s /usr/local/bin/bash /bin/bash
 	fi
 	$CDSHELL/requisitos-INSTALL.sh
 	touch ~/.cdshell_req_installed
 fi
 
-echo -en "\n Enviando mensagem para $yellow slack$normal ................ $green Done$normal\n"
 #Envia mensagem para canal install do SLACK
+echo -en "\n Enviando mensagem para $yellow slack$normal ................ $green Done$normal\n"
 $CDSHELL/linux/send_install.js "*$DATA* Nova instalação de CDSHELL em $HOSTNAME* | Versão: $VERSION" 2>&1 > /dev/null
 
+# Exibindo dados da instalacao e tempo gasto.
 END=$(date +%s)
 RUNTIME=$(expr $END - $START)
-
-# Exibindo a versao do cdshell
 echo -e "\n ${alert} CDSHELL ${normal} v_$atention$VERSION$normal instalado$normal em ${yellow}${RUNTIME}${normal} segundo`if [ $RUNTIME -gt 1 ]; then echo -en "s" ; else echo -en " "; fi;` .... $green Done\n"
 
-#Mensagem final sobre o manual do cdshell: 
+#Mensagem final sobre o manual de ajuda. 
 echo -en "\n ${alert} Existe uma página help feita com miniman $normal\n    $yellow $> miniman cdshell ou cdshell -h\n\n"
 
-#Carregar o bash e testar
+#Carregar o bash e testar, ja fica aberto.
 cd $BACKUP_FROM_RUNDIR;bash
 
 
