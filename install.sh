@@ -93,18 +93,7 @@ fi
 if [ -e ~/funcoes-cdshell.sh ] ; then cp -f ~/funcoes-cdshell.sh $BACKUP_DIR/ ; fi
 cp $CDSHELL/funcoes-cdshell.sh ~/funcoes-cdshell.sh
 
-# Copiando os skeleton do vim e todos que estiverem lá ... git, vim, F11, etc.
-if [ -e ~/skeleton ] ; then
-	echo -en "\n Copiando os skeletons .........."
-	cp -f $CDSHELL/skeleton/* $HOME/skeleton/ -Ra
-	echo -en ".............. $green Done $normal\n"
-else 
-	echo -en "\n Copiando os skeletons $yellow pela primeira vez $normal"
-	mkdir $HOME/skeleton
-	cp -f $CDSHELL/skeleton $HOME/ -R
-fi
-
-# Copiando arquivos para deploy com F11
+# Copiando arquivos para fazer deploy com F11 no screen
 echo -en "\n Atualizando$yellow F11.cmd $normal.............."
 if [ -e ~/.F11.cmd ]; then
 	 # Verifica se arquivo do CDSHELL é mais recente que do HOME, se for faz um backup e sobrescreva-o.
@@ -121,6 +110,25 @@ if [ -e ~/.F11.cmd ]; then
 fi
 echo -en "............ $green Done $normal\n"
 
+# Instalando as funcoesZZ @ aurelio.verde
+echo -en "\n Instalando $yellow funcoesZZ $normal ...."
+if [ ! -e "/opt/funcoeszz/funcoeszz" ]; then
+	mkdir -p /opt/funcoeszz/
+	cp $CDSHELL/funcoeszz/* /opt/funcoeszz/ 2>&1 > /dev/null
+	ln -s /opt/funcoeszz/funcoeszz-13.2.sh /opt/funcoeszz/funcoeszz
+fi
+echo -en "................... $green Done $normal\n"
+
+# Copiando os skeletons	do vim e todos que estiverem lá ... git, vim, F11, etc.
+if [ -e ~/skeleton ] ; then
+	echo -en "\n Copiando os skeletons .........."
+	cp -f $CDSHELL/skeleton/* $HOME/skeleton/ -Ra
+	echo -en ".............. $green Done $normal\n"
+else 
+	echo -en "\n Copiando os skeletons $yellow pela primeira vez $normal"
+	mkdir $HOME/skeleton
+	cp -f $CDSHELL/skeleton $HOME/ -R
+fi
 
 #Coletando data e versão da instalação, para carimbar dia da instalação.
 echo -en "\n Carimbo de instalação ........."
@@ -160,15 +168,23 @@ SAIDA=$SAIDA"$blue#$normal CDSHELL $red  ®  $normal quirinobytes \t\t\t\t\t\t $
 SAIDA=$SAIDA"$blue##########################################################################$normal \n"
 SAIDA=$SAIDA"$blue#$normal Versão: $yellow $VERSION$normal.$blue.$yellow.$green.$MES $normal \n"
 SAIDA=$SAIDA"$blue#$normal Data da instalação: $red $DATA $green $MES $yellow@$red$HORA $normal \n"
-SAIDA=$SAIDA"$blue#$normal  Diretório de Backup: $red $BACKUP_DIR $normal \n"
+SAIDA=$SAIDA"$blue#$normal  Diretório de Backup: $red \$CDSHELL/backup $normal \n"
 SAIDA=$SAIDA"$blue##########################################################################$normal \n"
 echo $SAIDA > $BACKUP_DIR/data_ultima_instalacao.txt
 echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 
 
-echo -en "\n Criando link para backup ........"
+# Instalacao do POST COMMIT do GIT HOOKS !
+echo -en "\n Instalando o ${yellow}Git Hooks${normal} ........"
+cp $CDSHELL/githooks/post-commit $CDSHELL/.git/hooks/
+if [ -f $CDSHELL/.git/hooks/post-commit ] ; then
+   echo -en "............... $green Done $normal\n"
+else
+   echo -en "\n$red ERROR: Erro ao instalar Post commit do Git Hooks$normal\n"
+fi
 
-#criando um link da pasta backup para .saved_files_befor_last_install
+# Criando um link $CDSHELL/backup -> $CDSHELL/.saved_files_befor_last_install
+echo -en "\n Criando link para backup ........"
 if [ ! -e $CDSHELL/backup ] ; then ln -s $BACKUP_DIR backup ; echo Link para pasta backup criado:$BACKUP_DIR ; fi
 
 echo -en . 
@@ -180,16 +196,6 @@ fi
 echo -en . 
 echo -en "........... $green Done $normal\n"
 
-
-
-# Instalando as funcoesZZ @ aurelio.verde
-echo -en "\n Instalando $yellow funcoesZZ $normal ...."
-if [ ! -e "/opt/funcoeszz/funcoeszz" ]; then
-	mkdir -p /opt/funcoeszz/
-	cp $CDSHELL/funcoeszz/* /opt/funcoeszz/ 2>&1 > /dev/null
-	ln -s /opt/funcoeszz/funcoeszz-13.2.sh /opt/funcoeszz/funcoeszz 
-fi
-echo -en "................... $green Done $normal\n"
 
 echo -en "\n Instalando as chaves SSH ........"
 if [ ! -d $HOME/.ssh ]; then
