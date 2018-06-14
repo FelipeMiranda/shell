@@ -197,7 +197,7 @@ echo -en .
 echo -en "........... $green Done $normal\n"
 
 
-echo -en "\n Instalando as chaves SSH ........"
+echo -en "\n Instalando as ${cyan}chaves SSH${normal} ........"
 if [ ! -d $HOME/.ssh ]; then
 	 mkdir -p $HOME/.ssh 
 fi
