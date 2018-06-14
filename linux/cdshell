@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source ~/shell/colors.sh
+source /opt/funcoeszz/funcoeszz
 
 function exibe_versao_cdshell(){
 		DATA=`cat $CDSHELL/backup/data_ultima_instalacao.txt`
@@ -73,7 +74,8 @@ case $1 in
 	 echo -en "Versão do Pacote CDSHELL: $green `cat $CDSHELL/backup/versao_ultima_instalacao.txt`\n $normal"
          ;;
 
-   "-c"|"--colors") zzcores ; cat $HOME/colors.sh 
+   "-c"|"--colors") zzcores 
+   					cat $HOME/colors.sh 
 
          ;;
 
