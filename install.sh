@@ -8,13 +8,13 @@
 CDSHELL=~/shell
 BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
 
-#Get the begin time
+# Coleta o início da execução.
 START=$(date +%s)
 
-#Garantindo que o cp nao está com alias cp -i
+# Garantindo que o cp nao está com alias cp -i
 alias cp=cp
 
-# Recebendo RUNDIR de execução, qdo é passado, via parametro $1
+# Recebendo RUNDIR de execução, quando é passado, via parametro $1
 if [ -n "$1" ]; then
 	BACKUP_FROM_RUNDIR="$1"
 fi
@@ -23,28 +23,26 @@ fi
 source $CDSHELL/colors.sh
 clear
 
-#Cabeçalho da instalação.
+# Cabeçalho da instalação.
 echo 
 echo -en "\n\t\t $blue#$yellow### $blue Shell Enviroment KRN ® $yellow###$blue#$normal\n"
 echo -en "\t\t$blue-----------------------------------$normal\n"
-
 echo -en "\n Diretório do usuário 		->	$yellow $HOME $normal\n"
 
-#Avisando que salvou o RUNDIR para voltar no mesmo lugar que chamou o install.
+# Avisando que salvou o RUNDIR para voltar no mesmo lugar que chamou o install.
 if [ -n $BACKUP_FROM_RUNDIR ]; then
 	 echo -en "\n Diretório corrente $blue(RUNDIR)$normal 	->	$yellow $BACKUP_FROM_RUNDIR $normal\n"
 fi
 echo -en "\n Diretório de instalação 	->	$yellow $CDSHELL $normal\n"
 
-#verificando a existencia de arquivos pre-instalação, para salva-los em caso de algum erro poder voltar.
+# Verificando a existencia de arquivos pre-instalação, para salva-los em caso de algum erro poder voltar.
 echo -en "\n Diretório de backup 		-> 	$yellow $BACKUP_DIR $normal\n"
-
 echo -en "\n\n Iniciando backup ."
 
-#Testando para ver se já existe o diretório de BACKUP, crie caso não exista.
+# Testando para ver se já existe o diretório de BACKUP, então crie caso não exista.
 if [ ! -d $BACKUP_DIR ] ; then mkdir -p $BACKUP_DIR ; echo -en "\nCriando diretório de backup: $yellow $BACKUP_DIR $normal ... " ; fi
 
-
+# Copiando a Suite de configurações CDSHELL 
 if [ -e $HOME/.toprc ] ; 	then cp -f $HOME/.toprc $BACKUP_DIR/ ; fi
 echo -en .
 cp $CDSHELL/.toprc $HOME/
@@ -84,18 +82,18 @@ if [ -e /etc/inputrc ] ; then cp -f /etc/inputrc $BACKUP_DIR/ ; fi
 echo -en .
 cp $CDSHELL/inputrc /etc/
 echo -en .
-
 echo -en "... $green Done $normal\n"
 
-#garantindo o diretorio para o vim salvar historicos de edicoes dos arquivos.
+# Garantindo o diretorio para o vim salvar históricos de edições dos arquivos.
 if [ ! -d $HOME/.vim/undo.save/ ]; then
 	mkdir $HOME/.vim/undo.save/ -p
 fi
 
+# Criando o link para funcoesZZ
 if [ -e ~/funcoes-cdshell.sh ] ; then cp -f ~/funcoes-cdshell.sh $BACKUP_DIR/ ; fi
 cp $CDSHELL/funcoes-cdshell.sh ~/funcoes-cdshell.sh
 
-#Copiando os skeleton do vim e todos que tiverem la... git 
+# Copiando os skeleton do vim e todos que estiverem lá ... git, vim, F11, etc.
 if [ -e ~/skeleton ] ; then
 	echo -en "\n Copiando os skeletons .........."
 	cp -f $CDSHELL/skeleton/* $HOME/skeleton/ -Ra
@@ -106,9 +104,10 @@ else
 	cp -f $CDSHELL/skeleton $HOME/ -R
 fi
 
+# Copiando arquivos para deploy com F11
 echo -en "\n Atualizando$yellow F11.cmd $normal.............."
 if [ -e ~/.F11.cmd ]; then
-	 #verifica se arquivo do CDSHELL e mais novo que do HOME, se for faz um backup e sobrescreva-o.
+	 # Verifica se arquivo do CDSHELL é mais recente que do HOME, se for faz um backup e sobrescreva-o.
 	 if [[ ~/.F11.cmd -ot $CDSHELL/skeleton/F11.cmd ]]; then
 		  	 cp ~/.F11.cmd $BACKUP_DIR/
 		  	 rm ~/.F11.cmd
@@ -116,15 +115,15 @@ if [ -e ~/.F11.cmd ]; then
 			 chmod +x ~/.F11.cmd
 	 fi
 	 else
-		   #Se nao existe, crie-o
+		   #Se não existe, crie-o
 		  	cp -f $CDSHELL/skeleton/F11.cmd ~/.F11.cmd
 			chmod +x ~/.F11.cmd
 fi
 echo -en "............ $green Done $normal\n"
 
 
-echo -en "\n Carimbo de instalacão ........."
-#colocando a data e versão da instalação.
+#Coletando data e versão da instalação, para carimbar dia da instalação.
+echo -en "\n Carimbo de instalação ........."
 cd $CDSHELL
 echo -en . 
 DATA=$(date +'%d/%m/%Y')
@@ -135,17 +134,23 @@ HORA=$(date +'%T')
 echo -en . 
 V=`git rev-list HEAD | wc -l `
 echo -en . 
+#VERSION=`echo "scale=2; $V/100" | bc  > /dev/null `
+VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
 
-VERSION=`echo "scale=2; $V/100" | bc 2>&1 > /dev/null `
-echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
-echo -en ".......... $green Done $normal\n"
+# Carimbando o arquivo de Resultado da instalação.
+#echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 
+# Contorno para rodar no GitBash: Verifica se Version não foi executado,
+# pois por padrão não existe o comando 'bc' no GitBash.
 if [ -z "$VERSION" ]; then
+	 echo 1a. VERSAO= $VERSION
 	 VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
+	 echo 2a. VERSAO= $VERSION
 	 if [ -z "$VERSION" ]; then
-	 	echo -en "\n$redi ERROR: Não criou a versão, verifique se o bc está instalado$normal\n"
+	 	echo -en "\n$red ERROR: Não criou a versão, verifique se o bc está instalado$normal\n"
 	 fi
 fi
+echo -en ".......... $green Done $normal\n"
 
 SAIDA="$alert ________________________________________________________________________ $normal \n"
 SAIDA=$SAIDA"$blue#$normal CDSHELL $red  ®  $normal quirinobytes \t\t\t\t\t\t $blue# $normal \n"
@@ -173,13 +178,13 @@ echo -en .
 echo -en "........... $green Done $normal\n"
 
 
+# Configurando bash_completion
 echo -en "\n Configurando $yellow .bash_completion.d $normal ....."
-#bash_completion
 cp $CDSHELL/etc+bash_completion.d+git /etc/bash_completion.d/git
 echo -en "....... $green Done $normal\n"
 
+# Instalando as funcoesZZ @ aurelio.verde
 echo -en "\n Instalando $yellow funcoesZZ $normal ...."
-#Instalando as funcoesZZ
 if [ ! -e "/opt/funcoeszz/funcoeszz" ]; then
 	mkdir -p /opt/funcoeszz/
 	cp $CDSHELL/funcoeszz/* /opt/funcoeszz/ 2>&1 > /dev/null
@@ -204,7 +209,7 @@ if [ ! -f $HOME/.ssh/id_rsa ] ; then
 fi
 cd - > /dev/null
 
-#INSTALANDO .bash_completion.d/
+# Instalando .bash_completion.d/
 echo -en "\n Copiando arquivos do $yellow .bash_completion.d $normal .."
 if [ ! -d $HOME/.bash_completion.d ]; then
 	mkdir $HOME/.bash_completion.d
@@ -213,7 +218,7 @@ cp $CDSHELL/.bash_completion.d/* $HOME/.bash_completion.d -R
 echo -en ".. $green Done $normal\n"
 
 
-# Instalacao do POST COMMIT do GIT HOOKS !
+# Instalação do POST COMMIT do GIT HOOKS !
 echo -en "\n Instalando o Git Hooks ........"
 cp $CDSHELL/githooks/post-commit $CDSHELL/.git/hooks/
 if [ -f $CDSHELL/.git/hooks/post-commit ] ; then
