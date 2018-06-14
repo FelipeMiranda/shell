@@ -14,6 +14,7 @@ alias i="ifconfig | grep UP -A1 | sed 's/flags.*$//g' | tr '\n' ' ' | sed 's/-- 
 alias g='grep -i'
 alias e='EGREP.sh'
 alias l='ls'
+alias ll='ls -l'
 alias m='more'
 alias v='vim'
 alias mp3='mplayer'
