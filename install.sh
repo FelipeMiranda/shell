@@ -240,7 +240,7 @@ $CDSHELL/linux/send_install.js "*$DATA* Nova instalação de CDSHELL em $HOSTNAM
 # Exibindo dados da instalacao e tempo gasto.
 END=$(date +%s)
 RUNTIME=$(expr $END - $START)
-echo -e "\n ${alert} CDSHELL ${normal} v_$atention$VERSION$normal instalado$normal em ${yellow}${RUNTIME}${normal} segundo`if [ $RUNTIME -gt 1 ]; then echo -en "s" ; else echo -en " "; fi;` .... $green Done\n"
+echo -e "\n ${alert} CDSHELL ${normal} ${atention}v_${VERSION}${normal} instalado$normal em ${yellow}${RUNTIME}${normal} segundo`if [ $RUNTIME -gt 1 ]; then echo -en "s" ; else echo -en " "; fi;` .... $green Done\n"
 
 #Mensagem final sobre o manual de ajuda. 
 echo -en "\n ${alert} Existe uma página help feita com miniman $normal\n    $yellow $> miniman cdshell ou cdshell -h\n\n"
