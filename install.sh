@@ -37,12 +37,12 @@ echo -en "\n Diretório de instalação 	->	$yellow $CDSHELL $normal\n"
 
 # Verificando a existencia de arquivos pre-instalação, para salva-los em caso de algum erro poder voltar.
 echo -en "\n Diretório de backup 		-> 	$yellow cd \$CDSHELL/backup $normal\n"
-echo -en "\n\n Iniciando backup ."
 
 # Testando para ver se já existe o diretório de BACKUP, então crie caso não exista.
 if [ ! -d $BACKUP_DIR ] ; then mkdir -p $BACKUP_DIR ; echo -en "\nCriando diretório de backup: $yellow $BACKUP_DIR $normal ... " ; fi
 
-# Copiando a Suite de configurações CDSHELL 
+# Copiando a Suite de configurações CDSHELL e fazendo o BACKUP 
+echo -en "\n\n Iniciando backup ."
 if [ -e $HOME/.toprc ] ; 	then cp -f $HOME/.toprc $BACKUP_DIR/ ; fi
 echo -en .
 cp $CDSHELL/.toprc $HOME/
