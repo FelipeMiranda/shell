@@ -31,7 +31,7 @@ echo -en "\n Diretório do usuário 		->	$yellow $HOME $normal\n"
 
 # Avisando que salvou o RUNDIR para voltar no mesmo lugar que chamou o install.
 if [ -n $BACKUP_FROM_RUNDIR ]; then
-	 echo -en "\n Diretório corrente $blue(RUNDIR)$normal 	->	$yellow $BACKUP_FROM_RUNDIR $normal\n"
+	 echo -en "\n Diretório corrente $yellow(RUNDIR)$normal 	->	$yellow $BACKUP_FROM_RUNDIR $normal\n"
 fi
 echo -en "\n Diretório de instalação 	->	$yellow $CDSHELL $normal\n"
 
@@ -140,16 +140,19 @@ VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
 # Carimbando o arquivo de Resultado da instalação.
 #echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 
+
+############# ACHO QUE NAO VAI MAIS SER NECESSARIO -> REMOVER NA PROXIMA v_
 # Contorno para rodar no GitBash: Verifica se Version não foi executado,
 # pois por padrão não existe o comando 'bc' no GitBash.
-if [ -z "$VERSION" ]; then
-	 echo 1a. VERSAO= $VERSION
-	 VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
-	 echo 2a. VERSAO= $VERSION
-	 if [ -z "$VERSION" ]; then
-	 	echo -en "\n$red ERROR: Não criou a versão, verifique se o bc está instalado$normal\n"
-	 fi
-fi
+#if [ -z "$VERSION" ]; then
+#	 echo 1a. VERSAO= $VERSION
+#	 VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
+#	 echo 2a. VERSAO= $VERSION
+#	 if [ -z "$VERSION" ]; then
+#	 	echo -en "\n$red ERROR: Não criou a versão, verifique se o bc está instalado$normal\n"
+#	 fi
+#fi
+
 echo -en ".......... $green Done $normal\n"
 
 SAIDA="$alert ________________________________________________________________________ $normal \n"
