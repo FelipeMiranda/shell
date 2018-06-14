@@ -141,7 +141,7 @@ echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 echo -en ".......... $green Done $normal\n"
 
 if [ -z $VERSION ]; then
-	 VERSION=$(echo $V  | sed  's/./\0\./g')
+	 VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
 	 if [ -z $VERSION ]; then
 	 	echo -en "\n $redERROR: Não criou a versão, verifique se o bc está instalado$normal\n"
 	 fi
@@ -240,7 +240,7 @@ END=$(date +%s)
 RUNTIME=$(expr $END - $START)
 
 # Exibindo a versao do cdshell
-echo -e "\n ${alert} CDSHELL ${normal} v.$atention$VERSION$normal instalado$normal em $yellow $RUNTIME $normal segundos . $green Done\n"
+echo -e "\n ${alert} CDSHELL ${normal} v.$atention$VERSION$normal instalado$normal em ${yellow}${RUNTIME}${normal} segundos .... $green Done\n"
 
 #Mensagem final sobre o manual do cdshell: 
 echo -en "\n ${alert} Existe uma página help feita com miniman $normal\n    $yellow $> miniman cdshell ou cdshell -h\n\n"
