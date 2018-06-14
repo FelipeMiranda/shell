@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # F11 - deploy cmd
 ##################
 source $HOME/colors.sh
@@ -30,3 +31,6 @@ fi
 
 
 
+=======
+echo -en '\n\n$green\n\t\t <COLOQUE SEU COMANDO AQUI> $normal\n\n'
+>>>>>>> e832920d46da9b90a52574374932c1f260e4eec5

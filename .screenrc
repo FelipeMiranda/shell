@@ -181,7 +181,7 @@ bindkey -k k9 focus     # F9 # Pula para proxima janela
 
 #F11 = FAZER O DEPLOY DO COMANDO ABAIXO, Ou linha de programa gravavel, quando melhorarmos a ideia. rode oq quizer como F11.
 # DEPLOY -> F11 (Executa o conteudo do arquivo $HOME/.F11.cmd
-bindkey -k F1 screen -t DEPLOY -W $HOME/.F11.cmd 
+bindkey -k F1 screen -t DEPLOY -W F11.run.sh 
 
 #bindkey -k F1 screen -l 1 ssh dev1 'puppet agent -t ; if [ $? == 1 ]; then echo pressione enter... ; read -n 1 ; fi '
 
