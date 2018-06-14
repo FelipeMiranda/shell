@@ -121,7 +121,7 @@ echo -en "................... $green Done $normal\n"
 
 # Copiando os skeletons	do vim e todos que estiverem lá ... git, vim, F11, etc.
 if [ -e ~/skeleton ] ; then
-	echo -en "\n Copiando os skeletons .........."
+	echo -en "\n Copiando os ${WHITE}skeletons${normal} .........."
 	cp -f $CDSHELL/skeleton/* $HOME/skeleton/ -Ra
 	echo -en ".............. $green Done $normal\n"
 else 
@@ -142,27 +142,8 @@ HORA=$(date +'%T')
 echo -en . 
 V=`git rev-list HEAD | wc -l `
 echo -en . 
-#VERSION=`echo "scale=2; $V/100" | bc  > /dev/null `
 VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
-
-# Carimbando o arquivo de Resultado da instalação.
-#echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
-
-
-############# ACHO QUE NAO VAI MAIS SER NECESSARIO -> REMOVER NA PROXIMA v_
-# Contorno para rodar no GitBash: Verifica se Version não foi executado,
-# pois por padrão não existe o comando 'bc' no GitBash.
-#if [ -z "$VERSION" ]; then
-#	 echo 1a. VERSAO= $VERSION
-#	 VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
-#	 echo 2a. VERSAO= $VERSION
-#	 if [ -z "$VERSION" ]; then
-#	 	echo -en "\n$red ERROR: Não criou a versão, verifique se o bc está instalado$normal\n"
-#	 fi
-#fi
-
-echo -en ".......... $green Done $normal\n"
-
+# Montando a SAIDA para carimbar o arquivo.
 SAIDA="$alert ________________________________________________________________________ $normal \n"
 SAIDA=$SAIDA"$blue#$normal CDSHELL $red  ®  $normal quirinobytes \t\t\t\t\t\t $blue# $normal \n"
 SAIDA=$SAIDA"$blue##########################################################################$normal \n"
@@ -172,7 +153,7 @@ SAIDA=$SAIDA"$blue#$normal  Diretório de Backup: $red \$CDSHELL/backup $normal 
 SAIDA=$SAIDA"$blue##########################################################################$normal \n"
 echo $SAIDA > $BACKUP_DIR/data_ultima_instalacao.txt
 echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
-
+echo -en ".......... $green Done $normal\n"
 
 # Instalacao do POST COMMIT do GIT HOOKS !
 echo -en "\n Instalando o ${yellow}Git Hooks${normal} ........"
