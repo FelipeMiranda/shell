@@ -36,7 +36,7 @@ fi
 echo -en "\n Diretório de instalação 	->	$yellow $CDSHELL $normal\n"
 
 # Verificando a existencia de arquivos pre-instalação, para salva-los em caso de algum erro poder voltar.
-echo -en "\n Diretório de backup 		-> 	$yellow $BACKUP_DIR $normal\n"
+echo -en "\n Diretório de backup 		-> 	$yellow cd \$CDSHELL/backup $normal\n"
 echo -en "\n\n Iniciando backup ."
 
 # Testando para ver se já existe o diretório de BACKUP, então crie caso não exista.
@@ -111,7 +111,7 @@ fi
 echo -en "............ $green Done $normal\n"
 
 # Instalando as funcoesZZ @ aurelio.verde
-echo -en "\n Instalando $yellow funcoesZZ $normal ...."
+echo -en "\n Instalando$yellow funcoesZZ$normal ......"
 if [ ! -e "/opt/funcoeszz/funcoeszz" ]; then
 	mkdir -p /opt/funcoeszz/
 	cp $CDSHELL/funcoeszz/* /opt/funcoeszz/ 2>&1 > /dev/null
@@ -121,7 +121,7 @@ echo -en "................... $green Done $normal\n"
 
 # Copiando os skeletons	do vim e todos que estiverem lá ... git, vim, F11, etc.
 if [ -e ~/skeleton ] ; then
-	echo -en "\n Copiando os skeletons .........."
+	echo -en "\n Copiando os ${WHITE}skeletons${normal} .........."
 	cp -f $CDSHELL/skeleton/* $HOME/skeleton/ -Ra
 	echo -en ".............. $green Done $normal\n"
 else 
@@ -142,27 +142,8 @@ HORA=$(date +'%T')
 echo -en . 
 V=`git rev-list HEAD | wc -l `
 echo -en . 
-#VERSION=`echo "scale=2; $V/100" | bc  > /dev/null `
 VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
-
-# Carimbando o arquivo de Resultado da instalação.
-#echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
-
-
-############# ACHO QUE NAO VAI MAIS SER NECESSARIO -> REMOVER NA PROXIMA v_
-# Contorno para rodar no GitBash: Verifica se Version não foi executado,
-# pois por padrão não existe o comando 'bc' no GitBash.
-#if [ -z "$VERSION" ]; then
-#	 echo 1a. VERSAO= $VERSION
-#	 VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
-#	 echo 2a. VERSAO= $VERSION
-#	 if [ -z "$VERSION" ]; then
-#	 	echo -en "\n$red ERROR: Não criou a versão, verifique se o bc está instalado$normal\n"
-#	 fi
-#fi
-
-echo -en ".......... $green Done $normal\n"
-
+# Montando a SAIDA para carimbar o arquivo.
 SAIDA="$alert ________________________________________________________________________ $normal \n"
 SAIDA=$SAIDA"$blue#$normal CDSHELL $red  ®  $normal quirinobytes \t\t\t\t\t\t $blue# $normal \n"
 SAIDA=$SAIDA"$blue##########################################################################$normal \n"
@@ -172,7 +153,7 @@ SAIDA=$SAIDA"$blue#$normal  Diretório de Backup: $red \$CDSHELL/backup $normal 
 SAIDA=$SAIDA"$blue##########################################################################$normal \n"
 echo $SAIDA > $BACKUP_DIR/data_ultima_instalacao.txt
 echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
-
+echo -en ".......... $green Done $normal\n"
 
 # Instalacao do POST COMMIT do GIT HOOKS !
 echo -en "\n Instalando o ${yellow}Git Hooks${normal} ........"
@@ -197,7 +178,7 @@ echo -en .
 echo -en "........... $green Done $normal\n"
 
 
-echo -en "\n Instalando as chaves SSH ........"
+echo -en "\n Instalando as ${cyan}chaves SSH${normal} ........"
 if [ ! -d $HOME/.ssh ]; then
 	 mkdir -p $HOME/.ssh 
 fi
@@ -215,12 +196,12 @@ fi
 cd - > /dev/null
 
 # Configurando bash_completion
-echo -en "\n Configurando $yellow .bash_completion.d $normal ....."
+echo -en "\n Configurando$yellow bash_completion.d$normal ........"
 cp $CDSHELL/etc+bash_completion.d+git /etc/bash_completion.d/git
 echo -en "....... $green Done $normal\n"
 
 # Instalando .bash_completion.d/
-echo -en "\n Copiando arquivos do $yellow .bash_completion.d $normal .."
+echo -en "\n Copiando arquivos$yellow bash_completion.d$normal ........"
 if [ ! -d $HOME/.bash_completion.d ]; then
 	mkdir $HOME/.bash_completion.d
 fi
@@ -239,8 +220,8 @@ if [ ! -e ~/.cdshell_req_installed ]; then
 	touch ~/.cdshell_req_installed
 fi
 
-#Envia mensagem para canal install do SLACK
-echo -en "\n Enviando mensagem para $yellow slack$normal ................ $green Done$normal\n"
+#Envia mensagem para canal install @ slack
+echo -en "\n Enviando mensagem para ${magenta}install${blue}@${magenta}slack$normal ......... $green Done$normal\n"
 $CDSHELL/linux/send_install.js "*$DATA* Nova instalação de CDSHELL em $HOSTNAME* | Versão: $VERSION" 2>&1 > /dev/null
 
 # Exibindo dados da instalacao e tempo gasto.
@@ -249,7 +230,7 @@ RUNTIME=$(expr $END - $START)
 echo -e "\n ${alert} CDSHELL ${normal} ${atention}v_${VERSION}${normal} instalado$normal em ${yellow}${RUNTIME}${normal} segundo`if [ $RUNTIME -gt 1 ]; then echo -en "s" ; else echo -en " "; fi;` .... $green Done\n"
 
 #Mensagem final sobre o manual de ajuda. 
-echo -en "\n ${alert} Existe uma página help feita com miniman $normal\n    $yellow $> miniman cdshell ou cdshell -h\n\n"
+echo -en "\n     ${alert} Existe uma página help feita com miniman $normal\n       $yellow $> miniman cdshell ou cdshell -h\n\n"
 
 #Carregar o bash e testar, ja fica aberto.
 cd $BACKUP_FROM_RUNDIR;bash
