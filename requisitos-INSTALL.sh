@@ -1,6 +1,7 @@
 #!/bin/bash
 source ~/colors.sh
 OSTYPE=`uname`
+PACOTES_LINUX="colordiff gcc ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop jq"
 
 
 # Mensagem de inicio
@@ -9,7 +10,7 @@ echo -en "\n $alert Primeira instalação sendo executada $normal"
 
 ############ Linux Install ##############################
 if [ $OSTYPE == "Linux" ]; then
-	 PACOTES="colordiff gcc ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop"
+	 PACOTES=$PACOTES_LINUX
 	 echo -en "\n\n\n Vamos instalar os requisitos: $green $PACOTES $normal"
 	 echo -en "\n\n\t Pressione qualquer tecla para continuar ou $yellow 'q'$normal para cancelar..."
 	 read -n 1 CANCELAR
