@@ -9,6 +9,7 @@ if [ $USER == 'root' ] ; then
 else
 	CDSHELL=$HOME/shell
 fi
+CDSHELL_VAR=$CDSHELL/.cdshell
 
 OSTYPE=`uname`
 PATH=$PATH:$CDSHELL/linux:/usr/local/bin

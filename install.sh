@@ -5,7 +5,16 @@
 #  Arquivo de instalação do CDSHELL						#
 ####################################################
 
-CDSHELL=~/shell
+# Suporte as cores. (cdshell -c) para ver cores do CDSHELL
+source $CDSHELL/colors.sh
+
+if [ ! -e $CDSHELL ]; then
+	echo -en "\n Caminho para instalar seu $alert CDSHELL$normal: $cyan"
+	read CAMINHO
+	echo -en "$normal"
+	CDSHELL=$CAMINHO
+fi
+
 BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
 
 # Coleta o início da execução.
@@ -19,8 +28,10 @@ if [ -n "$1" ]; then
 	BACKUP_FROM_RUNDIR="$1"
 fi
 
-# Suporte as cores. (cdshell -c) para ver cores do CDSHELL
-source $CDSHELL/colors.sh
+if [ ! -e $CDSHELL/$CDSHELL_VAR ]; then
+	 mkdir -p $CDSHELL/$CDSHEL_VAR -p
+ fi
+
 clear
 
 # Cabeçalho da instalação.
@@ -89,7 +100,7 @@ if [ ! -d $HOME/.vim/undo.save/ ]; then
 	mkdir $HOME/.vim/undo.save/ -p
 fi
 
-# Criando o link para funcoesZZ
+# Criando os link para funcoesZZ
 if [ -e ~/funcoes-cdshell.sh ] ; then cp -f ~/funcoes-cdshell.sh $BACKUP_DIR/ ; fi
 cp $CDSHELL/funcoes-cdshell.sh ~/funcoes-cdshell.sh
 
