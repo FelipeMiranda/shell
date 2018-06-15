@@ -41,6 +41,6 @@ for i in `ls $HOME/.bash_completion.d/` ; do
 	source $HOME/.bash_completion.d/$i
 done
 
-echo -en " # Lista de Tarefas #\n $yellow"
-	jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json
+TAREFAS_TXT=$(cat $CDSHELL_VAR/tarefas_usedby_bashrc.txt)
+echo -en "#${yellow} - Lista de Tarefas -\n${TAREFAS_TXT}$normal\n\n"
 echo -en "$normal"
