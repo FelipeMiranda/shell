@@ -1,1 +1,1 @@
-cdshell -a
+cdshell -a $1
