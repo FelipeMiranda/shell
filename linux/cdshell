@@ -86,10 +86,14 @@ case $1 in
 	"-a"|"--add")	if [ -n "$1" ]; then
 						if [ ! -e $CDSHELL_VAR ]; then
 							echo -en " Criando diretório: $CDSHELL_VAR \n"
+							echo 0 > $CDSHELL_VAR/cdshell_tarefas.next_id
 							mkdir -p $CDSHELL_VAR
 						fi
-						JSON=`jq '.item += [{"id":4,"tarefa":{ "priority": 1, "text": "tarefa um"}}]' $CDSHELL_VAR/cdshell_tarefas.json`
+						NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
+						NEXT_ID= $(( $NEXT_ID + 1 ))
+						JSON=`jq '.item += [{"id":"$NEXT_ID","tarefa":{ "priority": 1, "text": "$1"}}]' $CDSHELL_VAR/cdshell_tarefas.json`
 						echo $JSON > $CDSHELL_VAR/cdshell_tarefas.json
+						echo $(( $NEXT_ID )) > CDSHELL_VAR/cdshell_tarefas.next_id
 						echo -en "\n$green Tarefa adicionada. \n"
 					fi
     ;;
