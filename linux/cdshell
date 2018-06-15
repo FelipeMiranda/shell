@@ -1,7 +1,12 @@
 #!/bin/bash
 
+source ~/.export
 source ~/shell/colors.sh
-source /opt/funcoeszz/funcoeszz
+
+if [ "$1" != "-h" ]; then
+	#Para a funcoesZZ nao mostrar o help qdo usa o -h executa nela tmb."
+	source /opt/funcoeszz/funcoeszz
+fi
 
 function exibe_versao_cdshell(){
 		DATA=`cat $CDSHELL/backup/data_ultima_instalacao.txt`
@@ -63,46 +68,83 @@ function resetar_e_instalar_ultima_versao(){
 }
 
 
-
-
 case $1 in
-	# aqui para enviar o diretorio para instalacao como parametro e ja voltar no mesmo lugar que chamou
-   "install" | "-i" | "--install") SAVEDIR=$PWD ; cd $CDSHELL ; . install.sh $SAVEDIR
-         ;;
 
-   "-v") echo -en "Versão do comando cdshell: 1.0.0 \n"
+	# adicionar MENSANGES ao cdshell TODOLIST
+	"-a"|"--add") 
+   					if [ -n "$1" ]; then
+						echo "$1" >> $CDSHELL_VAR
+						echo -en "\n$green Tarefa adicionada. \n"
+					fi
+    ;;
+
+	# Instalar enviando o diretorio local (PWD) para instalacao como parametro e ja voltar no mesmo lugar que chamou.
+    "install" | "-i" | "--install") SAVEDIR=$PWD ; cd $CDSHELL ; . install.sh $SAVEDIR
+    ;;
+
+    "-v") echo -en "Versão do comando cdshell: 1.0.0 \n"
 	 echo -en "Versão do Pacote CDSHELL: $green `cat $CDSHELL/backup/versao_ultima_instalacao.txt`\n $normal"
-         ;;
+    ;;
 
-   "-c"|"--colors") zzcores 
+	"-c"|"--colors") zzcores 
    					cat $HOME/colors.sh 
+    ;;
 
-         ;;
+    "-e"|"--edit")  
+   					CDSHELL_FILE_DATE=$(stat -c %y cdshell)
+  					vim $CDSHELL/linux/cdshell || vi $CDSHELL/linux/cdshell
+					CDSHELL_FILE_DATE_POS_VI=$(stat -c %y cdshell)
+					# Se houver modificao no arquivo cdsell avisar para fazer o commit
+					if [ $(echo "$CDSHELL_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$CDSHELL_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
+						echo -en "\n Arquivo do$alert CDSHELL$normal atualizado com$green sucesso! \n\n\t Não esqueça de fazer o$atention git commit(®)$normal $green(s)/(y)$normal para $green SIM$normal\n"
+						read -n 1 RESPOSTA
+						if [ "$RESPOSTA" == "y" ] || [ "$RESPOSTA" == "s" ]; then
+								cd $CDSHELL
+								git add .
+								git commit -m "Salvando alterações no arquivo cdshell"    
+								cd - 2>&1 /dev/null
+						fi
+					else
+						echo -en "\n\n\n Arquivo cdshell$green sem modificações$normal\n"
+					fi
+    ;;
 
-   "--help") echo "Digite miniman cdshell"
-	 ;;
-
-   "-w") assistir_versao $2
+    "-h"|"--help") 
+   					echo -en "\n Use cdshell para facilitar as modificações e teste de customizações de seu environment."
+					echo 
+					echo -en "\n -a\t\t\t Adicionar tarefas à lista."
+					echo -en "\n -c\t\t\t Mostrar o help."
+					echo -en "\n -e\t\t\t Editar o arquivo cdshell."
+					echo -en "\n -h\t\t\t Mostrar o help."
+					echo -en "\n -g\t\t\t Mostrar a versão do seu resitório git atual."
+					echo -en "\n -i\t\t\t Instalar o cdshell."
+					echo -en "\n -v\t\t\t Exibe a versão do cdshell."
+					echo -en "\n -w\t\t\t Assistir versão (watch)."
+					echo
+					echo
+					exit 0;
 	;;
 
-   "reset"|"--reset"|"-r") resetar_e_instalar_ultima_versao
+    "-w") assistir_versao $2
 	;;
 
-   "-v") exibe_versao 
+    "reset"|"--reset"|"-r") resetar_e_instalar_ultima_versao
+	;;
+
+    "-v") exibe_versao 
 	if [ ! -z $1  ]; then
 		echo -en "O comando $red $1 $normal não existe."
 	fi
-      ;;
+    ;;
 
-   "-g"|"--git"|--git-version) exibe_versao_git_local_version
-      ;;
+    "-g"|"--git"|--git-version) exibe_versao_git_local_version
+    ;;
 	
-   "" ) exibe_versao_cdshell
-      ;;
+    "" ) exibe_versao_cdshell
+    ;;
    
-   * )echo -en "O comando $red $1 $normal não existe.\n"
-      ;;
-	
+    * )echo -en "O comando $red $1 $normal não existe.\n"
+    ;;
 esac
 
 

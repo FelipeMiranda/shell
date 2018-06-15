@@ -30,6 +30,16 @@ if [ $OSTYPE == "Linux" ]; then
 fi
 
 
+PROGRAMAS_YUM="jq"
+
+for programa in $PROGRAMAS_YUM; do
+
+	echo -en "\n Instalando o$yellow $PRORGAMA_YUM"
+	read -n 1
+	exit
+done
+
+
 ############ OpenBSD ##############################
 if [ $OSTYPE == "OpenBSD" ]; then
 #LISTA de requisitos para ser instalados no OpenBSD

@@ -27,7 +27,7 @@ clear
 echo 
 echo -en "\n\t\t $blue#$yellow### $blue Shell Enviroment KRN ® $yellow###$blue#$normal\n"
 echo -en "\t\t$blue-----------------------------------$normal\n"
-echo -en "\n Diretório do usuário 		->	$yellow $HOME $normal\n"
+echo -en "\n Diretório do usuário ${yellow}\$HOME${normal}	->	$yellow $HOME $normal\n"
 
 # Avisando que salvou o RUNDIR para voltar no mesmo lugar que chamou o install.
 if [ -n $BACKUP_FROM_RUNDIR ]; then
