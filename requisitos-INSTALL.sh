@@ -13,7 +13,7 @@ if [ $OSTYPE == "Linux" ]; then
 	 echo -en "\n\n\n Vamos instalar os requisitos: $green $PACOTES $normal"
 	 echo -en "\n\n\t Pressione qualquer tecla para continuar ou $yellow 'q'$normal para cancelar..."
 	 read -n 1 CANCELAR
-	 if [ $CANCELAR == 'q' ]; then
+	 if [ "$CANCELAR" == 'q' ]; then
 		  exit 1
 	 fi
 	 yum install $PACOTES -y
