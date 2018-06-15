@@ -13,10 +13,9 @@ if [ ! -e $CDSHELL ]; then
 	read CAMINHO
 	echo -en "$normal"
 	CDSHELL=$CAMINHO
-else
-	CDSHELL=$HOME/shell
 fi
 
+CDSHELL=$HOME/shell
 BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
 
 # Coleta o início da execução.
@@ -223,14 +222,14 @@ echo -en ".. $green Done $normal\n"
 
 
 # Somente a primeira vez instala os REQUISITOS
-if [ ! -e ~/.cdshell_req_installed ]; then
+if [ ! -e $HOME/.cdshell_req_installed ]; then
 
 	#Se nao exister o link para o bash no /bin entao cria ne, sempre!!!
 	if [ ! -e /bin/bash ];then
 		ln -s /usr/local/bin/bash /bin/bash
 	fi
 	$CDSHELL/requisitos-INSTALL.sh
-	touch ~/.cdshell_req_installed
+	touch $HOME/.cdshell_req_installed
 fi
 
 #Envia mensagem para canal install @ slack

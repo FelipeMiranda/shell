@@ -1,24 +1,24 @@
 #!/bin/bash
 
 
-echo -en "\n Instalando os requisitos .............."
+echo -en "\n $alert Primeira instalação sendo executada $nromal \n"
 
 OSTYPE=`uname`
 
 ############ Linux ##############################
 if [ $OSTYPE == "Linux" ]; then
-	 PROGRAMAS_YUM="colordiff gcc ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop"
-	 echo -en "\n Vamos instalar esses pacotes: $green $PROGRAMAS_YUM $normal\n"
-	 echo -en "\n\n\t Pressione qualquer tecla para continuar..."
+	 PACOTES="colordiff gcc ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop"
+	 echo -en "\n Vamos instalar os pacotes: $green $PACOTES $normal\n"
+	 echo -en "\n\n\t Pressione qualquer tecla para continuar ou 'q' para cancelar..."
 	 read -n 1
 
-	 for programa in $PROGRAMAS_YUM ; do
-		 echo -en "\n Instalando o$yellow $programa \n"
-		 yum install $programa -y
-	 done
+#	 for programa in $PROGRAMAS ; do
+#		 echo -en "\n Instalando o$yellow $programa \n"
+		 yum install $PACOTES -y
+#	 done
 
 	#CentOS 6.6
-   rpm -hiv http://pkgs.repoforge.org/txt2tags/txt2tags-2.6-1.el6.rf.noarch.rpm
+	#   rpm -hiv http://pkgs.repoforge.org/txt2tags/txt2tags-2.6-1.el6.rf.noarch.rpm
 fi
 
 ############ OpenBSD ##############################
