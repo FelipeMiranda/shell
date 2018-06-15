@@ -113,7 +113,7 @@ case $1 in
 					CDSHELL_FILE_DATE_POS_VI=$(stat -c %y $CDSHELL/linux/cdshell)
 					# Se houver modificao no arquivo cdsell avisar para fazer o commit
 					if [ $(echo "$CDSHELL_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$CDSHELL_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
-						echo -en "\n Arquivo ${yellow}${CDSHELLL}/linux/cdshell$normal atualizado com ${green}SUCESSO!${normal}\n\n\t Não esqueça de fazer o$atention git commit(®)$normal. Deseja fazer? $green(s)/(y)$normal para $green SIM$normal\n"
+						echo -en "\n Arquivo ${yellow}${CDSHELLL}/linux/cdshell$normal atualizado com ${green}SUCESSO!${normal}\n\n\t Não esqueça de fazer o$atention git commit(®)$normal. Deseja fazer? $green s/y $normal para $green SIM$normal\n"
 						read -n 1 RESPOSTA
 						if [ "$RESPOSTA" == "y" ] || [ "$RESPOSTA" == "s" ]; then
 								cd $CDSHELL/linux  
