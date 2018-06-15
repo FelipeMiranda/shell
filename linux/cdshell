@@ -88,7 +88,8 @@ case $1 in
 							echo -en " Criando diretório: $CDSHELL_VAR \n"
 							mkdir -p $CDSHELL_VAR
 						fi
-						echo "$1" >> $CDSHELL_VAR/cdshell_tarefas.json
+						JSON=`jq '.item += [{"id":4,"tarefa":{ "priority": 1, "text": "tarefa um"}}]' $CDSHELL_VAR/cdshell_tarefas.json`
+						echo $JSON > $CDSHELL_VAR/cdshell_tarefas.json
 						echo -en "\n$green Tarefa adicionada. \n"
 					fi
     ;;
