@@ -40,3 +40,7 @@ source ~/funcoes-cdshell.sh
 for i in `ls $HOME/.bash_completion.d/` ; do 
 	source $HOME/.bash_completion.d/$i
 done
+
+echo -en " # Lista de Tarefas #\n $yellow"
+	jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json
+echo -en "$normal"
