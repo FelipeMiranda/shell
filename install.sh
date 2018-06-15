@@ -49,7 +49,9 @@ fi
 echo -en "\n Diretório de instalação 	->	$yellow $CDSHELL $normal\n"
 
 # Verificando a existencia de arquivos pre-instalação, para salva-los em caso de algum erro poder voltar.
-echo -en "\n Diretório de backup 		-> 	$yellow cd \$CDSHELL/backup $normal\n"
+echo -en "\n Diretório de backup 		-> 	$yellow \$CDSHELL/backup $normal\n"
+
+echo -en "\n ${blue}____________________________________________________$normal"
 
 # Criando um link $CDSHELL/backup -> $CDSHELL/.saved_files_befor_last_install
 if [ ! -e $CDSHELL/backup ] ; then 
