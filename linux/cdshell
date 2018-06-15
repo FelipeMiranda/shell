@@ -5,7 +5,7 @@
 source ~/.export
 source ~/shell/colors.sh
 
-if [ "$1" == "-c" ]; then
+if [ "$1" != "-h" ]; then
 	#Para a funcoesZZ nao mostrar o help qdo usa o -h executa nela tmb."
 	source /opt/funcoeszz/funcoeszz
 fi
