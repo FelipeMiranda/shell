@@ -173,11 +173,16 @@ case $1 in
 
 	;;
 
+    "-t"|"--test") 
+		echo -en "O comando $red $0 $normal deveria fazer os testes do ambiente."
+    ;;
+
     "-v") exibe_versao 
 	if [ ! -z $1  ]; then
 		echo -en "O comando $red $1 $normal não existe."
 	fi
     ;;
+
 
     "-g"|"--git"|--git-version) exibe_versao_git_local_version
     ;;

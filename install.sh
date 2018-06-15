@@ -233,7 +233,7 @@ fi
 
 #Envia mensagem para canal install @ slack
 echo -en "\n Enviando mensagem para ${magenta}install${blue}@${magenta}slack$normal ......... $green Done$normal\n"
-$CDSHELL/linux/send_install.js "*$DATA* Nova instalação de CDSHELL em $HOSTNAME* | Versão: $VERSION" 2>&1 > /dev/null
+$CDSHELL/linux/send_install.js "*$DATA* Nova instalação de CDSHELL em *$HOSTNAME* | Versão: $VERSION" 2>&1 > /dev/null
 
 # Exibindo dados da instalacao e tempo gasto.
 END=$(date +%s)
