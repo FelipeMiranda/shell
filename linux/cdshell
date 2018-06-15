@@ -109,11 +109,6 @@ case $1 in
 					fi
     ;;
 
-
-
-
-
-
     "-h"|"--help") 
    					echo -en "\n Use cdshell para facilitar as modificações e teste de customizações de seu environment."
 					echo 
