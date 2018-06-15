@@ -63,27 +63,23 @@ function assistir_versao {
 	   fi
 	done
 }
-
-# Reseta seu repositório local e baixa o CDSHELL sem suas modificações.
 function resetar_e_instalar_ultima_versao(){
 	cdshell
 	git checkout -f
 	cdshell install
 }
-
-# Desinstala todo o CDSHELL
 function desinstalar() {
+
 	cd ~
 	$del="rm -rf"
 	$del .cdshell_req_installed 
 	$del shell
 	$del .vimrc
 	$del .screenrc
-	$del .toprc
-	$del .toprc
-	$del .toprc
-	$del .toprc
+	$del 
+
 	echo -en "\n $red Por enquanto nao recupera os arquivos originais da primeira instalacao $normal \n"
+
 }
 
 case $1 in
