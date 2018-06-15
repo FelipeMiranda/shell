@@ -83,8 +83,6 @@ alias squidlog.sh="tail -s 0.5 -f /var/log/squid/access.log | awk '{ printf strf
 #BLUEMONEY
 alias menu="cd /root/workspace/bolsa-systems/blueMoney/dataMining/ && menu.sh && cd -"
 
-
-
 #PREGUICAS
 alias shellinstall='~/shell/install.sh'
 alias realce='~/shell/linux/realce.awk'

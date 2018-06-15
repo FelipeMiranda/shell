@@ -137,6 +137,8 @@ cab W w| cab Q q| cab Wq wq| cab wQ wq| cab WQ wq
 cab qq q!
 " QQ sai fudendo!
 cab QQ q!
+" WW sai gravando com tudo!
+cab WW wq!
 
 " Gravar selecao visual num arquivo ($TMP eh var de ambiente)
 " 1. Usando buffer novo
