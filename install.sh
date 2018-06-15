@@ -177,7 +177,7 @@ fi
 
 # Criando um link $CDSHELL/backup -> $CDSHELL/.saved_files_befor_last_install
 echo -en "\n Criando link para backup ........"
-if [ ! -e $CDSHELL/backup ] ; then ln -s $BACKUP_DIR backup ; echo Link para pasta backup criado:$BACKUP_DIR ; fi
+if [ ! -e $CDSHELL/backup ] ; then ln -s $BACKUP_DIR backup ; echo -en ".....: $BACKUP_DIR$green Done\n" ; fi
 
 echo -en . 
 if [ ! -e /etc/bash_completion.d ]; then
