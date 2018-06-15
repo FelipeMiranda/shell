@@ -99,7 +99,7 @@ case $1 in
 						echo -en "\n Arquivo do$alert CDSHELL$normal atualizado com$green sucesso! \n\n\t Não esqueça de fazer o$atention git commit(®)$normal $green(s)/(y)$normal para $green SIM$normal\n"
 						read -n 1 RESPOSTA
 						if [ "$RESPOSTA" == "y" ] || [ "$RESPOSTA" == "s" ]; then
-								cd $CDSHELL\linux
+								cd $CDSHELL/linux  
 								git add .
 								git commit -m "Salvando alterações no arquivo cdshell"    
 								cd - 2>&1 /dev/null
@@ -108,6 +108,9 @@ case $1 in
 						echo -en "\n\n\n Arquivo cdshell$green sem modificações$normal\n"
 					fi
     ;;
+
+
+
 
 
 
