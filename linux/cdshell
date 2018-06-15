@@ -10,65 +10,81 @@ if [ "$1" != "-h" ]; then
 	source /opt/funcoeszz/funcoeszz
 fi
 
+# Exibe versão do CDSHELL instalada.
 function exibe_versao_cdshell(){
-		DATA=`cat $CDSHELL/backup/data_ultima_instalacao.txt`
-		echo -en "\n$DATA"
+	DATA=`cat $CDSHELL/backup/data_ultima_instalacao.txt`
+	echo -en "\n$DATA"
 }
 
+# Exibe a versão Git do seu repositório local
 function exibe_versao_git_local_version(){
-V=`git rev-list HEAD | wc -l`
-VERSION=`echo "scale=2; $V/100" | bc`
+	V=`git rev-list HEAD | wc -l`
+	VERSION=`echo "scale=2; $V/100" | bc`
 
-if [ $V -eq 0 ]; then 
-		echo -en "Versão do repo local: $red $VERSION (Não existe repo aqui) \n"
-	else 
-		echo -en "Versão do repo local: $green $VERSION \n"
-fi
+	if [ $V -eq 0 ]; then 
+			echo -en "Versão do repo local: $red $VERSION (Não existe repo aqui) \n"
+		else 
+			echo -en "Versão do repo local: $green $VERSION \n"
+	fi
 }
 
+# Assitir a versão
 function assistir_versao {
-ZERO=''
-VAR=''
-VAR=$1
-begin=$(date +%s)
-echo -en " Exibindo continuamente...Pressione $green 'q' $normal para sair!"
-while true; do
-   now=$(date +%s)
-   diff=$(($now - $begin))
-   mins=$(($diff / 60))
-   secs=$(($diff % 60))
-   hours=$(($diff / 3600))
-#   days=$(($diff / 86400))
+	ZERO=''
+	VAR=''
+	VAR=$1
+	begin=$(date +%s)
+	echo -en " Exibindo continuamente...Pressione $green 'q' $normal para sair!"
+	while true; do
+	   now=$(date +%s)
+	   diff=$(($now - $begin))
+	   mins=$(($diff / 60))
+	   secs=$(($diff % 60))
+	   hours=$(($diff / 3600))
+	   # \r  is a "carriage return" - returns cursor to start of line
+	   # with \33[2K we clear the current line
+	   exibe_versao_cdshell
+	   printf "\33[2K____________________________\nTempo de execução:  %02d:%02d:%02d\n $red (q) $normal -> sair" $hours $mins $secs
+	   if [ ! $VAR != '' ] ; then
+		sleep 1 
+	   else
+		sleep $1 
+	   fi
 
-   # \r  is a "carriage return" - returns cursor to start of line
-   # with \33[2K we clear the current line
-    exibe_versao
-   printf "\33[2K____________________________\nTempo de execução:  %02d:%02d:%02d\n $red (q) $normal -> sair" $hours $mins $secs
-   if [ ! $VAR != '' ] ; then
-	sleep 1 
-   else
-	sleep $1 
-   fi
+	   #like a tput reset   (Limpar tela)
+	   echo -e '\0033\0143'
 
-   #like a tput reset   (Limpar tela)
-   echo -e '\0033\0143'
-
-   # -n 1 to get one character at a time, -t 0.1 to set a timeout 
-   read -n 1 -t 0.1 input                  # so read doesn't hang
-   if [[ $input = "q" ]] || [[ $input = "Q" ]] 
-   then
-      echo # to get a newline after quitting
-      break
-   fi
-done
+	   # -n 1 to get one character at a time, -t 0.1 to set a timeout 
+	   read -n 1 -t 0.1 input                  # so read doesn't hang
+	   if [[ $input = "q" ]] || [[ $input = "Q" ]] 
+	   then
+		  echo # to get a newline after quitting
+		  break
+	   fi
+	done
 }
 
+# Reseta seu repositório local e baixa o CDSHELL sem suas modificações.
 function resetar_e_instalar_ultima_versao(){
 	cdshell
 	git checkout -f
 	cdshell install
 }
 
+# Desinstala todo o CDSHELL
+function desinstalar() {
+	cd ~
+	$del="rm -rf"
+	$del .cdshell_req_installed 
+	$del shell
+	$del .vimrc
+	$del .screenrc
+	$del .toprc
+	$del .toprc
+	$del .toprc
+	$del .toprc
+	echo -en "\n $red Por enquanto nao recupera os arquivos originais da primeira instalacao $normal \n"
+}
 
 case $1 in
 
@@ -154,17 +170,3 @@ esac
 
 
 
-
-function desinstalar() {
-
-	cd ~
-	$del="rm -rf"
-	$del .cdshell_req_installed 
-	$del shell
-	$del .vimrc
-	$del .screenrc
-	$del 
-
-	echo -en "\n $red Por enquanto nao recupera os arquivos originais da primeira instalacao $normal \n"
-
-}
