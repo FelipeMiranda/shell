@@ -1,11 +1,13 @@
 #!/bin/bash
-
-
-echo -en "\n $alert Primeira instalação sendo executada $nromal \n"
-
+source ~/colors.sh
 OSTYPE=`uname`
 
-############ Linux ##############################
+
+# Mensagem de inicio
+echo -en "\n $alert Primeira instalação sendo executada $nromal \n"
+
+
+############ Linux Install ##############################
 if [ $OSTYPE == "Linux" ]; then
 	 PACOTES="colordiff gcc ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop"
 	 echo -en "\n Vamos instalar os pacotes: $green $PACOTES $normal\n"
@@ -21,7 +23,7 @@ if [ $OSTYPE == "Linux" ]; then
 	#   rpm -hiv http://pkgs.repoforge.org/txt2tags/txt2tags-2.6-1.el6.rf.noarch.rpm
 fi
 
-############ OpenBSD ##############################
+############ OpenBSD Install ############################
 if [ $OSTYPE == "OpenBSD" ]; then
 	#LISTA de requisitos para ser instalados no OpenBSD
 	LISTA="git vim-7.4.475-no_x11-ruby lynx iftop ngrep bash colorls wget autoconf-2.69p1 automake-1.9.6p11"
@@ -36,7 +38,7 @@ if [ $OSTYPE == "OpenBSD" ]; then
 	echo -e "Se desejar alterar o shell do usuário:\n usermod -s /usr/local/bin/bash $USER"
 fi
 
-############ FreeBSD ##############################
+############ FreeBSD Install ############################
 if [ $OSTYPE == "FreeBSD" ]; then
 	#LISTA de requisitos para ser instalados no FreeBSD
 	LISTA="git vim lynx iftop ngrep bash colorls wget autoconf automake binutils"
@@ -51,3 +53,7 @@ if [ $OSTYPE == "FreeBSD" ]; then
 	echo -e "Se desejar alterar o shell do usuário:\n usermod -s /usr/local/bin/bash $USER"
 
 fi
+
+############ Windows Install ############################
+
+
