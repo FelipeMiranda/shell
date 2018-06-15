@@ -90,7 +90,7 @@ case $1 in
 							echo 0 > $CDSHELL_VAR/cdshell_tarefas.next_id
 						fi
 						NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
-						NEXT_ID= $(( $NEXT_ID + 1 ))
+						NEXT_ID=$(( $NEXT_ID + 1 ))
 						JSON=`jq '.item += [{"id":"$NEXT_ID","tarefa":{ "priority": 1, "text": "$1"}}]' $CDSHELL_VAR/cdshell_tarefas.json`
 						echo $JSON > $CDSHELL_VAR/cdshell_tarefas.json
 						echo $(( $NEXT_ID )) > $CDSHELL_VAR/cdshell_tarefas.next_id
