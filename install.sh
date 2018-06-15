@@ -56,6 +56,7 @@ echo -en "\n ${blue}____________________________________________________$normal"
 # Criando um link $CDSHELL/backup -> $CDSHELL/.saved_files_befor_last_install
 if [ ! -e $CDSHELL/backup ] ; then 
 	cd $CDSHELL
+	mkdir -p $BACKUP_DIR
 	ln -s $BACKUP_DIR backup 
 	echo -en "\n Criando link para backup ..................... $green Done${normal}" 
 fi
