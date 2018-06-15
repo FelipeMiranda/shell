@@ -3,6 +3,7 @@
 source ~/.export
 source ~/shell/colors.sh
 
+
 # colocando isso para nao rodar o source, pois ta chamando o -h dele, -e etc.
 if [ "$1" == "-c" ] || [ "$1" == "--colors" ] ; then
 	#Para a funcoesZZ nao mostrar o help qdo usa o -h executa nela tmb."
