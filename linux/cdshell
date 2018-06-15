@@ -123,7 +123,7 @@ case $1 in
 							echo -en "\n Arquivo alterado mas to saindo $red SEM COMMIT $normal nada\n\n"
 						fi
 					else
-						echo -en "\n\n\n Arquivo cdshell$green sem modificações$normal\n"
+						echo -en "\n\n\n Arquivo cdshell$green sem modificações$normal\n\n"
 					fi
     ;;
  
