@@ -4,21 +4,19 @@ OSTYPE=`uname`
 
 
 # Mensagem de inicio
-echo -en "\n $alert Primeira instalação sendo executada $nromal \n"
+echo -en "\n $alert Primeira instalação sendo executada $normal"
 
 
 ############ Linux Install ##############################
 if [ $OSTYPE == "Linux" ]; then
 	 PACOTES="colordiff gcc ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop"
-	 echo -en "\n Vamos instalar os pacotes: $green $PACOTES $normal\n"
-	 echo -en "\n\n\t Pressione qualquer tecla para continuar ou 'q' para cancelar..."
-	 read -n 1
-
-#	 for programa in $PROGRAMAS ; do
-#		 echo -en "\n Instalando o$yellow $programa \n"
-		 yum install $PACOTES -y
-#	 done
-
+	 echo -en "\n\n\n Vamos instalar os requisitos: $green $PACOTES $normal"
+	 echo -en "\n\n\t Pressione qualquer tecla para continuar ou $yellow 'q'$normal para cancelar..."
+	 read -n 1 CANCELAR
+	 if [ $CANCELAR == 'q' ]; then
+		  exit 1
+	 fi
+	 yum install $PACOTES -y
 	#CentOS 6.6
 	#   rpm -hiv http://pkgs.repoforge.org/txt2tags/txt2tags-2.6-1.el6.rf.noarch.rpm
 fi
@@ -57,3 +55,5 @@ fi
 ############ Windows Install ############################
 
 
+# Chegou aqui, significa que executou tudo, entao cria o arquivo de sinalizacao da primeira instalacao executada.
+touch $HOME/.cdshell_req_installed

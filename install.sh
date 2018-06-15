@@ -229,7 +229,6 @@ if [ ! -e $HOME/.cdshell_req_installed ]; then
 		ln -s /usr/local/bin/bash /bin/bash
 	fi
 	$CDSHELL/requisitos-INSTALL.sh
-	touch $HOME/.cdshell_req_installed
 fi
 
 #Envia mensagem para canal install @ slack
