@@ -80,6 +80,9 @@ function desinstalar() {
 
 }
 
+
+
+
 case $1 in
 
 	# adicionar MENSANGES ao cdshell TODOLIST
