@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+alias esx="ssh root@esx"
+alias mail="ssh root@mail"
+alias i="ipconfig | grep IP"

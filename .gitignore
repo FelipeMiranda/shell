@@ -1,0 +1,8 @@
+/root/shell/.saved_files_before_last_install/*
+/root/shell/.saved_files_before_last_install/.*
+/root/shell/.saved_files_before_last_install/.alias
+.saved_files_before_last_install/*
+backup
+backup/*
+node_modules
+

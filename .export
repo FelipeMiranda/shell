@@ -1,0 +1,74 @@
+#!/bin/bash
+
+USER=`whoami`
+
+source ~/colors.sh
+
+if [ $USER == 'root' ] ; then 
+	CDSHELL="/root/shell" # VARIAVEL QUE CONTEM O RAIZ DO CDSHELL <- (CONFIGURE)
+else
+	CDSHELL=$HOME/shell
+fi
+CDSHELL_VAR=$CDSHELL/.cdshell
+
+OSTYPE=`uname`
+PATH=$PATH:$CDSHELL/linux:/usr/local/bin
+
+HISTFILE=~/.bash_history
+HISTSIZE=10000
+VISUAL=vim
+EDITOR=vim
+
+#escapacoes \[\] para o PS1 funcionar: wrap line, backpacesem comer peda;os malucos kkkk
+#
+red="\[$red\]"
+yellow="\[$yellow\]"
+green="\[$green\]"
+cyan="\[$cyan\]"
+normal="\[$normal\]"
+#
+#
+
+if [ `hostname` == 'mmanzano' ] ; then
+	PS1="$red\u$yellow@$blue\h $cyan\W> $normal"
+else
+	if [ `hostname` == 'dev2.intranet' ] ; then 
+		PS1="$red\u$yellow@$green\h $cyan\W> $normal"
+	else	
+		PS1="$red\u$yellow@$green\h $cyan\w> $normal"
+	fi
+fi
+
+
+####################
+# HOST BASED ALIAS #
+####################
+
+if [ -e $CDSHELL/hostScripts/$HOSTNAME.export ]; then
+	. $CDSHELL/hostScripts/$HOSTNAME.export
+fi
+
+
+#Colocar o diretório corrente já no PATH, para nao precisar ficar toda hora digitando ./ e viva a preguiça.
+export PATH=.:$PATH
+
+#DEFAULT EXPORT (all OSes)
+export HISTFILE HISTSIZE PS1 EDITOR VISUAL CDSHELL PATH DISPLAY
+
+
+# CUSTOM EXPORT per OS'es
+if [ $OSTYPE == "OpenBSD" ]; then
+	PATH=$PATH:~/shell/openbsd
+	PKG_PATH=http://mirrors.unb.br/pub/OpenBSD/5.7/packages/i386/
+	export PKG_PATH CDSHELL PATH
+fi
+
+TZ='America/Sao_Paulo'; export TZ
+
+
+
+
+###################
+#	  Node.JS	  #
+###################
+export NODE_PATH=/lib/node_modules

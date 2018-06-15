@@ -1,0 +1,168 @@
+#!/bin/bash
+
+OSTYPE=`uname`
+
+
+# CLItxt
+alias clitxt='curl -F \"upfile=@-\" https://clitxt.com'
+
+
+#OPCOES COMUNS
+alias ..='cd ..'
+alias d='dig'
+alias i="ifconfig | grep UP -A1 | sed 's/flags.*$//g' | tr '\n' ' ' | sed 's/-- /\n/g'| column | sed 's/      inet/\t=/' | sed 's/lo:/lo:\t/' | grep --color -E '= ([0-9]{1,3}[\.]){3}[0-9]{1,3}'  ; echo "
+alias g='grep -i'
+alias e='EGREP.sh'
+alias l='ls'
+alias ll='ls -l'
+alias m='more'
+alias v='vim'
+alias mp3='mplayer'
+alias p='ps aux'
+alias pg='psauxgrep.sh'
+alias t='tail -f'
+alias tmessages='tail -f 100 /var/log/messages'
+alias +x='chmod +x' 
+alias cd..='cd ..'
+alias cd-='cd -'
+alias cds='cd $CDSHELL'
+alias cdh='cd ~/help/`uname`/help/'
+alias dmesg="dmesg --color"
+#Mostrar informaçoes do CDSHELL.
+#alias cdshell="echo -en '`cat $CDSHELL/backup/data_ultima_instalacao.txt `  \n '"
+alias cdw='cd ~/workspace'
+alias cdp='cd /etc/puppet/environments/devel'
+alias cdco='cd ~/codigo-fonte'
+alias cdc='cd ~/codigo-fonte'
+alias cdl='cd $CDSHELL/linux'
+### USABLES ###
+alias cdusr='cd /usr'
+alias cdvar='cd /var'
+alias cdlog='cd /var/log'
+alias cde='cd /etc/'
+alias c=cat
+alias mx="dig mx"
+################
+
+alias criadaemon=~/shell/linux/criadaemon.sh
+alias dumax='du --max-depth=1 -h | sort -h'
+alias e0='ethstatus -i eth0 -s 10' # interface eth0 size throuput 10M
+alias e1='ethstatus -i eth1 -s 10' # interface eth0 size throuput 10M
+alias ls='ls --color'
+alias la='ls -lah'
+alias lah='ls -la'
+alias lart='ls -lart'
+alias mq='mailq'
+alias q=exit
+alias rm='rm -f'
+alias rmdir='rm -rf'
+alias traduz='zzdicbabylon'
+alias vi='vim'
+alias cp='cp -iR'
+alias mv='mv -i'
+alias env='env | sort'
+alias nm='nodemon'
+alias nd='node'
+alias sss='ss -s'
+alias ps1='source $CDSHELL/linux/ps1_mini.sh'
+alias ps2='source $CDSHELL/linux/ps2_normal.sh'
+alias install="yum install -y"
+alias yr="yum remove"
+alias yi="yum install -y"
+alias iiys="yum install -y"
+alias ys="yum search"
+alias ssyi="yum search"
+alias ctl="systemctl"
+alias dk="docker"
+alias forever="forever.sh"
+
+
+alias tlog="tail -f /var/log/messages"
+alias squidlog.sh="tail -s 0.5 -f /var/log/squid/access.log | awk '{ printf strftime(\"%H:%M %d/%m \") } $0'"
+
+#BLUEMONEY
+alias menu="cd /root/workspace/bolsa-systems/blueMoney/dataMining/ && menu.sh && cd -"
+
+
+
+#PREGUICAS
+alias shellinstall='~/shell/install.sh'
+alias realce='~/shell/linux/realce.awk'
+alias postudo='cd && cd mail-benchmark && postal -m 1000 -M 100 -t 3 localhost to-foobar.br'
+alias postconsometudo='cd && cd mail-benchmark && rabid -p 10 localhost from-foobar.br'
+alias postzerafila='postsuper -d all'
+alias postflush='postqueue -f'
+alias scr='screen -x || screen'
+alias miniman='~/shell/linux/miniman.sh'
+alias rr=®
+alias ®="pull; if [ \$? ] ; then push ; else echo -en \$red '\n\nErro no pull!!!\n' ; fi" 
+alias ®®="cdw && ® ; cds && ® ; cdh && ® ; cdc && ®"
+alias ¢=®
+alias R=®
+alias ¢¢=®®
+
+# Shortcuts para SERVIDORES
+alias d1="ssh dev1"
+alias d2="ssh dev2"
+alias sshm="ssh superati.com.br -p 22000 -l root"
+alias mm="ssh superati.com.br -p 22000"
+alias manzano="ssh manzano"
+
+alias nsse="senhaback.sh"
+alias trim="trim.sh"
+alias arroz="echo Gzuis"
+
+#GIT ALIAS
+alias sta='git status'
+alias com='git commit -a'
+alias ga='git add . --all'
+alias pull='echo -e "\n\t ${alert}PULL${normal} xando\n\n\t ${green}LOCAL <- ${yellow} WWW ${blue} ($(git config remote.origin.url)) ${normal}\n" && git pull '
+alias push='echo -e "\n\t ${alert}emPURRANDO${normal}\n\n\t ${yellow}LOCAL -> ${green} WWW ${blue} ($(git config remote.origin.url)) ${normal}\n" && git push origin master '
+#alias clone='git clone git@github.com:quirinobytes/$1.git'
+
+
+
+## CUSTOM ALIAS
+
+## LINUX ALIAS
+if [ $OSTYPE == "Linux" ]; then
+   alias n=$CDSHELL/linux/netstat.sh
+   alias netnumber="echo $(hostname) netstat -nat | awk '{print \$6}' | sort | uniq -c | sort -n"
+
+   ####################################################
+   ######## #EXEMPLOS DE COMANDOS RAPIDOS.  ###########
+   ####################################################
+
+   alias nL='n LISTEN'
+   alias nE='n ESTABLISHED'
+
+   alias ls='ls --color'
+   alias r='route -n'
+   alias grep='grep --color'
+fi
+
+## OPENBSD ALIAS
+if [ $OSTYPE == "OpenBSD" ]; then
+	alias n='netstat -f inet -an'
+	alias r='route show'
+fi
+
+## FreeBSD ALIAS
+if [ $OSTYPE == "FreeBSD" ]; then
+	alias n='netstat -an'
+	alias r='netstat -nr'
+	alias zs='zpool status'
+
+#muito importante para nao setar errado caso nao tenha o programa colorls, senao vc nao vai ver nem um arquivo.
+	if [ -e /usr/local/bin/colorls ]; then
+		alias ls='colorls -G'
+	fi
+
+fi
+
+
+#SECURITY UTILS
+
+alias b64decode="cat | base64 -d <<<"
+alias b64encode="echo -n | base64 <<<"
+alias TCP-syn="tcpdump -Annvi $IF_INTERNET 'tcp[13]==2'"

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-  
 source ~/.export
 source ~/shell/colors.sh
 

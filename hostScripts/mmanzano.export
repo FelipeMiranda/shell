@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+
+IF_INTERNET="enp3s1"
+IF_REDEINTERNA="enp3s2"
+
+export $IF_INTERNET $IF_REDEINTERNA

@@ -1,0 +1,42 @@
+#!/bin/bash
+
+
+##################
+#HOST BASED ALIAS# 
+##################
+# zaroio
+if [ $HOSTNAME == 'zaroio' ]; then
+
+
+
+alias ssh='ssh -l tqi_rcastro'
+alias n2-Consulta_OpcoesWebmail_por_IDTPERSON='curl -H "Accept: application/json" http://bdro-ecm.mail.sys.intranet:8080/person/$IDTPERSON/webmail_config'
+alias n2-check_linguem_fileserver=n2-check_linguem_fileserver.sh
+alias n2-imap-restart=n2-imap-restart.sh
+alias n2-imap-check=n2-imap-check.sh
+alias n2-puppet_client=n2-puppet_client.sh
+alias n2-linguem-restart=n2-linguem-restart.sh
+alias M=Macs.sh
+alias Mcat=Mcat.sh
+alias status=status.sh
+alias geleia="sse geleia13"
+alias gemada="sse gemada12"
+
+
+
+
+# UOL Tools/Tips
+alias puppet2='echo -en "puppetd --server=auto-gt.intranet --no-daemonize --no-usecacheonfailure -o --fastsync --report -v \n puppetd --server=auto-gt.intranet --no-daemonize --no-usecacheonfailure -o --pluginsync --report -v \n"'
+alias netnumber2="cat $CDSHELL/linux/netnumber2.txt"
+alias netstat2=netnumber2
+alias inputrc2="cat $CDSHELL/linux/inputrc2.txt"
+
+
+
+else
+	if [ $HOSTNAME != 'mmanzano' ] ; then
+		echo nao estou no zaroio.
+	fi
+fi
+
+
