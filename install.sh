@@ -61,7 +61,7 @@ if [ ! -e $CDSHELL/backup ] ; then
 fi
 
 # Testando para ver se já existe o diretório de BACKUP, então crie caso não exista.
-if [ ! -d $BACKUP_DIR ] ; then mkdir -p $BACKUP_DIR ; echo -en "\nCriando diretório de backup: $yellow $BACKUP_DIR $normal ... " ; fi
+#if [ ! -d $BACKUP_DIR ] ; then mkdir -p $BACKUP_DIR ; echo -en "\nCriando diretório de backup: $yellow $BACKUP_DIR $normal ... " ; fi
 
 # Copiando a Suite de configurações CDSHELL e fazendo o BACKUP 
 echo -en "\n\n Iniciando backup ."
