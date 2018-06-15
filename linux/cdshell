@@ -108,9 +108,8 @@ case $1 in
 	 echo -en "Versão do Pacote CDSHELL: $green `cat $CDSHELL/backup/versao_ultima_instalacao.txt`\n $normal"
     ;;
 
-    "-l") jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json
+    "-l") jq -r '.item[].tarefa ' $CDSHELL_VAR/cdshell_tarefas.json
     ;;
-
 
 	"-c"|"--colors") zzcores 
    					cat $HOME/colors.sh 
