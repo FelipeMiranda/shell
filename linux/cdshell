@@ -80,15 +80,11 @@ function desinstalar() {
 
 }
 
-
-
-
 case $1 in
 
 	# adicionar MENSANGES ao cdshell TODOLIST
-	"-a"|"--add") 
-   					if [ -n "$1" ]; then
-						echo "$1" >> $CDSHELL_VAR
+	"-a"|"--add")	if [ -n "$1" ]; then
+						echo "$1" >> $CDSHELL_VAR/cdshell_tarefas.json
 						echo -en "\n$green Tarefa adicionada. \n"
 					fi
     ;;
