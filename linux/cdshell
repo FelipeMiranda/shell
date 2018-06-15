@@ -70,7 +70,7 @@ function resetar_e_instalar_ultima_versao(){
 function desinstalar() {
 
 	cd ~
-	$del="rm -rf"
+	del="rm -rf"
 	$del .cdshell_req_installed 
 	$del shell
 	$del .vimrc
