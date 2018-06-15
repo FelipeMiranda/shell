@@ -85,13 +85,12 @@ case $1 in
 	# adicionar MENSANGES ao cdshell TODOLIST
 	"-a"|"--add")	if [ -n "$1" ]; then
 						if [ ! -e $CDSHELL_VAR ]; then
+							echo -en " Criando diretório: $CDSHELL_VAR \n"
 							mkdir -p $CDSHELL_VAR
 						fi
 						echo "$1" >> $CDSHELL_VAR/cdshell_tarefas.json
 						echo -en "\n$green Tarefa adicionada. \n"
 					fi
-
-
     ;;
 
 	# Instalar enviando o diretorio local (PWD) para instalacao como parametro e ja voltar no mesmo lugar que chamou.
