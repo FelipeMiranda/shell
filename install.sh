@@ -6,13 +6,15 @@
 ####################################################
 
 # Suporte as cores. (cdshell -c) para ver cores do CDSHELL
-source $CDSHELL/colors.sh
+source $CDSHELL/colors.sh || source colors.sh
 
 if [ ! -e $CDSHELL ]; then
 	echo -en "\n Caminho para instalar seu $alert CDSHELL$normal: $cyan"
 	read CAMINHO
 	echo -en "$normal"
 	CDSHELL=$CAMINHO
+else
+	CDSHELL=$HOME/shell
 fi
 
 BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
@@ -48,6 +50,13 @@ echo -en "\n Diretório de instalação 	->	$yellow $CDSHELL $normal\n"
 
 # Verificando a existencia de arquivos pre-instalação, para salva-los em caso de algum erro poder voltar.
 echo -en "\n Diretório de backup 		-> 	$yellow cd \$CDSHELL/backup $normal\n"
+
+# Criando um link $CDSHELL/backup -> $CDSHELL/.saved_files_befor_last_install
+if [ ! -e $CDSHELL/backup ] ; then 
+	cd $CDSHELL
+	ln -s $BACKUP_DIR backup 
+	echo -en "\n Criando link para backup ..................... $green Done${normal}" 
+fi
 
 # Testando para ver se já existe o diretório de BACKUP, então crie caso não exista.
 if [ ! -d $BACKUP_DIR ] ; then mkdir -p $BACKUP_DIR ; echo -en "\nCriando diretório de backup: $yellow $BACKUP_DIR $normal ... " ; fi
@@ -175,19 +184,6 @@ else
    echo -en "\n$red ERROR: Erro ao instalar Post commit do Git Hooks$normal\n"
 fi
 
-# Criando um link $CDSHELL/backup -> $CDSHELL/.saved_files_befor_last_install
-echo -en "\n Criando link para backup ........"
-if [ ! -e $CDSHELL/backup ] ; then ln -s $BACKUP_DIR backup ; echo -en ".....: $BACKUP_DIR$green Done\n" ; fi
-
-echo -en . 
-if [ ! -e /etc/bash_completion.d ]; then
-	echo -en . 
-	mkdir -p /etc/bash_completion.d
-	echo -en . 
-fi
-echo -en . 
-echo -en "........... $green Done $normal\n"
-
 
 echo -en "\n Instalando as ${cyan}chaves SSH${normal} ........"
 if [ ! -d $HOME/.ssh ]; then
@@ -207,6 +203,9 @@ fi
 cd - > /dev/null
 
 # Configurando bash_completion
+if [ ! -e /etc/bash_completion.d ]; then
+	mkdir -p /etc/bash_completion.d
+fi
 echo -en "\n Configurando$yellow bash_completion.d$normal ........"
 cp $CDSHELL/etc+bash_completion.d+git /etc/bash_completion.d/git
 echo -en "....... $green Done $normal\n"
