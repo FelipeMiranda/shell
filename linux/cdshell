@@ -159,7 +159,18 @@ case $1 in
     "reset"|"--reset"|"-r") resetar_e_instalar_ultima_versao
 	;;
 
-	"-u"|"--uninstall"|"-U") desinstalar
+	"-u"|"--uninstall"|"-U") 
+								echo -en "\n $atention Tem certeza? $WHITE UNINSTALL ...\n\n\t $normal Digite s/S para $green SIM -> $WHITE"
+								read -n 1 RESPOSTA
+								echo $normal
+								if [ "$RESPOSTA" == 's' ] || [  "$RESPOSTA" == 'S' ]; then
+									echo -en " Iniciando a desinstalação... "
+									desinstalar
+									echo -en "\n\n Desinstalação concluída com SUCESSO! "
+								else
+									echo -en "\n\n $red OK CANCELADO! "
+								fi
+
 	;;
 
     "-v") exibe_versao 
