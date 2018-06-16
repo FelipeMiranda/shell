@@ -6,8 +6,8 @@ if (! process.argv[2] )
 	return
 
 else{
-	console.log('Mensagem: '+process.argv[2]);
-	msg =  process.argv[2];
+	console.log('Mensagem: '+process.argv);
+	msg =  process.argv;
 }
 
 
