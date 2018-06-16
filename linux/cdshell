@@ -98,95 +98,58 @@ function atualizaJSON() {
 						done
 						cat /tmp/B | awk '
 							{
-									if ($0 == 1) {print "\\e[0;0m"}
-										if ($0 == 3) {print "\\e[31m"}
-											if ($0 == 2) {print "\\e[33m"}
+								if ($0 == 1) {print "\\e[0;0m"}
+								if ($0 == 2) {print "\\e[33m"}
+								if ($0 == 3) {print "\\e[31m"}
 							}' > /tmp/B2
 						sed -i 's/"//g' /tmp/C
 						paste /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
 						rm -rf /tmp/A /tmp/B /tmp/B2 /tmp/C /tmp/D
+						return 0
 }
 
 case $1 in
 
 	# adicionar MENSANGES ao cdshell TODOLIST
 	"-a"|"--add")	
-					if [ -n "$1" ]; then
-						if [ ! -e $CDSHELL_VAR ]; then
-							mkdir -p $CDSHELL_VAR
-							echo -en " Criando diretório: $CDSHELL_VAR \n"
-							echo 0 > $CDSHELL_VAR/cdshell_tarefas.next_id
-						fi
-						NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
-						NEXT_ID=$(( $NEXT_ID + 1 ))
-						TEXTO=$( echo $* | sed 's/\-a //g' )
-						echo TEXTO=$TEXTO
-						JSON=`jq ".item += [{\"id\":$NEXT_ID,\"tarefa\":{\"priority\": 1, \"text\":\"$TEXTO\"}}]" $CDSHELL_VAR/cdshell_tarefas.json`
-						#atualizando o BANCO DE DADOS com o novo registro, devia testar antes.
-						atualizaJSON $JSON
-						echo -en "\n$green Tarefa $NEXT_ID adicionada. \n"
-					fi
+				if [ -n "$1" ]; then
+					NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
+					NEXT_ID=$(( $NEXT_ID + 1 ))
+					TEXTO=$( echo $* | sed 's/\-a //g' )
+					echo TEXTO=$TEXTO
+					JSON=`jq ".item += [{\"id\":$NEXT_ID,\"tarefa\":{\"priority\": 1, \"text\":\"$TEXTO\"}}]" $CDSHELL_VAR/cdshell_tarefas.json`
+					#atualizando o BANCO DE DADOS com o novo registro, devia testar antes.
+					atualizaJSON $JSON
+					echo -en "\n$green Tarefa $NEXT_ID adicionada. \n"
+				fi
     ;;
 
 	# Adicionando tarefas PRIORITY = 3
-	"-a3")	if [ -n "$1" ]; then
-						NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
-						NEXT_ID=$(( $NEXT_ID + 1 ))
-						TEXTO=$( echo $* | sed 's/\-a3 //g' )
-						echo TEXTO=$TEXTO
-						JSON=`jq ".item += [{\"id\":$NEXT_ID,\"tarefa\":{\"priority\": 3, \"text\":\"$TEXTO\"}}]" $CDSHELL_VAR/cdshell_tarefas.json`
-						#atualizando o BANCO DE DADOS com o novo registro, devia testar antes.
-						echo $JSON > $CDSHELL_VAR/cdshell_tarefas.json
-						echo $(( $NEXT_ID )) > $CDSHELL_VAR/cdshell_tarefas.next_id
-						jq .item[].id $CDSHELL_VAR/cdshell_tarefas.json > /tmp/A
-						jq .item[].tarefa.priority $CDSHELL_VAR/cdshell_tarefas.json > /tmp/B
-						jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json > /tmp/C
-						for ((c=$(wc -l /tmp/B | cut -d " " -f1);$c>1;c=$c-1)) do
-							echo "\e[0m" >> /tmp/D
-						done
-						cat /tmp/B | awk '
-							{
-									if ($0 == 1) {print "\\e[0;0m"}
-										if ($0 == 3) {print "\\e[31m"}
-											if ($0 == 2) {print "\\e[33m"}
-							}' > /tmp/B2
-						sed -i 's/"//g' /tmp/C
-						paste -d " " /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
-					rm -rf /tmp/A /tmp/B /tmp/B2 /tmp/C /tmp/D
-						echo -en "\n$green Tarefa $NEXT_ID adicionada. \n"
-					fi
+	"-a3")		if [ -n "$1" ]; then
+					NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
+					NEXT_ID=$(( $NEXT_ID + 1 ))
+					TEXTO=$( echo $* | sed 's/\-a3 //g' )
+					echo TEXTO=$TEXTO
+					JSON=`jq ".item += [{\"id\":$NEXT_ID,\"tarefa\":{\"priority\": 3, \"text\":\"$TEXTO\"}}]" $CDSHELL_VAR/cdshell_tarefas.json`
+					atualizaJSON $JSON
+					echo -en "\n$green Tarefa $NEXT_ID adicionada. \n"
+				fi
     ;;
 
 	# Exibir cores e variáveis mode ENCAPETATION=ON
-	"-c"|"--colors") zzcores 
-   					cat $HOME/colors.sh 
+	"-c"|"--colors") 
+					zzcores 
+   					cat $HOME/colors.sh
     ;;
 
-	# Adicionando tarefas PRIORITY = 3
+	# Apagando tarefas por ID
 	"-d"|"--delete")	if [ -n "$1" ]; then
 						NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
 						NEXT_ID=$(( $NEXT_ID + 1 ))
 						ID=$( echo $2 | sed 's/\-a //g' )
 						echo Apagando Tarefa ID=$ID
 						JSON=$(jq "del(.[][] | select( .id == $ID))" $CDSHELL_VAR/cdshell_tarefas.json)
-						#atualizando o BANCO DE DADOS com o novo registro, devia testar antes.
-						echo $JSON > $CDSHELL_VAR/cdshell_tarefas.json
-						echo $(( $NEXT_ID )) > $CDSHELL_VAR/cdshell_tarefas.next_id
-						jq .item[].id $CDSHELL_VAR/cdshell_tarefas.json > /tmp/A
-						jq .item[].tarefa.priority $CDSHELL_VAR/cdshell_tarefas.json > /tmp/B
-						jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json > /tmp/C
-						for ((c=$(wc -l /tmp/B | cut -d " " -f1);$c>1;c=$c-1)) do
-							echo "\e[0m" > /tmp/D
-						done
-						cat /tmp/B | awk '
-							{
-									if ($0 == 1) {print "\\e[0;0m"}
-										if ($0 == 2) {print "\\e[31m"}
-											if ($0 == 3) {print "\\e[33m"}
-							}' > /tmp/B2
-						sed -i 's/"//g' /tmp/C
-						paste /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
-						rm -rf /tmp/A /tmp/B /tmp/B2 /tmp/C /tmp/D
+						atualizaJSON $JSON
 						echo -en "\n$green Tarefa $2 apagada. \n"
 					fi
     ;;
