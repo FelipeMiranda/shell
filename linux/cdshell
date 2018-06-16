@@ -133,12 +133,22 @@ case $1 in
 						#atualizando o BANCO DE DADOS com o novo registro, devia testar antes.
 						echo $JSON > $CDSHELL_VAR/cdshell_tarefas.json
 						echo $(( $NEXT_ID )) > $CDSHELL_VAR/cdshell_tarefas.next_id
-						jq .item[].tarefa.priority $CDSHELL_VAR/cdshell_tarefas.json > /tmp/A
-						jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json > /tmp/B
-						sed -i 's/1/\\e[0m /g; s/2/\\e[33m /g; s/3/\\e[31m /g' /tmp/A
-						paste /tmp/A /tmp/B > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
-						rm -rf /tmp/A /tmp/B
-						echo -en "\n$green Tarefa adicionada. \n"
+						jq .item[].id $CDSHELL_VAR/cdshell_tarefas.json > /tmp/A
+						jq .item[].tarefa.priority $CDSHELL_VAR/cdshell_tarefas.json > /tmp/B
+						jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json > /tmp/C
+						for i in $(wc -l /tmp/B | cut -d " " -f1); do
+							echo "\e[0m" > /tmp/D
+						done
+						cat /tmp/B | awk '
+							{
+									if ($0 == 1) {print "\\e[0;0m"}
+										if ($0 == 2) {print "\\e[31m"}
+											if ($0 == 3) {print "\\e[33m"}
+							}' > /tmp/B2
+						sed -i 's/"//g' /tmp/C
+						paste /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
+						rm -rf /tmp/A /tmp/B /tmp/C
+						echo -en "\n$green Tarefa $NEXT_ID adicionada. \n"
 					fi
     ;;
 
