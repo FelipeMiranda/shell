@@ -30,10 +30,6 @@ if [ -n "$1" ]; then
 	BACKUP_FROM_RUNDIR="$1"
 fi
 
-if [ ! -e $CDSHELL_VAR ]; then
-	 mkdir -p $CDSHEL_VAR
-fi
-
 # Cabeçalho da instalação.
 echo -en "\033c\n\t\t $blue#$yellow### $blue Shell Enviroment KRN ® $yellow###$blue#$normal\n"
 echo -en "\t\t$blue-----------------------------------$normal\n"
@@ -48,7 +44,7 @@ echo -en "\n Diretório de instalação 	->	$yellow $CDSHELL $normal\n"
 # Verificando a existencia de arquivos pre-instalação, para salva-los em caso de algum erro poder voltar.
 echo -en "\n Diretório de backup 		-> 	$yellow \$CDSHELL/backup $normal\n"
 
-echo -en "\n ${blue}____________________________________________________$normal"
+echo -en "\n ${blue}....................................................$normal \n\n"
 
 # Criando um link $CDSHELL/backup -> $CDSHELL/.saved_files_befor_last_install
 if [ ! -e $CDSHELL/backup ] ; then 
@@ -58,11 +54,19 @@ if [ ! -e $CDSHELL/backup ] ; then
 	echo -en "\n Criando link para backup ..................... $green Done${normal}" 
 fi
 
+# Criando um CDSHELL_VAR
+if [ ! -e $CDSHELL_VAR ]; then
+	echo -en "\n Criando$WHITE CDSHELL_VAR$normal ...."  
+	mkdir -p $CDSHELL_VAR
+	echo -en "......... $green Done${normal}" 
+fi
+
+
 # Testando para ver se já existe o diretório de BACKUP, então crie caso não exista.
 #if [ ! -d $BACKUP_DIR ] ; then mkdir -p $BACKUP_DIR ; echo -en "\nCriando diretório de backup: $yellow $BACKUP_DIR $normal ... " ; fi
 
 # Copiando a Suite de configurações CDSHELL e fazendo o BACKUP 
-echo -en "\n\n Iniciando backup ."
+echo -en "\n Iniciando backup ."
 if [ -e $HOME/.toprc ] ; 	then cp -f $HOME/.toprc $BACKUP_DIR/ ; fi
 echo -en .
 cp $CDSHELL/.toprc $HOME/
@@ -148,7 +152,7 @@ else
 	echo -en "\n Copiando os skeletons $WHITE pela primeira vez $normal"
 	mkdir $HOME/skeleton
 	cp -f $CDSHELL/skeleton $HOME/ -R
-	cp -f $CDSHELL/skeleton/cdshell_tarefas.json $CDSHELL_VAR
+	cp -f $CDSHELL/skeleton/cdshell_tarefas.json $CDSHELL_VAR/
 	touch $CDSHELL/skeleton/tarefas_usedby_bashrc.txt
 	echo -en "..... $green Done $normal\n"
 fi
