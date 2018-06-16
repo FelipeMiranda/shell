@@ -8,8 +8,6 @@
 
 #Config
 source ~/colors.sh
-DISPLAY=192.168.15.2:0
-export DISPLAY
 
 
 #Ler o comando
