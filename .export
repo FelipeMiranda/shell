@@ -20,7 +20,7 @@ VISUAL=vim
 EDITOR=vim
 
 # Nao remover, usado para controle do tempo de apresetacao do Tarefas.
-TAREFAS_SHOWED_AT_TIME=
+TAREFAS_SHOWED_AT_TIME=0
 
 #escapacoes \[\] para o PS1 funcionar: wrap line, backpacesem comer peda;os malucos kkkk
 #
