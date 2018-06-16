@@ -10,14 +10,19 @@ echo -en "\n $alert Primeira instalação sendo executada $normal"
 
 ############ Linux Install ##############################
 if [ $OSTYPE == "Linux" ]; then
-	 PACOTES=$PACOTES_LINUX
-	 echo -en "\n\n\n Vamos instalar os requisitos: $green $PACOTES $normal"
-	 echo -en "\n\n\t Pressione qualquer tecla para continuar ou $yellow 'q'$normal para cancelar..."
-	 read -n 1 CANCELAR
-	 if [ "$CANCELAR" == 'q' ]; then
-		  exit 1
-	 fi
-	 yum install $PACOTES -y
+	PACOTES=$PACOTES_LINUX
+	echo -en "\n\n\n Vamos instalar os requisitos: $green $PACOTES $normal"
+	echo -en "\n\n\t Pressione qualquer tecla para continuar ou $yellow 'q'$normal para cancelar... \n\n\tcontinuando em ...\n"
+
+	for TEMPO in {1..5} ; do
+		echo -en "\r\t$(( 6 - $TEMPO )) segundos"
+		read -n 1 -t 1 CANCELAR
+		if [ "$CANCELAR" == 'q' ]; then
+			exit 1
+		fi
+	done
+
+	yum install $PACOTES -y
 	#CentOS 6.6
 	#   rpm -hiv http://pkgs.repoforge.org/txt2tags/txt2tags-2.6-1.el6.rf.noarch.rpm
 fi
