@@ -14,8 +14,8 @@ if [ $OSTYPE == "Linux" ]; then
 	echo -en "\n\n\n Vamos instalar os requisitos: $green $PACOTES $normal"
 	echo -en "\n\n\t Pressione qualquer tecla para continuar ou $yellow 'q'$normal para cancelar... \n\n\tcontinuando em ...\n"
 
-	for TEMPO in {1..5} ; do
-		echo -en "\r\t$(( 6 - $TEMPO )) segundos"
+	for TEMPO in {3..1} ; do
+		echo -en "\r\t$TEMPO segundos"
 		read -n 1 -t 1 CANCELAR
 		if [ "$CANCELAR" == 'q' ]; then
 			exit 1
