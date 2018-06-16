@@ -69,12 +69,17 @@ function resetar_e_instalar_ultima_versao(){
 }
 function desinstalar() {
 
+	DIRETORIOS="/.cdshell_req_installed ~/.vimrc ~/.screenrc ~/.cdshell ~/skeleton $CDSHELL"
+	echo -en "\n Vamos apagar os seguintes diretórios, esteja ciente...kkk!\n\n$WHITE $DIRETORIOS"
+	read -n1
+	
 	cd ~
 	del="rm -rf"
 	$del ~/.cdshell_req_installed 
 	$del ~/.vimrc
 	$del ~/.screenrc
 	$del ~/.cdshell
+	$del ~/skeleton
 	$del $CDSHELL
 
 	echo -en "\n $green Desinstalado com SUCESSO!\n\n\t $red Por enquanto nao recupera os arquivos originais da primeira instalacao $normal \n"
