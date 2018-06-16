@@ -2,14 +2,8 @@
 	"item" : [
 				{ 	"id": 1,
 					"tarefa":{
-							"priority": 3,
-							"text": "texto vai aqui"
-					}
-				},
-				{ 	"id": 2,
-					"tarefa":{
 							"priority": 1,
-							"text": "nada"
+							"text": "Tarefa de exemplo"
 					}
 				}
 			]
