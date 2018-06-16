@@ -13,6 +13,8 @@ fi
 function exibe_versao_cdshell(){
 	DATA=`cat $CDSHELL/backup/data_ultima_instalacao.txt`
 	echo -en "\n$DATA"
+	echo -en "\n\n TAREFAS_SHOWED_AT_TIME=$WHITE $TAREFAS_SHOWED_AT_TIME $normal\n\n"
+	echo -en " Exibido à $(( $TAREFAS_SHOWED_AT_TIME - $(date +%s) )) segundos atrás
 }
 
 # Exibe a versão Git do seu repositório local
