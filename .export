@@ -10,19 +10,15 @@ TIME_TO_WAIT=60
 
 USER=`whoami`
 OSTYPE=`uname`
+CDSHELL=$HOME/shell
+CDSHELL_VAR=$HOME/.cdshell
 PATH=$PATH:$CDSHELL/linux:/usr/local/bin
-
 HISTFILE=~/.bash_history
 HISTSIZE=10000
+TZ='America/Sao_Paulo'; export TZ
 VISUAL=vim
 EDITOR=vim
-
-if [ $USER == 'root' ] ; then 
-	CDSHELL="/root/shell" # VARIAVEL QUE CONTEM O RAIZ DO CDSHELL <- (CONFIGURE)
-else
-	CDSHELL=$HOME/shell
-fi
-CDSHELL_VAR=$HOME/.cdshell
+PS1="$red\u$yellow@$green\h $cyan\W> $normal"
 
 ##escapacoes \[\] para o PS1 funcionar: wrap line, backpacesem comer peda;os malucos kkkk
 #
@@ -31,9 +27,6 @@ CDSHELL_VAR=$HOME/.cdshell
 #green="\[$green\]"
 #cyan="\[$cyan\]"
 #normal="\[$normal\]"
-#
-#
-
 
 ####################
 # HOST BASED ALIAS #
@@ -50,17 +43,12 @@ export PATH=.:$PATH
 #DEFAULT EXPORT (all OSes)
 export HISTFILE HISTSIZE PS1 EDITOR VISUAL CDSHELL PATH DISPLAY CDSHELL_VAR TAREFAS_SHOWED_AT_TIME
 
-
 # CUSTOM EXPORT per OS'es
 if [ $OSTYPE == "OpenBSD" ]; then
 	PATH=$PATH:~/shell/openbsd
 	PKG_PATH=http://mirrors.unb.br/pub/OpenBSD/5.7/packages/i386/
 	export PKG_PATH CDSHELL PATH
 fi
-
-TZ='America/Sao_Paulo'; export TZ
-
-
 
 
 ###################
