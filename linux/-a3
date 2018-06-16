@@ -1,1 +1,1 @@
-cdshell -a3 
+cdshell -a3 $*
