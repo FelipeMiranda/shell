@@ -129,7 +129,7 @@ case $1 in
 						NEXT_ID=$(( $NEXT_ID + 1 ))
 						TEXTO=$( echo $* | sed 's/\-a //g' )
 						echo TEXTO=$TEXTO
-						JSON=`jq ".item += [{\"id\":\"$NEXT_ID\",\"tarefa\":{\"priority\": 3, \"text\":\"$TEXTO\"}}]" $CDSHELL_VAR/cdshell_tarefas.json`
+						JSON=`jq ".item += [{\"id\":$NEXT_ID,\"tarefa\":{\"priority\": 3, \"text\":\"$TEXTO\"}}]" $CDSHELL_VAR/cdshell_tarefas.json`
 						#atualizando o BANCO DE DADOS com o novo registro, devia testar antes.
 						echo $JSON > $CDSHELL_VAR/cdshell_tarefas.json
 						echo $(( $NEXT_ID )) > $CDSHELL_VAR/cdshell_tarefas.next_id
@@ -148,7 +148,7 @@ case $1 in
 						sed -i 's/"//g' /tmp/C
 						paste /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
 						rm -rf /tmp/A /tmp/B /tmp/C
-						echo -en "\n$green Tarefa $NEXT_ID adicionada. \n"
+						echo -en "\n$green Tarefa adicionada. \n"
 					fi
     ;;
 
