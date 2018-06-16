@@ -22,6 +22,9 @@ EDITOR=vim
 # Nao remover, usado para controle do tempo de apresetacao do Tarefas.
 TAREFAS_SHOWED_AT_TIME=0
 
+# Tempo para exibir tarefas novamente, em segundos.
+TIME_TO_WAIT=60
+
 #escapacoes \[\] para o PS1 funcionar: wrap line, backpacesem comer peda;os malucos kkkk
 #
 red="\[$red\]"

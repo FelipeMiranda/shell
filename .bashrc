@@ -41,7 +41,7 @@ for i in `ls $HOME/.bash_completion.d/` ; do
 	source $HOME/.bash_completion.d/$i
 done
 
-if [ $(( $(date +%s) - $TAREFAS_SHOWED_AT_TIME )) -gt 5 ]; then
+if [ $(( $(date +%s) - $TAREFAS_SHOWED_AT_TIME )) -gt $TIME_TO_WAIT ]; then
 	TAREFAS_TXT=$(cat $CDSHELL_VAR/tarefas_usedby_bashrc.txt)
 	echo -en "${WHITE} - Lista de Tarefas -\n$normal\n"
 	echo -en "${TAREFAS_TXT}$normal\n\n"
