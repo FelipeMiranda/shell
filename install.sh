@@ -17,6 +17,7 @@ fi
 
 CDSHELL=$HOME/shell
 BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
+CDSHELL_VAR=$HOME/.cdshell
 
 # Coleta o início da execução.
 START=$(date +%s)
@@ -29,15 +30,12 @@ if [ -n "$1" ]; then
 	BACKUP_FROM_RUNDIR="$1"
 fi
 
-if [ ! -e $CDSHELL/$CDSHELL_VAR ]; then
-	 mkdir -p $CDSHELL/$CDSHEL_VAR -p
- fi
-
-clear
+if [ ! -e $CDSHELL_VAR ]; then
+	 mkdir -p $CDSHEL_VAR
+fi
 
 # Cabeçalho da instalação.
-echo 
-echo -en "\n\t\t $blue#$yellow### $blue Shell Enviroment KRN ® $yellow###$blue#$normal\n"
+echo -en "\033c\n\t\t $blue#$yellow### $blue Shell Enviroment KRN ® $yellow###$blue#$normal\n"
 echo -en "\t\t$blue-----------------------------------$normal\n"
 echo -en "\n Diretório do usuário ${yellow}\$HOME${normal}	->	$yellow $HOME $normal\n"
 
@@ -141,15 +139,18 @@ if [ ! -e "/opt/funcoeszz/funcoeszz" ]; then
 fi
 echo -en "................... $green Done $normal\n"
 
-# Copiando os skeletons	do vim e todos que estiverem lá ... git, vim, F11, etc.
+# Copiando os SKELETON do vim, tarefas e todos que estiverem lá ... git, vim, F11, etc.
 if [ -e ~/skeleton ] ; then
 	echo -en "\n Copiando os ${WHITE}skeletons${normal} .........."
 	cp -f $CDSHELL/skeleton/* $HOME/skeleton/ -Ra
 	echo -en ".............. $green Done $normal\n"
 else 
-	echo -en "\n Copiando os skeletons $yellow pela primeira vez $normal"
+	echo -en "\n Copiando os skeletons $WHITE pela primeira vez $normal"
 	mkdir $HOME/skeleton
 	cp -f $CDSHELL/skeleton $HOME/ -R
+	cp -f $CDSHELL/skeleton/cdshell_tarefas.json $CDSHELL_VAR
+	touch $CDSHELL/skeleton/tarefas_usedby_bashrc.txt
+	echo -en "..... $green Done $normal\n"
 fi
 
 #Coletando data e versão da instalação, para carimbar dia da instalação.
