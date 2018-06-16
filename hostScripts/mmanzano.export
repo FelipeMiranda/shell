@@ -1,8 +1,7 @@
 #!/bin/bash
 
+FILE_NAME=`ls /logs/hosts* | tail -n1`
 
-
-IF_INTERNET="enp3s1"
-IF_REDEINTERNA="enp3s2"
-
-export $IF_INTERNET $IF_REDEINTERNA
+/usr/bin/wc -l /etc/hosts.deny | tee /logs/hosts.deny$(date +%Y%m%d) > /dev/null
+echo -en "IPs bloqueados:"
+cat $FILE_NAME
