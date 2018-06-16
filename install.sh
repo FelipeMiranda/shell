@@ -153,6 +153,7 @@ else
 	mkdir -p $HOME/skeleton
 	cp -f $CDSHELL/skeleton $HOME/ -R
 	cp -f $CDSHELL/skeleton/cdshell_tarefas.json $CDSHELL_VAR/
+   echo 0 > $CDSHELL_VAR/cdshell_tarefas.next_id
 	touch $CDSHELL_VAR/tarefas_usedby_bashrc.txt
 	echo -en "..... $green Done $normal\n"
 fi
