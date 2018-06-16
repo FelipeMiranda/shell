@@ -42,5 +42,4 @@ for i in `ls $HOME/.bash_completion.d/` ; do
 done
 
 TAREFAS_TXT=$(cat $CDSHELL_VAR/tarefas_usedby_bashrc.txt)
-echo -en "#${yellow} - Lista de Tarefas -\n${TAREFAS_TXT}$normal\n\n"
-echo -en "$normal"
+echo -en "${WHITE} - Lista de Tarefas -\n$normal\n ${TAREFAS_TXT}$normal\n\n"
