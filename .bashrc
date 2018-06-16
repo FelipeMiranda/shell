@@ -41,6 +41,11 @@ for i in `ls $HOME/.bash_completion.d/` ; do
 	source $HOME/.bash_completion.d/$i
 done
 
-TAREFAS_TXT=$(cat $CDSHELL_VAR/tarefas_usedby_bashrc.txt)
-echo -en "${WHITE} - Lista de Tarefas -\n$normal\n"
-echo -en "${TAREFAS_TXT}$normal\n\n"
+if [ $(( $(date +%s) - $TAREFAS_SHOWED_AT_TIME )) -gt 5 ]; then
+	TAREFAS_TXT=$(cat $CDSHELL_VAR/tarefas_usedby_bashrc.txt)
+	echo -en "${WHITE} - Lista de Tarefas -\n$normal\n"
+	echo -en "${TAREFAS_TXT}$normal\n\n"
+	sed "s/^TAREFAS_SHOWED_AT_TIME.*/TAREFAS_SHOWED_AT_TIME=$(date +%s)/g" ~/.export -i
+fi
+
+
