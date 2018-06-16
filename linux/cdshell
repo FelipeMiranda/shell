@@ -86,9 +86,8 @@ function desinstalar() {
 
 }
 
-function atualizaJSON($FILE){
-
-	ARQUIVO=$FILE
+function atualizaJSON() {
+	ARQUIVO=$*
 	echo ARQUIVO=$ARQUIVO
 	read -n1
 }
@@ -109,7 +108,7 @@ case $1 in
 						echo TEXTO=$TEXTO
 						JSON=`jq ".item += [{\"id\":$NEXT_ID,\"tarefa\":{\"priority\": 1, \"text\":\"$TEXTO\"}}]" $CDSHELL_VAR/cdshell_tarefas.json`
 						#atualizando o BANCO DE DADOS com o novo registro, devia testar antes.
-						atualizaJSON($JSON)
+						atualizaJSON $JSON
 						echo $JSON > $CDSHELL_VAR/cdshell_tarefas.json
 						echo $(( $NEXT_ID )) > $CDSHELL_VAR/cdshell_tarefas.next_id
 						jq .item[].id $CDSHELL_VAR/cdshell_tarefas.json > /tmp/A
