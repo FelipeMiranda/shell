@@ -44,21 +44,21 @@ echo -en "\n Diretório de instalação 	->	$yellow $CDSHELL $normal\n"
 # Verificando a existencia de arquivos pre-instalação, para salva-los em caso de algum erro poder voltar.
 echo -en "\n Diretório de backup 		-> 	$yellow \$CDSHELL/backup $normal\n"
 
-echo -en "\n ${blue}....................................................$normal \n\n"
+echo -en "\n\n${blue}....................................................$normal \n"
 
 # Criando um link $CDSHELL/backup -> $CDSHELL/.saved_files_befor_last_install
 if [ ! -e $CDSHELL/backup ] ; then 
 	cd $CDSHELL
 	mkdir -p $BACKUP_DIR
 	ln -s $BACKUP_DIR backup 
-	echo -en "\n Criando link para backup ..................... $green Done${normal}" 
+	echo -en "\n Criando link para backup ..................... $green Done${normal}\n" 
 fi
 
 # Criando um CDSHELL_VAR
 if [ ! -e $CDSHELL_VAR ]; then
-	echo -en "\n Criando$WHITE CDSHELL_VAR$normal ...."  
+	echo -en "\n Criando$WHITE CDSHELL_VAR$normal .............."  
 	mkdir -p $CDSHELL_VAR
-	echo -en "......... $green Done${normal}" 
+	echo -en "............ $green Done${normal}\n" 
 fi
 
 
@@ -150,10 +150,10 @@ if [ -e ~/skeleton ] ; then
 	echo -en ".............. $green Done $normal\n"
 else 
 	echo -en "\n Copiando os skeletons $WHITE pela primeira vez $normal"
-	mkdir $HOME/skeleton
+	mkdir -p $HOME/skeleton
 	cp -f $CDSHELL/skeleton $HOME/ -R
 	cp -f $CDSHELL/skeleton/cdshell_tarefas.json $CDSHELL_VAR/
-	touch $CDSHELL/skeleton/tarefas_usedby_bashrc.txt
+	touch $CDSHELL_VAR/tarefas_usedby_bashrc.txt
 	echo -en "..... $green Done $normal\n"
 fi
 
@@ -191,7 +191,7 @@ else
    echo -en "\n$red ERROR: Erro ao instalar Post commit do Git Hooks$normal\n"
 fi
 
-
+# Chaves SSH
 echo -en "\n Instalando as ${cyan}chaves SSH${normal} ........"
 if [ ! -d $HOME/.ssh ]; then
 	 mkdir -p $HOME/.ssh 
