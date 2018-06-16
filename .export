@@ -1,16 +1,14 @@
 #!/bin/bash
-
-USER=`whoami`
-
 source ~/colors.sh
 
-if [ $USER == 'root' ] ; then 
-	CDSHELL="/root/shell" # VARIAVEL QUE CONTEM O RAIZ DO CDSHELL <- (CONFIGURE)
-else
-	CDSHELL=$HOME/shell
-fi
-CDSHELL_VAR=$HOME/.cdshell
 
+# Nao remover, usado para controle do tempo de apresetacao do Tarefas.
+TAREFAS_SHOWED_AT_TIME=0
+
+# Tempo para exibir tarefas novamente, em segundos.
+TIME_TO_WAIT=60
+
+USER=`whoami`
 OSTYPE=`uname`
 PATH=$PATH:$CDSHELL/linux:/usr/local/bin
 
@@ -19,31 +17,22 @@ HISTSIZE=10000
 VISUAL=vim
 EDITOR=vim
 
-# Nao remover, usado para controle do tempo de apresetacao do Tarefas.
-TAREFAS_SHOWED_AT_TIME=0
-
-# Tempo para exibir tarefas novamente, em segundos.
-TIME_TO_WAIT=60
-
-#escapacoes \[\] para o PS1 funcionar: wrap line, backpacesem comer peda;os malucos kkkk
-#
-red="\[$red\]"
-yellow="\[$yellow\]"
-green="\[$green\]"
-cyan="\[$cyan\]"
-normal="\[$normal\]"
-#
-#
-
-if [ `hostname` == 'mmanzano' ] ; then
-	PS1="$red\u$yellow@$blue\h $cyan\W> $normal"
+if [ $USER == 'root' ] ; then 
+	CDSHELL="/root/shell" # VARIAVEL QUE CONTEM O RAIZ DO CDSHELL <- (CONFIGURE)
 else
-	if [ `hostname` == 'dev2.intranet' ] ; then 
-		PS1="$red\u$yellow@$green\h $cyan\W> $normal"
-	else	
-		PS1="$red\u$yellow@$green\h $cyan\w> $normal"
-	fi
+	CDSHELL=$HOME/shell
 fi
+CDSHELL_VAR=$HOME/.cdshell
+
+##escapacoes \[\] para o PS1 funcionar: wrap line, backpacesem comer peda;os malucos kkkk
+#
+#red="\[$red\]"
+#yellow="\[$yellow\]"
+#green="\[$green\]"
+#cyan="\[$cyan\]"
+#normal="\[$normal\]"
+#
+#
 
 
 ####################

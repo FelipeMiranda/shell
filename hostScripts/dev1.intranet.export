@@ -4,5 +4,6 @@
 
 IF_INTERNET="enp0s3"
 IF_REDEINTERNA=""
+PS1="$red\u$yellow@$green\h $cyan\w> $normal"
 
-export $IF_INTERNET $IF_REDEINTERNA
+export IF_INTERNET IF_REDEINTERNA PS1

@@ -8,5 +8,7 @@ PATH=$PATH:~/sectools
 IF_INTERNET="eth0"
 IF_REDEINTERNA=""
 GOPATH="/opt/go"
+PS1="$red\u$yellow@$green\h $cyan\W> $normal"
 
-export $IF_INTERNET $IF_REDEINTERNA
+
+export IF_INTERNET IF_REDEINTERNA PS1 PATH
