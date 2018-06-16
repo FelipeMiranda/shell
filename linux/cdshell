@@ -72,9 +72,10 @@ function desinstalar() {
 	cd ~
 	del="rm -rf"
 	$del ~/.cdshell_req_installed 
-	$del $CDSHELL
 	$del ~/.vimrc
 	$del ~/.screenrc
+	$del ~/.cdshell
+	$del $CDSHELL
 
 	echo -en "\n $green Desinstalado com SUCESSO!\n\n\t $red Por enquanto nao recupera os arquivos originais da primeira instalacao $normal \n"
 
