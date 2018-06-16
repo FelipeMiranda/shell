@@ -108,7 +108,7 @@ case $1 in
 						jq .item[].tarefa.priority $CDSHELL_VAR/cdshell_tarefas.json > /tmp/B
 						jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json > /tmp/C
 						for ((c=$(wc -l /tmp/B | cut -d " " -f1);$c>1;c=$c-1)) do
-							echo "\e[0m" > /tmp/D
+							echo "\e[0m" >> /tmp/D
 						done
 						cat /tmp/B | awk '
 							{
@@ -137,7 +137,7 @@ case $1 in
 						jq .item[].tarefa.priority $CDSHELL_VAR/cdshell_tarefas.json > /tmp/B
 						jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json > /tmp/C
 						for ((c=$(wc -l /tmp/B | cut -d " " -f1);$c>1;c=$c-1)) do
-							echo "\e[0m" > /tmp/D
+							echo "\e[0m" >> /tmp/D
 						done
 						cat /tmp/B | awk '
 							{
