@@ -86,6 +86,13 @@ function desinstalar() {
 
 }
 
+function atualizaJSON($FILE){
+
+	ARQUIVO=$FILE
+	echo ARQUIVO=$ARQUIVO
+	read -n1
+}
+
 case $1 in
 
 	# adicionar MENSANGES ao cdshell TODOLIST
@@ -102,6 +109,7 @@ case $1 in
 						echo TEXTO=$TEXTO
 						JSON=`jq ".item += [{\"id\":$NEXT_ID,\"tarefa\":{\"priority\": 1, \"text\":\"$TEXTO\"}}]" $CDSHELL_VAR/cdshell_tarefas.json`
 						#atualizando o BANCO DE DADOS com o novo registro, devia testar antes.
+						atualizaJSON($JSON)
 						echo $JSON > $CDSHELL_VAR/cdshell_tarefas.json
 						echo $(( $NEXT_ID )) > $CDSHELL_VAR/cdshell_tarefas.next_id
 						jq .item[].id $CDSHELL_VAR/cdshell_tarefas.json > /tmp/A
@@ -146,7 +154,7 @@ case $1 in
 											if ($0 == 2) {print "\\e[33m"}
 							}' > /tmp/B2
 						sed -i 's/"//g' /tmp/C
-						paste /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
+						paste -d " " /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
 					rm -rf /tmp/A /tmp/B /tmp/B2 /tmp/C /tmp/D
 						echo -en "\n$green Tarefa $NEXT_ID adicionada. \n"
 					fi
