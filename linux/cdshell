@@ -136,7 +136,7 @@ case $1 in
 						jq .item[].id $CDSHELL_VAR/cdshell_tarefas.json > /tmp/A
 						jq .item[].tarefa.priority $CDSHELL_VAR/cdshell_tarefas.json > /tmp/B
 						jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json > /tmp/C
-						for i in $(wc -l /tmp/B | cut -d " " -f1); do
+						for ((c=$(wc -l /tmp/B | cut -d " " -f1);$c>1;c=$c-1)) do
 							echo "\e[0m" > /tmp/D
 						done
 						cat /tmp/B | awk '
@@ -147,7 +147,7 @@ case $1 in
 							}' > /tmp/B2
 						sed -i 's/"//g' /tmp/C
 						paste /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
-						rm -rf /tmp/A /tmp/B /tmp/C
+						rm -rf /tmp/A /tmp/B /tmp/B2 /tmp/C /tmp/D
 						echo -en "\n$green Tarefa $NEXT_ID adicionada. \n"
 					fi
     ;;
@@ -170,7 +170,7 @@ case $1 in
 						jq .item[].id $CDSHELL_VAR/cdshell_tarefas.json > /tmp/A
 						jq .item[].tarefa.priority $CDSHELL_VAR/cdshell_tarefas.json > /tmp/B
 						jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json > /tmp/C
-						for i in $(wc -l /tmp/B | cut -d " " -f1); do
+						for ((c=$(wc -l /tmp/B | cut -d " " -f1);$c>1;c=$c-1)) do
 							echo "\e[0m" > /tmp/D
 						done
 						cat /tmp/B | awk '
@@ -181,7 +181,7 @@ case $1 in
 							}' > /tmp/B2
 						sed -i 's/"//g' /tmp/C
 						paste /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
-						rm -rf /tmp/A /tmp/B /tmp/C
+						rm -rf /tmp/A /tmp/B /tmp/B2 /tmp/C /tmp/D
 						echo -en "\n$green Tarefa $2 apagada. \n"
 					fi
     ;;
