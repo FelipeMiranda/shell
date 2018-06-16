@@ -89,7 +89,8 @@ function desinstalar() {
 case $1 in
 
 	# adicionar MENSANGES ao cdshell TODOLIST
-	"-a"|"--add")	if [ -n "$1" ]; then
+	"-a"|"--add")	
+					if [ -n "$1" ]; then
 						if [ ! -e $CDSHELL_VAR ]; then
 							mkdir -p $CDSHELL_VAR
 							echo -en " Criando diretório: $CDSHELL_VAR \n"
@@ -103,9 +104,6 @@ case $1 in
 						#atualizando o BANCO DE DADOS com o novo registro, devia testar antes.
 						echo $JSON > $CDSHELL_VAR/cdshell_tarefas.json
 						echo $(( $NEXT_ID )) > $CDSHELL_VAR/cdshell_tarefas.next_id
-#						jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
-
-
 						jq .item[].tarefa.priority $CDSHELL_VAR/cdshell_tarefas.json > /tmp/A
 						jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json > /tmp/B
 						sed -i 's/1/\\e[0m /g; s/2/\\e[33m /g; s/3/\\e[31m /g' /tmp/A
@@ -115,21 +113,45 @@ case $1 in
 					fi
     ;;
 
+	# Adicionando tarefas PRIORITY = 3
+	"-a3")	if [ -n "$1" ]; then
+						NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
+						NEXT_ID=$(( $NEXT_ID + 1 ))
+						TEXTO=$( echo $* | sed 's/\-a //g' )
+						echo TEXTO=$TEXTO
+						JSON=`jq ".item += [{\"id\":\"$NEXT_ID\",\"tarefa\":{\"priority\": 3, \"text\":\"$TEXTO\"}}]" $CDSHELL_VAR/cdshell_tarefas.json`
+						#atualizando o BANCO DE DADOS com o novo registro, devia testar antes.
+						echo $JSON > $CDSHELL_VAR/cdshell_tarefas.json
+						echo $(( $NEXT_ID )) > $CDSHELL_VAR/cdshell_tarefas.next_id
+						jq .item[].tarefa.priority $CDSHELL_VAR/cdshell_tarefas.json > /tmp/A
+						jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json > /tmp/B
+						sed -i 's/1/\\e[0m /g; s/2/\\e[33m /g; s/3/\\e[31m /g' /tmp/A
+						paste /tmp/A /tmp/B > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
+						rm -rf /tmp/A /tmp/B
+						echo -en "\n$green Tarefa adicionada. \n"
+					fi
+    ;;
+
+
 	# Instalar enviando o diretorio local (PWD) para instalacao como parametro e ja voltar no mesmo lugar que chamou.
     "install" | "-i" | "--install") SAVEDIR=$PWD ; cd $CDSHELL ; . install.sh $SAVEDIR
     ;;
 
+	# Mostrar a versão
     "-v") echo -en "Versão do comando cdshell: 1.0.0 \n"
 	 echo -en "Versão do Pacote CDSHELL: $green `cat $CDSHELL/backup/versao_ultima_instalacao.txt`\n $normal"
     ;;
 
+	#Listar tarefas atuais formato JSON.
     "-l") jq -r '.item[].tarefa ' $CDSHELL_VAR/cdshell_tarefas.json
     ;;
 
+	# Exibir cores e variáveis mode ENCAPETATION=ON
 	"-c"|"--colors") zzcores 
    					cat $HOME/colors.sh 
     ;;
 
+	# Editar arquivo cdshell.
     "-e"|"--edit")  
    					CDSHELL_FILE_DATE=$(stat -c %y $CDSHELL/linux/cdshell)
   					vim $CDSHELL/linux/cdshell || vi $CDSHELL/linux/cdshell
@@ -151,6 +173,7 @@ case $1 in
 					fi
     ;;
  
+ 	# HELP
     "-h"|"--help") 
    					echo -en "\n Use cdshell para facilitar as modificações e teste de customizações de seu environment."
 					echo 
@@ -168,12 +191,15 @@ case $1 in
 					exit 0;
 	;;
 
+	# Watch (cat arquivo_de_versao)
     "-w") assistir_versao $2
 	;;
 
+	# Resetar o cdshell
     "reset"|"--reset"|"-r") resetar_e_instalar_ultima_versao
 	;;
 
+	#Desinstalar tudo inclusive o repositório, cuidado perde as modificacoes atuais.
 	"-u"|"--uninstall"|"-U") 
 								echo -en "\n $atention Tem certeza? $WHITE UNINSTALL ...\n\n\t $normal Digite s/S para $green SIM -> $WHITE"
 								read -n 1 RESPOSTA
@@ -188,23 +214,27 @@ case $1 in
 
 	;;
 
+	# Testar instalação do CDSHELL.
     "-t"|"--test") 
 		echo -en "O comando $red $* $normal deveria fazer os testes do ambiente."
     ;;
 
+	# Exibe versao atual
     "-v") exibe_versao 
 	if [ ! -z $1  ]; then
 		echo -en "O comando $red $1 $normal não existe."
 	fi
     ;;
 
-
+	# Mostrar versao GIT do diretório atual
     "-g"|"--git"|--git-version) exibe_versao_git_local_version
     ;;
 	
+	# Exibe a versao do CDSHELL (igual -v)
     "" ) exibe_versao_cdshell
     ;;
    
+   	# Mensagem caso nao encontre a opção desejada.
     * )echo -en "O comando $red $1 $normal não existe.\n"
     ;;
 esac
