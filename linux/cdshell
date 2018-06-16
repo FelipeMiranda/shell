@@ -146,6 +146,7 @@ case $1 in
 					echo -en "\n -h\t\t\t Mostrar o help."
 					echo -en "\n -g\t\t\t Mostrar a versão do seu resitório git atual."
 					echo -en "\n -i\t\t\t Instalar o cdshell."
+					echo -en "\n -l\t\t\t Listar tarefas."
 					echo -en "\n -v\t\t\t Exibe a versão do cdshell."
 					echo -en "\n -w\t\t\t Assistir versão (watch)."
 					echo
