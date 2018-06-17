@@ -18,7 +18,7 @@ source ~/shell/colors.sh
 
 ##########  Funcao       #######################
 function versao(){
-
+	echo qq coisa
 }
 
 
@@ -44,7 +44,7 @@ case $1 in
 	
 		* )
 			# Executa com opcao que nao tem.
-			echo -en "O comando $red $1 $normal não existe.\n"
+			docker ps
 		;;
 esac
 #############        FIM      ##################

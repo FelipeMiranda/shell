@@ -228,7 +228,7 @@ echo -en ".. $green Done $normal\n"
 
 
 # Somente a primeira vez instala os REQUISITOS
-if [ ! -e $HOME/.cdshell_req_installed ]; then
+if [ ! -e $CDSHELL_VAR/.cdshell_req_installed ]; then
 
 	#Se nao exister o link para o bash no /bin entao cria ne, sempre!!!
 	if [ ! -e /bin/bash ];then

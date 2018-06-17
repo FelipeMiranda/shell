@@ -164,3 +164,7 @@ fi
 alias b64decode="cat | base64 -d <<<"
 alias b64encode="echo -n | base64 <<<"
 alias TCP-syn="tcpdump -Annvi $IF_INTERNET 'tcp[13]==2'"
+
+
+alias ea="vim ~/.alias"
+alias ee="vim ~/.export"

@@ -1,8 +1,8 @@
 #!/bin/bash
 source ~/colors.sh
+
 OSTYPE=`uname`
 PACOTES_LINUX="colordiff gcc ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop jq"
-
 
 # Mensagem de inicio
 echo -en "\n $alert Primeira instalação sendo executada $normal"
@@ -62,4 +62,4 @@ fi
 
 
 # Chegou aqui, significa que executou tudo, entao cria o arquivo de sinalizacao da primeira instalacao executada.
-touch $HOME/.cdshell_req_installed
+touch $CDSHELL_VAR/.cdshell_req_installed
