@@ -23,7 +23,6 @@ imap ®e quirinobytes (a) gmail com
 imap ®u http://quirinobytes.blogspot.com.br
 imap ®d <esc>mb:r!date '+\%Y-\%m-\%d'<cr>v<end>d`bp<end>a<del>
 
-
 ".........................................................................INFO
 " Guarda posicao do cursor e historico da linha de comando :
 set viminfo='10,\"30,:40,%,n~/.viminfo
@@ -93,31 +92,39 @@ map ,mm :set noic<cr>
 " BashUso: linha da chamada da funcao Uso()
 "map ,bu IUso(){ echo "uso: $0 param" ; exit 1 ; }<cr>[ "$1" ] \|\| Uso<cr>
 
-
-"F1 - GERADOR AUTOMATICO DE ARQUIVOS MINIMAN - gera manual pages e html pages
+"Mapea arquivos .txt para systax txt2tags, acho.
 au BufNewFile,BufRead *.t2t   set ft=txt2tags "spell
+
+
+"################ MAPEAMENTO DE ATALHOS (F1-F12) #############################
+"
+" F1 - GERADOR AUTOMATICO DE ARQUIVOS MINIMAN - gera manual pages e html pages
 noremap <F1> <esc>:!ronn -r -5 %<cr>
 noremap <F1> :!ronn -r -5 %<cr>
-
-"F2 - Para 'ocultar' os comentarios do arquivo atual
+"
+" F2 - Para 'ocultar' os comentarios do arquivo atual
 noremap <F2> :hi Comment ctermfg=black guifg=black<cr>
-
-"F3- Para voltar os comentarios
+"
+" F3- Para voltar os comentarios
 noremap <F3> :hi Comment term=bold ctermfg=cyan guifg=cyan<cr>
-
-"F10 -> Salva ! sem perguntar e ja volta pro modo INSERT.
+"
+" F10 -> Salva ! sem perguntar e ja volta pro modo INSERT.
 imap <F10> <esc>:wa!<cr>i 
 noremap <F10> <esc>:wa!<cr>
 inoremap <F10> <esc>:wa!<cr>i
-
-
-
-"F10 x2 -> Salva caso haja modificação e sai for na marra.
+"
+" F10 x2 -> Salva caso haja modificação e sai for na marra.
 imap <F10><F10> <esc>:wqa!<cr>
 noremap <F10><F10> :wqa!<cr>
+"
+" F10(i) - No modo INSERT para o F10 nao escreve <F10> na tela, uuurgh!!!
+" inoremap <F10> <ESC>
+"
+"##############################################################################
 
-"F10(i) - No modo INSERT para o F10 nao escreve <F10> na tela, uuurgh!!!
-"inoremap <F10> <ESC>
+
+
+
 
 " Busca colorida em AMARELO
 hi Search ctermbg=yellow  ctermfg=black
@@ -217,7 +224,7 @@ set background=dark     "eh importante o bg estar ANTES do terminfo
 "  set t_Sb=m
 "endif
 syntax on               "ligando a sintaxe colorida
-syn sync minlines=5000
+
 
 
 ".........................................................COMANDOS AUTOMATICOS
@@ -278,12 +285,16 @@ au FileType php set list listchars=tab:··
 
 
 
-"########## SKELETON FILES ###########################################
-" Cria um esqueleto de arquivo HTML ao abrir um arquivo novo *.html
-au BufNewFile *.html read ~/skeleton/vim/html.skeleton
+"##########        SKELETONS         ################################
+"
+" Abrir esqueleto de HTML ao abrir um arquivo novo *.html
+au BufNewFile *.html read ~/skeleton/vim/skeleton.html
 "
 " Cria um esqueleto de arquivo MarkDown ao abrir um arquivo novo *.md
-au BufNewFile *.md read ~/skeleton/vim/md.skeleton
+au BufNewFile *.md read ~/skeleton/vim/skeleton.md
+"
+" Cria um esqueleto de arquivo Sscript Bash ao abrir um arquivo novo *.sh
+au BufNewFile *.sh read ~/skeleton/vim/skeleton.sh
 "####################################################################
 
 
@@ -326,10 +337,6 @@ au BufNewFile,BufRead *.md   set ft=markdown
 "map ,hd G:?^$<cr>O<pre><cr>--<cr>
 "       \¤D ¤U<esc>:r!echo ${PWD\#*/html}/%<cr>kJxo</pre>
 
-".....................................................................POTFILES
-" Copia texto em ingles para a area da traducao
-"imap <F9> <esc>?^$<cr>/msgid<cr>f"ly$j0f"pxF"l
-"imap <F9> <esc>?^$<cr>/msgid<cr>yypcwmsgstr<esc>jddkf"a
 " Preenche o cabecalho padrao dos POs da FSF
 "map <F11> :2,3s/YEAR/1999/e<cr>
 "         \:3s/FIRST AUTHOR/#MEU-NOME#/e<cr>
@@ -356,18 +363,14 @@ au BufNewFile,BufRead *.md   set ft=markdown
 " Exemplo de como carregar um arquivo que esta no mesmo diretorio
 "au BufNewFile,BufRead */summaries/*    source <sfile>:p:h/tsdsumm.vim
 
-" Funciona esse troco?? sei la, preguica de testar...
-"let highlight_sedtabs = 1
-
-
 ".........................................................................MISC
 " Mostra os espaços em branco inúteis no final da linha
-au BufNewFile,BufRead * syn match brancomala '\s\+$' | hi brancomala ctermbg=red
+au BufNewFile,BufRead * syn match brancomala '\s\+$' | hi brancomala ctermbg=white
 
 " Guardar info da sintaxe desde o inicio do arquivo (nao se perde, fica lento)
 syn sync fromstart
+
 " Barra de espaço mapeado para PageDown no modo de comandos
-" eu nao gosto!
 "noremap <Space> <PageDown>
 
 " bug de raquerz
@@ -385,9 +388,8 @@ map ,pt :set spell spelllang=pt<cr>
 map ,en :set spell spelllang=en<cr>
 map ,u8 :set encoding=utf-8 termencoding=latin1<cr>
 
-
 "Usando 3 caracteres no TAB para arquivos .sh - to testando ainda
-au BufNewFile,BufRead *.sh   set ts=3
+au BufNewFile,BufRead *.sh   set ts=6
 
 "Deleting - Nao copia para area de TX
 vmap r "_dP       // it's a capital 'p' on the end
@@ -406,12 +408,15 @@ nno <S-F4> :set hls!<bar>set hls?<CR>
 "Nao sei oq faz ao certo, ver como fica com o PASTE do mouse em INSERT e "VISUAL mode
 vnoremap <RightMouse> :set paste
 
-
-"O (:map) abaixo serve para mapear a tecla Q seguida da Q novamente para <ESC>:q! (Enter)
+" Esse (:map) abaixo serve para mapear a tecla Q seguida da Q novamente para <ESC>:q! (Enter)
 "<- loco né
 :map QQ :q!<cr>
 
+" Funciona esse troco?? sei la, preguica de testar...
+"let highlight_sedtabs = 1
 
 
+"Colocando menos parece que fica mais rapido em arquivo gigantes, testando
+syn sync minlines=500
 
 
