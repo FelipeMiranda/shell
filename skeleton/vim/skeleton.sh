@@ -1,40 +1,49 @@
 #!/bin/bash
 
 #################################################
-# Bash script - Modelo							#
+# Bash script - Modelo					#
 # Use como modelo para criar seus scripts bash. #
-# v_1.0.1										#
+# v_1.0.1							#
 #################################################
 
 
-
-#Reutiliza suas variáreis de ambiente.
+#############     CONFIG     ####################
+#Carrega variáreis de ambiente.
 source ~/.export
 # Suporte a cores no bash.
 source ~/shell/colors.sh
+################################################
 
-function resetar_e_instalar_ultima_versao(){
-	cdshell
-	git checkout -f
-	cdshell install
+
+##########  Funcao       #######################
+function versao(){
+
+		cdshell
+		git checkout -f
+		cdshell install
 }
 
 
+################################################
+#############        MAIN       ################
 case $1 in
+		"ps" | "-p" | "--ps")	
+			# Faça isso... 
+			ps aux ; echo "Digite os comandos aqui"
+		;;
 
-	# Faça isso... 
-    "ps" | "-p" | "--ps")   ps aux ; echo "Digite os comandos aqui"
-	;;
 
-	# Quando executa sem opcao
-    "" ) exibe_versao_cdshell
-    ;;
-   
-   	# Executa com opcao que nao tem.
-    * )	echo -en "O comando $red $1 $normal não existe.\n"
-    ;;
+		"" )	
+			# Quando executa sem opcao, chama funcao versao acima.
+			versao
+		;;
 
+	
+		* )
+			# Executa com opcao que nao tem.
+			echo -en "O comando $red $1 $normal não existe.\n"
+		;;
 esac
-
-
+#############        FIM      ##################
+################################################
 
