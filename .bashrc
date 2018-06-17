@@ -34,13 +34,14 @@ source "$ZZPATH"
 SHELLCOLOR="$CDSHELL/colors.sh"  # Cores para o CDSHELL
 source $SHELLCOLOR
 
-source ~/funcoes-cdshell.sh
+source $CDSHELL_VAR/funcoes-cdshell.sh
 
 #Carregando os bash completions
 for i in `ls $HOME/.bash_completion.d/` ; do 
 	source $HOME/.bash_completion.d/$i
 done
 
+# Mostrar as tarefas
 if [ $(( $(date +%s) - $TAREFAS_SHOWED_AT_TIME )) -gt $TIME_TO_WAIT ]; then
 	TAREFAS_TXT=$(cat $CDSHELL_VAR/tarefas_usedby_bashrc.txt)
 	echo -en "${WHITE} - Lista de Tarefas -\n$normal\n"

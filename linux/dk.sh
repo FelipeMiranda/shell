@@ -32,7 +32,8 @@ case $1 in
 
 
 		"-k"|"--kill" )	
-			# Quando executa sem opcao, chama funcao versao acima.
+			# Matar imagens com nome X
+
 			IDS=$( dk ps | grep vendedor | cut -f1 -d " ")
 			for ID in $IDS; do 
 			    echo matando $ID

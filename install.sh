@@ -115,7 +115,7 @@ fi
 
 # Criando os link para funcoesZZ
 if [ -e ~/funcoes-cdshell.sh ] ; then cp -f ~/funcoes-cdshell.sh $BACKUP_DIR/ ; fi
-cp $CDSHELL/funcoes-cdshell.sh ~/funcoes-cdshell.sh
+cp $CDSHELL/funcoes-cdshell.sh $CDSHELL_VAR/funcoes-cdshell.sh
 
 # Copiando arquivos para fazer deploy com F11 no screen
 echo -en "\n Atualizando$yellow F11.cmd $normal.............."
