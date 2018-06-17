@@ -6,7 +6,7 @@ source ~/colors.sh
 TAREFAS_SHOWED_AT_TIME=0
 
 # Tempo para exibir tarefas novamente, em segundos.
-TIME_TO_WAIT=60
+TAREFAS_TIME_TO_WAIT=60
 
 USER=`whoami`
 OSTYPE=`uname`

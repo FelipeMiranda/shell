@@ -36,8 +36,22 @@ case $1 in
 		;;
 
 		"--run")	
-			# Faça isso... 
-			docker run -d $2
+			if [ -n $3 ]; then
+			    	CONT=0
+				IMAGES=$(docker images | grep -vE "REPOSITORY|<none>" | cut -f1 -d' ' | uniq)
+				echo -en " Escolha uma imagem para INICIAR ...\n\n "
+				for IMAGE in $IMAGES ; do 
+				    ARRAY[$CONT]=$IMAGE
+				    CONT=$(( $CONT +1 ))
+				    echo -en "\t $green $CONT $normal - $IMAGE\n"
+				done
+				read RESPOSTA
+				OPTION=$(( RESPOSTA -1 ))
+				echo ${ARRAY[ $OPTION ]}
+				docker run -d ${ARRAY[$OPTION]}
+			else
+				docker run -d $2
+			fi
 		;;
 
 
@@ -54,12 +68,18 @@ case $1 in
 
 
 		"-k"|"--kill" )	
-			# Matar imagens com nome X
-
-			IDS=$( docker ps | grep $2 | cut -f1 -d " ")
-			for ID in $IDS; do 
-			    docker kill $ID
-			done
+			# se nao passar uma, mata tudo.
+			if [ -n $2 ]; then
+				IDS=$( docker ps | grep -v CONTAINER | cut -f1 -d " ")
+				for ID in $IDS; do
+					docker kill $ID
+				done
+			else
+				IDS=$( docker ps | grep $2 | cut -f1 -d " ")
+				for ID in $IDS; do 
+				    docker kill $ID
+				done
+			fi
 		;;
 
 	
