@@ -230,6 +230,15 @@ case $1 in
 
 	;;
 
+	# Uninstall and install
+    "-ui")
+			cdshell -u
+			cd
+			clone shell
+			cd shell
+			./install.sh
+    ;;
+
 	# Mostrar a versão do arquivo cdshell, NAO CDSHELL
     "--version") echo -en "Versão do arquivo cdshell: v_1.0.0 \n"
 	 echo -en "Versão do Pacote CDSHELL: $green `cat $CDSHELL/backup/versao_ultima_instalacao.txt`\n $normal"
