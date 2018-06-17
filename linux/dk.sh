@@ -30,6 +30,16 @@ case $1 in
 			docker ps
 		;;
 
+		"--exec")	
+			# Faça isso... 
+			IDS=$( dk ps | grep vendedor | cut -f1 -d " ")
+
+			if [ $( echo $IDS| wc -l | cut -f1 -d " " ) -gt 1 ]; then
+			    echo "vai ter q selecionar uma"
+			    #docker exec -it 
+			fi
+		;;
+
 
 		"-k"|"--kill" )	
 			# Matar imagens com nome X
