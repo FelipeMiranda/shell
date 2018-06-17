@@ -168,3 +168,8 @@ alias TCP-syn="tcpdump -Annvi $IF_INTERNET 'tcp[13]==2'"
 
 alias ea="vim ~/.alias"
 alias ee="vim ~/.export"
+
+alias dk="$CDSHELL/linux/dk.sh"
+alias dkk="dk --kill"
+alias dkr="dk --run"
+alias dkt="dk --top"

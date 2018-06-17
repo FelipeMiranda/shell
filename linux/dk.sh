@@ -29,10 +29,22 @@ case $1 in
 			# Faça isso... 
 			docker ps
 		;;
+	
+		"--top" | "top" | "-t")	
+			# Faça isso... 
+			docker stats
+		;;
+
+		"--run")	
+			# Faça isso... 
+			docker run -d $2
+		;;
+
+
 
 		"--exec")	
 			# Faça isso... 
-			IDS=$( dk ps | grep vendedor | cut -f1 -d " ")
+			IDS=$( docker ps | grep vendedor | cut -f1 -d " ")
 
 			if [ $( echo $IDS| wc -l | cut -f1 -d " " ) -gt 1 ]; then
 			    echo "vai ter q selecionar uma"
@@ -44,10 +56,9 @@ case $1 in
 		"-k"|"--kill" )	
 			# Matar imagens com nome X
 
-			IDS=$( dk ps | grep vendedor | cut -f1 -d " ")
+			IDS=$( docker ps | grep $2 | cut -f1 -d " ")
 			for ID in $IDS; do 
-			    echo matando $ID
-			    echo $ID
+			    docker kill $ID
 			done
 		;;
 
