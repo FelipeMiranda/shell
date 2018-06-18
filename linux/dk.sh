@@ -36,7 +36,7 @@ case $1 in
 		;;
 
 		"--run")	
-			if [ -n $3 ]; then
+			if [ ! -n "$2" ]; then
 			    	CONT=0
 				IMAGES=$(docker images | grep -vE "REPOSITORY|<none>" | cut -f1 -d' ' | uniq)
 				echo -en " Escolha uma imagem para INICIAR ...\n\n "
@@ -72,7 +72,8 @@ case $1 in
 			if [ -n $2 ]; then
 				IDS=$( docker ps | grep -v CONTAINER | cut -f1 -d " ")
 				for ID in $IDS; do
-					docker kill $ID
+					$(docker kill $ID)
+					echo -en " $ID - matado"
 				done
 			else
 				IDS=$( docker ps | grep $2 | cut -f1 -d " ")
