@@ -199,9 +199,9 @@ case $1 in
 					echo -en "\n -g\t\t\t Mostrar a versão do seu resitório git atual."
 					echo -en "\n -i\t\t\t Instalar o cdshell."
 					echo -en "\n -l\t\t\t Listar tarefas."
+					echo -en "\n -t\t\t\t Teste de instalação."
 					echo -en "\n -v\t\t\t Exibe a versão do cdshell."
 					echo -en "\n -w\t\t\t Assistir versão (watch)."
-					echo
 					echo
 					exit 0;
 	;;
@@ -211,8 +211,11 @@ case $1 in
 	;;
 
 	# Testar instalação do CDSHELL.
-    "-t"|"--test") 
-		echo -en "O comando $red $* $normal deveria fazer os testes do ambiente."
+    "-t"|"--test"|"--all-test") 
+#		echo -en "O comando $red $* $normal deveria fazer os testes do ambiente.\n\n"
+			runAllTests
+			if [ $? == 0 ]; then
+				echo "\n Testes realizados com sucesso\n"
     ;;
 
 	#Desinstalar tudo inclusive o repositório, cuidado perde as modificacoes atuais.
