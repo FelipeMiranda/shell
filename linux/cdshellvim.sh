@@ -44,7 +44,8 @@ function commit(){
 
 #Testa se o arquivo foi alterado, comparando com o original do CDSHELL, se diferentes retorna 0.
 function is_file_changed(){
-  	if [ $( md5sum ~/$1 | cut -f1 -d ' ') != $(md5sum $CDSHELL/$1 | cut -f1 -d' ') ]; then
+  	#if [ $( md5sum ~/$1 | cut -f1 -d ' ') != $(md5sum $CDSHELL/$1 | cut -f1 -d' ') ]; then
+  	if [ $( sed '/TAREFAS_SHOWED_AT_TIME/d' ~/$1 | md5sum | cut -f1 -d ' ') != $(sed '/TAREFAS_SHOWED_AT_TIME/d' $CDSHELL/$1 | md5sum | cut -f1 -d' ') ]; then
 	    	#sim
 		return 0;
 	else
