@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 #################################################
@@ -10,9 +9,9 @@
 
 #############     CONFIG     ####################
 #Carrega variáreis de ambiente.
-source ~/.export
+#source ~/.export
 # Suporte a cores no bash.
-#source ~/colors.sh
+source ~/colors.sh
 VIM=$(type vim)
 VI=$(type vi)
 if [ -n "$VIM" ]; then VIM=$VI ; fi

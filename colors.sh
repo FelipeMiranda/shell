@@ -18,4 +18,5 @@
                    #pa#=    \r#h'       #
                      #mia     \o_#      #
 #                 #g#iBW^j   .ozWB^j    #
-#########################################						
+#########################################	
+export red black cyan blue white magenta green yellow WHITE atention alert normal
