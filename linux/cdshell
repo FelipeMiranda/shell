@@ -33,6 +33,9 @@ function exibe_versao_git_local_version(){
 	fi
 }
 
+# retorna 0 caso caminho exista.
+function if_exist(){ if [ -e $1 ]; then return $? ; fi }
+
 # Assitir a versão
 function assistir_versao {
 	ZERO=''
@@ -96,6 +99,7 @@ function desinstalar() {
 }
 
 
+
 # Escreve o JSON das tarefas e gera a SPLASH_SCREEN
 function atualizaJSON() {
 						JSON=$*
@@ -119,20 +123,24 @@ function atualizaJSON() {
 						return 0
 }
 
-# Zera tudo e reinstala
+
+# Run - All Tests
 function runAllTests(){
+	EXIT_CODE=0
+	CONT=0
 	echo -en "\n ### Running All Tests ### \n"
 
-	echo -en " 1..."
-	EXIT_CODE=0
-	if [ ! -e $CDSHELL ]; then
-		EXIT_CODE=1
-	fi
-	echo -en " 2..."
-	EXIT_CODE=0
-	if [ ! -e $CDSHELL/backup ]; then
-		EXIT_CODE=1
-	fi
+	# Testar se os caminhos abaixo existem
+	FILES_NEED_EXISTS="$CDSHELL $CDSHELL/backup $CDSHELL_VAR"
+
+	for FILE in $FILES_NEED_EXISTS; do 
+		echo -en "$CONT ... $FILE" ; if_exist $FILE || EXIT_CODE=$? 
+		((CONT++))
+	done
+		
+	# Em caso de falha, código de retorno = 1
+	#EXIT_CODE=11
+
 	return $EXIT_CODE
 }
 
@@ -247,9 +255,11 @@ case $1 in
 								runAllTests
 								EXIT_CODE=$?
 								if [ $EXIT_CODE == 0 ]; then
-									echo -en "\n Testes realizados com sucesso\n"
+									echo -en "\n Testes realizados com $green sucesso.$normal\n"
+									exit 0
 								else
 									echo -en "... deu $red erro $normal, o código de saída é EXIT_CODE =$red $EXIT_CODE $normal .\n\n"
+									exit $EXIT_CODE
 								fi
     ;;
 
