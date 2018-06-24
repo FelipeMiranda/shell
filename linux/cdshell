@@ -131,17 +131,18 @@ function runAllTests(){
 	echo -en "\n ### Running All Tests ### \n"
 
 	# Testar se os caminhos abaixo existem
-	FILES_NEED_EXISTS="$CDSHELL $CDSHELL/backup $CDSHELL_VAR ~/.bashrc ~/.alias ~/.export ~/.vimrc ~/.screenrc ~/.toprc \
-					   $CDSHELL/backup/data_ultima_instalacao.txt 	$CDSHELL/backup/versao_ultima_instalacao.txt 
-					   /etc/inputrac
-						"
+	FILES_NEED_EXISTS="
+						$CDSHELL $CDSHELL/backup $CDSHELL_VAR $HOME/.bashrc $HOME/.alias $HOME/.export $HOME/.vimrc $HOME/.screenrc $HOME/.toprc \
+					   	$CDSHELL/backup/data_ultima_instalacao.txt 	$CDSHELL/backup/versao_ultima_instalacao.txt
+					   	$HOME/.F11.cmd
+					  "
 	for FILE in $FILES_NEED_EXISTS; do 
 		echo -en "\n $yellow $CONT ... $green $FILE $normal" 
-		if_exist $FILE || echo deu erro EXIT_CODE=$? 
+		if_exist $FILE || EXIT_CODE=$? 
 		((CONT++))
 	done
 		
-	# Simule falha, entao código de retorno > 0
+	# Simule falha, então código de retorno > 0
 	#EXIT_CODE=11
 	return $EXIT_CODE
 }
