@@ -69,17 +69,7 @@ function assistir_versao {
 	done
 }
 
-# Zera tudo e reinstala
-function runAllTests(){
-	EXIT_CODE=0
-	if [ -e $CDSHELL ]; then
-		EXIT_CODE=1
-	fi
 
-	echo -en "\n ### Running All Tests ### \n"
-	echo -en " 1..."
-	return $EXIT_CODE
-}
 
 # Zera tudo e reinstala
 function resetar_e_instalar_ultima_versao(){
@@ -129,11 +119,23 @@ function atualizaJSON() {
 						return 0
 }
 
+# Zera tudo e reinstala
+function runAllTests(){
+	EXIT_CODE=0
+	if [ ! -e $CDSHELL ]; then
+		EXIT_CODE=1
+	fi
+
+	echo -en "\n ### Running All Tests ### \n"
+	echo -en " 1..."
+	return $EXIT_CODE
+}
 
 
 #############################################################################################
 #                                          MAIN                                             #
 #############################################################################################
+
 case $1 in
 
 	# adicionar MENSANGES ao cdshell TODOLIST
@@ -242,7 +244,7 @@ case $1 in
 								if [ $ERROR_CODE == 0 ]; then
 									echo -en "\n Testes realizados com sucesso\n"
 								else
-									echo -en "\n Deu Erro: \t $ERROR_CODE=$red $ERROR_CODE $normal\n"
+									echo -en "... deu Erro: \t ERROR_CODE =$red $ERROR_CODE $normal\n"
 								fi
     ;;
 
