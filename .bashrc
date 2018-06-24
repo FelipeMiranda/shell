@@ -17,6 +17,11 @@ if [ -e $CDSHELL/hostScripts/${HOSTNAME}.alias ]; then
  	. $CDSHELL/hostScripts/${HOSTNAME}.alias
 fi
 
+if [ -e $CDSHELL/hostScripts/${HOSTNAME}.export ]; then
+ 	. $CDSHELL/hostScripts/${HOSTNAME}.export
+fi
+
+
 
 #Usando <TAB><TAB> após o comando cd somente mostra diretórios
 complete -d cd

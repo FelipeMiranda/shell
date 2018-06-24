@@ -31,9 +31,9 @@ PS1="$red\u$yellow@$green\h $cyan\W> $normal"
 # HOST BASED ALIAS #
 ####################
 
-if [ -e $CDSHELL/hostScripts/$HOSTNAME.export ]; then
-	. $CDSHELL/hostScripts/$HOSTNAME.export
-fi
+#if [ -e $CDSHELL/hostScripts/$HOSTNAME.export ]; then
+#	. $CDSHELL/hostScripts/$HOSTNAME.export
+#fi
 
 
 #Colocar o diretório corrente já no PATH, para nao precisar ficar toda hora digitando ./ e viva a preguiça.
