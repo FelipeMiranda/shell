@@ -1,13 +1,17 @@
 !#/bin/bash
 
 ####################################################
-#	CDSHELL - Install.sh										#
-#  Arquivo de instalação do CDSHELL						#
+#  CDSHELL - Install.sh                            #
+#  Arquivo de instalação do CDSHELL                #	
 ####################################################
+
+# Coleta o início da execução.
+START=$(date +%s)
 
 # Suporte as cores. (cdshell -c) para ver cores do CDSHELL
 source $CDSHELL/colors.sh || source colors.sh
 
+# Configurando Variável do CDSHELL
 if [ ! -e $CDSHELL ]; then
 	echo -en "\n Caminho para instalar seu $alert CDSHELL$normal: $cyan"
 	read CAMINHO
@@ -15,12 +19,14 @@ if [ ! -e $CDSHELL ]; then
 	CDSHELL=$CAMINHO
 fi
 
+# Carregando configs específicas por host
+if [ -e $CDSHELL/hostScripts/${HOSTNAME}.export ]; then
+	source $CDSHELL/hostScripts/${HOSTNAME}.export
+fi
+
 CDSHELL=$HOME/shell
 BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
 CDSHELL_VAR=$HOME/.cdshell
-
-# Coleta o início da execução.
-START=$(date +%s)
 
 # Garantindo que o cp nao está com alias cp -i
 alias cp=cp

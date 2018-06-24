@@ -18,7 +18,7 @@ if [ -e $CDSHELL/hostScripts/${HOSTNAME}.alias ]; then
 fi
 
 if [ -e $CDSHELL/hostScripts/${HOSTNAME}.export ]; then
- 	. $CDSHELL/hostScripts/${HOSTNAME}.export
+ 	source $CDSHELL/hostScripts/${HOSTNAME}.export
 fi
 
 
@@ -46,7 +46,7 @@ for i in `ls $HOME/.bash_completion.d/` ; do
 	source $HOME/.bash_completion.d/$i
 done
 
-# Mostrar as tarefas
+# Mostrar as tarefas se SLACK_CDSHELL_SEN_MESSAGES == true
 if [ "$SLACK_CDSHELL_SEND_MESSAGES" == "true" ]; then
 	if [ $(( $(date +%s) - $TAREFAS_SHOWED_AT_TIME )) -gt $TAREFAS_TIME_TO_WAIT ]; then
 		TAREFAS_TXT=$(cat $CDSHELL_VAR/tarefas_usedby_bashrc.txt)
