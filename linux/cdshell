@@ -72,7 +72,7 @@ function assistir_versao {
 # Zera tudo e reinstala
 function runAllTests(){
 	EXIT_CODE=0
-	if [ ! -e $CDSHELL ]; then
+	if [ -e $CDSHELL ]; then
 		EXIT_CODE=1
 	fi
 
@@ -240,9 +240,9 @@ case $1 in
 								runAllTests
 								ERROR_CODE=$?
 								if [ $ERROR_CODE == 0 ]; then
-									echo "\n Testes realizados com sucesso\n"
+									echo -en "\n Testes realizados com sucesso\n"
 								else
-									echo "\n Deu Erro: \t $ERROR_CODE=$red $ERROR_CODE $normal\n"
+									echo -en "\n Deu Erro: \t $ERROR_CODE=$red $ERROR_CODE $normal\n"
 								fi
     ;;
 
