@@ -12,9 +12,9 @@ echo -en "\n $alert Primeira instalação sendo executada $normal"
 if [ $OSTYPE == "Linux" ]; then
 	PACOTES=$PACOTES_LINUX
 	echo -en "\n\n\n Vamos instalar os requisitos: $green $PACOTES $normal"
-	echo -en "\n\n\t Pressione qualquer tecla para continuar ou $yellow 'q'$normal para cancelar... \n\n\tcontinuando em ...\n"
+	echo -en "\n\n\t Pressione qualquer tecla para continuar ou $yellow 'q'$normal para $WHITE cancelar$normal ... \n\n\tcontinuando em ...\n"
 
-	for TEMPO in {3..1} ; do
+	for TEMPO in {3..0} ; do
 		echo -en "\r\t$TEMPO segundos"
 		read -n 1 -t 1 CANCELAR
 		if [ "$CANCELAR" == 'q' ]; then
