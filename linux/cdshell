@@ -234,8 +234,11 @@ case $1 in
     "-t"|"--test"|"--all-test") 
 								# echo -en "O comando $red $* $normal deveria fazer os testes do ambiente.\n\n"
 								runAllTests
-								if [ $? == 0 ]; then
+								ERROR_CODE=$?
+								if [ $ERROR_CODE == 0 ]; then
 									echo "\n Testes realizados com sucesso\n"
+								else
+									echo "\n Deu Erro: \t $ERROR_CODE=$red $ERROR_CODE $normal\n"
 								fi
     ;;
 
