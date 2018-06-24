@@ -24,7 +24,7 @@ function commit(){
     
 	echo -en "\n\n Publicando $1 "
     
-   	if [ $( md5sum ~/$1 | cut -f1 -d ' ') != $(md5sum $CDSHELL/$1 | cut -f1 -d' ') ]; then
+  	if [ $( md5sum ~/$1 | cut -f1 -d ' ') != $(md5sum $CDSHELL/$1 | cut -f1 -d' ') ]; then
 	    echo -en "\n Deseja commitar o $1 ? (${WHITE}s${normal})im/(${WHITE}n${normal})ão\n"
 	    read -n 1 COMMITAR
 	    if [ "$COMMITAR" == "s" ] || [ $COMMITAR == "S" ] ; then
@@ -32,15 +32,26 @@ function commit(){
 			cp ~/$1 $CDSHELL/$1 -i
 			cd $CDSHELL
 			git add .
-			git commit 
+			git commit -m "Novas melhorias no $1"
 			cd -
-			echo "Faça o ®®®"
+			echo -en "\n\t\t Para publicar, faça o $WHITE®®$normal $> rr"
 	    fi
 	    if [ "$COMMITAR" == "n" ]; then
 		  echo -en "\n $red Cancelado! $yellow saindo sem commitar... cuidado os arquivos $WHITE estão alterados. $normal \n"
 	    fi
 	else
 	    echo -en "\n Sem modificações para commit, arquivo: $1 $green IGUALADO\n\n"
+	fi
+}
+
+function is_file_changed(){
+	#Testa se o arquivo foi alterado, comparando com o original do CDSHELL, se diferentes retorna 0.
+  	if [ $( md5sum ~/$1 | cut -f1 -d ' ') != $(md5sum $CDSHELL/$1 | cut -f1 -d' ') ]; then
+	    	#sim
+		return 0;
+	else
+	    	# nao modificado
+		return 1;
 	fi
 }
 
@@ -71,7 +82,6 @@ case $1 in
 			    	echo "\n\n\t Arquivo $HOME/.export não alterado\n"
 			fi
 		;;
-
 		"--commit" )
 			    echo -en "\n Deseja commitar o .alias ou .export ? (${WHITE}a${normal})lias/(${WHITE}e${normal})xport\n"
 			    read -n 1 RESPOSTA
@@ -81,6 +91,23 @@ case $1 in
 			    if [ "$RESPOSTA" == "e" ]; then
 				    commit .export
 			    fi
+		;;
+
+
+		"--check-all" )
+				CODE=1
+				is_file_changed .export 
+				if [ $? == 0 ]; then
+				    	commit .export
+					CODE=0
+				fi
+
+				is_file_changed .alias
+				if [ $? == 0 ]; then
+				    	commit .alias
+					CODE=0
+				fi
+				exit $CODE
 		;;
 
 	
