@@ -139,7 +139,7 @@ function runAllTests(){
 	done
 		
 	# Simule falha, entao código de retorno > 0
-	EXIT_CODE=11
+	#EXIT_CODE=11
 
 	return $EXIT_CODE
 }
@@ -256,11 +256,10 @@ case $1 in
 								EXIT_CODE=$?
 								if [ $EXIT_CODE == 0 ]; then
 									echo -en "\n Testes realizados com $green sucesso.$normal\n"
-									exit 0
 								else
 									echo -en "... deu $red erro $normal, o código de saída é EXIT_CODE =$red $EXIT_CODE $normal .\n\n"
-									exit $EXIT_CODE
 								fi
+								exit $EXIT_CODE
     ;;
 
 	#Desinstalar tudo inclusive o repositório, cuidado perde as modificacoes atuais.
