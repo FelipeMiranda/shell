@@ -34,7 +34,7 @@ function commit(){
 			git add .
 			git commit -m "Novas melhorias no $1"
 			cd -
-			echo -en "\n\t\t Para publicar, faça o $WHITE®®$normal $> rr"
+			echo -en "\n\t\t Publique -> \t $>$WHITE rr(®®)$normal"
 	    fi
 	    if [ "$COMMITAR" == "n" ]; then
 		  echo -en "\n $red Cancelado! $yellow saindo sem commitar... cuidado os arquivos $WHITE estão alterados. $normal \n"
