@@ -249,7 +249,7 @@ case $1 in
 								if [ $EXIT_CODE == 0 ]; then
 									echo -en "\n Testes realizados com sucesso\n"
 								else
-									echo -en "... deu $red erro $normal, codigo de saída EXIT_CODE =$red $EXIT_CODE $normal .\n\n"
+									echo -en "... deu $red erro $normal, o código de saída é EXIT_CODE =$red $EXIT_CODE $normal .\n\n"
 								fi
     ;;
 
