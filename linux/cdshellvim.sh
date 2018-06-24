@@ -18,9 +18,8 @@ if [ -n "$VIM" ]; then VIM=$VI ; fi
 ################################################
 
 
-##########  Funcao       #######################
+##########  git commit #######################
 function commit(){
-    
     
   	if [ $( md5sum ~/$1 | cut -f1 -d ' ') != $(md5sum $CDSHELL/$1 | cut -f1 -d' ') ]; then
 		echo -en "\n\n $yellow $1 $green está diferente! $normal \n\n"
@@ -43,8 +42,8 @@ function commit(){
 	fi
 }
 
+#Testa se o arquivo foi alterado, comparando com o original do CDSHELL, se diferentes retorna 0.
 function is_file_changed(){
-	#Testa se o arquivo foi alterado, comparando com o original do CDSHELL, se diferentes retorna 0.
   	if [ $( md5sum ~/$1 | cut -f1 -d ' ') != $(md5sum $CDSHELL/$1 | cut -f1 -d' ') ]; then
 	    	#sim
 		return 0;
