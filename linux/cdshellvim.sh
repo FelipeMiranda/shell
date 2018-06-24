@@ -83,6 +83,7 @@ case $1 in
 			fi
 		;;
 		"--commit" )
+				$CDSHELL/linux/cdshellvim.sh --check-all
 			    echo -en "\n Deseja commitar o .alias ou .export ? (${WHITE}a${normal})lias/(${WHITE}e${normal})xport\n"
 			    read -n 1 RESPOSTA
 			    if [ "$RESPOSTA" == "a" ] ; then
