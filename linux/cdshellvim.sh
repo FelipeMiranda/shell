@@ -67,7 +67,7 @@ case $1 in
 			if [ $(echo "$ALIAS_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$ALIAS_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
 				echo -en "$HOME/.alias alterado com sucesso, $red não esqueça de $green ** COMMITar ** $WHITE-> $> ec $normal\n\n"
 			else
-			    	echo "\n\n\t Arquivo $HOME/.alias não alterado\n"
+			    	echo -en "\n\n\t Arquivo $HOME/.alias não alterado\n\n"
 			fi
 		;;
 
@@ -79,7 +79,7 @@ case $1 in
 			if [ $(echo "$EXPORT_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$EXPORT_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
 				echo -en "$HOME/.export alterado com sucesso, $red não esqueça de $green ** COMMITar ** $WHITE-> $> ec $normal\n\n"
 			else
-			    	echo "\n\n\t Arquivo $HOME/.export não alterado\n"
+			    	echo -en "\n\n\t Arquivo $HOME/.export não alterado\n\n"
 			fi
 		;;
 		"--commit" )

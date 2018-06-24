@@ -171,6 +171,7 @@ alias TCP-syn="tcpdump -Annvi $IF_INTERNET 'tcp[13]==2'"
 alias ea="cdshellvim.sh --alias"
 alias ee="cdshellvim.sh --export"
 alias ec="cdshellvim.sh --commit"
+alias etodos "cdshellvim.sh --check-all"
 alias eh="cdshellvim.sh --help"
 
 alias dk="$CDSHELL/linux/dk.sh"
