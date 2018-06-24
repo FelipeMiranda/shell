@@ -71,8 +71,11 @@ function assistir_versao {
 
 # Zera tudo e reinstala
 function runAllTests(){
+	EXIT_CODE=0
+
 	echo -en "\n ### Running All Tests ### \n"
 	echo -en " 1..."
+	return $EXIT_CODE
 }
 
 # Zera tudo e reinstala
