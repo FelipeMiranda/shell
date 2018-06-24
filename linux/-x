@@ -1,1 +1,1 @@
-chmod -x
+chmod -x $*

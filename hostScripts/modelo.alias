@@ -1,7 +1,16 @@
 #!/bin/bash
 
-FILE_NAME=`ls /logs/hosts* | tail -n1`
+##################### HOSTSCRIPT - MODELO ##################
+# alias - Definir opções específicas por host.
+# Nomear o arquivo com o nome do $HOSTNAME.alias que será
+# executado no bash login.
+############################################################
 
-/usr/bin/wc -l /etc/hosts.deny | tee /logs/hosts.deny$(date +%Y%m%d) > /dev/null
-echo -en "IPs bloqueados:"
-cat $FILE_NAME
+#Config 
+source ~/colors.sh
+
+
+
+# Host's aliases 
+alias N='valor'
+unalias N

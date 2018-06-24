@@ -6,11 +6,13 @@
 # executado no bash login.
 ############################################################
 
+#Configs
+source ~/colors.sh
 
-#config 
+
+#Variavéis
 NAME='valor'
 
 
-
-#exporting
+#Exportando
 export NAME
