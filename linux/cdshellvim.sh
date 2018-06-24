@@ -32,9 +32,9 @@ function commit(){
 			cd $CDSHELL
 			git add .
 			git commit -m "Novas melhorias no $1"
-			echo -en "\n git commit ..... $green Done \n"
+			echo -en "\n git commit ..... $green Done $normal \n"
 			cd -
-			echo -en "\n\t\t Publique -> \t $>$WHITE rr(®®)$normal"
+			echo -en "\n\t\t Publique -> \t\t $>$WHITE rr(®®)$normal\n\n"
 	    fi
 	    if [ "$COMMITAR" == "n" ]; then
 		  echo -en "\n $red Cancelado! $yellow saindo sem commitar... cuidado os arquivos $WHITE estão alterados. $normal \n"
