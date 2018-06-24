@@ -244,8 +244,10 @@ if [ ! -e $CDSHELL_VAR/.cdshell_req_installed ]; then
 fi
 
 #Envia mensagem para canal install @ slack
-echo -en "\n Enviando mensagem para ${magenta}install${blue}@${magenta}slack$normal ......... $green Done$normal\n"
-$CDSHELL/linux/send_install.js "*$DATA* Nova instalação de CDSHELL em *$HOSTNAME* | Versão: $VERSION" 2>&1 > /dev/null
+if [ "$SLACK_CDSHELL_SEND_MESSAGES" == "true" ]; then
+	echo -en "\n Enviando mensagem para ${magenta}install${blue}@${magenta}slack$normal ......... $green Done$normal\n"
+	$CDSHELL/linux/send_install.js "*$DATA* Nova instalação de CDSHELL em *$HOSTNAME* | Versão: $VERSION" 2>&1 > /dev/null
+fi
 
 # Exibindo dados da instalacao e tempo gasto.
 END=$(date +%s)
@@ -257,5 +259,3 @@ echo -en "\n     ${alert} Existe uma página help feita com miniman $normal\n   
 
 #Carregar o bash e testar, ja fica aberto.
 cd $BACKUP_FROM_RUNDIR;bash
-
-
