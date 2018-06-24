@@ -28,10 +28,11 @@ function commit(){
 	    read -n 1 COMMITAR
 	    if [ "$COMMITAR" == "s" ] || [ $COMMITAR == "S" ] ; then
 		  	echo "estou iniciando"
-			cp ~/$1 $CDSHELL/$1 -i
+			cp ~/$1 $CDSHELL/$1 > /dev/null
 			cd $CDSHELL
 			git add .
 			git commit -m "Novas melhorias no $1"
+			echo -en "\n git commit ..... $green Done \n"
 			cd -
 			echo -en "\n\t\t Publique -> \t $>$WHITE rr(®®)$normal"
 	    fi
