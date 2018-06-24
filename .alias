@@ -10,18 +10,22 @@ alias clitxt='curl -F \"upfile=@-\" https://clitxt.com'
 #OPCOES COMUNS
 alias ..='cd ..'
 alias b='bash'
+alias c=cat
 alias d='dig'
-alias i="ifconfig | grep UP -A1 | sed 's/flags.*$//g' | tr '\n' ' ' | sed 's/-- /\n/g'| column | sed 's/      inet/\t=/' | sed 's/lo:/lo:\t/' | grep --color -E '= ([0-9]{1,3}[\.]){3}[0-9]{1,3}'  ; echo "
-alias g='grep -i'
 alias e='EGREP.sh'
+alias f='file'
+alias g='grep -i'
+alias h='miniman h'
+alias i="ifconfig | grep UP -A1 | sed 's/flags.*$//g' | tr '\n' ' ' | sed 's/-- /\n/g'| column | sed 's/      inet/\t=/' | sed 's/lo:/lo:\t/' | grep --color -E '= ([0-9]{1,3}[\.]){3}[0-9]{1,3}'  ; echo "
 alias l='ls'
-alias ll='ls -l'
 alias m='more'
-alias v='vim'
-alias mp3='mplayer'
 alias p='ps aux'
-alias pg='psauxgrep.sh'
+alias s='sleep'
 alias t='tail -f'
+alias v='vim'
+alias ll='ls -l'
+alias pg='psauxgrep.sh'
+alias mp3='mplayer'
 alias tmessages='tail -f 100 /var/log/messages'
 alias +x='chmod +x' 
 alias cd..='cd ..'
@@ -41,7 +45,6 @@ alias cdusr='cd /usr'
 alias cdvar='cd /var'
 alias cdlog='cd /var/log'
 alias cde='cd /etc/'
-alias c=cat
 alias mx="dig mx"
 ################
 
