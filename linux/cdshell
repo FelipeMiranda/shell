@@ -34,7 +34,7 @@ function exibe_versao_git_local_version(){
 }
 
 # retorna 0 caso caminho exista.
-function if_exist(){ if [ -e $1 ]; then return $? ; fi }
+function if_exist(){ if [ -e $1 ]; then return 0 ; else return 1 ; fi }
 
 # Assitir a versão
 function assistir_versao {
@@ -133,9 +133,11 @@ function runAllTests(){
 	# Testar se os caminhos abaixo existem
 	FILES_NEED_EXISTS="$CDSHELL $CDSHELL/backup $CDSHELL_VAR ~/.bashrc ~/.alias ~/.export ~/.vimrc ~/.screenrc ~/.toprc \
 					   $CDSHELL/backup/data_ultima_instalacao.txt 	$CDSHELL/backup/versao_ultima_instalacao.txt 
+					   /etc/inputrac
 						"
 	for FILE in $FILES_NEED_EXISTS; do 
-		echo -en "\n $yellow $CONT ... $green $FILE $normal" ; if_exist $FILE || EXIT_CODE=$? 
+		echo -en "\n $yellow $CONT ... $green $FILE $normal" 
+		if_exist $FILE || echo deu erro EXIT_CODE=$? 
 		((CONT++))
 	done
 		
