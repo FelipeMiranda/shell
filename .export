@@ -2,7 +2,7 @@
 source ~/colors.sh
 
 # Nao remover, usado para controle do tempo de apresetacao do Tarefas.
-TAREFAS_SHOWED_AT_TIME=1529851757
+TAREFAS_SHOWED_AT_TIME=1529854463
 
 # Tempo para exibir tarefas novamente, em segundos.
 TAREFAS_TIME_TO_WAIT=60
