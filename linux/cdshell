@@ -1,9 +1,13 @@
 #!/bin/bash
 
-#source ~/.export
+# Configs
+source ~/.export
 source ~/colors.sh
 
-# colocando isso para nao rodar o source, pois ta chamando o -h dele, -e etc.
+SPLASH_SCREEN_FILE=$CDSHELL_VAR/tarefas_bashrc_splashscreen.txt
+
+
+# Colocando isso para não rodar o source, pois ta chamando o -h dele, -e tmb, VER PRA TIRAR ESSA GAMBI
 if [ "$1" == "-c" ] || [ "$1" == "--colors" ] ; then
 	#Para a funcoesZZ nao mostrar o help qdo usa o -h executa nela tmb."
 	source /opt/funcoeszz/funcoeszz
@@ -64,11 +68,15 @@ function assistir_versao {
 	   fi
 	done
 }
+
+# Zera tudo e reinstala
 function resetar_e_instalar_ultima_versao(){
 	cdshell
 	git checkout -f
 	cdshell install
 }
+
+# Desinstalar
 function desinstalar() {
 
 	DIRETORIOS="/.cdshell_req_installed ~/.vimrc ~/.screenrc ~/.cdshell ~/skeleton $CDSHELL"
@@ -88,6 +96,8 @@ function desinstalar() {
 
 }
 
+
+# Escreve o JSON das tarefas e gera a SPLASH_SCREEN
 function atualizaJSON() {
 						JSON=$*
 						echo $JSON > $CDSHELL_VAR/cdshell_tarefas.json
@@ -105,11 +115,16 @@ function atualizaJSON() {
 								if ($0 == 3) {print "\\e[31m"}
 							}' > /tmp/B2
 						sed -i 's/"//g' /tmp/C
-						paste /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
+						paste /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_bashrc_splashscreen.txt
 						rm -rf /tmp/A /tmp/B /tmp/B2 /tmp/C /tmp/D
 						return 0
 }
 
+
+
+#############################################################################################
+#                                          MAIN                                             #
+#############################################################################################
 case $1 in
 
 	# adicionar MENSANGES ao cdshell TODOLIST
