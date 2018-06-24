@@ -134,12 +134,12 @@ function runAllTests(){
 	FILES_NEED_EXISTS="$CDSHELL $CDSHELL/backup $CDSHELL_VAR"
 
 	for FILE in $FILES_NEED_EXISTS; do 
-		echo -en "$CONT ... $FILE" ; if_exist $FILE || EXIT_CODE=$? 
+		echo -en "\n $yellow $CONT ... $green $FILE " ; if_exist $FILE || EXIT_CODE=$? 
 		((CONT++))
 	done
 		
-	# Em caso de falha, código de retorno = 1
-	#EXIT_CODE=11
+	# Simule falha, entao código de retorno > 0
+	EXIT_CODE=11
 
 	return $EXIT_CODE
 }
