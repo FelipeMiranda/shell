@@ -40,6 +40,7 @@ alias cdp='cd /etc/puppet/environments/devel'
 alias cdco='cd ~/codigo-fonte'
 alias cdc='cd ~/codigo-fonte'
 alias cdl='cd $CDSHELL/linux'
+alias backup="$CDSHELL/linux/backup.sh"
 ### USABLES ###
 alias cdusr='cd /usr'
 alias cdvar='cd /var'
@@ -170,8 +171,8 @@ alias b64encode="echo -n | base64 <<<"
 alias TCP-syn="tcpdump -Annvi $IF_INTERNET 'tcp[13]==2'"
 
 
-alias ea="vim ~/.alias"
-alias ee="vim ~/.export"
+alias ea="cdshellvim.sh --alias"
+alias ee="cdshellvim.sh --export"
 
 alias dk="$CDSHELL/linux/dk.sh"
 alias dkk="dk --kill"
