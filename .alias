@@ -107,6 +107,8 @@ alias ¢¢=®®
 # Shortcuts para SERVIDORES
 alias d1="ssh dev1"
 alias d2="ssh dev2"
+alias d3="ssh dev3"
+alias d4="ssh dev4"
 alias sshm="ssh superati.com.br -p 22000 -l root"
 alias mm="ssh superati.com.br -p 22000"
 alias manzano="ssh manzano"
