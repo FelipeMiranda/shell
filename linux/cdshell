@@ -70,6 +70,12 @@ function assistir_versao {
 }
 
 # Zera tudo e reinstala
+function runAllTests(){
+	echo -en "\n ### Running All Tests ### \n"
+	echo -en " 1..."
+}
+
+# Zera tudo e reinstala
 function resetar_e_instalar_ultima_versao(){
 	cdshell
 	git checkout -f
