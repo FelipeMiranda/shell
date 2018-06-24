@@ -42,11 +42,11 @@ for i in `ls $HOME/.bash_completion.d/` ; do
 done
 
 # Mostrar as tarefas
-if [ $(( $(date +%s) - $TAREFAS_SHOWED_AT_TIME )) -gt $TAREFAS_TIME_TO_WAIT ]; then
-	TAREFAS_TXT=$(cat $CDSHELL_VAR/tarefas_usedby_bashrc.txt)
-	echo -en "${WHITE} - Lista de Tarefas -\n$normal\n"
-	echo -en "${TAREFAS_TXT}$normal\n\n"
-	sed "s/^TAREFAS_SHOWED_AT_TIME.*/TAREFAS_SHOWED_AT_TIME=$(date +%s)/g" ~/.export -i
+if [ "$SLACK_CDSHELL_SEND_MESSAGES" == "true" ]; then
+	if [ $(( $(date +%s) - $TAREFAS_SHOWED_AT_TIME )) -gt $TAREFAS_TIME_TO_WAIT ]; then
+		TAREFAS_TXT=$(cat $CDSHELL_VAR/tarefas_usedby_bashrc.txt)
+		echo -en "${WHITE} - Lista de Tarefas -\n$normal\n"
+		echo -en "${TAREFAS_TXT}$normal\n\n"
+		sed "s/^TAREFAS_SHOWED_AT_TIME.*/TAREFAS_SHOWED_AT_TIME=$(date +%s)/g" ~/.export -i
+	fi
 fi
-
-
