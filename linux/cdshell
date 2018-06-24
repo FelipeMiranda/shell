@@ -118,7 +118,7 @@ function atualizaJSON() {
 								if ($0 == 3) {print "\\e[31m"}
 							}' > /tmp/B2
 						sed -i 's/"//g' /tmp/C
-						paste /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_bashrc_splashscreen.txt
+						paste /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
 						rm -rf /tmp/A /tmp/B /tmp/B2 /tmp/C /tmp/D
 						return 0
 }
