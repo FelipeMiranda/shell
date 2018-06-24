@@ -226,6 +226,7 @@ case $1 in
 									echo -en "\n\n Desinstalação concluída com SUCESSO!\n\n "
 								else
 									echo -en "\n\n $red OK CANCELADO!\n\n "
+									exit 1
 								fi
 
 	;;
