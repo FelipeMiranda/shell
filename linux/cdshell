@@ -210,12 +210,13 @@ case $1 in
     "-r"|"--reset") resetar_e_instalar_ultima_versao
 	;;
 
-	# Testar instalação do CDSHELL.
+	# Teste de instalação
     "-t"|"--test"|"--all-test") 
-#		echo -en "O comando $red $* $normal deveria fazer os testes do ambiente.\n\n"
-			runAllTests
-			if [ $? == 0 ]; then
-				echo "\n Testes realizados com sucesso\n"
+								# echo -en "O comando $red $* $normal deveria fazer os testes do ambiente.\n\n"
+								runAllTests
+								if [ $? == 0 ]; then
+									echo "\n Testes realizados com sucesso\n"
+								fi
     ;;
 
 	#Desinstalar tudo inclusive o repositório, cuidado perde as modificacoes atuais.
