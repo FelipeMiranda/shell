@@ -72,6 +72,10 @@ function assistir_versao {
 # Zera tudo e reinstala
 function runAllTests(){
 	EXIT_CODE=0
+	if [ ! -e $CDSHELL ]; then
+		EXIT_CODE=1
+	fi
+
 	echo -en "\n ### Running All Tests ### \n"
 	echo -en " 1..."
 	return $EXIT_CODE
