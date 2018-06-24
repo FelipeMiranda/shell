@@ -30,7 +30,7 @@ function commit(){
 	    if [ "$COMMITAR" == "s" ] || [ $COMMITAR == "S" ] ; then
 		  	echo "estou iniciando"
 			cp ~/$1 $CDSHELL/$1 -i
-			cds
+			cd $CDSHELL
 			git add .
 			git commit 
 			cd -
