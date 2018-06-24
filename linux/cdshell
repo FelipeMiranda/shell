@@ -121,13 +121,18 @@ function atualizaJSON() {
 
 # Zera tudo e reinstala
 function runAllTests(){
+	echo -en "\n ### Running All Tests ### \n"
+
+	echo -en " 1..."
 	EXIT_CODE=0
 	if [ ! -e $CDSHELL ]; then
 		EXIT_CODE=1
 	fi
-
-	echo -en "\n ### Running All Tests ### \n"
-	echo -en " 1..."
+	echo -en " 2..."
+	EXIT_CODE=0
+	if [ ! -e $CDSHELL/backup ]; then
+		EXIT_CODE=1
+	fi
 	return $EXIT_CODE
 }
 
@@ -238,13 +243,13 @@ case $1 in
 
 	# Teste de instalação
     "-t"|"--test"|"--all-test") 
-								# echo -en "O comando $red $* $normal deveria fazer os testes do ambiente.\n\n"
+								EXIT_CODE=""
 								runAllTests
-								ERROR_CODE=$?
-								if [ $ERROR_CODE == 0 ]; then
+								EXIT_CODE=$?
+								if [ $EXIT_CODE == 0 ]; then
 									echo -en "\n Testes realizados com sucesso\n"
 								else
-									echo -en "... deu Erro: \t ERROR_CODE =$red $ERROR_CODE $normal\n"
+									echo -en "... deu $red erro $normal, codigo de saída EXIT_CODE =$red $EXIT_CODE $normal .\n\n"
 								fi
     ;;
 
