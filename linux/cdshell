@@ -72,7 +72,6 @@ function assistir_versao {
 # Zera tudo e reinstala
 function runAllTests(){
 	EXIT_CODE=0
-
 	echo -en "\n ### Running All Tests ### \n"
 	echo -en " 1..."
 	return $EXIT_CODE
@@ -91,7 +90,6 @@ function desinstalar() {
 	DIRETORIOS="/.cdshell_req_installed ~/.vimrc ~/.screenrc ~/.cdshell ~/skeleton $CDSHELL"
 	echo -en "\n Vamos apagar os seguintes diretórios, esteja ciente...kkk!\n\n$WHITE $DIRETORIOS"
 	read -n1
-	
 	cd ~
 	del="rm -rf"
 	$del ~/.cdshell_req_installed 
@@ -100,9 +98,7 @@ function desinstalar() {
 	$del ~/.cdshell
 	$del ~/skeleton
 	$del $CDSHELL
-
-	echo -en "\n $green Desinstalado com SUCESSO!\n\n\t $red Por enquanto nao recupera os arquivos originais da primeira instalacao $normal \n"
-
+	echo -en "\n $green Desinstalado com SUCESSO!\n\n\t $red Por enquanto não recupera os arquivos originais da primeira instalação.     $WHITE :-|  $normal \n"
 }
 
 
