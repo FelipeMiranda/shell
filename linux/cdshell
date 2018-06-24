@@ -132,10 +132,10 @@ function runAllTests(){
 
 	# Testar se os caminhos abaixo existem
 	FILES_NEED_EXISTS="$CDSHELL $CDSHELL/backup $CDSHELL_VAR ~/.bashrc ~/.alias ~/.export ~/.vimrc ~/.screenrc ~/.toprc \
-						$CDSHELL/backup/data_ultima_instalacao.txt 
+					   $CDSHELL/backup/data_ultima_instalacao.txt 	$CDSHELL/backup/versao_ultima_instalacao.txt 
 						"
 	for FILE in $FILES_NEED_EXISTS; do 
-		echo -en "\n $yellow $CONT ... $green $FILE " ; if_exist $FILE || EXIT_CODE=$? 
+		echo -en "\n $yellow $CONT ... $green $FILE $normal" ; if_exist $FILE || EXIT_CODE=$? 
 		((CONT++))
 	done
 		
