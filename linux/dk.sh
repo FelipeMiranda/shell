@@ -48,7 +48,7 @@ case $1 in
 				read RESPOSTA
 				OPTION=$(( RESPOSTA -1 ))
 				echo ${ARRAY[ $OPTION ]}
-				docker run -d ${ARRAY[$OPTION]}
+				docker run -d ${ARRAY[$OPTION]} 
 			else
 				docker run -d $2
 			fi

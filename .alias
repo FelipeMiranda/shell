@@ -47,7 +47,8 @@ alias cdvar='cd /var'
 alias cdlog='cd /var/log'
 alias cde='cd /etc/'
 alias mx="dig mx"
-alias 88="ping 8.8.8.8"
+alias vale="cd ; cd sistemas; cd vale"
+
 ################
 
 alias criadaemon=~/shell/linux/criadaemon.sh
