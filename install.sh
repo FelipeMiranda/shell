@@ -8,6 +8,9 @@
 # Coleta o início da execução.
 START=$(date +%s)
 
+git config --global user.name "Rafael Castro"
+git config --global user.email "quirinobytes@gmail.com"
+
 # Suporte as cores. (cdshell -c) para ver cores do CDSHELL
 source $CDSHELL/colors.sh || source colors.sh
 
