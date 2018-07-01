@@ -11,6 +11,10 @@ START=$(date +%s)
 # Suporte as cores. (cdshell -c) para ver cores do CDSHELL
 source $CDSHELL/colors.sh || source colors.sh
 
+# Git Config
+git config --global user.email quirinobytes@gmail.com
+git config --global user.name Rafael Castro
+
 # Configurando Variável do CDSHELL
 if [ ! -e $CDSHELL ]; then
 	echo -en "\n Caminho para instalar seu $alert CDSHELL$normal: $cyan"
@@ -108,7 +112,17 @@ echo -en .
 cp $CDSHELL/colors.sh $HOME/
 echo -en ..
 
-if [ -e /etc/inputrc ] ; then cp -f /etc/inputrc $BACKUP_DIR/ ; fi
+if [ -e /etc/inputrc ] ; then 
+    cp -f /etc/inputrc $BACKUP_DIR/ ; 
+else
+    if [ ! -e /etc/inputrc.cdshell ]; then
+	# Faz um backup do original e nunca sobrescreva.
+    	cp -f /etc/inputrc /etc/inputrc.cdshell
+	# ja que fez o backup do original, pode sobrescreve-lo.
+	cp -f $CDSHELL/inputrc /etc/inputrc
+    fi
+fi
+
 echo -en .
 cp $CDSHELL/inputrc /etc/
 echo -en .
@@ -259,3 +273,4 @@ echo -en "\n     ${alert} Existe uma página help feita com miniman $normal\n   
 
 #Carregar o bash e testar, ja fica aberto.
 cd $BACKUP_FROM_RUNDIR;bash
+

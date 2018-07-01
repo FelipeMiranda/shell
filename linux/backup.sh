@@ -14,11 +14,12 @@ source ~/.export
 # Suporte a cores no bash.
 source ~/shell/colors.sh
 ################################################
-
+alias cp=cp
 
 ##########  Funcao       #######################
 function help(){
-echo funcao
+	echo "Usar com opções:\n"
+	echo -en "$$ -h \t -> Mostra o help.\n"
 }
 
 
@@ -41,6 +42,11 @@ case $1 in
 				    	POSITION=$(( $RESPOSTA - 1 ))
 			 		echo "\n $red Vou recuperar o ${ARRAY[$POSITION]} ok? s/y para continuar\n"
 					cp $CDSHELL/${ARRAY[$POSITION]} $HOME/ -i
+
+					# Restaurar o inputrc
+					if [ -e /etc/inputrc.cdshell ]; then
+					    cp -f /etc/input.cdshell /etc/inputrc
+					fi
 				else
 					echo RESPOSTA=$RESPOSTA
 					echo CONT=$CONT
