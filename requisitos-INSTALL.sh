@@ -28,9 +28,14 @@ if [ $OSTYPE == "Linux" ]; then
 	if [ "$?" != 0 ]; then
 		PACK_INSTALL="apt install" 
 	else
-		PACK_INSTALL="yum install"
+		PACK_INSTALL="yum -y install"
 	fi
-	$PACK_INSTALL $PACOTES -y
+
+	for PACOTE in $PACK_INSTALL do
+	    echo "Instalando $PACOTE ..."
+	    $PACK_INSTALL $PACOTE 
+	    echo " $PACOTE instalado\n\n"
+	done
 
 	#CentOS 6.6
 	#   rpm -hiv http://pkgs.repoforge.org/txt2tags/txt2tags-2.6-1.el6.rf.noarch.rpm
