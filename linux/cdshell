@@ -168,6 +168,18 @@ case $1 in
 				fi
     ;;
 
+	# Adicionando tarefas PRIORITY = 2
+	"-a2")		if [ -n "$1" ]; then
+					NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
+					NEXT_ID=$(( $NEXT_ID + 1 ))
+					TEXTO=$( echo $* | sed 's/\-a3 //g' )
+					echo TEXTO=$TEXTO
+					JSON=`jq ".item += [{\"id\":$NEXT_ID,\"tarefa\":{\"priority\": 2, \"text\":\"$TEXTO\"}}]" $CDSHELL_VAR/cdshell_tarefas.json`
+					atualizaJSON $JSON
+					echo -en "\n$green Tarefa $NEXT_ID adicionada. \n"
+				fi
+    ;;
+
 	# Adicionando tarefas PRIORITY = 3
 	"-a3")		if [ -n "$1" ]; then
 					NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
@@ -188,8 +200,13 @@ case $1 in
 
 	# Apagando tarefas por ID
 	"-d"|"--delete")	if [ -n "$1" ]; then
-						NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
-						NEXT_ID=$(( $NEXT_ID + 1 ))
+						
+						# <para remover>
+						#NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
+						#NEXT_ID=$(( $NEXT_ID + 1 ))
+						# <para remover/>
+
+
 						ID=$( echo $2 | sed 's/\-a //g' )
 						echo Apagando Tarefa ID=$ID
 						JSON=$(jq "del(.[][] | select( .id == $ID))" $CDSHELL_VAR/cdshell_tarefas.json)
