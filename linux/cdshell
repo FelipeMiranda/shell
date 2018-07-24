@@ -208,7 +208,11 @@ case $1 in
 						JSON=$(jq "del(.[][] | select( .id == $ID))" $CDSHELL_VAR/cdshell_tarefas.json)
 						atualizaJSON $JSON
 						echo -en "\n$green Tarefa $2 apagada. \n"
-					fi
+
+						else
+							echo -en "\n $red Nao foi passada o ID para apagar$normal\n"
+							exit 1
+						fi
     ;;
 
 	# Editar arquivo cdshell.
