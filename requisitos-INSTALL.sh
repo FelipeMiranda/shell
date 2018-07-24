@@ -24,17 +24,13 @@ if [ $OSTYPE == "Linux" ]; then
 		fi
 	done
 
-	UNAME=$( uname -pa | grep "Ubuntu")
-	if [ "$?" != 0 ]; then
-		PACK_INSTALL="apt install" 
-	else
-		PACK_INSTALL="yum -y install"
-	fi
+	if [ -e /etc/redhat-release ]; then ;   PACK_INSTALL="yum -y install"    ; fi
+	if [ -e /etc/os-release     ]; then ;   PACK_INSTALL="apt install"  	; fi
 
 	for PACOTE in $PACOTES ; do
-	    echo "Instalando $PACOTE ..."
-	    $PACK_INSTALL $PACOTE 
-	    echo " $PACOTE instalado\n\n"
+		echo "Instalando $PACOTE ..."
+		$PACK_INSTALL $PACOTE 
+		echo " $PACOTE instalado\n\n"
 	done
 
 	#CentOS 6.6
