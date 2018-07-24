@@ -31,7 +31,7 @@ if [ $OSTYPE == "Linux" ]; then
 		PACK_INSTALL="yum -y install"
 	fi
 
-	for PACOTE in $PACOTES do
+	for PACOTE in $PACOTES ; do
 	    echo "Instalando $PACOTE ..."
 	    $PACK_INSTALL $PACOTE 
 	    echo " $PACOTE instalado\n\n"
