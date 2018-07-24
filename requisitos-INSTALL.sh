@@ -24,8 +24,23 @@ if [ $OSTYPE == "Linux" ]; then
 		fi
 	done
 
-	if [ -e /etc/redhat-release ]; then   PACK_INSTALL="yum -y install"	; fi
-	if [ -e /etc/os-release     ]; then   PACK_INSTALL="apt install"  	; fi
+	
+	if [ -e /etc/os-release ]; then
+		
+		cat /etc/os-release | grep CentOS -q
+		if [ $? == 0 ]; then
+		    	PACK_INSTALL="yum -y install"
+		fi
+		
+		cat /etc/os-release | grep Zorin -q
+		if [ $? == 0 ]; then
+			PACK_INSTALL="apt install" 
+		fi
+	else
+	    echo -en "\n\n $red Nao foi possível determinar o S.O.$normal \n\n"
+	    exit 1
+	fi
+
 
 	for PACOTE in $PACOTES ; do
 		echo "Instalando $PACOTE ..."
