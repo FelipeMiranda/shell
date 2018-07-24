@@ -199,17 +199,21 @@ case $1 in
     ;;
 
 	# Apagando tarefas por ID
-	"-d"|"--delete")	if [ -n "$2" ]; then
-						
+	"-d"|"--delete")
+					if [ -n "$2" ]; then
 						
 						NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
-
 						ID=$( echo $2 | sed 's/\-a //g' )
 						echo Apagando Tarefa ID=$ID
 						JSON=$(jq "del(.[][] | select( .id == $ID))" $CDSHELL_VAR/cdshell_tarefas.json)
 						atualizaJSON $JSON
 						echo -en "\n$green Tarefa $2 apagada. \n"
-						fi
+
+					else
+						echo -en "\n $red Nao foi passada o ID para apagar$normal\n"
+						echo -en "\n\n $yellow Use -d <ID> $normal\n"
+						exit 1
+					fi
     ;;
 
 	# Editar arquivo cdshell.
