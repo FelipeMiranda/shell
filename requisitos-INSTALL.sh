@@ -24,8 +24,8 @@ if [ $OSTYPE == "Linux" ]; then
 		fi
 	done
 
-	if [ -e /etc/redhat-release ]; then ;   PACK_INSTALL="yum -y install"    ; fi
-	if [ -e /etc/os-release     ]; then ;   PACK_INSTALL="apt install"  	; fi
+	if [ -e /etc/redhat-release ]; then   PACK_INSTALL="yum -y install"	; fi
+	if [ -e /etc/os-release     ]; then   PACK_INSTALL="apt install"  	; fi
 
 	for PACOTE in $PACOTES ; do
 		echo "Instalando $PACOTE ..."
