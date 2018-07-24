@@ -211,7 +211,10 @@ case $1 in
 
 					else
 						echo -en "\n $red Nao foi passada o ID para apagar$normal\n"
-						echo -en "\n\n $yellow Use -d <ID> $normal\n"
+						echo -en "\n $yellow Use -d <ID> $normal\n"
+						NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
+						JSON=$(jq ". " $CDSHELL_VAR/cdshell_tarefas.json)
+						atualizaJSON $JSON
 						exit 1
 					fi
     ;;
