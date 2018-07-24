@@ -202,7 +202,6 @@ case $1 in
 	"-d"|"--delete")	if [ -n "$1" ]; then
 						
 						NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
-						NEXT_ID=$(( $NEXT_ID + 1 ))
 
 						ID=$( echo $2 | sed 's/\-a //g' )
 						echo Apagando Tarefa ID=$ID
