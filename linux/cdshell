@@ -129,7 +129,7 @@ function atualizaJSON() {
 							}' > /tmp/B2
 						sed -i 's/"//g' /tmp/C
 						paste /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
-						rm -rf /tmp/A /tmp/B /tmp/B2 /tmp/C /tmp/D
+						#rm -rf /tmp/A /tmp/B /tmp/B2 /tmp/C /tmp/D
 						return 0
 }
 
