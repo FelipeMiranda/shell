@@ -115,9 +115,9 @@ function atualizaJSON() {
 						jq .item[].id $CDSHELL_VAR/cdshell_tarefas.json > /tmp/A
 						jq .item[].tarefa.priority $CDSHELL_VAR/cdshell_tarefas.json > /tmp/B
 						jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json > /tmp/C
-						echo -en "$alert O CONTEUDO DE B é:"
-						cat /tmp/B
-						echo -en "$normal"
+						#DEBUG echo -en "$alert O CONTEUDO DE B é:"
+						#DEBUG cat /tmp/B
+						#DEBUG echo -en "$normal"
 						for ((c=$(wc -l /tmp/B | cut -d " " -f1);$c>1;c=$c-1)) do
 							echo "\e[0m" >> /tmp/D
 						done
@@ -129,7 +129,10 @@ function atualizaJSON() {
 							}' > /tmp/B2
 						sed -i 's/"//g' /tmp/C
 						paste /tmp/A /tmp/B2 /tmp/C /tmp/D > $CDSHELL_VAR/tarefas_usedby_bashrc.txt
+						#
+						# DEBUG REMOVENDO isso abaixo, pois parece q funcionou o apagar todos e quando começa de novo, comeca certinho.
 						#rm -rf /tmp/A /tmp/B /tmp/B2 /tmp/C /tmp/D
+						#
 						return 0
 }
 
