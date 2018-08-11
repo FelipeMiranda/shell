@@ -115,6 +115,9 @@ function atualizaJSON() {
 						jq .item[].id $CDSHELL_VAR/cdshell_tarefas.json > /tmp/A
 						jq .item[].tarefa.priority $CDSHELL_VAR/cdshell_tarefas.json > /tmp/B
 						jq .item[].tarefa.text $CDSHELL_VAR/cdshell_tarefas.json > /tmp/C
+						echo -en "$alert O CONTEUDO DE B é:"
+						cat /tmp/B
+						echo -en "$normal"
 						for ((c=$(wc -l /tmp/B | cut -d " " -f1);$c>1;c=$c-1)) do
 							echo "\e[0m" >> /tmp/D
 						done
