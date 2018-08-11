@@ -164,6 +164,8 @@ case $1 in
 	# adicionar MENSANGES ao cdshell TODOLIST
 	"-a"|"--add")	
 				if [ -n "$1" ]; then
+					
+					
 					NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
 					NEXT_ID=$(( $NEXT_ID + 1 ))
 					TEXTO=$( echo $* | sed 's/\-a //g' )
@@ -172,6 +174,12 @@ case $1 in
 					#atualizando o BANCO DE DADOS com o novo registro, devia testar antes.
 					atualizaJSON $JSON
 					echo -en "\n$green Tarefa $NEXT_ID adicionada. \n"
+						
+						if [ $NEXT_ID -eq 1 ]; then
+						
+							-d 0
+						fi
+	
 				fi
     ;;
 
