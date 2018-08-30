@@ -1,0 +1,19 @@
+#!/bin/bash
+
+############################################################
+# hostScripts exports - Definir opções específicas por host.
+# Nomear o arquivo com o nome do $HOSTNAME.export que sera 
+# executado no bash login.
+############################################################
+
+#Configs
+source ~/colors.sh
+
+
+#Variavéis
+NAME='valor'
+
+
+#Exportando
+PS1="\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[32m\]\u@\h \[\033[35m\]$MSYSTEM \[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]\n$> "
+export PS1 
