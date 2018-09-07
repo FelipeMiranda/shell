@@ -17,6 +17,7 @@ source $CDSHELL/colors.sh || source colors.sh
 # Git Config
 git config --global user.email quirinobytes@gmail.com
 git config --global user.name Rafael Castro
+git config credential.helper store
 
 # Configurando Variável do CDSHELL
 if [ ! -e $CDSHELL ]; then
