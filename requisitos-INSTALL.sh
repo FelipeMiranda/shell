@@ -16,6 +16,8 @@ if [ $OSTYPE == "Linux" ]; then
 	echo -en "\n\n\n Vamos instalar os requisitos: $green $PACOTES $normal"
 	echo -en "\n\n\t Pressione qualquer tecla para continuar ou $yellow 'q'$normal para $WHITE cancelar$normal ... \n\n\tcontinuando em ...\n"
 
+	yum install -y epel-release
+
 	for TEMPO in {3..0} ; do
 		echo -en "\r\t$TEMPO segundos"
 		read -n 1 -t 1 CANCELAR
