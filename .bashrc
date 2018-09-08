@@ -18,7 +18,8 @@ if [ -e $CDSHELL/hostScripts/${HOSTNAME}.alias ]; then
 fi
 
 if [ -e $CDSHELL/hostScripts/${HOSTNAME}.export ]; then
- 	source $CDSHELL/hostScripts/${HOSTNAME}.export
+ 	. $CDSHELL/hostScripts/${HOSTNAME}.export
+	 echo "$HOSTNAME.export" executado !!!
 fi
 
 
