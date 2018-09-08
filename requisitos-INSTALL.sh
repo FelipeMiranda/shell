@@ -2,7 +2,7 @@
 source ~/colors.sh
 
 OSTYPE=`uname`
-PACOTES_LINUX="colordiff gcc gcc-dev ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop jq net-tools htop dialog python34 nodejs docker"
+PACOTES_LINUX="colordiff gcc gcc-dev ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop jq net-tools htop dialog python34 nodejs docker netcat tcpdump nmap tcl puppet ansible"
 PACOTES_OPENBSD="git vim-7.4.475-no_x11-ruby lynx iftop ngrep bash colorls wget autoconf-2.69p1 automake-1.9.6p11"
 PACOTES_FREEBSD="git vim lynx iftop ngrep bash colorls wget autoconf automake binutils"
 
@@ -50,6 +50,8 @@ if [ $OSTYPE == "Linux" ]; then
 		echo " $PACOTE instalado\n\n"
 	done
 
+	cd $CDSHELL/ansible
+	ansible-playbook -i hosts tasks/main.yml
 	#CentOS 6.6
 	#   rpm -hiv http://pkgs.repoforge.org/txt2tags/txt2tags-2.6-1.el6.rf.noarch.rpm
 fi
