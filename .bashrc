@@ -19,7 +19,6 @@ fi
 
 if [ -e $CDSHELL/hostScripts/${HOSTNAME}.export ]; then
  	. $CDSHELL/hostScripts/${HOSTNAME}.export
-	 echo "$HOSTNAME.export" executado !!!
 fi
 
 
