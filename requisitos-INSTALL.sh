@@ -50,6 +50,8 @@ if [ $OSTYPE == "Linux" ]; then
 		echo " $PACOTE instalado\n\n"
 	done
 
+	cd $CDSHELL/ansible
+	ansible-playbook -i hosts tasks/main.yml
 	#CentOS 6.6
 	#   rpm -hiv http://pkgs.repoforge.org/txt2tags/txt2tags-2.6-1.el6.rf.noarch.rpm
 fi
