@@ -1,0 +1,9 @@
+- hosts: prod
+  become: yes
+  become_user: root
+  tasks:
+    - name: update /etc/hosts file
+      blockinfile:
+        dest: /etc/hosts
+        content: "{{ lookup('template', 'hosts.j2') }}"
+        state: present
