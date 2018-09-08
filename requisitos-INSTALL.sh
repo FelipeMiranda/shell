@@ -2,7 +2,7 @@
 source ~/colors.sh
 
 OSTYPE=`uname`
-PACOTES_LINUX="colordiff gcc gcc-dev ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop jq net-tools htop dialog python34 nodejs docker netcat"
+PACOTES_LINUX="colordiff gcc gcc-dev ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop jq net-tools htop dialog python34 nodejs docker netcat tcpdump nmap tcl puppet ansible"
 PACOTES_OPENBSD="git vim-7.4.475-no_x11-ruby lynx iftop ngrep bash colorls wget autoconf-2.69p1 automake-1.9.6p11"
 PACOTES_FREEBSD="git vim lynx iftop ngrep bash colorls wget autoconf automake binutils"
 
