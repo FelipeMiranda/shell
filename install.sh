@@ -275,6 +275,10 @@ echo -e "\n ${alert} CDSHELL ${normal} ${atention}v_${VERSION}${normal} instalad
 #Mensagem final sobre o manual de ajuda. 
 echo -en "\n     ${alert} Existe uma página help feita com miniman $normal\n       $yellow $> miniman cdshell ou cdshell -h\n\n"
 
+#Instalar o ANSIBLE para controlar algumas coisas.
+cd $CDSHELL/ansible
+	ansible-playbook -i hosts tasks/main.yml
+
 #Carregar o bash e testar, ja fica aberto.
 cd $BACKUP_FROM_RUNDIR;bash
 
