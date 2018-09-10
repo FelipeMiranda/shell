@@ -1,4 +1,4 @@
-{% for item in ansible_play_batch %}
+{% for item in host_group %}
 {%- if item != 'localhost' %}
 {{ hostvars[item].ansible_facts.default_ipv4.address }}       {{ item }}
 {% endif %}
