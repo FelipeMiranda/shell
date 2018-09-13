@@ -9,3 +9,17 @@ VAR=$1
 	fi
 }
 
+
+function cloneall(){
+CURRENT_DIR=$PWD
+cd
+
+for repoName in `cat $CDSHELL/all-gitRepoNames.txt` ; do 
+    if [ ! -d $repoName ]; then
+	git clone https://github.com/quirinobytes/$repoName.git
+    else
+	echo -en "Repositório: $green $repoName $red já existe! $normal\n" 
+    fi
+done
+cd $CURRENT_DIR
+}
