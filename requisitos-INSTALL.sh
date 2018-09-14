@@ -50,6 +50,10 @@ if [ $OSTYPE == "Linux" ]; then
 		echo " $PACOTE instalado\n\n"
 	done
 
+
+	 ## NODE.JS INSTALL ##
+	npm install nodemon
+
 		#CentOS 6.6
 	#   rpm -hiv http://pkgs.repoforge.org/txt2tags/txt2tags-2.6-1.el6.rf.noarch.rpm
 fi
