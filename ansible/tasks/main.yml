@@ -1,9 +1,18 @@
 - hosts: localhost
   become: yes
   become_user: root
+  vars:
+       nodes:
+        - webmail ansible_ssh_host=192.168.15.20 ansible_ip=1.1.1.1 ansible_hostname=kkkkkk
+        - linux ansible_ssh_host=192.168.15.15
+        - hp ansible_ssh_host=192.168.15.12
+        - node3 ansible_ssh_host=172.18.23.72
   tasks:
-    - name: update /etc/hosts file
-      blockinfile:
-        dest: /etc/hosts
-        content: "{{ lookup('template', 'hosts.j2') }}"
-        state: present
+      - debug:
+          msg: "{{ vars['nodes'] }}"
+
+      - name: update /etc/hosts file
+        blockinfile:
+            dest: /etc/hosts
+            content: "{{ lookup('template', 'all_hosts.j2') }}"
+            state: present
