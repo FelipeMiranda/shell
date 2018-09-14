@@ -277,7 +277,9 @@ echo -en "\n     ${alert} Existe uma página help feita com miniman $normal\n   
 
 #Instalar o ANSIBLE para controlar algumas coisas.
 cd $CDSHELL/ansible
-	ansible-playbook -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
+pwd
+ls
+ansible-playbook -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
 
 #Carregar o bash e testar, ja fica aberto.
 cd $BACKUP_FROM_RUNDIR;bash
