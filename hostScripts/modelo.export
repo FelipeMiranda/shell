@@ -12,7 +12,8 @@ source ~/colors.sh
 
 #Variavéis
 NAME='valor'
+SLACK_CDSHELL_SEND_MESSAGES='false'
 
 
 #Exportando
-export NAME
+export NAME SLACK_CDSHELL_SEND_MESSAGES
