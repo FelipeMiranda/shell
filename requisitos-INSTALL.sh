@@ -88,7 +88,11 @@ if [ $OSTYPE == "FreeBSD" ]; then
 fi
 
 ############ Windows Install ############################
+if [ $OSTYPE == "Windows" ]; then
 
+runas /savecred /user:Administrator "/c/WINDOWS/system32/cmd.exe" -k @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+
+fi
 
 # Chegou aqui, significa que executou tudo, entao cria o arquivo de sinalizacao da primeira instalacao executada.
 touch $CDSHELL_VAR/.cdshell_req_installed
