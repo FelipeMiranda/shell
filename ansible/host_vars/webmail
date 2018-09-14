@@ -1,0 +1,3 @@
+---
+ansible_ip: '192.168.15.20'
+ansible_hostname: 'webmail.home'

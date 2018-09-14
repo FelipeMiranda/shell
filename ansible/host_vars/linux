@@ -1,0 +1,3 @@
+---
+ansible_ip: '192.168.15.15'
+ansible_hostname: 'linux.home'
