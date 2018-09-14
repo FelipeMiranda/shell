@@ -119,6 +119,8 @@ alias linux="ssh linux"
 alias hp="ssh hp"
 alias esx="ssh esx"
 alias webmail="ssh webmail"
+alias devops="ssh devops"
+alias casa="ssh casa"
 
 alias nsse="senhaback.sh"
 alias trim="trim.sh"
