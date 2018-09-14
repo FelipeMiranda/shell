@@ -1,0 +1,7 @@
+shell
+codigo-fonte
+workspace
+help
+sistemas
+quirinode
+
