@@ -191,3 +191,9 @@ alias dk="$CDSHELL/linux/dk.sh"
 alias dkk="dk --kill"
 alias dkr="dk --run"
 alias dkt="dk --top"
+
+
+# SSH for all know host 	->  ssh [ansible/hosts(*)]
+for host in $(cat $CDSHELL/ansible/hosts | awk '/^[a-z]/{print $1}') ; do
+	alias $host\="ssh $host"
+done
