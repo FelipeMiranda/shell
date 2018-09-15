@@ -2,18 +2,24 @@
   become: yes
   become_user: root
   vars:
+    #nodes is only for view in --report output(DEBUG)
     nodes:
       - webmail
       - linux
       - hp
       - storage
+
     resolv_nameservers:
       - 192.168.15.10
-      - 8.8.4.4
+      - 192.168.15.1
+      - 8.8.8.8
+      - 4.4.4.4
+
     resolv_domain: vertzon.intranet
     resolv_search:
       - vertzon.intranet
       - home
+
     resolv_options:
       - timeout:2
       - rotate
@@ -27,6 +33,7 @@
             dest: /etc/hosts
             content: "{{ lookup('template', 'all_hosts.j2') }}"
             state: present
+
       - name: update /etc/resolv.conf file
         blockinfile:
             dest: /etc/resolv.conf
