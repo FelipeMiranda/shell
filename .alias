@@ -81,6 +81,8 @@ alias iiys="yum install -y"
 alias ys="yum search"
 alias ssyi="yum search"
 alias ctl="systemctl"
+alias start="systemctl start"
+alias stop="systemctl stop"
 alias dk="docker"
 alias forever="forever.sh"
 

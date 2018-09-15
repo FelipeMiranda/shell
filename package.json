@@ -16,6 +16,7 @@
     "url": "https://github.com/quirinobytes/workspace/issues"
   },
   "dependencies": {
+    "nodemon": "^1.18.4",
     "request": "^2.87.0"
   }
 }
