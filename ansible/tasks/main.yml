@@ -2,11 +2,22 @@
   become: yes
   become_user: root
   vars:
-       nodes:
-        - webmail
-        - linux
-        - hp
-        - node3
+    nodes:
+      - webmail
+      - linux
+      - hp
+      - storage
+    resolv_nameservers:
+      - 192.168.15.10
+      - 8.8.4.4
+    resolv_domain: vertzon.intranet
+    resolv_search:
+      - vertzon.intranet
+      - home
+    resolv_options:
+      - timeout:2
+      - rotate
+
   tasks:
       - debug:
           msg: "{{ vars['nodes'] }}"
@@ -15,4 +26,9 @@
         blockinfile:
             dest: /etc/hosts
             content: "{{ lookup('template', 'all_hosts.j2') }}"
+            state: present
+      - name: update /etc/resolv.conf file
+        blockinfile:
+            dest: /etc/resolv.conf
+            content: "{{ lookup('template', 'resolv_conf.j2') }}"
             state: present
