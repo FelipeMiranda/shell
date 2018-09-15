@@ -61,8 +61,8 @@ case $1 in
 		"--alias")	
 			ALIAS_FILE_DATE=$(stat -c %y ~/.alias)
 			# Faça isso... 
-			vim ~/.alias
-			ALIAS_FILE_DATE_POS_VI=$(stat -c %y ~/.alias)
+			vim $CDSHELL/.alias
+			ALIAS_FILE_DATE_POS_VI=$(stat -c %y $CDSHELL/.alias)
 			if [ $(echo "$ALIAS_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$ALIAS_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
 				echo -en "$HOME/.alias alterado com sucesso, $red não esqueça de $green ** COMMITar ** $WHITE-> $> ec $normal\n\n"
 			else
@@ -73,8 +73,8 @@ case $1 in
 		"--export")	
 			EXPORT_FILE_DATE=$(stat -c %y ~/.export)
 			# Faça isso... 
-			vim ~/.export
-			EXPORT_FILE_DATE_POS_VI=$(stat -c %y ~/.export)
+			vim $CDSHELL/.export
+			EXPORT_FILE_DATE_POS_VI=$(stat -c %y $CDSHELL/.export)
 			if [ $(echo "$EXPORT_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$EXPORT_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
 				echo -en "$HOME/.export alterado com sucesso, $red não esqueça de $green ** COMMITar ** $WHITE-> $> ec $normal\n\n"
 			else
