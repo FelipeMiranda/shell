@@ -121,7 +121,6 @@ alias esx="ssh esx"
 alias webmail="ssh webmail"
 alias devops="ssh devops"
 alias casa="ssh casa"
-alias storage"ssh storage"
 
 # SENHAS FACEIS 
 alias nsse="senhaback.sh"
@@ -139,6 +138,7 @@ alias push='echo -e "\n\t ${alert}emPURRANDO${normal}\n\n\t ${yellow}LOCAL -> ${
 # SSH for all know host 	->  ssh [ansible/hosts(*)]
 for host in $(cat $CDSHELL/ansible/hosts | awk '/^[a-z]/{print $1}') ; do
 alias $host\="ssh $host"
+echo alias $host\="ssh $host"
 done
 
 ## LINUX 
