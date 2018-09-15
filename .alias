@@ -123,24 +123,25 @@ alias devops="ssh devops"
 alias casa="ssh casa"
 alias storage"ssh storage"
 
+# SENHAS FACEIS 
 alias nsse="senhaback.sh"
 alias trim="trim.sh"
 alias arroz="echo Gzuis"
 
-#GIT ALIAS
+#GIT 
 alias sta='git status'
 alias com='git commit -a'
 alias log='git log'
 alias ga='git add . --all'
 alias pull='echo -e "\n\t ${alert}PULL${normal} xando\n\n\t ${green}LOCAL <- ${yellow} WWW ${blue} ($(git config remote.origin.url)) ${normal}\n" && git pull '
 alias push='echo -e "\n\t ${alert}emPURRANDO${normal}\n\n\t ${yellow}LOCAL -> ${green} WWW ${blue} ($(git config remote.origin.url)) ${normal}\n" && git push origin master '
-#alias clone='git clone git@github.com:quirinobytes/$1.git'
 
+# SSH for all know host 	->  ssh [ansible/hosts(*)]
+for host in $(cat $CDSHELL/ansible/hosts | awk '/^[a-z]/{print $1}') ; do
+	alias $host\="ssh $host"
+done
 
-
-## CUSTOM ALIAS
-
-## LINUX ALIAS
+## LINUX 
 if [ "$OSTYPE" == "Linux" ]; then
    alias n=$CDSHELL/linux/netstat.sh
    alias netnumber="echo $(hostname) netstat -nat | awk '{print \$6}' | sort | uniq -c | sort -n"
@@ -157,13 +158,13 @@ if [ "$OSTYPE" == "Linux" ]; then
    alias grep='grep --color'
 fi
 
-## OPENBSD ALIAS
+## OPENBSD 
 if [ "$OSTYPE" == "OpenBSD" ]; then
 	alias n='netstat -f inet -an'
 	alias r='route show'
 fi
 
-## FreeBSD ALIAS
+## FreeBSD
 if [ "$OSTYPE" == "FreeBSD" ]; then
 	alias n='netstat -an'
 	alias r='netstat -nr'
@@ -193,7 +194,4 @@ alias dkr="dk --run"
 alias dkt="dk --top"
 
 
-# SSH for all know host 	->  ssh [ansible/hosts(*)]
-for host in $(cat $CDSHELL/ansible/hosts | awk '/^[a-z]/{print $1}') ; do
-	alias $host\="ssh $host"
-done
+
