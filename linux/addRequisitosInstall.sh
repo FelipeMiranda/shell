@@ -19,7 +19,9 @@ source ~/shell/colors.sh
 ##########  Funcao       #######################
 function addPACOTES_LINUX(){
 	if [ ! -z $1 ]; then
-		sed -i -r 's/^PACOTES_LINUX.*[^"]/\0 $pacote/g' $CDSHELL/requisitos-INSTALL.sh
+#		sed -i -r 's/^PACOTES_LINUX.*[^"]/\0 $1/g' $CDSHELL/requisitos-INSTALL.sh
+		awk -v pacote="$1" '{if(/^PACOTES_LINUX.*/){ p1=substr($0,1,length($0)-1); printf("%s %s \"\n",p1,pacote) } else { print $0 }}' $CDSHELL/requisitos-INSTALL.sh > /tmp/req.temporario
+		mv /tmp/req.temporario $CDSHELL/requisitos-INSTALL.sh
 		echo -en "$green Pacote $alert ${pacote} $green adicionado com sucesso!$normal\n\n"
 	else
 		echo -en "$alert (Erro) $normal $red Necessário passar um pacote como parâmetro para ser adicionado.$normal\n"

@@ -138,7 +138,7 @@ alias push='echo -e "\n\t ${alert}emPURRANDO${normal}\n\n\t ${yellow}LOCAL -> ${
 
 # SSH for all know host 	->  ssh [ansible/hosts(*)]
 for host in $(cat $CDSHELL/ansible/hosts | awk '/^[a-z]/{print $1}') ; do
-	alias $host\="ssh $host"
+alias $host\="ssh $host"
 done
 
 ## LINUX 
