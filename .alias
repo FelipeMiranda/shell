@@ -121,6 +121,7 @@ alias esx="ssh esx"
 alias webmail="ssh webmail"
 alias devops="ssh devops"
 alias casa="ssh casa"
+alias storage"ssh storage"
 
 alias nsse="senhaback.sh"
 alias trim="trim.sh"
