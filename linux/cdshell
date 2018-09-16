@@ -349,6 +349,11 @@ case $1 in
 	fi
     ;;
 
+	# Exibe versao atual
+    "-V") cat $CDSHELL/backup/versao_ultima_instalacao.txt
+    ;;
+
+
 	# Mostrar versao GIT do diretório atual
     "-g"|"--git"|--git-version) exibe_versao_git_local_version
     ;;
