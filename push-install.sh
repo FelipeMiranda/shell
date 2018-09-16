@@ -298,7 +298,9 @@ else
 fi
 
 
+systemctl stop cdshelld
 cp $CDSHELL/push/cdshelld.service /etc/systemd/system/
+systemctl daemon-reload
 systemctl enable cdshelld
 systemctl restart cdshelld
 
