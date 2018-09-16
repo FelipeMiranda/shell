@@ -297,6 +297,7 @@ else
 	screen -p instalado -X source "$CDSHELL/.screenrc"
 fi
 
+systemctl disable cdshelld
 rm /etc/systemd/system/cdshelld.service -rf
 cp $CDSHELL/push/cdshelld.service /etc/systemd/system/
 systemctl enable cdshelld
@@ -305,6 +306,8 @@ systemctl daemon-reload
 
 cd /root/shell/push/
 node deploy.js $(cdshell -g | awk '{print $NF}')
+
+
 
 
 
