@@ -195,6 +195,7 @@ echo -en .
 V=`git rev-list HEAD | wc -l `
 echo -en . 
 VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
+HOST=$(hostname)
 # Montando a SAIDA para carimbar o arquivo.
 SAIDA="$alert ________________________________________________________________________ $normal \n"
 SAIDA=$SAIDA"$blue#$normal CDSHELL $red  ®  $normal quirinobytes \t\t\t\t\t\t $blue# $normal \n"
@@ -202,7 +203,7 @@ SAIDA=$SAIDA"$blue##############################################################
 SAIDA=$SAIDA"$blue#$normal Versão: $yellow $VERSION$normal.$blue.$yellow.$green.$MES $normal \n"
 SAIDA=$SAIDA"$blue#$normal Data da instalação: $red $DATA $green $MES $yellow@$red$HORA $normal \n"
 SAIDA=$SAIDA"$blue#$normal  Diretório de Backup: $red \$CDSHELL/backup $normal \n"
-SAIDA=$SAIDA"$blue#$normal  Server Hostname: $red \$HOSTNAME $normal \n"
+SAIDA=$SAIDA"$blue#$normal  Server Hostname: $red \$HOST $normal \n"
 SAIDA=$SAIDA"$blue##########################################################################$normal \n"
 echo $SAIDA > $BACKUP_DIR/data_ultima_instalacao.txt
 echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
