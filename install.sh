@@ -297,6 +297,4 @@ else
 	screen -p instalado -X source "$CDSHELL/.screenrc"
 fi
 
-cd /root/sistemas/pushNotification/simpleChatApp
-node client.js $(cdshell -V)
-cd -
+deploy
