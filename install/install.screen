@@ -1,15 +1,6 @@
-screen -t normal
-screen -X source $HOME/.screenrc
 screen -t install -p 0 $CDSHELL/install.sh # Open first screen and launch first script
 split -v          # Make second split
 focus             # Switch to second split
+screen -t normal
+screen -t normal -X source $HOME/.screenrc
 
-
-#screen script2.sh # Open second screen and launch second script
-#split             # Make third split
-#focus             # Switch to third split
-#screen script3.sh # Open third screen and launch third script
-#focus             # Cycle back to first split
-#split             # Split first split horizontally
-#focus             # Switch to new split
-#screen script4.sh # Open fourth screen and launch fourth script
