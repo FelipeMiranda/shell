@@ -298,7 +298,7 @@ else
 fi
 
 cd $CDSHELL/push
-npm install -g
+#npm install -g
 systemctl stop cdshelld
 rm /etc/systemd/system/cdshelld.service -rf
 cp $CDSHELL/push/cdshelld.service /etc/systemd/system/
