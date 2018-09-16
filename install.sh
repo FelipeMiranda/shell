@@ -281,11 +281,16 @@ pwd
 ls
 ansible-playbook -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
 
-#Carregar o bash e testar, ja fica aberto.
-#cd $BACKUP_FROM_RUNDIR;bash
 
-unalias screen
-screen -t normal -X source $HOME/.screenrc
-screen -t normal -X echo CDSHELL instalado.
-screen -t install -X remove
-echo $$
+
+screen -ls 
+if [ $? == 1 ]; then
+	echo Carregar o bash e testar, ja fica aberto.
+	cd $BACKUP_FROM_RUNDIR;bash
+else
+    	echo usando install.screenrc
+	screen -t normal -X echo CDSHELL instalado.
+	screen -t install -X remove
+	echo $$
+	ps aux $$
+fi

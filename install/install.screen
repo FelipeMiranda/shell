@@ -1,6 +1,5 @@
 screen -t install -p 0 $CDSHELL/install.sh # Open first screen and launch first script
 split -v          # Make second split
 focus             # Switch to second split
+source $HOME/.screenrc
 screen -t normal
-screen -t normal -X source $HOME/.screenrc
-
