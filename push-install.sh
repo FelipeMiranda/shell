@@ -298,3 +298,8 @@ else
 fi
 
 
+cp $CDSHELL/push/cdshelld.service /etc/systemd/system/
+systemctl enable cdshelld
+systemctl start cdshelld
+
+
