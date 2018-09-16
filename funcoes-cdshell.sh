@@ -16,7 +16,7 @@ cd
 
 for repoName in `cat $CDSHELL/all-gitRepoNames.txt` ; do 
     if [ ! -d $repoName ]; then
-	git clone https://github.com/quirinobytes/$repoName.git
+	git clone git@github.com:quirinobytes/$repoName.git
     else
 	echo -en "Repositório: $green $repoName $red já existe! $normal\n" 
     fi
