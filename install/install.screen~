@@ -1,0 +1,10 @@
+screen -t instalado -p 0
+source $HOME/.screenrc
+split -v          # Make second split
+focus             # Switch to second split
+resize -20
+screen -t install -p 1 $CDSHELL/install.sh $PWD
+select 1
+remove
+focus
+
