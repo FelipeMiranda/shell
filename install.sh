@@ -283,7 +283,7 @@ ansible-playbook -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
 
 
 
-screen -ls 
+screen -ls | grep Socket
 if [ $? == 1 ]; then
 	echo Carregar o bash e testar, ja fica aberto.
 	cd $BACKUP_FROM_RUNDIR;bash
