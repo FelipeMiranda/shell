@@ -61,12 +61,15 @@ case $1 in
 		"--alias")	
 			ALIAS_FILE_DATE=$(stat -c %y ~/.alias)
 			# Faça isso... 
-			vim $CDSHELL/.alias
+			vim ~/.alias
 			ALIAS_FILE_DATE_POS_VI=$(stat -c %y $CDSHELL/.alias)
 			if [ $(echo "$ALIAS_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$ALIAS_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
-				echo -en "$HOME/.alias alterado com sucesso, $red não esqueça de $green ** COMMITar ** $WHITE-> $> ec $normal\n\n"
+				echo -en "$HOME/.alias alterado $alert *LOCALMENTE*$normal, $red não $normal esqueça de $green ** COMMITar ** $WHITE-> $> ec $normal\n\n"
+				source %HOME.alias
+				echo -en " source $HOME/.alias  -> $green Recarregado !!!$normal\n"
+				echo -en "Testar o alias e finalizar($green ec $normal)\n"
 			else
-			    	echo -en "\n\n\t Arquivo $HOME/.alias não alterado\n\n"
+			    	echo -en "\n\n\t Arquivo $HOME/.alias não alterado.\n\n"
 			fi
 		;;
 

@@ -4,10 +4,9 @@
 SCREEN_BIN=$( type screen | cut -f3 -d' ')
 
 if [ -e $SCREEN_BIN ]; then
-    unalias screen
     screen -c $CDSHELL/install/install.screen
 else
-    echo  nao existe screen
+    echo -en "alert Não localizado binário do screen no PATH$normal\n"
     echo usando instalacao padrao ./install.sh
     cdshell -i
 fi
