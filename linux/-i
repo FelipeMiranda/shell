@@ -9,6 +9,7 @@ else
     echo -en "alert Não localizado binário do screen no PATH$normal\n"
     echo usando instalacao padrao ./install.sh
     cdshell -i
+    nohup bash $CDSHELL/linux/notificar.sh 2>&1 /dev/null
 fi
 
 
