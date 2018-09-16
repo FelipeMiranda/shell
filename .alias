@@ -49,7 +49,7 @@ alias cdlog='cd /var/log'
 alias cde='cd /etc/'
 alias mx="dig mx"
 alias vale="cd ; cd sistemas; cd vale"
-alias deploy="$CDSHELL/push/deploy.js \$(cdshell -V) "
+alias deploy="cd $CDSHELL/push ; node deploy.js \$(cdshell -V); cd - "
 
 ################
 
