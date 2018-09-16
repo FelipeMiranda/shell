@@ -295,7 +295,7 @@ else
 	screen -p instalado -X vbell off
 	screen -p instalado -X stuff "echo -en '\a' \\r"
 	screen -p instalado -X stuff "source $CDSHELL/.export \\r"
-	screen -p instalado -X stuff "cd $BACKUP_FROM_RUNDIR \\r"
+	screen -p instalado -X stuff "cd $BACKUP_FROM_RUNDIR ; echo -en $HIDE \\r"
 	screen -p instalado -X stuff "echo -en '\r\r\r\n $alert  Seu cdshell acabou de ser instalado com $green SUCESSO!!! $normal\n\n\a' \\r"
 	echo $$
 	ps aux $$
