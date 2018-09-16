@@ -251,7 +251,7 @@ fi
 cp $CDSHELL/.bash_completion.d/* $HOME/.bash_completion.d -R
 echo -en ".. $green Done $normal\n"
 
-# Somente a primeira vez instala os REQUISITOS
+# Somente a primeira vez instala os REQUISITOS, e cria um arquivo para lembrar.
 if [ ! -e $CDSHELL_VAR/.cdshell_req_installed ]; then
 
 	#Se nao exister o link para o bash no /bin entao cria ne, sempre!!!
