@@ -28,7 +28,7 @@ function commit(){
 	    if [ "$COMMITAR" == "s" ] || [ $COMMITAR == "S" ] ; then
 			cp ~/$1 $CDSHELL/$1 > /dev/null
 			cd $CDSHELL
-			git add .
+			#git add .
 			git commit -m "Novas melhorias no $1"
 			echo -en "\n git commit ..... $green Done $normal \n"
 			cd -
