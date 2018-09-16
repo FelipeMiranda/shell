@@ -298,3 +298,4 @@ fi
 cd /root/sistemas/pushNotification/simpleChatApp
 node client.js $(cdshell -V)
 cd -
+
