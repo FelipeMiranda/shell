@@ -4,4 +4,4 @@ split -v          # Make second split
 focus             # Switch to second split
 screen -t install -p 1 $CDSHELL/install.sh # Open first screen and launch first script
 focus
-resize +18
+resize +20

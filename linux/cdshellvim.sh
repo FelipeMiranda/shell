@@ -61,13 +61,15 @@ case $1 in
 		"--alias")	
 			ALIAS_FILE_DATE=$(stat -c %y ~/.alias)
 			# Faça isso... 
-			vim ~/.alias
-			ALIAS_FILE_DATE_POS_VI=$(stat -c %y $CDSHELL/.alias)
+			vim $HOME/.alias
+			ALIAS_FILE_DATE_POS_VI=$(stat -c %y $HOME/.alias)
 			if [ $(echo "$ALIAS_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$ALIAS_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
 				echo -en "$HOME/.alias alterado $alert *LOCALMENTE*$normal, $red não $normal esqueça de $green ** COMMITar ** $WHITE-> $> ec $normal\n\n"
-				source %HOME.alias
-				echo -en " source $HOME/.alias  -> $green Recarregado !!!$normal\n"
-				echo -en "Testar o alias e finalizar($green ec $normal)\n"
+				bash -c "
+					echo -en \" $HOME/.alias  -> $green Recarregado !!!$normal\n\"
+					echo -en \"Testar o alias e sair($green ec $normal)\n\"
+				"
+				ec
 			else
 			    	echo -en "\n\n\t Arquivo $HOME/.alias não alterado.\n\n"
 			fi
@@ -76,12 +78,12 @@ case $1 in
 		"--export")	
 			EXPORT_FILE_DATE=$(stat -c %y ~/.export)
 			# Faça isso... 
-			vim $CDSHELL/.export
-			EXPORT_FILE_DATE_POS_VI=$(stat -c %y $CDSHELL/.export)
+			vim $HOME/.export
+			EXPORT_FILE_DATE_POS_VI=$(stat -c %y $HOME/.export)
 			if [ $(echo "$EXPORT_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$EXPORT_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
 				echo -en "$HOME/.export alterado com sucesso, $red não esqueça de $green ** COMMITar ** $WHITE-> $> ec $normal\n\n"
 			else
-			    	echo -en "\n\n\t Arquivo $HOME/.export não alterado\n\n"
+			    	echo -en "\n\n\t Arquivo $HOME/.export não alterado.\n\n"
 			fi
 		;;
 		"--commit" )

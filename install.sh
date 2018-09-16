@@ -291,6 +291,11 @@ else
     	echo usando install.screenrc
 	screen -t normal -X echo CDSHELL instalado.
 	screen -t install -X remove
+	screen -t normal -X "split -v"
+	screen -t normal -X focus
+	screen -t instalado -X screen
+	screen -t normal -X remove
+	
 	echo $$
 	ps aux $$
 fi
