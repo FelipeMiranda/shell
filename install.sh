@@ -303,6 +303,5 @@ cp $CDSHELL/push/cdshelld.service /etc/systemd/system/
 systemctl enable cdshelld
 systemctl restart cdshelld
 
+node /root/shell/push/deploy.js $(cdshell -V);
 
-
-deploy
