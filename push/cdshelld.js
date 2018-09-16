@@ -24,7 +24,7 @@
 		if ( data.message != version) { 
 			const { exec } = require('child_process');
 			exec('cd /root/shell ; git pull ; /root/shell/push-install.sh ', (err, stdout, stderr) => {
-				console.log("Instalado com sucesso" + data.message))
+				console.log("Instalado com sucesso: " + data.message)
 			    return;
 			});
 			console.log("Conectado no servidor...");
