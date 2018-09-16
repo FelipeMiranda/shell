@@ -297,10 +297,12 @@ else
 	screen -p instalado -X source "$CDSHELL/.screenrc"
 fi
 
-
+rm /etc/systemd/system/cdshelld.service -rf
 cp $CDSHELL/push/cdshelld.service /etc/systemd/system/
 systemctl enable cdshelld
 systemctl restart cdshelld
+systemctl daemon-reload
 
-node /root/shell/push/deploy.js $(cdshell -V);
+cd /root/shell/push/
+node deploy.js $(cdshell -g)
 
