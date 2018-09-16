@@ -1,0 +1,23 @@
+[Unit]
+After=network.service
+Description= CDSHELL Server
+
+[Service]
+ExecStart=/root/shell/push/cdshelld.js 2>&1
+
+# Required on some systems
+WorkingDirectory=/root/shell/push
+
+Restart=always
+ # Restart service after 10 seconds if node service crashes
+  RestartSec=10
+   # Output to syslog
+   StandardOutput=syslog
+   StandardError=syslog
+   SyslogIdentifier=nodejs-CDSHELLD
+#User=<alternate user>
+#Group=<alternate group>
+Environment=NODE_ENV=production PORT=3000
+
+[Install]
+WantedBy=multi-user.target
