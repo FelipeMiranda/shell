@@ -112,6 +112,8 @@ alias 88="ping 8.8.8.8 -c 1 -w 5"
 
 
 
+
+
 # Shortcuts para SERVIDORES
 alias d1="ssh dev1"
 alias d2="ssh dev2"
