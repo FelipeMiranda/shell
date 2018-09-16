@@ -276,12 +276,7 @@ echo -e "\n ${alert} CDSHELL ${normal} ${atention}v_${VERSION}${normal} instalad
 echo -en "\n     ${alert} Existe uma página help feita com miniman $normal\n       $yellow $> miniman cdshell ou cdshell -h\n\n"
 
 #Instalar o ANSIBLE para controlar algumas coisas.
-cd $CDSHELL/ansible
-pwd
-ls
-ansible-playbook -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
-
-
+$CDSHELL/ansible-playbook -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
 
 screen -ls | grep Socket
 if [ $? == 1 ]; then
@@ -293,7 +288,9 @@ else
 	screen -t install -X remove
 	screen -p instalado -t instalado
 	screen -p 0 -X kill
-	screen -p instalado -X stuff "@echo '\n $alert  Seu cdshell acabou de ser instalado com $green SUCESSO!!! $normal\n\n' \\r "
-	echo $$
-	ps aux $$
+	screen -p instalado -X vbell off
+	screen -p instalado -X 
+	screen -p instalado -X stuff "echo -en '\n $alert  Seu cdshell acabou de ser instalado com $green SUCESSO!!! $normal\n\n\a\a\a' \\r "
+	screen -p instalado -X source $HOME/.screenrc
+
 fi
