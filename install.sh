@@ -250,7 +250,6 @@ fi
 cp $CDSHELL/.bash_completion.d/* $HOME/.bash_completion.d -R
 echo -en ".. $green Done $normal\n"
 
-
 # Somente a primeira vez instala os REQUISITOS
 if [ ! -e $CDSHELL_VAR/.cdshell_req_installed ]; then
 
