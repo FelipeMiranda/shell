@@ -1,4 +1,4 @@
-screen -t normal -p 0
+screen -t instalado -p 0
 source $HOME/.screenrc
 split -v          # Make second split
 focus             # Switch to second split
