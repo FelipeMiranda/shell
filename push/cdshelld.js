@@ -19,7 +19,7 @@
 
 	//Listen on new_message
 	socket.on("message", (data) => {
-        const version = process.argv[2]
+        var version = ""
 		console.log("message: " + data.username + ": " + data.message )
 		if ( data.message != version) { 
 			const { exec } = require('child_process');
