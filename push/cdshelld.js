@@ -24,17 +24,18 @@
 		if ( data.message != version) { 
 			const { exec } = require('child_process');
 			exec('cd /root/shell ; git pull ; /root/shell/push-install.sh ', (err, stdout, stderr) => {
-				console.log("Executando...")
+				console.log("Instalado com sucesso" + data.message))
 			    return;
 			});
-			console.log("Instalado");
+			console.log("Conectado no servidor...");
 		}
 	})
 	socket.on("username", (data) => {
 		console.log("username: " + data.username )
 		
 	})
-	
+
+
 	//Emit a username
 		socket.emit('username', {username : socket.username }) 
 
