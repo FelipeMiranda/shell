@@ -108,6 +108,7 @@ alias ®®="cdw && ® ; cds && ® ; cdh && ® ; cdc && ®"
 alias ¢=®
 alias R=®
 alias ¢¢=®®
+alias 8="ping 8.8.8.8 -c 1 -w 5"
 
 # Shortcuts para SERVIDORES
 alias d1="ssh dev1"
