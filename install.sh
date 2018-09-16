@@ -304,5 +304,5 @@ systemctl restart cdshelld
 systemctl daemon-reload
 
 cd /root/shell/push/
-node deploy.js $(cdshell -g)
+node deploy.js $(cdshell -g | awk '{print $NF}')
 
