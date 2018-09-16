@@ -285,17 +285,15 @@ ansible-playbook -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
 
 screen -ls | grep Socket
 if [ $? == 1 ]; then
-	echo Carregar o bash e testar, ja fica aberto.
+	echo -en "\nTeste a instalação, $green bash $normal já carregado.\n"
 	cd $BACKUP_FROM_RUNDIR;bash
 else
-    	echo usando install.screenrc
+    	echo -en "Usando novo formato de instalação em nova janela em backgroud com: screen -c install.screenrc\n"
 	screen -t normal -X echo CDSHELL instalado.
 	screen -t install -X remove
-	screen -t normal -X "split -v"
-	screen -t normal -X focus
-	screen -t instalado -X screen
-	screen -t normal -X remove
-	
+	screen -p instalado -t instalado
+	screen -p 0 -X kill
+	screen -p instalado -X stuff "@echo '\n $alert  Seu cdshell acabou de ser instalado com $green SUCESSO!!! $normal\n\n' \\r "
 	echo $$
 	ps aux $$
 fi
