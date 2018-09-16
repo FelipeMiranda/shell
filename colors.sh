@@ -10,7 +10,7 @@
               magenta='\e[35m'          #
                   green='\e[32m'        #
                     yellow='\e[33m'     #
-                    HIDE='\e[40;30m'    #
+                    HIDE='\e[40;30;m'   #
                   WHITE='\e[40;37;1m'   #
                atention='\e[41;39m'     #
                alert='\e[44;33;1m'      #

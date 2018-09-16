@@ -288,15 +288,12 @@ if [ $? == 1 ]; then
 	cd $BACKUP_FROM_RUNDIR;bash
 else
     	echo -en "Usando novo formato de instalação em nova janela em backgroud com: screen -c install.screenrc\n"
-	screen -t normal -X echo CDSHELL instalado.
+	screen -t normal -X echo "Instalando CDSHELL"
 	screen -t install -X remove
 	screen -p instalado -t instalado
 	screen -p 0 -X kill
 	screen -p instalado -X vbell off
-	screen -p instalado -X stuff "echo -en '\a' \\r"
-	screen -p instalado -X stuff "source $CDSHELL/.export \\r"
-	screen -p instalado -X stuff "cd $BACKUP_FROM_RUNDIR ; echo -en $HIDE \\r"
-	screen -p instalado -X stuff "echo -en '\r\r\r\n $alert  Seu cdshell acabou de ser instalado com $green SUCESSO!!! $normal\n\n\a' \\r"
-	echo $$
-	ps aux $$
+	screen -p instalado -X stuff "echo -en \"\007 $HIDE\"  \\r"
+	screen -p instalado -X stuff "cd $BACKUP_FROM_RUNDIR  \\r"
+	screen -p instalado -X stuff "echo -en \"\r\r\r\n $alert  Seu cdshell acabou de ser instalado com $green SUCESSO!!! $normal\n\n\a\" \\r"
 fi
