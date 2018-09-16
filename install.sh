@@ -33,6 +33,8 @@ if [ -e $CDSHELL/hostScripts/${HOSTNAME}.export ]; then
 	source $CDSHELL/hostScripts/${HOSTNAME}.export
 fi
 
+
+
 CDSHELL=$HOME/shell
 BACKUP_DIR=$CDSHELL/.saved_files_before_last_install
 CDSHELL_VAR=$HOME/.cdshell
