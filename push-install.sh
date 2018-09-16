@@ -297,7 +297,8 @@ else
 	screen -p instalado -X source "$CDSHELL/.screenrc"
 fi
 
-
+cd $CDSHELL/push
+npm install -g
 systemctl stop cdshelld
 cp $CDSHELL/push/cdshelld.service /etc/systemd/system/
 systemctl daemon-reload

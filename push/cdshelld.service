@@ -3,7 +3,7 @@ After=network.service
 Description= CDSHELL Server
 
 [Service]
-ExecStart=/root/shell/push/deploy.js $(cdshell -V) 2>&1
+ExecStart="cd /root/shell/push/; node deploy.js $(cdshell -V) 2>&1"
 
 # Required on some systems
 WorkingDirectory=/root/shell/push
