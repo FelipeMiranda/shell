@@ -279,8 +279,6 @@ echo -en "\n     ${alert} Existe uma página help feita com miniman $normal\n   
 cd $CDSHELL/ansible
 ansible-playbook -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
 
-
-
 # FINALIZANDO AS COISAS, se tiver executado via screen, feche as janelas e informe a instalacao, na nova janela.
 screen -ls | grep Socket
 if [ $? == 1 ]; then
