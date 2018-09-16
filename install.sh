@@ -264,9 +264,6 @@ if [ ! -e $CDSHELL_VAR/.cdshell_req_installed ]; then
 fi
 
 
-
-
-
 #Envia mensagem para canal install @ slack
 if [ "$SLACK_CDSHELL_SEND_MESSAGES" == "true" ]; then
 	echo -en "\n Enviando mensagem para ${magenta}install${blue}@${magenta}slack$normal ......... $green Done$normal\n"
