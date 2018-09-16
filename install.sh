@@ -288,9 +288,11 @@ if [ $? == 1 ]; then
 	cd $BACKUP_FROM_RUNDIR;bash
 else
     	#echo -en "Usando novo formato de instalação em nova janela em backgroud com: screen -c install.screenrc\n"
-	screen -t install -X remove
 	#screen -p instalado -t instalado
-	#screen -p 0 -X kill
+	screen -p 1 -X remove
+	screen -t instalado -X next
+	screen -p instalado -X focus
 	screen -p instalado -X vbell off
-	screen -p instalado -X stuff "cd $BACKUP_FROM_RUNDIR  \\r"
+	screen -p instalado -X exec "$CDSHELL/linux/notificar.sh"
+	screen -p instalado -X source "$CDSHELL/.screenrc"
 fi
