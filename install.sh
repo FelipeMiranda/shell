@@ -282,14 +282,17 @@ ANSIBLE_PLAYBOOK=$(which ansible-playbook)
 which ansible-playbook > /dev/null
 if [ $? -ne 0 ]; then
 	yum install ansible -y
-	which ansible-playbook > /dev/null
-	if [ $? -eq 0 ]; then
-		cd $CDSHELL/ansible
-		$ANSIBLE_PLAYBOOK -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
-	else
-		echo -en "$alert (X) Erro ao tentar instalar o ansible. $normal \n Tente instalar manualmente com gerenciador de pacotes da sua Distro \n"
-	fi
 fi
+
+which ansible-playbook > /dev/null
+if [ $? -eq 0 ]; then
+	cd $CDSHELL/ansible
+	$ANSIBLE_PLAYBOOK -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
+else
+	echo -en "$alert (X) Erro ao tentar instalar o ansible. $normal \n Tente instalar manualmente com gerenciador de pacotes da sua Distro \n"
+fi
+
+
 
 
 # FINALIZANDO AS COISAS, se tiver executado via screen, feche as janelas e informe a instalacao, na nova janela.
