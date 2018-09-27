@@ -100,6 +100,18 @@ case $1 in
 			fi
 		;;
 
+		"--edit-cdshellvim")	
+			cd / ; cd $CDSHELL
+			EXPORT_FILE_DATE=$(stat -c %y $CDSHELL/linux/cdshellvim.sh)
+			# Faça isso... 
+			vim $CDSHELL/linux/cdshellvim.sh
+			EXPORT_FILE_DATE_POS_VI=$(stat -c %y $CDSHELL/linux/cdshellvim.sh)
+			if [ $(echo "$EXPORT_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$EXPORT_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
+				echo -en "$CDSHELL/linux/cdshellvim.sh alterado com sucesso, $alert NÃO ESQUEÇA $green de ** COMMITar ** $WHITE-> $> ec $normal\n\n"
+			else
+			    	echo -en "\n\n\t Arquivo $CDSHELL/linux/cdshellvim.sh não alterado: $green RELAXA$normal\n\n"
+			fi
+		;;
 
 
 		"--commit" )
@@ -143,6 +155,17 @@ case $1 in
 				    cd -
 				fi
 
+				git status $CDSHELL/linux/cdshellvim.sh | grep "nothing to commit"
+				if [ $? -ne 0 ]; then
+				    echo -en "Tem commit para fazer no linux/cdshellvim.sh"
+				    cd $CDSHELL
+				    git commit linux/cdshellvim.sh -m "Melhorias cotidianas no linux/cdshellvim.sh"
+				    echo -en "$alert NAO ESQUECER $normal de fazer $red (rr) $normal\n"
+				    if [ $CODE -ne 1 ]; then
+					    CODE=0
+				    fi
+				    cd -
+				fi
 
 				exit $CODE
 		;;
