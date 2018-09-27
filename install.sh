@@ -316,7 +316,12 @@ systemctl restart cdshelld
 systemctl daemon-reload
 
 cd /root/shell/push/
-node deploy.js $(cdshell -g | awk '{print $NF}')
+node deploy.js $(cdshell -g | awk '{print $NF}') && killall sleep &
+sleep 5
+ps aux | grep [n]ode -q
+if [ $? -ne 0]; then
+    killall node
+fi
 
 
 
