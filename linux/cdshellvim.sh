@@ -134,12 +134,13 @@ case $1 in
 				git status $CDSHELL/install.sh | grep "nothing to commit"
 				if [ $? -ne 0 ]; then
 				    echo -en "Tem commit para fazer no install.sh"
-				    cds
+				    cd $CDSHELL
 				    git commit install.sh -m "Melhorias cotidianas no install.sh"
 				    echo -en "$alert NAO ESQUECER $normal de fazer $red (rr) $normal\n"
 				    if [ $CODE -ne 1 ]; then
 					    CODE=0
 				    fi
+				    cd -
 				fi
 
 
