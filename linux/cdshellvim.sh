@@ -64,7 +64,7 @@ case $1 in
 			vim $HOME/.alias
 			ALIAS_FILE_DATE_POS_VI=$(stat -c %y $HOME/.alias)
 			if [ $(echo "$ALIAS_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$ALIAS_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
-				echo -en "$HOME/.alias alterado $alert *LOCALMENTE*$normal, $red não $normal esqueça de $green ** COMMITar ** $WHITE-> $> ec $normal\n\n"
+				echo -en "$HOME/.alias alterado $red *LOCALMENTE*$normal,   $alert NÃO ESQUEÇA $green de  $green ** COMMITar ** $WHITE-> $> ec $normal\n\n"
 				bash -c "
 					echo -en \" $HOME/.alias  -> $green Recarregado !!!$normal\n\"
 					echo -en \"Testar o alias e sair($green ec $normal)\n\"
@@ -81,11 +81,26 @@ case $1 in
 			vim $HOME/.export
 			EXPORT_FILE_DATE_POS_VI=$(stat -c %y $HOME/.export)
 			if [ $(echo "$EXPORT_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$EXPORT_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
-				echo -en "$HOME/.export alterado com sucesso, $red não esqueça de $green ** COMMITar ** $WHITE-> $> ec $normal\n\n"
+				echo -en "$HOME/.export alterado com sucesso, $alert NÃO ESQUEÇA $green de ** COMMITar ** $WHITE-> $> ec $normal\n\n"
 			else
 			    	echo -en "\n\n\t Arquivo $HOME/.export não alterado.\n\n"
 			fi
 		;;
+
+		"--editinstall")	
+			EXPORT_FILE_DATE=$(stat -c %y $CDSHELL/install.sh)
+			# Faça isso... 
+			vim $CDSHELL/.install.sh
+			EXPORT_FILE_DATE_POS_VI=$(stat -c %y $CDSHELL/install.sh)
+			if [ $(echo "$EXPORT_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$EXPORT_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
+				echo -en "$CDSHELL/install.sh alterado com sucesso, $alert NÃO ESQUEÇA $green de ** COMMITar ** $WHITE-> $> ec $normal\n\n"
+			else
+			    	echo -en "\n\n\t Arquivo $CDSHELL/install.sh não alterado: $green RELAXA$normal\n\n"
+			fi
+		;;
+
+
+
 		"--commit" )
 				$CDSHELL/linux/cdshellvim.sh --check-all
 			    #echo -en "\n Deseja commitar o .alias ou .export ? (${WHITE}a${normal})lias/(${WHITE}e${normal})xport\n"
