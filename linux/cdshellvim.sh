@@ -129,20 +129,27 @@ case $1 in
 		# Amarrado aos alias etodos cdshell --check-all ou cdshell --etodos
 		"--check-all"|"--etodos" )
 				CODE=1
+
+				# Verificando se ha mudanças para commitar na .alias
+				is_file_changed .alias
+				if [ $? == 0 ]; then
+					commit .alias
+					CODE=0
+				else echo -en " - .alias -> $green intacta $normal\n"
+				fi
+
+
+				# Verificando se ha mudanças para commitar na .export
 				is_file_changed .export 
 				if [ $? == 0 ]; then
 				    	commit .export
-					CODE=0
-				fi
-
-				is_file_changed .alias
-				if [ $? == 0 ]; then
-				    	commit .alias
 					if [ $CODE -ne 1 ]; then
-					    CODE=0
+						CODE=0
 					fi
+				else echo -en " - .export -> $green intacta $normal\n"
 				fi
 
+				# Verificando se ha mudanças para commitar na install.sh
 				git status $CDSHELL/install.sh | grep "nothing to commit" -q
 				if [ $? -ne 0 ]; then
 				    echo -en "Tem commit para fazer no install.sh"
@@ -157,6 +164,7 @@ case $1 in
 				else echo -en " - install.sh -> $green intacta $normal\n"
 				fi
 
+				# Verificando se ha mudanças para commitar na cdshellvim.sh
 				git status $CDSHELL/linux/cdshellvim.sh | grep "nothing to commit" -q
 				if [ $? -ne 0 ]; then
 				    echo -en "Tem commit para fazer no linux/cdshellvim.sh"
