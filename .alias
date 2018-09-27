@@ -195,6 +195,7 @@ alias ee="cdshellvim.sh --export"
 alias ec="cdshellvim.sh --commit"
 alias ei="cdshellvim.sh --edit-install"
 alias eh="cdshellvim.sh --help"
+alias ev="cdshellvim.sh --edit-cdshellvim"
 alias etodos="cdshellvim.sh --check-all"
 
 alias dk="$CDSHELL/linux/dk.sh"
