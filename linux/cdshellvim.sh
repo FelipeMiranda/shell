@@ -31,8 +31,9 @@ function commit(){
 			#git add .
 			git commit -m "Novas melhorias no $1" $1
 			echo -en "\n git commit ..... $green Done $normal \n"
-			cd -
 			echo -en "\n\t\t Enviar p/ GITHUB \t -> \t $WHITE rr(®®)$normal\n\n"
+			git push -q
+			cd -
 	    fi
 	    if [ "$COMMITAR" == "n" ]; then
 		  echo -en "\n $red Cancelado! $yellow saindo sem commitar... cuidado os arquivos $WHITE estão alterados. $normal \n"
