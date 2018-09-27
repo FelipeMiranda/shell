@@ -87,10 +87,10 @@ case $1 in
 			fi
 		;;
 
-		"--editinstall")	
+		"--edit-install")	
 			EXPORT_FILE_DATE=$(stat -c %y $CDSHELL/install.sh)
 			# Faça isso... 
-			vim $CDSHELL/.install.sh
+			vim $CDSHELL/install.sh
 			EXPORT_FILE_DATE_POS_VI=$(stat -c %y $CDSHELL/install.sh)
 			if [ $(echo "$EXPORT_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$EXPORT_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
 				echo -en "$CDSHELL/install.sh alterado com sucesso, $alert NÃO ESQUEÇA $green de ** COMMITar ** $WHITE-> $> ec $normal\n\n"
