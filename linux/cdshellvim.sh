@@ -167,11 +167,11 @@ case $1 in
 				# Verificando se ha mudanças para commitar na cdshellvim.sh
 				git status $CDSHELL/linux/cdshellvim.sh | grep "nothing to commit" -q
 				if [ $? -ne 0 ]; then
-				    echo -en "Tem commit para fazer no linux/cdshellvim.sh"
+				    echo -en "$alert Tem commit para fazer no linux/cdshellvim.sh$normal \t$normal iniciando ...\n "
 				    cd $CDSHELL
-				    git commit linux/cdshellvim.sh -m "Melhorias cotidianas no linux/cdshellvim.sh"
+				    git commit linux/cdshellvim.sh -m "Melhorias cotidianas no linux/cdshellvim.sh" > /dev/null
 				    echo -en "$alert NAO ESQUECER $normal de fazer $red (rr) $normal\n"
-				    git push 
+				    git push -q
 				    if [ $CODE -ne 1 ]; then
 					    CODE=0
 				    fi
