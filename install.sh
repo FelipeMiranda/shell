@@ -278,8 +278,19 @@ echo -e "\n ${alert} CDSHELL ${normal} ${atention}v_${VERSION}${normal} instalad
 echo -en "\n     ${alert} Existe uma página help feita com miniman $normal\n       $yellow $> miniman cdshell ou cdshell -h\n\n"
 
 #Instalar o ANSIBLE para controlar algumas coisas.
-cd $CDSHELL/ansible
-ansible-playbook -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
+ANSIBLE_PLAYBOOK=$(which ansible-playbook)
+which ansible-playbook > /dev/null
+if [ $? -ne 0 ]; then
+	yum install ansible -y
+	which ansible-playbook > /dev/null
+	if [ $? -ne 0 ]; then
+		cd $CDSHELL/ansible
+		$ANSIBLE_PLAYBOOK -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
+		break
+	fi
+echo -en "$alert (X) Erro ao tentar instalar o ansible. $normal \n Tente instalar manualmente com gerenciador de pacotes da sua Distro \n"
+fi
+
 
 # FINALIZANDO AS COISAS, se tiver executado via screen, feche as janelas e informe a instalacao, na nova janela.
 screen -ls | grep Socket
