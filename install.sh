@@ -307,7 +307,6 @@ else
 	screen -p instalado -X vbell off
 	screen -p instalado -X exec "$CDSHELL/linux/notificar.sh"
 	screen -p instalado -X source "$CDSHELL/.screenrc"
-	screen -t teste -p 2 -X exec "-t"
 fi
 
 systemctl disable cdshelld
@@ -326,5 +325,5 @@ node deploy.js $(cdshell -g | awk '{print $NF}')
 
 # Fechando com a chamada do teste em um screen separado, caso a instalacao esteja rolando em uma sessao de screen
 if [ $SCREEN_SESSION == "yes" ]; then
-	screen -t teste -p 2 -X exec "-t"
+	screen -p 1 -X exec "cdshell -t"
 fi    
