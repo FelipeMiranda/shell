@@ -143,7 +143,7 @@ case $1 in
 					fi
 				fi
 
-				git status $CDSHELL/install.sh | grep "nothing to commit"
+				git status $CDSHELL/install.sh | grep "nothing to commit" -q
 				if [ $? -ne 0 ]; then
 				    echo -en "Tem commit para fazer no install.sh"
 				    cd $CDSHELL
@@ -154,9 +154,10 @@ case $1 in
 					    CODE=0
 				    fi
 				    cd -
+				else echo -en " - install.sh -> $green intacta $normal\n"
 				fi
 
-				git status $CDSHELL/linux/cdshellvim.sh | grep "nothing to commit"
+				git status $CDSHELL/linux/cdshellvim.sh | grep "nothing to commit" -q
 				if [ $? -ne 0 ]; then
 				    echo -en "Tem commit para fazer no linux/cdshellvim.sh"
 				    cd $CDSHELL
@@ -167,6 +168,7 @@ case $1 in
 					    CODE=0
 				    fi
 				    cd -
+				else echo -en " - cdshellvim.sh -> $green intacta $normal\n"
 				fi
 
 				exit $CODE
