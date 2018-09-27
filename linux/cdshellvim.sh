@@ -69,7 +69,7 @@ case $1 in
 					echo -en \" $HOME/.alias  -> $green Recarregado !!!$normal\n\"
 					echo -en \"Testar o alias e sair($green ec $normal)\n\"
 				"
-				ec
+				$CDSHELL/linux/cdshellvim.sh --commit
 			else
 			    	echo -en "\n\n\t Arquivo $HOME/.alias não alterado.\n\n"
 			fi
