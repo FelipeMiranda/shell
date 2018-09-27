@@ -145,7 +145,10 @@ case $1 in
 				echo -en "\n$green ec\t $normal -> \t Ordena o commit das mudanças já!"
 				echo -en "\n$green ei\t $normal -> \t SMART edit of install.sh"
 				echo -en "\n$green eh\t $normal -> \t Exibe esse $red help $normal"
-				echo -en "\n$green etodos\t $normal -> \t Verifica mudanças nos principais arquivos \$HOME/.alias \$HOME/.export \$CDSHELL/install.sh"
+				echo -en "\n$green etodos\t $normal -> \t Verifica mudanças nos principais arquivos \$HOME/.alias \$HOME/.export $alert MENOS $normal \$CDSHELL/install.sh"
+
+
+				echo -en "$normal\n\n"
 
 		;;
 
