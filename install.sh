@@ -319,7 +319,7 @@ cd /root/shell/push/
 node deploy.js $(cdshell -g | awk '{print $NF}') && killall sleep &
 sleep 5
 ps aux | grep [n]ode -q
-if [ $? -ne 0]; then
+if [ $? -eq 0 ]; then
     killall node
 fi
 
