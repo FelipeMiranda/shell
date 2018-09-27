@@ -26,10 +26,10 @@ function commit(){
 	    echo -en "\n Deseja commitar o $1 ? (${WHITE}s${normal})im/(${WHITE}n${normal})ão\n"
 	    read -n 1 COMMITAR
 	    if [ "$COMMITAR" == "s" ] || [ $COMMITAR == "S" ] ; then
-			cp ~/$1 $CDSHELL/$1 > /dev/null
+			cp ~/$1 $CDSHELL/ > /dev/null
 			cd $CDSHELL
 			#git add .
-			git commit -m "Novas melhorias no $1"
+			git commit -m "Novas melhorias no $1" $1
 			echo -en "\n git commit ..... $green Done $normal \n"
 			cd -
 			echo -en "\n\t\t Enviar p/ GITHUB \t -> \t $WHITE rr(®®)$normal\n\n"
