@@ -30,7 +30,7 @@ alias tmessages='tail -f 100 /var/log/messages'
 alias +x='chmod +x' 
 alias cd..='cd ..'
 alias cd-='cd -'
-alias cds="if [ \$PWD == \$CDSHELL ]; then cdshell ; else cd \$CDSHELL ; fi"
+alias cds="if [ $PWD == $CDSHELL ]; then cdshell ; else cd $CDSHELL ; fi"
 alias cdh='cd ~/help/`uname`/help/'
 alias cdv="cd /var/log"
 alias dmesg="dmesg --color"
