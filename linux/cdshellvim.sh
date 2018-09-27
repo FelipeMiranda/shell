@@ -129,9 +129,9 @@ case $1 in
 					CODE=0
 				fi
 
-				is_file_changed $CDSHELL/install.sh
+				is_file_changed ../../../../../../../../$CDSHELL/install.sh
 				if [ $? == 0 ]; then
-				    	commit $CDSHELL/install.sh
+				    	commit ../../../../../../../../$CDSHELL/install.sh
 					CODE=0
 				fi
 
