@@ -26,8 +26,9 @@ function exibe_versao_cdshell(){
 	echo -en "\n$DATA"
 	echo -en "\n\n TAREFAS_SHOWED_AT_TIME=$WHITE $TAREFAS_SHOWED_AT_TIME $normal\n\n"
 	echo -en " Exibido à $(( $(date +%s) - $TAREFAS_SHOWED_AT_TIME )) segundos atrás\n"
-	if [ -d .git ]; then git config credential.helper store; fi
+	if [ -d .git ]; then git config credential.helper store; git config --global push.default simple; fi
 	echo -en "Aproveitando para setar $alert git config credential.helper store$normal \n"
+	echo -en "Aproveitando para setar $alert git config --global push.default simple $normal \n"
 }
 
 # Exibe a versão Git do seu repositório local
