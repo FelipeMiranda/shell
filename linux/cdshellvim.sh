@@ -29,9 +29,9 @@ function commit(){
 			cp ~/$1 $CDSHELL/ > /dev/null
 			cd $CDSHELL
 			#git add .
-			git commit -m "Novas melhorias no $1" $1
+			git commit $1 -m "Novas melhorias no arquivo $1"
 			echo -en "\n git commit ..... $green Done $normal \n"
-			echo -en "\n\t\t Enviar p/ GITHUB \t -> \t $WHITE rr(®®)$normal\n\n"
+			echo -en "\n\t\t Enviando p/ GITHUB \t -> \t $WHITE ... executando: rr(®®)    aguarde...$normal\n\n"
 			git push -q
 			cd -
 	    fi
@@ -157,11 +157,11 @@ case $1 in
 				    cd $CDSHELL
 				    git commit install.sh -m "Melhorias cotidianas no install.sh"
 				    echo -en "$alert NAO ESQUECER $normal de fazer $red (rr) $normal\n"
-				    git push
+				    git push -q
+				    cd -
 				    if [ $CODE -ne 1 ]; then
 					    CODE=0
 				    fi
-				    cd -
 				else echo -en " - install.sh -> $green intacta $normal\n"
 				fi
 
@@ -173,10 +173,10 @@ case $1 in
 				    git commit linux/cdshellvim.sh -m "Melhorias cotidianas no linux/cdshellvim.sh" > /dev/null
 				    echo -en "$alert NAO ESQUECER $normal de fazer $red (rr) $normal\n"
 				    git push -q
+				    cd -
 				    if [ $CODE -ne 1 ]; then
 					    CODE=0
 				    fi
-				    cd -
 				else echo -en " - cdshellvim.sh -> $green intacta $normal\n"
 				fi
 
