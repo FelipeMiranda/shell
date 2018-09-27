@@ -126,14 +126,22 @@ case $1 in
 				is_file_changed .alias
 				if [ $? == 0 ]; then
 				    	commit .alias
-					CODE=0
+					if [ $CODE -ne 1 ]; then
+					    CODE=0
+					fi
 				fi
 
-				#is_file_changed ../../../../../../../../$CDSHELL/install.sh
-				#if [ $? == 0 ]; then
-				#    	commit ../../../../../../../../$CDSHELL/install.sh
-				#	CODE=0
-				#fi
+				git status $CDSHELL/install.sh | grep "nothing to commit"
+				if [ $? -ne 0 ]; then
+				    echo -en "Tem commit para fazer no install.sh"
+				    cds
+				    git commit install.sh -m "Melhorias cotidianas no install.sh"
+				    echo -en "$alert NAO ESQUECER $normal de fazer $red (rr) $normal\n"
+				    if [ $CODE -ne 1 ]; then
+					    CODE=0
+				    fi
+				fi
+
 
 				exit $CODE
 		;;
