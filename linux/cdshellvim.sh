@@ -88,6 +88,7 @@ case $1 in
 		;;
 
 		"--edit-install")	
+			cd / ; cd $CDSHELL
 			EXPORT_FILE_DATE=$(stat -c %y $CDSHELL/install.sh)
 			# Faça isso... 
 			vim $CDSHELL/install.sh
@@ -113,8 +114,8 @@ case $1 in
 	#		    fi
 		;;
 
-
-		"--check-all" )
+		# Amarrado aos alias etodos cdshell --check-all ou cdshell --etodos
+		"--check-all"|"--etodos" )
 				CODE=1
 				is_file_changed .export 
 				if [ $? == 0 ]; then
@@ -127,10 +128,28 @@ case $1 in
 				    	commit .alias
 					CODE=0
 				fi
+
+				is_file_changed $CDSHELL/install.sh
+				if [ $? == 0 ]; then
+				    	commit $CDSHELL/install.sh
+					CODE=0
+				fi
+
 				exit $CODE
 		;;
 
-	
+			"--help" )
+				echo -en "* A cdshellvim.sh é um script que é acionado por um monte de alias.\n"
+				echo -en "\n\n$green ea\t $normal -> \t SMART edit of alias"
+				echo -en "\n$green ee\t $normal -> \t SMART edit of export"
+				echo -en "\n$green ec\t $normal -> \t Ordena o commit das mudanças já!"
+				echo -en "\n$green ei\t $normal -> \t SMART edit of install.sh"
+				echo -en "\n$green eh\t $normal -> \t Exibe esse $red help $normal"
+				echo -en "\n$green etodos\t $normal -> \t Verifica mudanças nos principais arquivos \$HOME/.alias \$HOME/.export \$CDSHELL/install.sh"
+
+		;;
+
+
 		* )
 			# Executa com opcao que nao tem.
 			echo -en "O comando $red $1 $normal não existe.\n"

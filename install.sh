@@ -322,7 +322,3 @@ systemctl daemon-reload
 #if [ $? -eq 0 ]; then
 #    killall node
 #fi
-
-
-
-
