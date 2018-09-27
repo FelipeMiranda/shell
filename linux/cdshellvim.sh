@@ -149,7 +149,7 @@ case $1 in
 				    cd $CDSHELL
 				    git commit install.sh -m "Melhorias cotidianas no install.sh"
 				    echo -en "$alert NAO ESQUECER $normal de fazer $red (rr) $normal\n"
-				    push
+				    git push
 				    if [ $CODE -ne 1 ]; then
 					    CODE=0
 				    fi
