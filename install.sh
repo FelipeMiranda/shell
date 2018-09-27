@@ -324,7 +324,6 @@ cd /root/shell/push/
 node deploy.js $(cdshell -g | awk '{print $NF}')
 
 
-
 # Fechando com a chamada do teste em um screen separado, caso a instalacao esteja rolando em uma sessao de screen
 if [ $SCREEN_SESSION == "yes" ]; then
 	screen -t teste -p 2 -X exec "-t"
