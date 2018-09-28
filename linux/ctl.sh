@@ -47,7 +47,17 @@ case $1 in
 	
 		# Executa com opcao que nao tem.
 		* )
-			systemctl status $1
+			while (true); do
+				echo -en "\n$alert Digite $green q/Q $alert para sair.$normal\n\n"
+				systemctl status $1 
+				read -n 1 -t 1 input                  # so read doesn't hang
+	                  if [[ $input = "q" ]] || [[ $input = "Q" ]] ; then
+				      echo # to get a newline after quitting
+				      break
+				fi
+				clear
+			done
+
 		;;
 esac
 #############        FIM      ##################
