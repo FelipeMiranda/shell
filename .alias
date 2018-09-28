@@ -52,6 +52,8 @@ alias mx="dig mx"
 alias vale="cd ; cd sistemas; cd vale"
 alias deploy="cd $CDSHELL/push ; node deploy.js \$(cdshell -V); cd - "
 
+
+
 ##### PREGUICA MONSTER ##############
 alias criadaemon=~/shell/linux/criadaemon.sh
 alias dumax='du --max-depth=1 -h | sort -h'
