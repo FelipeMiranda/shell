@@ -152,23 +152,20 @@ case $1 in
 				fi
 
 				# Verificando se ha mudanças para commitar na install.sh
-				cd $CDSHELL
 				git status $CDSHELL/install.sh | grep "nothing to commit" -q
 				if [ $? -ne 0 ]; then
 				    echo -en "Tem commit para fazer no install.sh"
 				    git commit $CDSHELL/install.sh -m "Melhorias cotidianas no install.sh"
 				    echo -en "$alert NAO ESQUECER $normal de fazer $red (rr) $normal\n"
-				    git push -q
+				    git push -q > /dev/null
 				    if [ $CODE -ne 1 ]; then
 					    CODE=0
 				    fi
 				else echo -en " - install.sh -> $green intacta $normal\n"
 				fi
-				cd -
 
 				# Verificando se ha mudanças para commitar na cdshellvim.sh
 
-				cd $CDSHELL
 				git status $CDSHELL/linux/cdshellvim.sh | grep "nothing to commit" -q
 				if [ $? -ne 0 ]; then
 				    echo -en "$alert Tem commit para fazer no linux/cdshellvim.sh$normal \t$normal iniciando ...\n "
@@ -180,7 +177,6 @@ case $1 in
 				    fi
 				else echo -en " - cdshellvim.sh -> $green intacta $normal\n"
 				fi
-  				cd -
 
 				#Finalizando com codigo de saida 0 caso todos tenham executado com sucesso.
 				exit $CODE
