@@ -22,18 +22,18 @@ if [ -n "$VIM" ]; then VIM=$VI ; fi
 function commit(){
     
   	if [ $( md5sum ~/$1 | cut -f1 -d ' ') != $(md5sum $CDSHELL/$1 | cut -f1 -d' ') ]; then
-		echo -en "\n\n $yellow $1 $green está diferente! $normal \n\n"
+	    echo -en "\n\n $yellow $1 $green está diferente! $normal \n\n"
 	    echo -en "\n Deseja commitar o $1 ? (${WHITE}s${normal})im/(${WHITE}n${normal})ão\n"
 	    read -n 1 COMMITAR
 	    if [ "$COMMITAR" == "s" ] || [ $COMMITAR == "S" ] ; then
 			cp ~/$1 $CDSHELL/ > /dev/null
 			cd $CDSHELL
 			#git add .
-			git commit $1 -m "Novas melhorias no arquivo $1"
+			git commit . -m "Novas melhorias no arquivo $1"
 			echo -en "\n git commit ..... $green Done $normal \n"
 			echo -en "\n\t\t Enviando p/ GITHUB \t -> \t $WHITE ... executando: rr(®®)    aguarde...$normal\n\n"
 			git push -q
-			cd -
+			cd - > /dev/null
 	    fi
 	    if [ "$COMMITAR" == "n" ]; then
 		  echo -en "\n $red Cancelado! $yellow saindo sem commitar... cuidado os arquivos $WHITE estão alterados. $normal \n"
