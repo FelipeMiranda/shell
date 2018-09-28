@@ -333,7 +333,7 @@ fi
 # Avisando do DEPLOY VIA PUSH
 cd /root/shell/push/
 node deploy.js $(cdshell -g | awk '{print $NF}') &
-sleep 1 && killall node && exit 0
+sleep 1 && kill -SIGTERM node && exit 0
 
 # Fechando com a chamada do teste em um screen separado, caso a instalacao esteja rolando em uma sessao de screen
 # será invocado ao final da linux/notificar.sh

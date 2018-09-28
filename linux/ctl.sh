@@ -58,10 +58,10 @@ case $1 in
 			systemctl stop $2
 			systemctl disable $2
 			cp $2.service /etc/systemd/system -f
-			systemctl daemon-reload $2
+			systemctl daemon-reload 
 		      systemctl start $2
 			systemctl enable $2
-			systemctl status $2	
+			ctl $2
 		;;
 
 	
