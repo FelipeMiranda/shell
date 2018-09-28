@@ -198,6 +198,7 @@ alias eh="cdshellvim.sh --help"
 alias ev="cdshellvim.sh --edit-cdshellvim"
 alias etodos="cdshellvim.sh --check-all"
 
+# DOCKER ALIAS
 alias dk="$CDSHELL/linux/dk.sh"
 alias dkk="dk --kill"
 alias dkr="dk --run"
