@@ -8,11 +8,11 @@ WorkingDirectory=/root/shell/push
 Restart=always
 RestartSec=500ms
 StartLimitInterval=500ms
-StartLimitBurst=5000
+#StartLimitBurst=0
 
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=CDSHELL[Systemd AutoUpdate Service]
+SyslogIdentifier=cdshell
 User=root
 Group=wheel
 Environment=NODE_ENV=production PORT=3000 NODE_MODULES=/lib/node_modules
