@@ -5,7 +5,7 @@
 #  Arquivo de instalação do CDSHELL                #	
 ####################################################
 
-ps aux | grep install.sh -q
+ps aux | grep [i]nstall.sh -q
 if [ $? -eq 0 ]; then
     exit 1
 fi
