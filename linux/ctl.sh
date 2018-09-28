@@ -68,8 +68,9 @@ case $1 in
 		# Executa com opcao que nao tem.
 		* )
 			while (true); do
-				echo -en "\n$alert Sair \t-> $green q/Q $normal "
-				echo -en "\n$alert Restart\t-> $green r/R $normal"
+				echo -en "\n$alert q/Q  \t-> $green sair $normal "
+				echo -en "\n$alert r/R  \t-> $green restart $normal"
+				echo -en "\n__________________________________________________________\n"
 				systemctl status $1 
 				read -n 1 -t 1 input                  # so read doesn't hang
 	                  if [[ $input = "q" ]] || [[ $input = "Q" ]] ; then
