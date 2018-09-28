@@ -331,7 +331,7 @@ case $1 in
     ;;
 
 	# Teste criando um novo versionamento.
-    "-t"|"--test") 
+    "--test-total") 
 								EXIT_CODE=""
 								runTestTotal
 								EXIT_CODE=$?
