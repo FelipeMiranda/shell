@@ -23,9 +23,9 @@
 		console.log("message: " + data.username + ": " + data.message )
 		if ( data.message != version) { 
 			const { exec } = require('child_process');
-			exec('cd /root/shell ; git pull ; nohup bash -c /root/shell/push-install.sh & ', (err, stdout, stderr) => {
-				console.log("Instalado com sucesso: " + data.message)
-			    return;
+			exec('cds; rr ; nohup  /root/shell/push-install.sh ', (err, stdout, stderr) => {
+				console.log("Instalado com sucesso: " + data.message);
+//				socket.disconnect();
 			});
 			console.log("Conectado no servidor...");
 		}

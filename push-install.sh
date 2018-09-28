@@ -285,26 +285,26 @@ echo -en "\n     ${alert} Existe uma página help feita com miniman $normal\n   
 screen -ls | grep Socket
 if [ $? == 1 ]; then
 	echo -en "\nTeste a instalação, $green bash $normal já carregado.\n"
-	cd $BACKUP_FROM_RUNDIR;bash
-else
+#	cd $BACKUP_FROM_RUNDIR;bash
+#else
     	#echo -en "Usando novo formato de instalação em nova janela em backgroud com: screen -c install.screenrc\n"
 	#screen -p instalado -t instalado
-	screen -p 1 -X remove
-	screen -t instalado -X next
-	screen -p instalado -X focus
-	screen -p instalado -X vbell off
-	screen -p instalado -X exec "$CDSHELL/linux/notificar.sh"
-	screen -p instalado -X source "$CDSHELL/.screenrc"
+#	screen -p 1 -X remove
+#	screen -t instalado -X next
+#	screen -p instalado -X focus
+#	screen -p instalado -X vbell off
+#	screen -p instalado -X exec "$CDSHELL/linux/notificar.sh"
+#	screen -p instalado -X source "$CDSHELL/.screenrc"
 fi
 
-cd $CDSHELL/push
-#npm install -g
-systemctl stop cdshelld
-systemctl disable cdshelld
+#cd $CDSHELL/push
+#/usr/bin/npm install -g
+#systemctl stop cdshelld
+#systemctl disable cdshelld
 rm /etc/systemd/system/cdshelld.service -rf
 cp $CDSHELL/push/cdshelld.service /etc/systemd/system/
 systemctl daemon-reload
-systemctl enable cdshelld
-systemctl restart cdshelld
+#systemctl enable cdshelld
+#systemctl restart cdshelld
 
 
