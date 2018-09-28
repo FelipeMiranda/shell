@@ -7,7 +7,7 @@
 
 ps aux | grep [i]nstall.sh -q
 if [ $? -eq 0 ]; then
-    exit 1
+	echo saiu > /tmp/log
 fi
 
 # Coleta o início da execução.
