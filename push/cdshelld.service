@@ -5,10 +5,11 @@ Description= CDSHELL - AutoUpdate
 [Service]
 ExecStart=/usr/bin/node cdshelld.js > /dev/null
 WorkingDirectory=/root/shell/push
-Restart=always
+#Restart=always
+Restart=on-failure
 RestartSec=500ms
-StartLimitInterval=500ms
-#StartLimitBurst=0
+StartLimitInterval=15s
+StartLimitBurst=1
 
 StandardOutput=syslog
 StandardError=syslog

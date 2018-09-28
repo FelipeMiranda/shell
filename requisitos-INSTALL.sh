@@ -1,5 +1,6 @@
 #!/bin/bash
 source ~/colors.sh
+source ~/.export
 
 OSTYPE=`uname`
 PACOTES_LINUX="colordiff gcc gcc-dev ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop jq net-tools htop dialog python34 nodejs docker netcat tcpdump nmap tcl puppet ansible dig mc lsof bc "
@@ -52,7 +53,7 @@ if [ $OSTYPE == "Linux" ]; then
 
 
 	 ## NODE.JS INSTALL ##
-	npm install nodemon ronn colors -g
+	#/usr/bin/npm install nodemon ronn colors -g
 
 		#CentOS 6.6
 	#   rpm -hiv http://pkgs.repoforge.org/txt2tags/txt2tags-2.6-1.el6.rf.noarch.rpm
