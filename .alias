@@ -42,7 +42,8 @@ alias cdco='cd ~/codigo-fonte'
 alias cdc='cd ~/codigo-fonte'
 alias cdl='cd $CDSHELL/linux'
 alias backup="$CDSHELL/linux/backup.sh"
-### USABLES ###
+
+### cdDIR =>  [`cds`,`cdh`,`cdw`,`cdp`]
 alias cdusr='cd /usr'
 alias cdvar='cd /var'
 alias cdlog='cd /var/log'
@@ -110,10 +111,6 @@ alias ¢=®
 alias R=®
 alias ¢¢=®®
 alias 88="ping 8.8.8.8 -c 1 -w 5"
-
-
-
-
 
 # Shortcuts para SERVIDORES
 alias d1="ssh dev1"
