@@ -278,8 +278,8 @@ echo -e "\n ${alert} CDSHELL ${normal} ${atention}v_${VERSION}${normal} instalad
 echo -en "\n     ${alert} Existe uma página help feita com miniman $normal\n       $yellow $> miniman cdshell ou cdshell -h\n\n"
 
 #Instalar o ANSIBLE para controlar algumas coisas.
-#cd $CDSHELL/ansible
-#ansible-playbook -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
+cd $CDSHELL/ansible
+ansible-playbook -i $CDSHELL/ansible/hosts $CDSHELL/ansible/tasks/main.yml
 
 # FINALIZANDO AS COISAS, se tiver executado via screen, feche as janelas e informe a instalacao, na nova janela.
 screen -ls | grep Socket
