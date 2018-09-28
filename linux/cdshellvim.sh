@@ -158,6 +158,7 @@ case $1 in
 
 
 				# Verificando se ha mudanças para commitar na install.sh
+				cd $CDSHELL
 				git status $CDSHELL/install.sh | grep "nothing to commit" -q
 				if [ $? -ne 0 ]; then
 				    echo -en "Tem commit para fazer no install.sh"
@@ -183,6 +184,7 @@ case $1 in
 				    fi
 				else echo -en " - cdshellvim.sh -> $green intacta $normal\n"
 				fi
+				cd -
 
 
 				#Finalizando com codigo de saida 0 caso todos tenham executado com sucesso.
