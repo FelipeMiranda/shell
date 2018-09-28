@@ -164,6 +164,26 @@ function runAllTests(){
 }
 
 
+# Run - All Tests
+function runTestTotal(){
+	EXIT_CODE=0
+	CONT=0
+	echo -en "\n$alert $### Test Total ### \n"
+    
+	#                            ^
+	# Rodando os testes de cima. | ( para nao ficar repetitivo) 
+	runAllTests
+
+	cat /dev/random > $CDSHELL/install/testTotal.random
+	cd $CDSHELL
+	git commit $CDSHELL/install/testTotal.random -m "Running TestTotal"
+	git push
+	EXIT_CODE=$?
+	return $EXIT_CODE
+}
+
+
+
 #############################################################################################
 #                                          MAIN                                             #
 #############################################################################################
@@ -298,9 +318,22 @@ case $1 in
 	;;
 
 	# Teste de instalação
-    "-t"|"--test"|"--all-test") 
+    "-t"|"--test") 
 								EXIT_CODE=""
 								runAllTests
+								EXIT_CODE=$?
+								if [ $EXIT_CODE == 0 ]; then
+									echo -en "\n Testes realizados com $green sucesso.$normal\n"
+								else
+									echo -en "... deu $red erro $normal, o código de saída é EXIT_CODE =$red $EXIT_CODE $normal .\n\n"
+								fi
+								exit $EXIT_CODE
+    ;;
+
+	# Teste criando um novo versionamento.
+    "-t"|"--test") 
+								EXIT_CODE=""
+								runTestTotal
 								EXIT_CODE=$?
 								if [ $EXIT_CODE == 0 ]; then
 									echo -en "\n Testes realizados com $green sucesso.$normal\n"
