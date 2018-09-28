@@ -6,7 +6,6 @@ OSTYPE=`uname`
 # CLItxt
 alias clitxt='curl -F \"upfile=@-\" https://clitxt.com'
 
-
 #OPCOES COMUNS
 alias ..='cd ..'
 alias b='bash'
