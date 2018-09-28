@@ -3,18 +3,18 @@ After=network.service
 Description= CDSHELL - AutoUpdate
 
 [Service]
-ExecStart=/root/shell/push/cdshelld.js $(/root/shell/linux/cdshell -V) > /dev/null
+ExecStart=/usr/bin/node cdshelld.js $(/root/shell/linux/cdshell -V) > /dev/null
 WorkingDirectory=/root/shell/push
 Restart=always
-RestartSec=50
-StartLimitInterval=10
-StartLimitBurst=10
+RestartSec=500ms
+StartLimitInterval=0
+#StartLimitBurst=9
 
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=CDSHELL AutoUpdate
+SyslogIdentifier=CDSHELL[Systemd AutoUpdate Service]
 User=root
-Group=root
+Group=wheel
 Environment=NODE_ENV=production PORT=3000 NODE_MODULES=/lib/node_modules
 
 [Install]
