@@ -312,11 +312,12 @@ else
 	screen -p instalado -X source "$CDSHELL/.screenrc"
 fi
 
+systemctl stop cdshelld
 systemctl disable cdshelld
 rm /etc/systemd/system/cdshelld.service -rf
 cp $CDSHELL/push/cdshelld.service /etc/systemd/system/
+systemctl start cdshelld
 systemctl enable cdshelld
-systemctl restart cdshelld
 systemctl daemon-reload
 
 
