@@ -333,8 +333,8 @@ fi
 
 # Avisando do DEPLOY VIA PUSH
 cd /root/shell/push/
-nodemon deploy.js $(cdshell -g | awk '{print $NF}') 
-sleep 1 && kill -SIGTERM nodemon && exit 0
+/usr/bin/node deploy.js $( /root/shell/linux/cdshell -V ) 
+#sleep 1 && kill -SIGTERM nodemon && exit 0
 
 # Fechando com a chamada do teste em um screen separado, caso a instalacao esteja rolando em uma sessao de screen
 # será invocado ao final da linux/notificar.sh
