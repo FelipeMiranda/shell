@@ -301,7 +301,7 @@ if [ $? == 1 ]; then
 	echo -en "\nTeste a instalação, $green bash $normal já carregado.\n"
 	cd $BACKUP_FROM_RUNDIR;bash
 else
-    	SCREEN_SESSION="yes"
+    	SCREEN_SESSION=yes
     	#echo -en "Usando novo formato de instalação em nova janela em backgroud com: screen -c install.screenrc\n"
 	#screen -p instalado -t instalado
 	screen -p 1 -X remove
@@ -337,5 +337,5 @@ node deploy.js $(cdshell -g | awk '{print $NF}')
 
 # Fechando com a chamada do teste em um screen separado, caso a instalacao esteja rolando em uma sessao de screen
 if [ $SCREEN_SESSION == "yes" ]; then
-	screen -p 1 -X exec "cdshell -t"
+	screen -p instalado -X exec "cdshell -t"
 fi    
