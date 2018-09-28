@@ -43,6 +43,8 @@ alias cdc='cd ~/codigo-fonte'
 alias cdl='cd $CDSHELL/linux'
 alias backup="$CDSHELL/linux/backup.sh"
 
+
+
 ### cdDIR =>  [`cds`,`cdh`,`cdw`,`cdp`]
 alias cdusr='cd /usr'
 alias cdvar='cd /var'
