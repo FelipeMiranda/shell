@@ -188,7 +188,7 @@ case $1 in
 				fi
 
 				#Voltando do CDSHELL para evitar quebras de PATH durante a execução.
-				cd -
+				cd - > /dev/null
 				##################################################
 
 
