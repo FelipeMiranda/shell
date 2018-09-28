@@ -329,6 +329,8 @@ else
 	echo -en "Criando diretório padrão /lib/node_modules para comportar variável $alert NODE_MODULES $normal\n"
 fi
 
+
+
 # Avisando do DEPLOY VIA PUSH
 sleep 5 && killall node &
 cd /root/shell/push/
