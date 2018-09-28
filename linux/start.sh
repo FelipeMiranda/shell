@@ -19,7 +19,7 @@ source ~/shell/colors.sh
 
 ##########  Funcao       #######################
 function status(){
-	systemctl status $1 | grep -v $(hostname) | grep -v PID
+	systemctl status $1
 }
 
 
