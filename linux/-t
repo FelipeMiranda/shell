@@ -1,1 +1,6 @@
-cdshell --test
+#!/bin/bash 
+$CDSHELL/linux/cdshell --test
+echo -en "\n Digite qq tecla para sair\n"
+read -n 1
+screen -X focus
+screen -X remove
