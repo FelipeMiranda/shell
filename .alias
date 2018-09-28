@@ -34,7 +34,8 @@ alias cds='if [ $(pwd) == $CDSHELL ]; then cdshell ; else cd $CDSHELL ; fi'
 alias cdh='cd ~/help/`uname`/help/'
 alias cdv="cd /var/log"
 alias dmesg="dmesg --color"
-alias cores="cat $CDSHELL/colors.sh | grep export | cut -d' ' -f2-"
+alias coresDump="cat $CDSHELL/colors.sh | grep export | cut -d' ' -f2-"
+alias cores="eval echo -en \"$(coresDump | sed 's/red/$red red $normal/ ; s/black/$black black $normal/ ; s/blue/$blue blue $normal/ ; s/cyan/$cyan cyan $normal/ ; s/white/$white white $normal/ ; s/magenta/$magenta magenta $normal/ ; s/green/$green green $normal/ ; s/yellow/$yellow yellow $normal/ ; s/WHITE/$WHITE WHITE $normal/ ; s/atention/$atention atention $normal/ ; s/alert/$alert alert $normal/ ; s/normal/$normal normal/ ; s/HIDE/$white HIDE $normal/' )\"  "
 #Mostrar informaçoes do CDSHELL.
 #alias cdshell="echo -en '`cat $CDSHELL/backup/data_ultima_instalacao.txt `  \n '"
 alias cdw='cd ~/workspace'
