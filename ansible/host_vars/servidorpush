@@ -1,0 +1,4 @@
+---
+ansible_ip: '192.168.15.254'
+ansible_hostname: 'servidorpush'
+ansible_default_ipv4: '192.168.15.254'

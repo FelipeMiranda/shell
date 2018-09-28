@@ -8,6 +8,8 @@
       - linux
       - hp
       - storage
+      - mail
+      - servidorpush
 
     resolv_nameservers:
       - 192.168.15.10
