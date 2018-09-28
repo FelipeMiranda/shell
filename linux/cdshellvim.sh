@@ -83,6 +83,7 @@ case $1 in
 			EXPORT_FILE_DATE_POS_VI=$(stat -c %y $HOME/.export)
 			if [ $(echo "$EXPORT_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$EXPORT_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
 				echo -en "$HOME/.export alterado com sucesso, $alert NÃO ESQUEÇA $green de ** COMMITar ** $WHITE-> $> ec $normal\n\n"
+				$CDSHELL/linux/cdshellvim.sh --commit
 			else
 			    	echo -en "\n\n\t Arquivo $HOME/.export não alterado: $green RELAXA$normal\n\n"
 			fi
@@ -151,35 +152,37 @@ case $1 in
 				fi
 
 				# Verificando se ha mudanças para commitar na install.sh
+				cd $CDSHELL
 				git status $CDSHELL/install.sh | grep "nothing to commit" -q
 				if [ $? -ne 0 ]; then
 				    echo -en "Tem commit para fazer no install.sh"
-				    cd $CDSHELL
-				    git commit install.sh -m "Melhorias cotidianas no install.sh"
+				    git commit $CDSHELL/install.sh -m "Melhorias cotidianas no install.sh"
 				    echo -en "$alert NAO ESQUECER $normal de fazer $red (rr) $normal\n"
 				    git push -q
-				    cd -
 				    if [ $CODE -ne 1 ]; then
 					    CODE=0
 				    fi
 				else echo -en " - install.sh -> $green intacta $normal\n"
 				fi
+				cd -
 
 				# Verificando se ha mudanças para commitar na cdshellvim.sh
+
+				cd $CDSHELL
 				git status $CDSHELL/linux/cdshellvim.sh | grep "nothing to commit" -q
 				if [ $? -ne 0 ]; then
 				    echo -en "$alert Tem commit para fazer no linux/cdshellvim.sh$normal \t$normal iniciando ...\n "
-				    cd $CDSHELL
-				    git commit linux/cdshellvim.sh -m "Melhorias cotidianas no linux/cdshellvim.sh" > /dev/null
+				    git commit $CDSHELL/linux/cdshellvim.sh -m "Melhorias cotidianas no linux/cdshellvim.sh" > /dev/null
 				    echo -en "$alert NAO ESQUECER $normal de fazer $red (rr) $normal\n"
 				    git push -q
-				    cd -
 				    if [ $CODE -ne 1 ]; then
 					    CODE=0
 				    fi
 				else echo -en " - cdshellvim.sh -> $green intacta $normal\n"
 				fi
+  				cd -
 
+				#Finalizando com codigo de saida 0 caso todos tenham executado com sucesso.
 				exit $CODE
 		;;
 
