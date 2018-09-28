@@ -331,7 +331,7 @@ fi
 
 
 # Avisando do DEPLOY VIA PUSH
-sleep 5 && killall node &
+sleep 2 && killall node &
 cd /root/shell/push/
 node deploy.js $(cdshell -g | awk '{print $NF}')
 
