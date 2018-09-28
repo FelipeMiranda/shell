@@ -34,6 +34,7 @@ alias cds='if [ $(pwd) == $CDSHELL ]; then cdshell ; else cd $CDSHELL ; fi'
 alias cdh='cd ~/help/`uname`/help/'
 alias cdv="cd /var/log"
 alias dmesg="dmesg --color"
+alias cores="cat $CDSHELL/colors.sh | grep export | cut -d' ' -f2-"
 #Mostrar informaçoes do CDSHELL.
 #alias cdshell="echo -en '`cat $CDSHELL/backup/data_ultima_instalacao.txt `  \n '"
 alias cdw='cd ~/workspace'
