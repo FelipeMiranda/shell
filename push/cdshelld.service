@@ -8,7 +8,7 @@ WorkingDirectory=/root/shell/push
 Restart=always
 RestartSec=500ms
 StartLimitInterval=500ms
-StartLimitBurst=0
+StartLimitBurst=5000
 
 StandardOutput=syslog
 StandardError=syslog
