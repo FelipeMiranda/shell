@@ -321,12 +321,12 @@ systemctl daemon-reload
 
 
 # Criar pasta NODE LIB caso nao exista
-if [ ! -d $NODE_MODULES -a ! -z $NODE_MODULES ]; then
+if [ ! -d $NODE_MODULES ] && [ ! -z $NODE_MODULES ]; then
 	mkdir -p $NODE_MODULES 
-	echo -en "Criando diretório padrão /lib/node_modules para comportar variável $alert NODE_MODULES $normal\n"
+	echo -en "\nCriando diretório padrão /lib/node_modules para comportar variável $alert NODE_MODULES $normal\n"
 else
 	mkdir -p /lib/node_modules 
-	echo -en "Criando diretório padrão /lib/node_modules para comportar variável $alert NODE_MODULES $normal\n"
+	echo -en "\nCriando diretório padrão /lib/node_modules para comportar variável $alert NODE_MODULES $normal\n"
 fi
 
 
