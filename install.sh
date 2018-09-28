@@ -103,6 +103,12 @@ echo -en .
 cp $CDSHELL/.vimrc $HOME/
 echo -en ...
 
+if [ -e $HOME/.config/mc/ini ] ;	then cp -f $HOME/.config/mc/ini $BACKUP_DIR/.midnightcom.ini ; fi
+echo -en .
+mkdir -p $HOME/.config/mc
+cp $CDSHELL/.midnightcom.ini $HOME/.config/mc/ini
+echo -en ...
+
 if [ -e $HOME/.screenrc ] ; then cp -f $HOME/.screenrc $BACKUP_DIR/ ; fi
 echo -en .
 cp $CDSHELL/.screenrc $HOME/
