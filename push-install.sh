@@ -5,6 +5,11 @@
 #  Arquivo de instalação do CDSHELL                #	
 ####################################################
 
+ps aux | grep install.sh -q
+if [ $? -eq 0 ]; then
+    exit 1
+fi
+
 # Coleta o início da execução.
 START=$(date +%s)
 
