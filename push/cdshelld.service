@@ -1,23 +1,22 @@
 [Unit]
 After=network.service
-Description= CDSHELL Server
+Description= CDSHELL - Auto Update Service
 
 [Service]
-ExecStart=/root/shell/push/cdshelld.js $(cdshell -V)
+ExecStart=/root/shell/push/cdshelld.js $(/root/shell/linux/cdshell -V)
 
 # Required on some systems
 WorkingDirectory=/root/shell/push
 
 Restart=always
  # Restart service after 10 seconds if node service crashes
-  RestartSec=10
-   # Output to syslog
-   StandardOutput=syslog
-   StandardError=syslog
-   SyslogIdentifier=nodejs-CDSHELLD
-#User=<alternate user>
-#Group=<alternate group>
-Environment=NODE_ENV=production PORT=3000
+  RestartSec=100
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=CDSHELL_AutoUpdateService
+User=root
+Group=root
+Environment=NODE_ENV=production PORT=3000 NODE_MODULES=/lib/node_modules
 
 [Install]
 WantedBy=multi-user.target
