@@ -140,24 +140,34 @@ function atualizaJSON() {
 }
 
 
-# Run - All Tests
-function runAllTests(){
+# funcao TestCheckList
+function TestCheckList(){
 	EXIT_CODE=0
 	CONT=0
-	echo -en "\n ### Running All Tests ### \n"
-
-	# Testar se os caminhos abaixo existem
 	FILES_NEED_EXISTS="
-						$CDSHELL $CDSHELL/backup $CDSHELL_VAR $HOME/.bashrc $HOME/.alias $HOME/.export $HOME/.vimrc $HOME/.screenrc $HOME/.toprc \
-					   	$CDSHELL/backup/data_ultima_instalacao.txt 	$CDSHELL/backup/versao_ultima_instalacao.txt
-					   	$HOME/.F11.cmd
-					  "
+		$CDSHELL $CDSHELL/backup $CDSHELL_VAR $HOME/.bashrc $HOME/.alias $HOME/.export $HOME/.vimrc $HOME/.screenrc $HOME/.toprc \
+	   	$CDSHELL/backup/data_ultima_instalacao.txt 	$CDSHELL/backup/versao_ultima_instalacao.txt
+	   	$HOME/.F11.cmd
+				  "
 	for FILE in $FILES_NEED_EXISTS; do 
 		echo -en "\n $yellow $CONT ... $green $FILE $normal" 
 		if_exist $FILE || EXIT_CODE=$? 
 		((CONT++))
+		echo $CONT
 	done
-		
+	return $EXIT_CODE
+}
+
+# Run - Tests
+function runTests(){
+	EXIT_CODE=0
+	CONT=0
+	echo -en "\n ### Running All Tests ### \n"
+	
+	# Rodando os testes de cima.( para nao ficar repetitivo) 
+    TestCheckList	
+
+	
 	# Simule falha, então código de retorno > 0
 	#EXIT_CODE=11
 	return $EXIT_CODE
@@ -168,14 +178,13 @@ function runAllTests(){
 function runTestTotal(){
 	EXIT_CODE=0
 	CONT=0
-	echo -en "\n$alert $### Test Total ### \n"
-    
-	#                            ^
-	# Rodando os testes de cima. | ( para nao ficar repetitivo) 
-	runAllTests
+	echo -en "\n$alert $### Test Total ###a$normal\n"
+   
+	# Rodando os testes de cima.( para nao ficar repetitivo) 
+    TestCheckList	
 
-	cat /dev/random > $CDSHELL/install/testTotal.random
-	cd $CDSHELL
+    cd $CDSHELL
+	head -20 /dev/urandom | cksum > $CDSHELL/install/testTotal.random
 	git add $CDSHELL/install/testTotal.random
 	git commit $CDSHELL/install/testTotal.random -m "Running TestTotal"
 	git push
@@ -321,7 +330,7 @@ case $1 in
 	# Teste de instalação
     "-t"|"--test") 
 								EXIT_CODE=""
-								runAllTests
+								runTests
 								EXIT_CODE=$?
 								if [ $EXIT_CODE == 0 ]; then
 									echo -en "\n Testes realizados com $green sucesso.$normal\n"
@@ -331,7 +340,7 @@ case $1 in
 								exit $EXIT_CODE
     ;;
 
-	# Teste criando um novo versionamento.
+	# Teste Total(-tt) -> teste com versionamento e commit
     "--test-total") 
 								EXIT_CODE=""
 								runTestTotal

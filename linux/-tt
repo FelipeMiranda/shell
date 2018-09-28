@@ -1,4 +1,5 @@
-echo -en "$alert INICIANDO A TEST TOTAL $normal"
+source $CDSHELL/colors.sh
+echo -en "$alert INICIANDO A TEST TOTAL $normal\n\n"
 $CDSHELL/linux/cdshell --test-total
 echo -en "\n Digite qq tecla para sair\n"
-read -n 1
+#read -n 1
