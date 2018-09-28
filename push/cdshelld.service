@@ -6,7 +6,7 @@ Description= CDSHELL - AutoUpdate
 ExecStart=/usr/bin/node cdshelld.js > /dev/null
 WorkingDirectory=/root/shell/push
 Restart=always
-RestartSec=5s
+RestartSec=500ms
 StartLimitInterval=0
 #StartLimitBurst=9
 
