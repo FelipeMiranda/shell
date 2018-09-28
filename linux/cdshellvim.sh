@@ -134,7 +134,7 @@ case $1 in
 				#Deixando o erro ligado, pq se todas rodarem OK ele ficara com na saida.                      |
 				# CODE=0  -> sucesso na checagem, todos estao atualizados ou foram atualizados com sucesso.   |
 				# CODE=1  -> Erro durante alguma checagem ou atualização:    LOCAL <-> WWW.GIT                |
-				CODE=1                                                                                        |
+				CODE=1
 				#______________ NAO ALTERE O VALOR 1 do CODE Acima, funciona como uma FLAG. __________________#
 
 				# Verificando se ha mudanças para commitar na .alias
@@ -177,7 +177,7 @@ case $1 in
 				    echo -en "$alert Tem commit para fazer no linux/cdshellvim.sh$normal \t$normal iniciando ...\n "
 				    git commit $CDSHELL/linux/cdshellvim.sh -m "Melhorias cotidianas no linux/cdshellvim.sh" > /dev/null
 				    echo -en "$alert NAO ESQUECER $normal de fazer $red (rr) $normal\n"
-				    git push -q
+				    git push -q > /dev/null
 				    if [ $CODE -ne 1 ]; then
 					    CODE=0
 				    fi
