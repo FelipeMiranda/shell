@@ -2,8 +2,9 @@
 #!/bin/bash
 
 #################################################
-# Bash script - Modelo					#
-# Use como modelo para criar seus scripts bash. #
+# Bash script - start.sh				#
+# Facilitador acesso a systemctl start e ja     #
+# exibe status de execucao do servico.		#
 # v_1.0.1							#
 #################################################
 
@@ -18,7 +19,7 @@ source ~/shell/colors.sh
 
 ##########  Funcao       #######################
 function status(){
-	systemctl status $1
+	systemctl status $1 | grep -v $(hostname) | grep -v PID
 }
 
 
