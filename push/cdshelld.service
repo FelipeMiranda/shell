@@ -3,7 +3,7 @@ After=network.service
 Description= CDSHELL - AutoUpdate
 
 [Service]
-ExecStart=/usr/bin/node cdshelld.js $(/root/shell/linux/cdshell -V) > /dev/null
+ExecStart=/usr/bin/node cdshelld.js > /dev/null
 WorkingDirectory=/root/shell/push
 Restart=always
 RestartSec=500ms
