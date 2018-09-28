@@ -1,4 +1,4 @@
 ---
-ansible_ip: '192.168.15.11'
+ansible_ip: '192.168.15.13'
 ansible_hostname: 'hp'
-ansible_default_ipv4: '192.168.15.11'
+ansible_default_ipv4: '192.168.15.13'
