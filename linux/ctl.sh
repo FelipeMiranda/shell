@@ -44,6 +44,26 @@ case $1 in
 			help
 		;;
 
+		"reload" )
+			if [ -z $2 ]; then
+			    echo -en "necessario passar o nome do arquivo para ser atualizado la no /etc/systemd"
+			    echo -en "\n\n\n Tente: --help\n"
+			    exit 1;
+			fi
+			if [ ! -e ./$2.service ]; then
+			    ls *.service
+			    echo -en "$alert Arquivo $2.service não encontrado!\n Necessário ter o arquivo na pasta atual."
+			    exit 1
+			fi
+			systemctl stop $2
+			systemctl disable $2
+			cp $2.service /etc/systemd/system -f
+			systemctl daemon-reload $2
+		      systemctl start $2
+			systemctl enable $2
+			systemctl status $2	
+		;;
+
 	
 		# Executa com opcao que nao tem.
 		* )
