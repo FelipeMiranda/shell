@@ -61,7 +61,7 @@ case $1 in
 			systemctl daemon-reload 
 		      systemctl start $2
 			systemctl enable $2
-			ctl $2
+			/root/shell/linux/ctl.sh $2
 		;;
 
 	
