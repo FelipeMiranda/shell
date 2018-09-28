@@ -176,6 +176,7 @@ function runTestTotal(){
 
 	cat /dev/random > $CDSHELL/install/testTotal.random
 	cd $CDSHELL
+	git add $CDSHELL/install/testTotal.random
 	git commit $CDSHELL/install/testTotal.random -m "Running TestTotal"
 	git push
 	EXIT_CODE=$?

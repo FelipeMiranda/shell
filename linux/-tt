@@ -1,7 +1,4 @@
-#!/bin/bash 
 echo -en "$alert INICIANDO A TEST TOTAL $normal"
 $CDSHELL/linux/cdshell --test-total
 echo -en "\n Digite qq tecla para sair\n"
 read -n 1
-screen -X focus
-screen -X remove
