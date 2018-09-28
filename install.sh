@@ -330,7 +330,6 @@ else
 fi
 
 
-
 # Avisando do DEPLOY VIA PUSH
 sleep 5 && killall node &
 cd /root/shell/push/
