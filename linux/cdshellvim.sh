@@ -67,6 +67,35 @@ function edit_CDSHELL (){
 }
 
 
+function atualiza_if_needed(filename,file_modification_date, file_new_modification_date_to_verify){
+ERROR_CODE=0
+if [[ ! -z $1 ]] && [[ ! -z $2 ]] && [[ ! -z $3 ]]; then
+	echo -en "\n\n\t Use errado da atualiza_if_nedded (filename, file_current_date, _file_actual_date_to_verify)$normal \n\n"
+	FILENAME=$1
+	FILE_ACTUAL_MODIFICATION_DATE=$2
+	FILE_NEW_MODIFICATION_DATE_TO_VERIFY=$3
+	ALIAS_FILE_DATE_POS_VI=$(stat -c %y $FILENAME)
+	if [ $(echo "$ALIAS_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$ALIAS_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
+		echo -en "$FILENAME alterado $red *LOCALMENTE*$normal,   $alert NÃO ESQUEÇA $green de  $green ** COMMITar ** $WHITE-> $> ec $normal\n\n"
+		echo -en \" $FILENAME  -> $green Recarregado !!!$normal\n\"
+		echo -en \"Testar o \t $alert '$FILENAME $nromal' \t e sair($green ec $normal)\n\"
+		$CDSHELL/linux/cdshellvim.sh --commit
+		ERROR_CODE=$?
+		return $ERROR_CODE
+	else
+		echo -en "\n\n\t Arquivo $FILENAME não alterado: $green RELAXA$normal\n\n"
+		ERROR_CODE=222
+		return $ERROR_CODE
+	fi
+else
+	echo -en "\n\n\t $red $alert (X) $normal Erro ao tentar atualiza_if_needed($FILENAME,$FILE_ACTUAL_MODIFICATION_DATE, $FILE_NEW_MODIFICATION_DATE_TO_VERIFY) $normal \n\n"
+
+fi
+
+return ERROR_CODE
+}
+
+
 
 ################################################
 #############        MAIN       ################
