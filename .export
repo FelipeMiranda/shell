@@ -2,7 +2,7 @@
 source ~/colors.sh
 
 # Nao remover, usado para controle do tempo de apresetacao do Tarefas.
-TAREFAS_SHOWED_AT_TIME=1538084718
+TAREFAS_SHOWED_AT_TIME=1538190427
 
 # Tempo para exibir tarefas novamente, em segundos.
 TAREFAS_TIME_TO_WAIT=10
@@ -19,6 +19,10 @@ TZ='America/Sao_Paulo'; export TZ
 VISUAL=vim
 EDITOR=vim
 PS1="$red\u$yellow@$green\h $cyan\W> $normal"
+
+
+#NODE_MODULES
+NODE_MODULES=/lib/node_modules
 
 ##escapacoes \[\] para o PS1 funcionar: wrap line, backpacesem comer peda;os malucos kkkk
 #

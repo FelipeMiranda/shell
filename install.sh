@@ -328,7 +328,8 @@ systemctl daemon-reload
 
 
 # Criar pasta NODE LIB caso nao exista
-if [ ! -d $NODE_MODULES ] || [ ! -z $NODE_MODULES ]; then
+if [ ! -d $NODE_MODULES ] || [ ! -e $NODE_MODULES ]; then
+    	NODE_MODULES=/lib/node_modules
 	mkdir -p $NODE_MODULES 
 	echo -en "\nCriando diretório padrão /lib/node_modules para comportar variável $alert NODE_MODULES $normal\n"
 else
