@@ -188,7 +188,7 @@ fi
 
 
 #SO ADMIN
-alias 0="read -n 1 -p 'Digite s(sim) ou qualquer coisa pra sair ' CONFIRM ; if [ \$CONFIRM == 's' ]; then echo 'kkkk' ; else echo 'nao'; fi " 
+alias 0="read -n 1 -p 'Digite s(sim) ou qualquer coisa pra sair ' CONFIRM ; if [ \$CONFIRM == 's' ]; then init 0 ; else echo '\n\n\t$alert Exit $normal \n\n'; fi " 
 
 #SECURITY UTILS
 alias b64decode="cat | base64 -d <<<"
