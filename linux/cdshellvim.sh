@@ -56,6 +56,18 @@ function is_file_changed(){
 }
 
 
+# edit cdshell
+function edit_CDSHELL (){
+	vim $CDSHELL/linux/cdshell || vi $CDSHELL/linux/cdshell
+	if [ $? -eq 0 ]; then
+		return $?
+	else
+		return $?
+	fi
+}
+
+
+
 ################################################
 #############        MAIN       ################
 case $1 in
