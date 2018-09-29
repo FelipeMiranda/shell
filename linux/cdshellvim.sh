@@ -66,8 +66,8 @@ function edit_CDSHELL (){
 	fi
 }
 
-
-function atualiza_if_needed(filename,file_modification_date, file_new_modification_date_to_verify){
+# 
+function atualiza_if_needed(){
 EXIT_CODE=0
 if [[ ! -z $1 ]] && [[ ! -z $2 ]] && [[ ! -z $3 ]]; then
 	echo -en "\n\n\t Use errado da atualiza_if_nedded (filename, file_current_date, _file_actual_date_to_verify)$normal \n\n"
