@@ -198,14 +198,7 @@ function runTestTotal(){
 }
 
 
-function edit_CDSHELL (){
-	vim $CDSHELL/linux/cdshell || vi $CDSHELL/linux/cdshell
-	if [ $? -eq 0 ]; then
-		return $?
-	else
-		return $?
-	fi
-}
+
 
 
 
