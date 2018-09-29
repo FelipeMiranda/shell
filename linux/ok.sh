@@ -43,12 +43,14 @@ case $1 in
 			echo "feito o rr"
 			if [ $? -eq 0 ]; then
 				echo -en "$green Tudo $alert CDSHELL$normal enviado com sucesso!\n\n"
-				return 0;
+				ERROR_CODE=0
+				exit $ERROR_CODE;
 			else
 				echo -en "\n\n $red (X) Aconteceu um erro na execução do $0! \n\n"
-				return 1;
+				exit 1;
 			fi
 		echo "\t Finalizado com status erro=$EERRO_CODE\n\n"
+		fi
 		;;
 
 	
