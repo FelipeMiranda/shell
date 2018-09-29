@@ -29,7 +29,7 @@ function help(){
 case $1 in
 
 		# Opcoes do comando original
-		"start" | "status" | "stop" | "restart" | "enable" | "disable" )	
+		"start" | "status" | "stop" | "restart" | "enable" | "disable" | "get-default" | "set-default" )	
 			# Faça isso... 
 			if [ ! -z $2 ]; then
 				systemctl $1 $2
