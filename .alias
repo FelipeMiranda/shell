@@ -185,6 +185,11 @@ if [ "$OSTYPE" == "FreeBSD" ]; then
 
 fi
 
+
+
+#SO ADMIN
+alias 0="read -n 1 CONFIRM -p 'Digite $alert (s) $normal para confirmar\n\n; if [ $CONFIRM == 's' ]; then echo 'kkkk' ; else echo 'nao'; fi " 
+
 #SECURITY UTILS
 alias b64decode="cat | base64 -d <<<"
 alias b64encode="echo -n | base64 <<<"
