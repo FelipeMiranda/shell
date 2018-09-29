@@ -209,7 +209,7 @@ SAIDA=$SAIDA"$blue#$normal Versão: $yellow $VERSION$normal.$blue.$yellow.$green
 SAIDA=$SAIDA"$blue#$normal Data da instalação: $red $DATA $green $MES $yellow@$red$HORA $normal \n"
 SAIDA=$SAIDA"$blue#$normal  Diretório de Backup: $red \$CDSHELL/backup $normal \n"
 SAIDA=$SAIDA"$blue#$normal  Server Hostname: $WHITE $HOST $normal \n"
-SAIDA=$SAIDA"$blue#$normal  Instalador: $REDALERT push-install.sh $normal \n"
+SAIDA=$SAIDA"$blue#$normal  Instalador: $REDALERT $0 $normal \n"
 SAIDA=$SAIDA"$blue##########################################################################$normal \n"
 echo $SAIDA > $BACKUP_DIR/data_ultima_instalacao.txt
 echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
