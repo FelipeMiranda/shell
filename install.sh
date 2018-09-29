@@ -355,5 +355,5 @@ fi
 
 whereis miniman > /dev/null
 if [ $? -eq 0 ]; then
-   miniman cdshell 
+   $CDSHELL/linux/miniman.sh cdshell 
 fi
