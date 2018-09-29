@@ -106,5 +106,5 @@ touch $CDSHELL_VAR/.cdshell_req_installed
 
 
 if [[ ! -d $HOME/workspace ]] || [[ ! -d %HOME/help ]] || [[ ! -d $HOME/sistemas ]] || [[ ! -d $HOME/codigo-fonte ]]; then
-	echo -en "\n\n\t $redalert Primeira instalação: $> cloneall ...\n\n\t"
+	echo -en "\n\n\t $REDALERT Primeira instalação: $normal $> cloneall ...\n\n\t"
 fi
