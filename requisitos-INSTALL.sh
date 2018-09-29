@@ -104,7 +104,7 @@ fi
 
 if [[ ! -d $HOME/workspace ]] || [[ ! -d $HOME/help ]] || [[ ! -d $HOME/sistemas ]] || [[ ! -d $HOME/codigo-fonte ]]; then
 	echo -en "\n\n\t $REDALERT Primeira instalação... clonando tudo \n\t $> cloneall $normal\n\n\t"
-	cd $HOME ; rr > /dev/null
+	cd $HOME ; cloneall ; cd - > /dev/null 
 fi
 
 # Chegou aqui, significa que executou tudo, entao cria o arquivo de sinalizacao da primeira instalacao executada.
