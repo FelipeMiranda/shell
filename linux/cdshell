@@ -198,6 +198,16 @@ function runTestTotal(){
 }
 
 
+function edit_CDSHELL (){
+	vim $CDSHELL/linux/cdshell || vi $CDSHELL/linux/cdshell
+	if [ $? -eq 0 ]; then
+		return $?
+	else
+		return $?
+	fi
+}
+
+
 
 #############################################################################################
 #                                          MAIN                                             #
@@ -299,6 +309,17 @@ case $1 in
 						echo -en "\n\n\n Arquivo cdshell$green sem modificações$normal\n\n"
 					fi
     ;;
+
+
+
+	# edit cdshell
+	"--edit-cdshell")
+					CDSHELL_FILE_DATE=$(stat -c %y $CDSHELL/linux/cdshell)
+					edit_CDSHELL
+					CDSHELL_FILE_DATE_POS_VI=$(stat -c %y $CDSHELL/linux/cdshell)
+					atualiza_CDSHELL_if_needed $CDSEHLL_FILE_DATE $CDSHELL_FILE_DATE_POS_VI
+    ;;
+
 
 
 	# Instalar enviando o diretorio local (PWD) para instalacao como parametro e ja voltar no mesmo lugar que chamou.
