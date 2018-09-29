@@ -1,1 +1,1 @@
-cdshell -g
+$CDSHELL/linux/cdshell -g
