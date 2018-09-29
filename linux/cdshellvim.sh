@@ -68,8 +68,8 @@ function edit_CDSHELL (){
 
 # 
 function atualiza_if_needed(){
-EXIT_CODE=0
-if [[ ! -z $1 ]] && [[ ! -z $2 ]] && [[ ! -z $3 ]]; then
+ EXIT_CODE=0
+ if [[ ! -n $1 ]] && [[ ! -n $2 ]] && [[ ! -n $3 ]]; then
 	echo -en "\n\n\t Use errado da atualiza_if_nedded (filename, file_current_date, _file_actual_date_to_verify)$normal \n\n"
 	FILENAME=$1
 	FILE_ACTUAL_MODIFICATION_DATE=$2
@@ -85,12 +85,15 @@ if [[ ! -z $1 ]] && [[ ! -z $2 ]] && [[ ! -z $3 ]]; then
 		return $EXIT_CODE
 	else
 		echo -en "\n\n\t Arquivo $FILENAME não alterado: $green RELAXA$normal\n\n"
-		EXIT_CODE=1
+		EXIT_CODE=0
 	fi
-else
+ else
 	echo -en "\n\n\t $red $alert (X) $normal Erro ao tentar atualiza_if_needed($FILENAME,$FILE_ACTUAL_MODIFICATION_DATE, $FILE_NEW_MODIFICATION_DATE_TO_VERIFY) $normal \n\n"
+	echo -en "\n\n\t Valores passados na funcao atualiza_if_needed($1,$2,$3)"
+	echo 
+	EXIT_CODE=1
+ fi
 
-fi
 return $EXIT_CODE
 }
 
