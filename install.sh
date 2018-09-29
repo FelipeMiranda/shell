@@ -347,4 +347,4 @@ cd /root/shell/push/
 # será invocado ao final da linux/notificar.sh
 
 
-which miniman > /dev/null && miniman cdshell
+which miniman  && miniman cdshell > /dev/null
