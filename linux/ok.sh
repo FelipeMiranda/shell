@@ -54,6 +54,7 @@ case $1 in
 		echo "\t Finalizado com status erro=$EERRO_CODE\n\n"
 		fi
 		cd - > /dev/null
+		echo -en "$green \n\n\tVersao enviada: " $(csshell -g) "\n$normal\n"
 		;;
 
 	
