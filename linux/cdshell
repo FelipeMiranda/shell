@@ -178,9 +178,6 @@ function runTests(){
 	return $EXIT_CODE
 }
 
-
-
-
 ########################################################################################################################
 #
 # @function:	Test Total(String filename, String current_File_Mofified_Date, String last_File_Modified_Data)
@@ -216,7 +213,9 @@ function runTestTotal(){
 # @desc: call function runTests() ; git add ; git commit ; push 
 #
 #########################################################################
-function runTestTotal(){
+function log(){
+	echo -en "\n\n Iniciando a funcao log()\n\n"
+}
 	
 
 #############################################################################################
