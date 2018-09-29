@@ -31,7 +31,7 @@ case $1 in
 		# Opcoes do comando original
 		"start" | "status" | "stop" | "restart" | "enable" | "disable" | "set-default" )	
 			# Faça isso... 
-			if [ ! -n $2 ]; then
+			if [ ! -z $2 ]; then
 				systemctl $1 $2
 			else
 			    	echo -en "$red Sem nome de serviço para ação.$normal \n"
