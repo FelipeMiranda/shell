@@ -36,21 +36,24 @@ case $1 in
 		"" )	
 		ERROR_CODE=0
 		if [ -n $1 ]; then
-			cd $CDSHELl
+		    echo "entrando na OK"
+			cd $CDSHELL
 			git add .
-			git commit -m "OK" * || ERROR_CODE=1
+			git commit -m "OK" . || ERROR_CODE=1
 			git push || ERROR_CODE=1
-			echo -en "\n\n\t $alert Feito o rr\n\n"
+			echo -en "\n\n\t $alert Feito o rr$normal \n\n"
 			if [ $? -eq 0 ]; then
 				echo -en "$green Tudo $alert CDSHELL$normal enviado com sucesso!\n\n"
 				ERROR_CODE=0
-				exit $ERROR_CODE;
+				exit $ERROR_CODE
 			else
 				echo -en "\n\n $red (X) Aconteceu um erro na execução do $0! \n\n"
-				exit 1;
+				ERROR_CODE=$?
+				exit $ERROR_CODE
 			fi
 		echo "\t Finalizado com status erro=$EERRO_CODE\n\n"
 		fi
+		cd - > /dev/null
 		;;
 
 	
