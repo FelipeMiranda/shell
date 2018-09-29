@@ -353,5 +353,7 @@ fi
 # Fechando com a chamada do teste em um screen separado, caso a instalacao esteja rolando em uma sessao de screen
 # será invocado ao final da linux/notificar.sh
 
-
-which miniman  && miniman cdshell > /dev/null
+type miniman >/dev/null
+if [ $? -eq 0 ]; then
+   miniman cdshell 
+fi
