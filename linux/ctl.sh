@@ -29,14 +29,20 @@ function help(){
 case $1 in
 
 		# Opcoes do comando original
-		"start" | "status" | "stop" | "restart" | "enable" | "disable" | "get-default" | "set-default" )	
+		"start" | "status" | "stop" | "restart" | "enable" | "disable" | "set-default" )	
 			# Faça isso... 
-			if [ ! -z $2 ]; then
+			if [ ! -n $2 ]; then
 				systemctl $1 $2
 			else
 			    	echo -en "$red Sem nome de serviço para ação.$normal \n"
 				help
 			fi
+		;;
+		
+		# Opcoes do systemctl que nao requer nenhum paramentro, fora a opcao.
+		"get-default" )
+			# so chame o systemctl sem passar parametro
+			systemctl $1
 		;;
 
 		# Help fajuto
