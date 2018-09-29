@@ -196,6 +196,7 @@ alias b64encode="echo -n | base64 <<<"
 alias TCP-syn="tcpdump -Annvi $IF_INTERNET 'tcp[13]==2'"
 
 alias ea="cdshellvim.sh --edit-alias"
+alias ecdshell="cdshellvim.sh --edit-cdshell"
 alias ee="cdshellvim.sh --edit-export"
 alias ev="cdshellvim.sh --edit-cdshellvim"
 alias ei="cdshellvim.sh --edit-install"
