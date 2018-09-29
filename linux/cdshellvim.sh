@@ -101,6 +101,17 @@ case $1 in
 			    	echo -en "\n\n\t Arquivo $CDSHELL/install.sh não alterado: $green RELAXA$normal\n\n"
 			fi
 		;;
+		
+		
+		# edit cdshell
+		"--edit-cdshell")
+			CDSHELL_FILE_DATE=$(stat -c %y $CDSHELL/linux/cdshell)
+			edit_CDSHELL
+			CDSHELL_FILE_DATE_POS_VI=$(stat -c %y $CDSHELL/linux/cdshell)
+	 		atualiza_CDSHELL_if_needed $CDSEHLL_FILE_DATE $CDSHELL_FILE_DATE_POS_VI
+	      ;;
+
+
 
 		"--edit-cdshellvim")	
 			cd / ; cd $CDSHELL
