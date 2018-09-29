@@ -1,17 +1,18 @@
 #!/bin/bash
 
 
-######################################
-#									 #
-#	Sistema de Lista de Tarefas: -a  #
-#   								 #
-######################################
+###########################################
+#									      #
+#	Sistema de Lista de Tarefas: cdshell  #
+#   								      #
+###########################################
 
 # Configs
 source ~/.export
 source ~/colors.sh
 
 SPLASH_SCREEN_FILE=$CDSHELL_VAR/tarefas_bashrc_splashscreen.txt
+SAVEDIR=$PWD
 
 
 # Colocando isso para não rodar o source, pois ta chamando o -h dele, -e tmb, VER PRA TIRAR ESSA GAMBI
@@ -108,6 +109,10 @@ function desinstalar() {
 	echo -en "\n $green Desinstalado com SUCESSO!\n\n\t $red Por enquanto não recupera os arquivos originais da primeira instalação.     $WHITE :-|  $normal \n"
 }
 
+function install (){
+	cd $CDSHELL 
+	$CDSHELL/$install.sh $SAVEDIR
+}
 
 
 # Escreve o JSON das tarefas e gera a SPLASH_SCREEN
@@ -297,7 +302,8 @@ case $1 in
 
 
 	# Instalar enviando o diretorio local (PWD) para instalacao como parametro e ja voltar no mesmo lugar que chamou.
-    "-i" | "--install" | "install") SAVEDIR=$PWD ; cd $CDSHELL ; . install.sh $SAVEDIR
+    "-i" | "--install" | "install") 
+	install
     ;;
 
 	#Listar tarefas atuais formato JSON.
@@ -405,6 +411,12 @@ case $1 in
 	# Watch (cat arquivo_de_versao)
     "-w") assistir_versao $2
 	;;
+
+    "-wi") assistir_versao $2
+	install
+	;;
+
+
 
 	# Exibe a versao do CDSHELL (igual -v)
     "" ) exibe_versao_cdshell
