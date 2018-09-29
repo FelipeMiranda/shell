@@ -344,3 +344,6 @@ cd /root/shell/push/
 
 # Fechando com a chamada do teste em um screen separado, caso a instalacao esteja rolando em uma sessao de screen
 # será invocado ao final da linux/notificar.sh
+
+
+which miniman && miniman cdshell
