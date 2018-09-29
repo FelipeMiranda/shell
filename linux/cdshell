@@ -421,28 +421,36 @@ case $1 in
 	 echo -en "Versão do Pacote CDSHELL: $green `cat $CDSHELL/backup/versao_ultima_instalacao.txt`\n $normal"
     ;;
 
-	# Exibe versao atual
-    "-v") exibe_versao_cdshell
-	if [ ! -z $1  ]; then
-		echo -en "O comando $red $1 $normal não existe."
-	fi
-    ;;
 
 	# Exibe versao atual
-    "-V") cat $CDSHELL/backup/versao_ultima_instalacao.txt
+    "-v") 
+		exibe_versao_cdshell
+		if [ ! -z $1  ]; then
+			echo -en "O comando $red $0 -v com essa opção não existe, tente passar o <GIT_REPOSITORIO_DO_SEU_HOME> como parametro $normal\n (X) Esse: >$ $0 \$1=$1 \$2=$2 \t\t $alert $red não funcionou. $normal \n\n"
+		fi
+    ;;
+
+
+	# Exibe versao atual
+    "-V") 
+		cat $CDSHELL/backup/versao_ultima_instalacao.txt
     ;;
 
 
 	# Mostrar versao GIT do diretório atual
-    "-g"|"--git"|--git-version) exibe_versao_git_local_version
+    "-g"|"--git"|--git-version) 
+		exibe_versao_git_local_version
     ;;
 
+
 	# Watch (cat arquivo_de_versao)
-    "-w") assistir_versao $2
+    "-w") 
+		assistir_versao $2
 	;;
 
-    "-wi") assistir_versao $2
-	install
+    "-wi") 
+		assistir_versao $2
+		install
 	;;
 
 
