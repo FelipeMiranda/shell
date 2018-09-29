@@ -179,7 +179,15 @@ function runTests(){
 }
 
 
-# Run - All Tests
+
+
+#######################################################################
+#
+# @name: function 	Test Total
+#
+# @desc: call function runTests() ; git add ; git commit ; push 
+#
+#########################################################################
 function runTestTotal(){
 	EXIT_CODE=0
 	CONT=0
@@ -196,9 +204,6 @@ function runTestTotal(){
 	EXIT_CODE=$?
 	return $EXIT_CODE
 }
-
-
-
 
 
 
