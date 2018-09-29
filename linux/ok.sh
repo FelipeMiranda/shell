@@ -34,8 +34,20 @@ case $1 in
 
 
 		"" )	
-			# Quando executa sem opcao, chama funcao versao acima.
-			versao
+		ERROR_CODE=0
+		if [ -n $1 ]; then
+			cd $CDSHELl
+			git add .
+			git commit -m "OK" * || ERROR_CODE=1
+			git push || ERROR_CODE=1
+			if [ $? -eq 0 ]; then
+				echo -en "$green Tudo $alert CDSHELL$normal enviado com sucesso!\n\n"
+				return 0;
+			else
+				echo -en "\n\n $red (X) Aconteceu um erro na execução do $0! \n\n"
+				return 1;
+			fi
+		echo "\t Finalizado com status erro=$EERRO_CODE\n\n"
 		;;
 
 	
