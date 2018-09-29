@@ -100,11 +100,13 @@ choco install wget
 
 fi
 
+
+if [[ ! -d $HOME/workspace ]] || [[ ! -d $HOME/help ]] || [[ ! -d $HOME/sistemas ]] || [[ ! -d $HOME/codigo-fonte ]]; then
+	echo -en "\n\n\t $REDALERT Primeira instalação... clonando tudo \n\t $> cloneall $normal\n\n\t"
+	cloneall > /dev/null
+fi
+
 # Chegou aqui, significa que executou tudo, entao cria o arquivo de sinalizacao da primeira instalacao executada.
 touch $CDSHELL_VAR/.cdshell_req_installed
 
 
-
-if [[ ! -d $HOME/workspace ]] || [[ ! -d %HOME/help ]] || [[ ! -d $HOME/sistemas ]] || [[ ! -d $HOME/codigo-fonte ]]; then
-	echo -en "\n\n\t $REDALERT Primeira instalação: $normal $> cloneall ...\n\n\t"
-fi
