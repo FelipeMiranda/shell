@@ -1,0 +1,4 @@
+---
+ansible_ip: '192.168.15.110'
+ansible_hostname: 'dev10'
+ansible_default_ipv4: '192.168.15.110'
