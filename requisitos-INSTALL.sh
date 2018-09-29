@@ -53,7 +53,7 @@ if [ $OSTYPE == "Linux" ]; then
 #	done
 	yum install $PACOTES -y
 
-	yum remove chrony NetworkManager -y
+	yum remove chrony -y
 
 
 	 ## NODE.JS INSTALL ##
