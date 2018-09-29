@@ -448,21 +448,24 @@ case $1 in
 		assistir_versao $2
 	;;
 
+
+	# Instala e depois ja chama o Watch: Chamado issa feature de Watch Install, mesmo que esse nome não seja muito adequado.
     "-wi") 
-		assistir_versao $2
 		install
+		assistir_versao $2
 	;;
 
 
-
 	# Exibe a versao do CDSHELL (igual -v)
-    "" ) exibe_versao_cdshell
+    "" ) 
+		exibe_versao_cdshell
     ;;
    
+
    	# Mensagem caso nao encontre a opção desejada.
-    * )echo -en "O comando $red $1 $normal não existe.\n"
+    * )
+		echo -en "O comando $red $1 $normal não existe.\n"
     ;;
+
+
 esac
-
-
-
