@@ -1,1 +1,1 @@
-cdshell -e
+cdshell --edit-alias
