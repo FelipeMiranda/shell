@@ -74,17 +74,18 @@ if [[ ! -z $1 ]] && [[ ! -z $2 ]] && [[ ! -z $3 ]]; then
 	FILENAME=$1
 	FILE_ACTUAL_MODIFICATION_DATE=$2
 	FILE_NEW_MODIFICATION_DATE_TO_VERIFY=$3
-	ALIAS_FILE_DATE_POS_VI=$(stat -c %y $FILENAME)
-	if [ $(echo "$ALIAS_FILE_DATE" | md5sum | cut -f1 -d' ') != $(echo "$ALIAS_FILE_DATE_POS_VI" |md5sum | cut -f1 -d' ' ) ]; then
-		echo -en "$FILENAME alterado $red *LOCALMENTE*$normal,   $alert NÃO ESQUEÇA $green de  $green ** COMMITar ** $WHITE-> $> ec $normal\n\n"
-		echo -en \" $FILENAME  -> $green Recarregado !!!$normal\n\"
-		echo -en \"Testar o \t $alert '$FILENAME $nromal' \t e sair($green ec $normal)\n\"
+	FILE_DATE_POS_VI=$(stat -c %y $FILENAME)
+	if [ $(echo $FILE_ACTUAL_MODIFICATION_DATE | md5sum | cut -f1 -d' ') != $(echo $FILE_NEW_MODIFICATION_DATE_TO_VERIFY |md5sum | cut -f1 -d' ' ) ]; then
+		echo -en "\n\n $FILENAME Foi alterado SIM, mas por enquanto somente $cyan ->LOCALMENTE<- $normal"  
+		echo -en "\n\n $red $alert NÃO ESQUEÇA $green de  $green ** COMMIT${normal}ar** com o comando do $WHITE CDSHELL $normal -> $yellow $> ec <ENTER> $normal\n\n"
+		echo -en "\n\n $FILENAME  -> $green Recarregado !!!$normal\n\"
+		echo -en "\n Testar o \t $alert $FILENAME $normal \t e sair($green ec $normal)\n\"
 		$CDSHELL/linux/cdshellvim.sh --commit
 		EXIT_CODE=$?
 		return $EXIT_CODE
 	else
 		echo -en "\n\n\t Arquivo $FILENAME não alterado: $green RELAXA$normal\n\n"
-		EXIT_CODE=222
+		EXIT_CODE=1
 	fi
 else
 	echo -en "\n\n\t $red $alert (X) $normal Erro ao tentar atualiza_if_needed($FILENAME,$FILE_ACTUAL_MODIFICATION_DATE, $FILE_NEW_MODIFICATION_DATE_TO_VERIFY) $normal \n\n"
