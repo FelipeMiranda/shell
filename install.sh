@@ -355,5 +355,8 @@ fi
 
 whereis miniman > /dev/null
 if [ $? -eq 0 ]; then
-   $CDSHELL/linux/miniman.sh cdshell 
+
+   $CDSHELL/linux/cdshell -h
+else
+    echo -en "Existe miniman, para help tente: $yellow $> miniman cdshell$normal \n\n" 
 fi
