@@ -124,6 +124,12 @@ echo -en .
 cp $CDSHELL/colors.sh $HOME/
 echo -en ..
 
+if [ -e $HOME/.ssh/config ] ; then cp -f $HOME/.ssh/config $BACKUP_DIR/ ; fi
+echo -en .
+mkdir -p $HOME/.ssh
+cp $CDSHELL/ssh.config $HOME/.ssh/config
+echo -en ..
+
 if [ -e /etc/inputrc ] ; then 
     cp -f /etc/inputrc $BACKUP_DIR/ ; 
 else
