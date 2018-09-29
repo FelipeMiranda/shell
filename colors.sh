@@ -18,6 +18,6 @@
                   #ep@\   \#ow'         #
                    #pa#=    \r#h'       #
                      #mia     \o_#      #
-#                 #g#iBW^j   .ozWB^j    #
+                  redalert=$red$alert   #
 #########################################	
-export red black cyan blue white magenta green yellow WHITE atention alert normal HIDE
+export red black cyan blue white magenta green yellow WHITE atention alert normal HIDE redalert
