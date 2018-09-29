@@ -19,7 +19,7 @@ source ~/shell/colors.sh
 ##########  Funcao       #######################
 function help(){
 
-    echo -en "$\n\n\t $alert Use: $green $0 $PARAMETERS $normal \n\n
+    echo -en "$\n\n\t $alert Use: $green $0 $PARAMETERS $normal \n\n"
 
 }
 
