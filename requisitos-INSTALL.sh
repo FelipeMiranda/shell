@@ -45,11 +45,12 @@ if [ $OSTYPE == "Linux" ]; then
 	fi
 
 
-	for PACOTE in $PACOTES ; do
-		echo "Instalando $PACOTE ..."
-		$PACK_INSTALL $PACOTE 
-		echo " $PACOTE instalado\n\n"
-	done
+#	for PACOTE in $PACOTES ; do
+#		echo "Instalando $PACOTE ..."
+#		$PACK_INSTALL $PACOTE 
+#		echo " $PACOTE instalado\n\n"
+#	done
+	yum install $PACOTES -y
 
 
 	 ## NODE.JS INSTALL ##
