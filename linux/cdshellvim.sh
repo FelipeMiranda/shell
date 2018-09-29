@@ -78,8 +78,8 @@ if [[ ! -z $1 ]] && [[ ! -z $2 ]] && [[ ! -z $3 ]]; then
 	if [ $(echo $FILE_ACTUAL_MODIFICATION_DATE | md5sum | cut -f1 -d' ') != $(echo $FILE_NEW_MODIFICATION_DATE_TO_VERIFY |md5sum | cut -f1 -d' ' ) ]; then
 		echo -en "\n\n $FILENAME Foi alterado SIM, mas por enquanto somente $cyan ->LOCALMENTE<- $normal"  
 		echo -en "\n\n $red $alert NÃO ESQUEÇA $green de  $green ** COMMIT${normal}ar** com o comando do $WHITE CDSHELL $normal -> $yellow $> ec <ENTER> $normal\n\n"
-		echo -en "\n\n $FILENAME  -> $green Recarregado !!!$normal\n\"
-		echo -en "\n Testar o \t $alert $FILENAME $normal \t e sair($green ec $normal)\n\"
+		echo -en "\n\n $FILENAME  -> $green Recarregado !!!$normal\n"
+		echo -en "\n Testar o \t $alert $FILENAME $normal \t e sair($green ec $normal)\n"
 		$CDSHELL/linux/cdshellvim.sh --commit
 		EXIT_CODE=$?
 		return $EXIT_CODE
