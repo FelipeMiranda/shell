@@ -109,7 +109,7 @@ alias postflush='postqueue -f'
 alias scr='screen -x || screen'
 alias miniman='~/shell/linux/miniman.sh'
 alias rr=®
-alias ®="git config -l | grep -q core.repositoryformatversion ; if [ \$? == 0 ]; then pull; push ; else DIR=$PWD ; echo -en '\n\t $alert Stating rr(all) $normal \n\n' ; cloneall ; cds; echo -en '\t$yellow $alert $> rr (CDSHELL) $normal\n' ; pull ; push ; cdw; echo -en '\t$yellow $alert $> rr (WORKSPACE) $normal\n' ; pull; push; cdh; echo -en '\t$yellow $alert $> rr (HELP) $normal\n'  ; pull; push; cdc; echo -en '\t$yellow $alert $> rr (CODIGO-FONTE) $normal\n'  ; pull; push ; cd $DIR ; fi; if [ $? -ne 0 ]; then echo -en '\n\n\t $green $alert Sucesso: rr (all) $normal \n\n' " 
+alias ®="git config -l | grep -q core.repositoryformatversion ; if [ \$? == 0 ]; then pull; push ; else DIR=$PWD ; echo -en '\n\t $alert Starting rr(all) $normal \n\n' ; cloneall ; cds; echo -en '\t $yellow $alert $> rr (CDSHELL) $normal\n' ; pull ; push ; cdw; echo -en '\t$yellow $alert $> rr (WORKSPACE) $normal\n' ; pull; push; cdh; echo -en '\t$yellow $alert $> rr (HELP) $normal\n'  ; pull; push; cdc; echo -en '\t $yellow $alert $> rr (CODIGO-FONTE) $normal\n'  ; pull; push ; cd $DIR ; fi; if [ $? -ne 0 ]; then echo -en '\n\n\t $green $alert Sucesso: rr (all) $normal \n\n' ; else echo -en '\n\n$redalert (X) Erro - Houve algum erro durante o rr(all) $normal\n\n'; fi" 
 alias ®®="cdw && ® ; cds && ® ; cdh && ® ; cdc && ®"
 alias ¢=®
 alias R=®
