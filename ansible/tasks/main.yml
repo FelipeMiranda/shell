@@ -10,6 +10,8 @@
       - storage
       - mail
       - servidorpush
+      - dev1
+      - dev10
 
     resolv_nameservers:
       - 192.168.15.10
