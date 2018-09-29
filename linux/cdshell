@@ -181,13 +181,17 @@ function runTests(){
 
 
 
-#######################################################################
+########################################################################################################################
 #
-# @name: function 	Test Total
+# @function:	Test Total(String filename, String current_File_Mofified_Date, String last_File_Modified_Data)
+# @desc: 		Verifica se houve alterações após edição do arquivo e avisa para fazer (GIT COMMIT) 
+# @param:	 	filename 							-> 			Nome do Arquivo a ser verificado
+# @param:		current_File_Mofified_Date			-> 			Data da ultima modificao no arquivo antes de chamar seu EDITOR_PADRAO
+# @param:		last_File_Modified_Data				-> 			Data da modificação do arquivo depois da saida do EDITOR_PADRAO
 #
-# @desc: call function runTests() ; git add ; git commit ; push 
-#
-#########################################################################
+# @return: 		Retorna 0 caso sucesso, ou diferente disso para qualquer erro durante a execução: return $EXIT_CODE
+########################################################################################################################
+
 function runTestTotal(){
 	EXIT_CODE=0
 	CONT=0
@@ -205,7 +209,15 @@ function runTestTotal(){
 	return $EXIT_CODE
 }
 
-
+#######################################################################
+#
+# @name: log()
+#
+# @desc: call function runTests() ; git add ; git commit ; push 
+#
+#########################################################################
+function runTestTotal(){
+	
 
 #############################################################################################
 #                                          MAIN                                             #
