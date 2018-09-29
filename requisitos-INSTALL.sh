@@ -102,3 +102,9 @@ fi
 
 # Chegou aqui, significa que executou tudo, entao cria o arquivo de sinalizacao da primeira instalacao executada.
 touch $CDSHELL_VAR/.cdshell_req_installed
+
+
+
+if [[ ! -d $HOME/workspace ]] || [[ ! -d %HOME/help ]] || [[ ! -d $HOME/sistemas ]] || [[ ! -d $HOME/codigo-fonte ]]; then
+	echo -en "\n\n\t $redalert Primeira instalação: $> cloneall ...\n\n\t"
+fi
