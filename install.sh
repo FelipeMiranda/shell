@@ -337,10 +337,16 @@ else
 	echo -en "\nCriando diretório padrão /lib/node_modules para comportar variável $alert NODE_MODULES $normal\n"
 fi
 
-
+echo -en "\n\n $green Try executing: $> node deploy.js \$(cdshell -V) \n\n"
 # Avisando do DEPLOY VIA PUSH
 cd /root/shell/push/
-/usr/bin/node deploy.js $( /root/shell/linux/cdshell -V ) 
+/usr/bin/node deploy.js $( /root/shell/linux/cdshell -V )
+if [ $? -ne 0]; then
+    echo -en "\n\n\t (X) erro ao executar o DEPLOY PUSH NOTIFICATION $normal \n\n"
+else
+    echo -en "\n\n\t (OK) DEPLOY PUSH NOTIFICATION \t -> \t$green DONE $normal \n\n"
+fi
+
 #sleep 1 && kill -SIGTERM nodemon && exit 0
 
 # Fechando com a chamada do teste em um screen separado, caso a instalacao esteja rolando em uma sessao de screen
