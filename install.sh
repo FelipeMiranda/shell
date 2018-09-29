@@ -341,7 +341,8 @@ echo -en "\n\n $green Try executing: $> node deploy.js \$(cdshell -V) \n\n"
 # Avisando do DEPLOY VIA PUSH
 cd /root/shell/push/
 /usr/bin/node deploy.js $( /root/shell/linux/cdshell -V )
-if [ $? -ne 0]; then
+
+if [ $? -ne 0 ]; then
     echo -en "\n\n\t (X) erro ao executar o DEPLOY PUSH NOTIFICATION $normal \n\n"
 else
     echo -en "\n\n\t (OK) DEPLOY PUSH NOTIFICATION \t -> \t$green DONE $normal \n\n"
