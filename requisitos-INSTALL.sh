@@ -52,6 +52,8 @@ if [ $OSTYPE == "Linux" ]; then
 #	done
 	yum install $PACOTES -y
 
+	yum remove firewalld NetworkManager -y
+
 
 	 ## NODE.JS INSTALL ##
 	#/usr/bin/npm install nodemon ronn colors -g
