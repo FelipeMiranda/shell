@@ -1,6 +1,7 @@
 #!/bin/bash
 source ~/colors.sh
 source ~/.export
+source $CDSHELL/funcoes-cdshell.sh
 
 OSTYPE=`uname`
 PACOTES_LINUX="net-tools colordiff gcc gcc-dev ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop jq net-tools htop dialog python34 nodejs docker netcat tcpdump nmap tcl puppet ansible dig mc lsof bc bind-utils tmux  vim  bc  ntpdate "
@@ -103,7 +104,7 @@ fi
 
 if [[ ! -d $HOME/workspace ]] || [[ ! -d $HOME/help ]] || [[ ! -d $HOME/sistemas ]] || [[ ! -d $HOME/codigo-fonte ]]; then
 	echo -en "\n\n\t $REDALERT Primeira instalação... clonando tudo \n\t $> cloneall $normal\n\n\t"
-	cloneall > /dev/null
+	cd $HOME ; rr > /dev/null
 fi
 
 # Chegou aqui, significa que executou tudo, entao cria o arquivo de sinalizacao da primeira instalacao executada.
