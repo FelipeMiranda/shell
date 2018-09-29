@@ -189,12 +189,12 @@ alias b64decode="cat | base64 -d <<<"
 alias b64encode="echo -n | base64 <<<"
 alias TCP-syn="tcpdump -Annvi $IF_INTERNET 'tcp[13]==2'"
 
-alias ea="cdshellvim.sh --alias"
-alias ee="cdshellvim.sh --export"
-alias ec="cdshellvim.sh --commit"
-alias ei="cdshellvim.sh --edit-install"
-alias eh="cdshellvim.sh --help"
+alias ea="cdshellvim.sh --edit-alias"
+alias ee="cdshellvim.sh --edit-export"
 alias ev="cdshellvim.sh --edit-cdshellvim"
+alias ei="cdshellvim.sh --edit-install"
+alias ec="cdshellvim.sh --commit"
+alias eh="cdshellvim.sh --help"
 alias etodos="cdshellvim.sh --check-all"
 
 # DOCKER ALIAS

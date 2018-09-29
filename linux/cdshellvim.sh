@@ -59,7 +59,7 @@ function is_file_changed(){
 ################################################
 #############        MAIN       ################
 case $1 in
-		"--alias")	
+		"--edit-alias")	
 			ALIAS_FILE_DATE=$(stat -c %y ~/.alias)
 			# Faça isso... 
 			vim $HOME/.alias
@@ -76,7 +76,7 @@ case $1 in
 			fi
 		;;
 
-		"--export")	
+		"--edit-export")	
 			EXPORT_FILE_DATE=$(stat -c %y ~/.export)
 			# Faça isso... 
 			vim $HOME/.export
