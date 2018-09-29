@@ -40,7 +40,7 @@ case $1 in
 			git add .
 			git commit -m "OK" * || ERROR_CODE=1
 			git push || ERROR_CODE=1
-			echo "feito o rr"
+			echo -en "\n\n\t $alert Feito o rr\n\n"
 			if [ $? -eq 0 ]; then
 				echo -en "$green Tudo $alert CDSHELL$normal enviado com sucesso!\n\n"
 				ERROR_CODE=0
