@@ -302,8 +302,14 @@ case $1 in
 
 
 	# Instalar enviando o diretorio local (PWD) para instalacao como parametro e ja voltar no mesmo lugar que chamou.
+    "-log" | "--log" | "--last-install-log") 
+    	log
+	;;
+
+
+	# Instalar enviando o diretorio local (PWD) para instalacao como parametro e ja voltar no mesmo lugar que chamou.
     "-i" | "--install" | "install") 
-	install
+		install
     ;;
 
 	#Listar tarefas atuais formato JSON.
