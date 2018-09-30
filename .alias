@@ -28,7 +28,7 @@ alias ll='ls -l'
 alias pg='psauxgrep.sh'
 alias mp3='mplayer'
 alias tmessages='tail -f 100 /var/log/messages'
-alias +x='chmod +x' 
+alias +x='chmod +x'
 alias cd..='cd ..'
 alias cd-='cd -'
 alias cds='if [ $(pwd) == $CDSHELL ]; then cdshell ; else cd $CDSHELL ; fi'
@@ -213,5 +213,7 @@ alias dkk="dk --kill"
 alias dkr="dk --run"
 alias dkt="dk --top"
 
+#DEVOPS
+alias F11="echo $1 > ~/.F11.cmd"
 
 
