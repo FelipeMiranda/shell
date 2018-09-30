@@ -15,7 +15,7 @@ COMANDO=$(cat ~/.F11.cmd)
 
 
 #Executando
-echo -en "\n  $alert - F11 Launcher -${normal}\n\n\n\n${yellow}  # COMANDO #\n\n$WHITE[ $COMANDO ]$normal\n\n\n\n$cyan  # RESULTADO #$WHITE"
+echo -en "\n  $alert - F11 Launcher -${normal}\n\n\n\n${yellow}  # COMANDO #\n\n$WHITE[ $COMANDO ]$normal\n\n\n\n$cyan  # RESULTADO #\n$WHITE"
 $COMANDO
 
 
