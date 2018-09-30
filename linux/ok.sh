@@ -37,7 +37,9 @@ case $1 in
 		ERROR_CODE=0
 		if [ -n $1 ]; then
 		    echo "entrando na OK"
-			cd $CDSHELL
+			
+			#cd $CDSHELL
+			
 			git add .
 			git commit -m "OK" . || ERROR_CODE=1
 			git push || ERROR_CODE=1
