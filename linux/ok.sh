@@ -45,7 +45,7 @@ case $1 in
 			git push || ERROR_CODE=1
 			echo -en "\n\n\t $alert Feito o rr$normal \n\n"
 			if [ $? -eq 0 ]; then
-				echo -en "$green Tudo $alert CDSHELL$normal enviado com sucesso!\n\n"
+				echo -en "$green Todo $atention $(git config remote.origin.url | cut -d '/' -f2- | cut -d'.' -f1) $normal enviado com sucesso!\n\n"
 				ERROR_CODE=0
 				exit $ERROR_CODE
 			else
