@@ -256,6 +256,7 @@ if [ ! -e /etc/bash_completion.d ]; then
 	mkdir -p /etc/bash_completion.d
 fi
 echo -en "\n Configurando$yellow bash_completion.d$normal ........"
+mkdir -p /etc/bash_completion.d/
 cp $CDSHELL/etc+bash_completion.d+git /etc/bash_completion.d/git
 echo -en "....... $green Done $normal\n"
 
