@@ -21,6 +21,8 @@ git config --global user.name Rafael Castro
 git config credential.helper store
 git config --global push.default simple
 
+
+
 # Configurando Variável do CDSHELL
 if [ ! -e $CDSHELL ]; then
 	echo -en "\n Caminho para instalar seu $alert CDSHELL$normal: $cyan"
