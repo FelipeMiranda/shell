@@ -272,7 +272,7 @@ echo -en ".. $green Done $normal\n"
 if [ ! -e $CDSHELL_VAR/.cdshell_req_installed ]; then
 
 	#Se nao exister o link para o bash no /bin entao cria ne, sempre!!!
-	if [ ! -e /bin/bash ];then
+	if [ ! -e /bin/bash ]; then
 		ln -s /usr/local/bin/bash /bin/bash
 	fi
 	$CDSHELL/requisitos-INSTALL.sh
