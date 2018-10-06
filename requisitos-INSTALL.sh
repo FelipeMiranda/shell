@@ -18,12 +18,14 @@ if [ $OSTYPE == "Linux" ]; then
 	if [ -e /etc/os-release ]; then
 		cat /etc/os-release | grep CentOS -q
 		if [ $? == 0 ]; then
+		      echo -en "$green ** $atention RED HAT -$yellow like found $green ** $normal\n\n"
 		    	FLAVOR=redhat
-		    	PACK_MANAGER="yum"
+		    	PACK_MANAGER="yum -y"
 		fi
 		
 		cat /etc/os-release | grep Zorin -q
 		if [ $? == 0 ]; then
+		      echo -en "$green ** $atention DEBIAN -$yellow like found $green ** $normal\n\n"
 		      FLAVOR=debian
 			PACK_MANAGER="apt" 
 		fi
@@ -50,15 +52,37 @@ if [ $OSTYPE == "Linux" ]; then
 
 
 	# INSTALANDO OS PACOTES
-	$PACK_MANAGER install $PACOTES -y
+	echo -en "$alert Iniciando: $yellow ($PACK_MANAGER install $PACOTES ) $normal \n\n"
 
-	if [[ $FLAVOR == 'redhat' ]]; then
+	case $FLAVOR in
+	
+	"redhat" ) 
 		echo -en "$alert Como estou num RedHat like, vou remover o chrony... $normal"
 		PACK_MANAGER remove chrony -y >> /dev/null
+		
 		if [ $? == 0 ]; then
 			echo -en "... Done -> Chrony removido com $green sucesso! $normal \n\n"
 		fi
-	fi
+		
+		$PACK_MANAGER install $PACOTES
+	;;
+
+	"debian" )
+		#echo -en "$alert Como estou num Debian like, vou remover o chrony... $normal"
+		#PACK_MANAGER remove chrony -y >> /dev/null
+		#if [ $? == 0 ]; then
+		#	echo -en "... Done -> Chrony removido com $green sucesso! $normal \n\n"
+		#fi
+		
+		$PACK_MANAGER install $PACOTES
+		if [ $? == 0 ]; then
+			echo -en " $atention apt install ...... finalizado com $green sucesso! $normal \n\n"
+		else
+			echo -en " $alert (X) $atention apt install ...... finalizado com $red ERRO! $normal \n\n"
+		fi
+
+	;;
+
 
 
 	## NODE.JS INSTALL ##
