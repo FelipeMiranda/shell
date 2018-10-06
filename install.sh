@@ -277,9 +277,11 @@ if [ ! -e $CDSHELL_VAR/.cdshell_req_installed ]; then
 	if [ ! -e /bin/bash ]; then
 		ln -s /usr/local/bin/bash /bin/bash
 	fi
+	
 	chmod +x $CDSHELL/requisitos-INSTALL.sh
 	$CDSHELL/requisitos-INSTALL.sh
-	if [ $? == 0 ]]; then
+
+	if [ $? == 0 ]; then
 	    echo -en "$green Requisitos-INSTALL.sh....... executada com sucesso! $normal \n\n"
 	else
 	    echo -en "$alert (X) $red Requisitos-INSTALL.sh....... executada com ERRO! $normal \n\n"
