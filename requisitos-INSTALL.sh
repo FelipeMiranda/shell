@@ -58,8 +58,8 @@ if [ $OSTYPE == "Linux" ]; then
 	    "redhat" ) 
 		    $PACK_MANAGER install -y epel-release > /dev/null
 		    
-		    echo -en "$alert Como estou num RedHat like, vou remover o chrony... $normal"
-		    $PACK_MANAGER remove chrony -y > /dev/null
+		    echo -en "$alert Como estou num RedHat like, vou remover o chrony, firewalld ... $normal\n\n"
+		    $PACK_MANAGER remove chrony firewalld -y > /dev/null
 		    
 		    if [ $? == 0 ]; then
 			    echo -en "... Done -> Chrony removido com $green sucesso! $normal \n\n"
