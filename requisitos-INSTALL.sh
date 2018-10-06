@@ -51,15 +51,15 @@ if [ $OSTYPE == "Linux" ]; then
 
 
 	# INSTALANDO OS PACOTES
-	echo -en "$alert Iniciando: $yellow ($PACK_MANAGER install $PACOTES ) $normal \n\n"
+	echo -en "\n\n$alert Iniciando PACK_INSTALL: $normal $yellow ($PACK_MANAGER install $PACOTES ) $normal \n\n"
 
 	case $FLAVOR in
 	
 	    "redhat" ) 
 		    $PACK_MANAGER install -y epel-release > /dev/null
 		    
-		    echo -en "$alert Como estou num RedHat like, vou remover o chrony, firewalld ... $normal\n\n"
-		    $PACK_MANAGER remove chrony firewalld -y > /dev/null
+		    echo -en "$alert Como estou num RedHat like, vou remover o chrony... $normal\n\n"
+		    $PACK_MANAGER remove chrony -y > /dev/null
 		    
 		    if [ $? == 0 ]; then
 			    echo -en "... Done -> Chrony removido com $green sucesso! $normal \n\n"
