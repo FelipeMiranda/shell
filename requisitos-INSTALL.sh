@@ -40,7 +40,6 @@ if [ $OSTYPE == "Linux" ]; then
 	echo -en "\n\n\n Vamos instalar os requisitos: $green $PACOTES $normal"
 	echo -en "\n\n\t Pressione qualquer tecla para continuar ou $yellow 'q'$normal para $WHITE cancelar$normal ... \n\n\tcontinuando em ...\n"
 
-	$PACK_MANAGER install -y epel-release
 
 	for TEMPO in {3..0} ; do
 		echo -en "\r\t$TEMPO segundos"
@@ -57,8 +56,10 @@ if [ $OSTYPE == "Linux" ]; then
 	case $FLAVOR in
 	
 	    "redhat" ) 
+		    $PACK_MANAGER install -y epel-release > /dev/null
+		    
 		    echo -en "$alert Como estou num RedHat like, vou remover o chrony... $normal"
-		    PACK_MANAGER remove chrony -y >> /dev/null
+		    $PACK_MANAGER remove chrony -y > /dev/null
 		    
 		    if [ $? == 0 ]; then
 			    echo -en "... Done -> Chrony removido com $green sucesso! $normal \n\n"
@@ -76,7 +77,7 @@ if [ $OSTYPE == "Linux" ]; then
 
 			for PACOTE in $PACOTES ; do
 				echo -en "Instalando $PACOTE ..."
-			      $PACK_MANAGER install $PACOTE #> /dev/null
+			      $PACK_MANAGER install $PACOTE > /dev/null
 				echo -en "........ $atention $PACOTE $green instalado $normal \n\n"
 			done
 
