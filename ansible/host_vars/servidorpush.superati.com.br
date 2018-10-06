@@ -1,0 +1,4 @@
+---
+ansible_ip: '127.0.0.1'
+ansible_hostname: 'servidorpush.superati.com.br'
+ansible_default_ipv4: '127.0.0.1'
