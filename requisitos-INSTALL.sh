@@ -65,7 +65,13 @@ if [ $OSTYPE == "Linux" ]; then
 			    echo -en "... Done -> Chrony removido com $green sucesso! $normal \n\n"
 		    fi
 		    
-		    $PACK_MANAGER install $PACOTES
+		    $PACK_MANAGER install $PACOTES > /dev/null
+		    if [ $? == 0 ]; then
+			    echo -en " $atention YUM INSTALL ...... finalizado com $green sucesso! $normal \n\n"
+		    else
+			    echo -en " $alert (X) $atention YUM INSTALL ...... finalizado com $red ERRO! $normal \n\n"
+		    fi
+
 	    ;;
 
 	    "debian" )
@@ -84,9 +90,9 @@ if [ $OSTYPE == "Linux" ]; then
 		    
 		    $PACK_MANAGER install $PACOTES
 		    if [ $? == 0 ]; then
-			    echo -en " $atention apt install ...... finalizado com $green sucesso! $normal \n\n"
+			    echo -en " $atention APT-GET INSTALL ...... finalizado com $green sucesso! $normal \n\n"
 		    else
-			    echo -en " $alert (X) $atention apt install ...... finalizado com $red ERRO! $normal \n\n"
+			    echo -en " $alert (X) $atention APT-GET INSTALL ...... finalizado com $red ERRO! $normal \n\n"
 		    fi
 	    ;;
 
