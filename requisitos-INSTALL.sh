@@ -7,17 +7,36 @@ OSTYPE=`uname`
 PACOTES_LINUX="net-tools colordiff gcc gcc-dev ruby-devel rubygems screen vim lynx iftop ifstatus ronn htop jq net-tools htop dialog python34 nodejs docker netcat tcpdump nmap tcl puppet ansible dig mc lsof bc bind-utils tmux bc ntpdate nmon wget screen mlocate cifs-utils zip  unzip "
 PACOTES_OPENBSD="git vim-7.4.475-no_x11-ruby lynx iftop ngrep bash colorls wget autoconf-2.69p1 automake-1.9.6p11"
 PACOTES_FREEBSD="git vim lynx iftop ngrep bash colorls wget autoconf automake binutils"
+PACK_MANAGER=yum
 
 # Mensagem de inicio
 echo -en "\n $alert Primeira instalação sendo executada $normal"
 
 ############ Linux Install ##############################
 if [ $OSTYPE == "Linux" ]; then
+
+	if [ -e /etc/os-release ]; then
+		cat /etc/os-release | grep CentOS -q
+		if [ $? == 0 ]; then
+		    	PACK_MANAGER="yum"
+		fi
+		
+		cat /etc/os-release | grep Zorin -q
+		if [ $? == 0 ]; then
+			PACK_MANAGER="apt" 
+		fi
+	else
+	    echo -en "\n\n $red Nao foi possível determinar o S.O.$normal \n\n"
+	    echo -en "$alert(X) $red Saindo por nao determinar o PACK_MANAGER $normal \n\n"
+	    exit 1
+	fi
+
+
 	PACOTES=$PACOTES_LINUX
 	echo -en "\n\n\n Vamos instalar os requisitos: $green $PACOTES $normal"
 	echo -en "\n\n\t Pressione qualquer tecla para continuar ou $yellow 'q'$normal para $WHITE cancelar$normal ... \n\n\tcontinuando em ...\n"
 
-	yum install -y epel-release
+	$PACK_MANAGER install -y epel-release
 
 	for TEMPO in {3..0} ; do
 		echo -en "\r\t$TEMPO segundos"
@@ -28,22 +47,6 @@ if [ $OSTYPE == "Linux" ]; then
 	done
 
 	
-	if [ -e /etc/os-release ]; then
-		
-		cat /etc/os-release | grep CentOS -q
-		if [ $? == 0 ]; then
-		    	PACK_INSTALL="yum -y install"
-		fi
-		
-		cat /etc/os-release | grep Zorin -q
-		if [ $? == 0 ]; then
-			PACK_INSTALL="apt install" 
-		fi
-	else
-	    echo -en "\n\n $red Nao foi possível determinar o S.O.$normal \n\n"
-	    exit 1
-	fi
-
 
 #	for PACOTE in $PACOTES ; do
 #		echo "Instalando $PACOTE ..."
