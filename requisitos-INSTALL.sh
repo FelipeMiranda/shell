@@ -27,7 +27,7 @@ if [ $OSTYPE == "Linux" ]; then
 		if [ $? == 0 ]; then
 		      echo -en "$green ** $atention DEBIAN -$yellow like found $green ** $normal\n\n"
 		      FLAVOR=debian
-			PACK_MANAGER="apt" 
+			PACK_MANAGER="apt -y" 
 		fi
 	else
 	    echo -en "\n\n $red Nao foi possível determinar o S.O.$normal \n\n"
@@ -56,39 +56,50 @@ if [ $OSTYPE == "Linux" ]; then
 
 	case $FLAVOR in
 	
-	"redhat" ) 
-		echo -en "$alert Como estou num RedHat like, vou remover o chrony... $normal"
-		PACK_MANAGER remove chrony -y >> /dev/null
-		
-		if [ $? == 0 ]; then
-			echo -en "... Done -> Chrony removido com $green sucesso! $normal \n\n"
-		fi
-		
-		$PACK_MANAGER install $PACOTES
-	;;
+	    "redhat" ) 
+		    echo -en "$alert Como estou num RedHat like, vou remover o chrony... $normal"
+		    PACK_MANAGER remove chrony -y >> /dev/null
+		    
+		    if [ $? == 0 ]; then
+			    echo -en "... Done -> Chrony removido com $green sucesso! $normal \n\n"
+		    fi
+		    
+		    $PACK_MANAGER install $PACOTES
+	    ;;
 
-	"debian" )
-		#echo -en "$alert Como estou num Debian like, vou remover o chrony... $normal"
-		#PACK_MANAGER remove chrony -y >> /dev/null
-		#if [ $? == 0 ]; then
-		#	echo -en "... Done -> Chrony removido com $green sucesso! $normal \n\n"
-		#fi
-		
-		$PACK_MANAGER install $PACOTES
-		if [ $? == 0 ]; then
-			echo -en " $atention apt install ...... finalizado com $green sucesso! $normal \n\n"
-		else
-			echo -en " $alert (X) $atention apt install ...... finalizado com $red ERRO! $normal \n\n"
-		fi
+	    "debian" )
+		    #echo -en "$alert Como estou num Debian like, vou remover o chrony... $normal"
+		    #PACK_MANAGER remove chrony -y >> /dev/null
+		    #if [ $? == 0 ]; then
+		    #	echo -en "... Done -> Chrony removido com $green sucesso! $normal \n\n"
+		    #fi
 
-	;;
+			for PACOTE in $PACOTES ; do
+				echo -en "Instalando $PACOTE ..."
+			      $PACK_MANAGER install $PACOTE #> /dev/null
+				echo -en "........ $atention $PACOTE $green instalado $normal \n\n"
+			done
 
+		    
+		    $PACK_MANAGER install $PACOTES
+		    if [ $? == 0 ]; then
+			    echo -en " $atention apt install ...... finalizado com $green sucesso! $normal \n\n"
+		    else
+			    echo -en " $alert (X) $atention apt install ...... finalizado com $red ERRO! $normal \n\n"
+		    fi
+	    ;;
 
+	    * )
+		    echo -en "Passando no case de Opcao de FLAVOR GERAL: * \n\n"
+	    ;;
+
+	esac
+
+fi
 
 	## NODE.JS INSTALL ##
 	#/usr/bin/npm install nodemon ronn colors -g
 
-fi
 
 ############ OpenBSD Install ############################
 if [ $OSTYPE == "OpenBSD" ]; then
