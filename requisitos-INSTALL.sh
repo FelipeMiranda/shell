@@ -11,7 +11,6 @@ PACOTES_FREEBSD="git vim lynx iftop ngrep bash colorls wget autoconf automake bi
 # Mensagem de inicio
 echo -en "\n $alert Primeira instalação sendo executada $normal"
 
-
 ############ Linux Install ##############################
 if [ $OSTYPE == "Linux" ]; then
 	PACOTES=$PACOTES_LINUX
