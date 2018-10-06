@@ -18,11 +18,13 @@ if [ $OSTYPE == "Linux" ]; then
 	if [ -e /etc/os-release ]; then
 		cat /etc/os-release | grep CentOS -q
 		if [ $? == 0 ]; then
+		    	FLAVOR=redhat
 		    	PACK_MANAGER="yum"
 		fi
 		
 		cat /etc/os-release | grep Zorin -q
 		if [ $? == 0 ]; then
+		      FLAVOR=debian
 			PACK_MANAGER="apt" 
 		fi
 	else
@@ -46,23 +48,22 @@ if [ $OSTYPE == "Linux" ]; then
 		fi
 	done
 
-	
 
-#	for PACOTE in $PACOTES ; do
-#		echo "Instalando $PACOTE ..."
-#		$PACK_INSTALL $PACOTE 
-#		echo " $PACOTE instalado\n\n"
-#	done
-	yum install $PACOTES -y
+	# INSTALANDO OS PACOTES
+	$PACK_MANAGER install $PACOTES -y
 
-	yum remove chrony -y
+	if [[ $FLAVOR == 'redhat' ]]; then
+		echo -en "$alert Como estou num RedHat like, vou remover o chrony... $normal"
+		PACK_MANAGER remove chrony -y >> /dev/null
+		if [ $? == 0 ]; then
+			echo -en "... Done -> Chrony removido com $green sucesso! $normal \n\n"
+		fi
+	fi
 
 
-	 ## NODE.JS INSTALL ##
+	## NODE.JS INSTALL ##
 	#/usr/bin/npm install nodemon ronn colors -g
 
-		#CentOS 6.6
-	#   rpm -hiv http://pkgs.repoforge.org/txt2tags/txt2tags-2.6-1.el6.rf.noarch.rpm
 fi
 
 ############ OpenBSD Install ############################
