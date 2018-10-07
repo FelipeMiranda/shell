@@ -4,7 +4,7 @@
 	const io = require("socket.io-client")
 	const { spawn } = require('child_process');
 
-	var socket = io.connect('http://servidorpush:3000')
+	var socket = io.connect('http://servidorpush.superati.com.br:3000')
 
 	//buttons and inputs
 	var message = "SHELL"
