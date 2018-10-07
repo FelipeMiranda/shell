@@ -81,6 +81,8 @@ if [ $OSTYPE == "Linux" ]; then
 		    #	echo -en "... Done -> Chrony removido com $green sucesso! $normal \n\n"
 		    #fi
 
+		    	apt-get install nodejs -y
+
 			for PACOTE in $PACOTES ; do
 				echo -en "Instalando $PACOTE ..."
 			      $PACK_MANAGER install $PACOTE > /dev/null
