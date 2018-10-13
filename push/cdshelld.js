@@ -23,7 +23,7 @@
 		console.log("message: " + data.username + ": " + data.message )
 		if ( data.message != version) { 
 			const { exec } = require('child_process');
-			exec('cd /root/shell ; git pull ; nohup  /root/shell/push-install.sh &', (err, stdout, stderr) => {
+			exec('cd /root/shell ; git pull ; nohup  /root/shell/beos-install.sh &', (err, stdout, stderr) => {
 				console.log("Instalado com sucesso: " + data.message);
 //				socket.disconnect();
 			});
