@@ -15,7 +15,7 @@
 	var feedback = "#feedback"
 
 	//Emit message
-		socket.emit('message', {message : message })
+//		socket.emit('message', {message : message })
 
 	//Listen on new_message
 	socket.on("message", (data) => {
@@ -23,9 +23,8 @@
 		console.log("message: " + data.username + ": " + data.message )
 		if ( data.message != version) { 
 			const { exec } = require('child_process');
-			exec('cd /root/shell ; git pull ; nohup  /root/shell/beos-install.sh &', (err, stdout, stderr) => {
+			exec('cd /root/shell ; git pull ; nohup  /root/shell/push-install.sh &', (err, stdout, stderr) => {
 				console.log("Instalado com sucesso: " + data.message);
-//				socket.disconnect();
 			});
 			console.log("Conectado no servidor...");
 		}
@@ -35,9 +34,20 @@
 		
 	})
 
+	socket.on("beos", (data) => {
+        var version = ""
+		console.log("beos: " + data.username + ": " + data.message )
+		if ( data.message != version) { 
+			const { exec } = require('child_process');
+			exec('cd /root/shell ; git pull ; nohup  /root/shell/beos-install.sh &', (err, stdout, stderr) => {
+				console.log("Instalado com sucesso: " + data.message);
+			});
+			console.log("Conectado no servidor...");
+		}
+	})
 
 	//Emit a username
-		socket.emit('username', {username : socket.username }) 
+//		socket.emit('username', {username : socket.username }) 
 
 
 
