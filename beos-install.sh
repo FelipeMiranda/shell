@@ -15,6 +15,7 @@ START=$(date +%s)
 #git config credential.helper store
 
 cd /root/sistemas/bEOS
+#cd /root/sistemas/projects/webserver
 git pull
 docker build -t webserver .
 systemctl restart docker
