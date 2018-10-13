@@ -29,17 +29,17 @@
 			console.log("Conectado no servidor...");
 		}
 	})
-	socket.on("username", (data) => {
-		console.log("username: " + data.username )
-		
-	})
+//	socket.on("username", (data) => {
+//		console.log("username: " + data.username )
+//		
+//	})
 
 	socket.on("beos", (data) => {
         var version = ""
 		console.log("beos: " + data.username + ": " + data.message )
 		if ( data.message != version) { 
 			const { exec } = require('child_process');
-			exec('cd /root/shell ; git pull ; nohup  /root/shell/beos-install.sh &', (err, stdout, stderr) => {
+			exec('cd /root/sistemas/bEOS ; git pull ; nohup  /root/shell/beos-install.sh &', (err, stdout, stderr) => {
 				console.log("Instalado com sucesso: " + data.message);
 			});
 			console.log("Conectado no servidor...");
