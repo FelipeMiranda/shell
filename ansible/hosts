@@ -12,8 +12,8 @@ linux 			ansible_ssh_host=192.168.15.15
 webmail 		ansible_ssh_host=192.168.15.20
 storage			ansible_ssh_host=192.168.15.30
 devops			ansible_ssh_host=192.168.15.50
-servidorpush	ansible_ssh_host=192.168.15.254
-servidorpush.superati.com.br	ansible_ssh_host=127.0.0.1
+servidorpush	ansible_ssh_host=167.99.173.26
+servidorpush.superati.com.br	ansible_ssh_host=167.99.173.26
 
 mail 			ansible_ssh_host=192.168.1.254
 esx 			ansible_ssh_host=192.168.1.55
