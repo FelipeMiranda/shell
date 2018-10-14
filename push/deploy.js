@@ -12,7 +12,7 @@
 		socket.emit('username', {username : host }) 
 
 	//Emit message
-		socket.emit('message', {message : message })
+		socket.emit('message', {message : 'deploy' })
 		socket.emit('sair', {message : "sair" })
 		
 		socket.on("sair", (data) => {

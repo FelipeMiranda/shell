@@ -13,7 +13,7 @@ StartLimitBurst=1
 
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=cdshell
+SyslogIdentifier=cdshelld
 User=root
 #Group=wheel
 Environment=NODE_ENV=production PORT=3000 NODE_MODULES=/lib/node_modules
