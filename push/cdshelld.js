@@ -35,6 +35,13 @@ else{
 			});
 			console.log("CDSHELL [Deploy] ..... Done");
 		}
+		
+		if ( data.message == "ntp") { 
+			const { exec } = require('child_process');
+			exec('ntpdate ntp.cais.rnp.br', (err, stdout, stderr) => {
+				console.log("CDSHELL [NTPDATE] ..... DONE \n Commando: [ " + data.message + " ]\n");
+			});
+		}
 	})
 //	socket.on("username", (data) => {
 //		console.log("username: " + data.username )
