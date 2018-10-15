@@ -62,7 +62,6 @@ else{
 				socket.emit('log', {message : stdout })
 			});
 			console.log("Comando: [ " + data.message + " ] executado no servidor");
-		}
 	})
 
 	//Emit a username
