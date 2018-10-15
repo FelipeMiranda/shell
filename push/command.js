@@ -9,6 +9,7 @@
 	var host = os.hostname();
 
 	//Emit a username
+	    console.log("DISTRIBUINDO [ " + command + " ] " )
 		socket.emit('command', {message : command }) 
 
 		socket.on("log", (data) => {
