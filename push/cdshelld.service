@@ -1,6 +1,6 @@
 [Unit]
 After=network.service
-Description= CDSHELL - AutoUpdate
+Description= CDSHELLD - Client Service
 
 [Service]
 ExecStart=/usr/bin/node cdshelld.js 1.1.1 >> /tmp/cdshell.log
@@ -15,7 +15,6 @@ StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=cdshelld
 User=root
-#Group=wheel
 Environment=NODE_ENV=production PORT=3000 NODE_MODULES=/lib/node_modules
 
 [Install]
