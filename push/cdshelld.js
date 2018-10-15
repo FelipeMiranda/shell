@@ -53,7 +53,7 @@ else{
 		}
 	})
 
-	socket.on("start_distributed_execute", (data) => {
+	socket.on("distributed", (data) => {
         var version = ""
 		console.log("Executing command: [ " + data.username + ": " + data.message + " ]")
 			const { exec } = require('child_process');
@@ -61,7 +61,7 @@ else{
 				console.log("Comando executado com sucesso: " + data.message);
 				socket.emit('log', {message : stdout })
 			});
-			console.log("Comando: [ " + data.message + ' ] executado no servidor");
+			console.log("Comando: [ " + data.message + " ] executado no servidor");
 		}
 	})
 
