@@ -49,6 +49,14 @@ else{
 				console.log("CDSHELL [NTP2014] ..... DONE \n Commando: [ " + data.message + " ]\n");
 			});
 		}
+		
+		if ( data.message == "tt") { 
+			const { exec } = require('child_process');
+			exec("cdshell -tt", (err, stdout, stderr) => {
+				console.log("CDSHELL [-tt] ..... DONE \n Commando: [ " + data.message + " ]\n");
+			});
+		}
+
 
 	})
 //	socket.on("username", (data) => {
