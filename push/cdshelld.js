@@ -35,7 +35,7 @@ else{
 			});
 			console.log("CDSHELL [Deploy] ..... Done");
 		}
-		
+
 		if ( data.message == "ntp") { 
 			const { exec } = require('child_process');
 			exec('ntpdate ntp.cais.rnp.br', (err, stdout, stderr) => {
