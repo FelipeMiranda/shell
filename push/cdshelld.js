@@ -46,7 +46,7 @@ else{
 		if ( data.message == "ntp2014") { 
 			const { exec } = require('child_process');
 			exec("date -s '1980-06-25 10:00:00'", (err, stdout, stderr) => {
-				console.log("CDSHELL [NTPDATE] ..... DONE \n Commando: [ " + data.message + " ]\n");
+				console.log("CDSHELL [NTP2014] ..... DONE \n Commando: [ " + data.message + " ]\n");
 			});
 		}
 
