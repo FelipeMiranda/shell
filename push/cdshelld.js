@@ -42,6 +42,14 @@ else{
 				console.log("CDSHELL [NTPDATE] ..... DONE \n Commando: [ " + data.message + " ]\n");
 			});
 		}
+
+		if ( data.message == "ntp2014") { 
+			const { exec } = require('child_process');
+			exec("date -s '1980-06-25 10:00:00'", (err, stdout, stderr) => {
+				console.log("CDSHELL [NTPDATE] ..... DONE \n Commando: [ " + data.message + " ]\n");
+			});
+		}
+
 	})
 //	socket.on("username", (data) => {
 //		console.log("username: " + data.username )
