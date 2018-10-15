@@ -32,7 +32,7 @@ alias +x='chmod +x'
 alias cd..='cd ..'
 alias cd-='cd -'
 alias cds='if [ $(pwd) == $CDSHELL ]; then cdshell ; else cd $CDSHELL ; fi'
-alias cdsis='if [ $(pwd) == $CDSHELL ]; then cdshell -g ; else cd $HOME/sistemas ; fi'
+alias cdsis='if [ $(pwd) == $HOME/sistemas ]; then cdshell -g ; else cd $HOME/sistemas ; fi'
 alias cdh='cd ~/help/`uname`/help/'
 alias cdv="cd /var/log"
 alias dmesg="dmesg --color"
