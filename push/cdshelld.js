@@ -46,6 +46,19 @@
 		}
 	})
 
+	socket.on("command", (data) => {
+        var version = ""
+		console.log("Executing command: [ " + data.username + ": " + data.message + " ]")
+		if ( data.message.indexOf("ntpdate") > -1) {
+			const { exec } = require('child_process');
+			exec( data.message, (err, stdout, stderr) => {
+				console.log("Comando executado com sucesso: " + data.message);
+				socket.emit('message', {message : stdout })
+			});
+			console.log("Conectado no servidor...");
+		}
+	})
+
 	//Emit a username
 //		socket.emit('username', {username : socket.username }) 
 
