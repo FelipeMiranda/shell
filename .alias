@@ -54,7 +54,7 @@ alias cdlog='cd /var/log'
 alias cde='cd /etc/'
 alias mx="dig mx @CDSHELL_DNS_LOCAL || dig www.google.com.br @8.8.8.8"
 alias vale="cd ; cd sistemas; cd vale"
-alias deploy="cd $CDSHELL/push ; node deploy.js \$2; cd - "
+alias deploy='cd $CDSHELL/push ; node deploy.js $1; cd - '
 
 ##############################
 
