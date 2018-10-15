@@ -3,15 +3,23 @@
 source $HOME/.alias
 source $CDSHELL/colors.sh
 
+function show_quit_message(){
+	echo -en "Pressione" $green q $normal "para sair"
+}
+
 
 if [ -z $1 ] ; then
 	echo -en "Digite algum comando para $red eternizar !!! $normal uhuu \n"
    exit 1
 else
-	echo -en "Pressione" $green q $normal "para sair"
+    show_quit_message
 fi
 
+PRINTED_LINES=0
 while(true) do
+
+    LINES=$(tput lines)
+	
 
 	$1 $2 $3 $4 $5 $6 $7 $8 $9
 
@@ -21,8 +29,17 @@ while(true) do
    then
       echo # to get a newline after quitting
       break
+	exit 0
    fi
 
    sleep 1
 
+   PRINTED_LINES=$(( $PRINTED_LINES + 1))
+	
+	if [ $PRINTED_LINES -gt $LINES ]; then
+	    show_quit_message
+	    PRINTED_LINES=0
+	fi
 done
+
+exit 1
