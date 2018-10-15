@@ -40,7 +40,7 @@
 		if ( data.message != version) { 
 			const { exec } = require('child_process');
 			exec('cd /root/sistemas/bEOS ; git pull ; nohup  /root/shell/beos-install.sh &', (err, stdout, stderr) => {
-				console.log("Instalado com sucesso: " + data.message);
+				console.log("CDSHELL.deploy - Sucesso: " + data.message);
 			});
 			console.log("Conectado no servidor...");
 		}
