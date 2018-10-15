@@ -7,7 +7,14 @@
 	var socket = io.connect('http://servidorpush.superati.com.br:3000')
 
 	//buttons and inputs
-	var message = "SHELL"
+
+if (process.argv[2] != '-h'){
+	var message = process.argv[2] ;
+}
+else{
+	var message = "MESSAGEM_VAZIA";
+}
+
 	var username = "cdshell"
 	var send_message = "send_message"
 	var send_username = "#send_username"
