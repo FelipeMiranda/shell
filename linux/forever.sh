@@ -4,7 +4,7 @@ source $HOME/.alias
 source $CDSHELL/colors.sh
 
 function show_quit_message(){
-	echo -en "Pressione" $green q $normal "para sair"
+	echo -en "\n\t$alert Pressione $atention$green 'q' $alert para encerrar. $normal \n\n"
 }
 
 
@@ -29,7 +29,6 @@ while(true) do
    then
       echo # to get a newline after quitting
       break
-	exit 0
    fi
 
    sleep 1
@@ -42,4 +41,4 @@ while(true) do
 	fi
 done
 
-exit 1
+exit 0
