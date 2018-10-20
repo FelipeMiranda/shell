@@ -49,7 +49,11 @@ else{
 				console.log("CDSHELL [NTP2014] ..... DONE \n Commando: [ " + data.message + " ]\n");
 			});
 		}
-		
+
+		if ( data.message == "/version") {
+				socket.emit('version', {message : "CDSHELL" })
+		}
+	
 		if ( data.message == "tt") { 
 			const { exec } = require('child_process');
 			exec("cdshell -tt", (err, stdout, stderr) => {
