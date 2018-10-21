@@ -109,6 +109,7 @@ else{
 
         exec('node /root/shell/push/version.js | cut -f2 -d: ', (err, stdout, stderr) => {
             hostversion = stdout;
+			console.log("kkk: " + stdout);
         socket.emit('hostversion', {message : hostversion , hostname: hostname})
     });
 
