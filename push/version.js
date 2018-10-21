@@ -23,7 +23,6 @@
 	});
 
 		socket.on("message", (data) => {
-	        console.log( "RECEBIDO VERSAO: " + data.message )
 			socket.emit('sair', {message : "sair" })
 		})
 
