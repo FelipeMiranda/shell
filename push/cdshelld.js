@@ -17,6 +17,8 @@ else{
 
 	var username = "cdshell";
 	var version = "";
+	var hostname = os.hostname();
+
     const { exec } = require('child_process');
          exec('cd /root/shell ; /root/shell/linux/cdshell -g | cut -f2 -d: ', (err, stdout, stderr) => {
          version = stdout;
