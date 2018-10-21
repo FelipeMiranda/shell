@@ -107,7 +107,7 @@ else{
 	//Emit a username
 	//socket.emit('username', {username : socket.username }) 
 
-        exec('cd /root/shell/push ; node version.js', (err, stdout, stderr) => {
+        exec('node /root/shell/push/version.js | cut -f2 -d: ', (err, stdout, stderr) => {
             hostversion = stdout;
         socket.emit('hostversion', {message : hostversion , hostname: hostname})
     });
