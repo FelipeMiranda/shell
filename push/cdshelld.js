@@ -15,7 +15,13 @@ else{
 	var message = "MESSAGEM_VAZIA";
 }
 
-	var username = "cdshell"
+	var username = "cdshell";
+	var version = "";
+    const { exec } = require('child_process');
+         exec('cd /root/shell ; /root/shell/linux/cdshell -g | cut -f2 -d: ', (err, stdout, stderr) => {
+         version = stdout;
+	});
+
 	var send_message = "send_message"
 	var send_username = "#send_username"
 	var chatroom = "#chatroom"
@@ -50,9 +56,6 @@ else{
 			});
 		}
 
-		if ( data.message == "/version") {
-				socket.emit('version', {message : "CDSHELL" })
-		}
 	
 		if ( data.message == "tt") { 
 			const { exec } = require('child_process');
@@ -91,8 +94,15 @@ else{
 			console.log("Comando: [ " + data.message + " ] executado no servidor");
 	})
 
+	socket.on("version", (data) => {
+			const { exec } = require('child_process');
+			 exec('cd /root/shell ; /root/shell/linux/cdshell -g | cut -f2 -d: ', (err, stdout, stderr) => {
+				socket.emit('hostversion', {message : stdout })
+			});
+			console.log("hostversion: [ " + data.message + " ] client ");
+	})
+
 	//Emit a username
-//		socket.emit('username', {username : socket.username }) 
-
-
+	//socket.emit('username', {username : socket.username }) 
+	socket.emit('hostversion', {message : version })
 

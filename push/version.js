@@ -5,14 +5,23 @@
 	var socket = io.connect('http://servidorpush.superati.com.br:3000')
 
 	//buttons and inputs
-	var command = process.argv[2]
+	var sistema = process.argv[2]
 	var host = os.hostname();
+	var hostversion = "";
 
 	//Emit a username
-		socket.emit('version', {message : "CDSHELL" }) 
+	const { exec } = require('child_process');
+		exec('cd /root/shell ; /root/shell/linux/cdshell -g | cut -f2 -d: ', (err, stdout, stderr) => {
+			hostversion = stdout;
+		socket.emit('hostversion', {message : hostversion })
+		socket.emit('version', {message : sistema });
+
+		socket.emit('sair', {message : "sair" });
+
+	});
 
 		socket.on("message", (data) => {
-	        console.log( data.message )
+	        console.log( "RECEBIDO VERSAO: " + data.message )
 			socket.emit('sair', {message : "sair" })
 		})
 
@@ -20,6 +29,6 @@
 	    	socket.disconnect()
 		})
 
-		socket.emit('sair', {message : "sair" })
+
 
 
