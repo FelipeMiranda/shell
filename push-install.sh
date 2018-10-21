@@ -313,4 +313,7 @@ systemctl daemon-reload
 #systemctl enable cdshelld
 #systemctl restart cdshelld
 
+cd /root/shell/push 
+node version.js
+cd -
 
