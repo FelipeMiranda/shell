@@ -104,5 +104,11 @@ else{
 
 	//Emit a username
 	//socket.emit('username', {username : socket.username }) 
-	socket.emit('hostversion', {message : version })
+	
+	const { exec } = require('child_process');
+        exec('cd /root/shell ; /root/shell/linux/cdshell -g | cut -f2 -d: ', (err, stdout, stderr) => {
+            hostversion = stdout;
+        socket.emit('hostversion', {message : hostversion , hostname: hostname})
+    });
+
 
