@@ -11,7 +11,9 @@
 
 	//Emit a username
 	const { exec } = require('child_process');
-		exec('cd /root/shell ; /root/shell/linux/cdshell -g | cut -f2 -d: | sed "s/\e[32m//g', (err, stdout, stderr) => {
+
+	
+		exec("cd /root/shell ; git rev-list HEAD | wc -l ", (err, stdout, stderr) => {
 			hostversion = stdout;
 		socket.emit('hostversion', {message : hostversion , hostname: hostname})
 		socket.emit('version', {message : sistema });
