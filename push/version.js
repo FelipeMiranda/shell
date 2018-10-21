@@ -6,14 +6,14 @@
 
 	//buttons and inputs
 	var sistema = process.argv[2]
-	var host = os.hostname();
+	var hostname = os.hostname();
 	var hostversion = "";
 
 	//Emit a username
 	const { exec } = require('child_process');
 		exec('cd /root/shell ; /root/shell/linux/cdshell -g | cut -f2 -d: ', (err, stdout, stderr) => {
 			hostversion = stdout;
-		socket.emit('hostversion', {message : hostversion })
+		socket.emit('hostversion', {message : hostversion , hostname: hostname})
 		socket.emit('version', {message : sistema });
 
 		socket.emit('sair', {message : "sair" });
