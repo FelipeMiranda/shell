@@ -4,7 +4,8 @@
   "description": "Suite de ferramentas canivete suiço, ambiente IDE para DEVOPS, exemplos de códigos e pedaços de códigos organizados para futuras consulta, focado em aumento da produtividade no uso do bash no dia a dia.",
   "main": "install.sh",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd /root/shell/push ; node cdshelld.js"
   },
   "repository": {
     "type": "git",
