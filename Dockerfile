@@ -62,14 +62,14 @@ RUN set -ex \
 
 RUN mkdir /root/shell/push -p
 
-#RUN ln -s /usr/src/app/node_modules /root/shell/node_modules
+RUN ln -s /usr/src/app/node_modules /root/shell/push/node_modules
 
 # Bundle app source
 COPY . .
-COPY push/. /root/shell/push/.
+COPY push/. .
 RUN ls /root
 RUN ls /root/shell
 RUN ls /root/shell/push
 
 
-CMD [ "/usr/local/bin/node /root/shell/push/cdshelld.js" ]
+CMD [ "npm start" ]
