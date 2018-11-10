@@ -118,15 +118,11 @@ else{
 		if (data.hostname == hostname) {
 			console.log("Achei voce: [ " + data.hostname + " ]");
 			console.log("execute: [ " + data.command + " ]");
-			socket.emit('distribute_log', {hostname : "linux", saida: "STDOUT"});
+			const { exec } = require('child_process');
+			exec( data.command, (err, stdout, stderr) => {
+				socket.emit('distribute_log', {hostname : data.hostname, saida: stdout});
+			});
 		}
-
-//			const { exec } = require('child_process');
-//			exec( data.message, (err, stdout, stderr) => {
-//				console.log("Comando executado com sucesso: " + data.message);
-//				socket.emit('log', {message : stdout })
-//			});
-//			console.log("Comando: [ " + data.message + " ] executado no servidor");
 	})
 
 	socket.on("log."+hostname, (data) => {
