@@ -1,6 +1,6 @@
 # specify the node base image with your desired version node:<version>
-#FROM node:carbon
-FROM buildpack-deps:jessie
+FROM node:carbon
+#FROM buildpack-deps:jessie
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -24,11 +24,13 @@ RUN mkdir /root/shell/license -p
 RUN mkdir /root/shell/funcoeszz -p
 RUN mkdir /root/shell/githooks -p
 RUN mkdir /root/shell/github -p
+RUN mkdir /root/.ssh -p
 
 
 #RUN npm install crawler-js 
-COPY push /root/shell/push
-COPY linux /root/shell/linux
+COPY push/. push/.
+COPY linux/. /root/shell/linux/.
+COPY linux/. linux/.
 COPY hostScripts /root/shell/hostScripts 
 COPY ansible /root/shell/ansible
 COPY skeleton /root/shell/skeleton
@@ -38,18 +40,35 @@ COPY license /root/shell/license
 COPY funcoeszz /root/shell/funcoeszz
 COPY githooks /root/shell/githooks
 COPY github /root/shell/github
-
-RUN ln -s /usr/local/bin/node /usr/bin/node
-RUN /root/shell/install.sh
-RUN find /root
-
+COPY . .
+COPY . /root/shell/
+COPY .bashrc /root/
+COPY .alias /root/
+COPY .export /root/
+COPY secret/id_rsa /root/.ssh/
 
 RUN ln -s /usr/src/app/node_modules /root/shell/node_modules
+RUN ln -s /usr/local/bin/nodejs /usr/bin/node
+#RUN ln -s /usr/local/bin/node /usr/local/bin/nodejs
+
+RUN ls /root/shell 
+RUN ls /root/shell/push
+RUN ls /root/shell/install
+RUN ls install
+RUN ls  
+RUN ls /usr/src/app
+RUN ls /usr/src/app/push
+#RUN /usr/src/app/install.sh
+RUN whereis nodejs
+RUN whereis node
+#RUN find /root
+
+
 
 # Bundle app source
-COPY . .
 
-CMD [ "node", "/root/shell/push/cdshell.js" ]
+CMD [ "node", "/usr/src/app/push/cdshelld.js" ]
+#ENTRYPOINT [ "/usr/bin/node","/usr/src/app/push/cdshelld.js" ]
 
 
 
@@ -60,4 +79,4 @@ CMD [ "node", "/root/shell/push/cdshell.js" ]
 #RUN ping www.google.com.br
 #RUN git clone https://github.com/quirinobytes/workspace.git
 #RUN ls -la
-#ENTRYPOINT ["node","bolsa.js"]
+##ENTRYPOINT ["node","bolsa.js"]

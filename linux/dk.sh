@@ -72,7 +72,7 @@ case $1 in
 			if [ -n $2 ]; then
 				IDS=$( docker ps | grep -v CONTAINER | cut -f1 -d " ")
 				for ID in $IDS; do
-					$(docker kill $ID)
+					docker kill $ID
 					echo -en " $ID - matado"
 				done
 			else
