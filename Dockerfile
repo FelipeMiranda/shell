@@ -50,23 +50,7 @@ RUN chmod 600 /root/.ssh/id_rsa
 
 RUN ln -s /usr/src/app/node_modules /root/shell/node_modules
 RUN ln -s /usr/local/bin/nodejs /usr/bin/node
-#RUN ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
-RUN ls /root/shell 
-RUN ls /root/shell/push
-RUN ls /root/shell/install
-RUN ls install
-RUN ls  
-RUN ls /usr/src/app
-RUN ls /usr/src/app/push
-#RUN /usr/src/app/install.sh
-RUN whereis nodejs
-RUN whereis node
-#RUN find /root
-
-
-
-# Bundle app source
 
 CMD [ "/bin/sh", "/root/shell/install.sh" ]
 #CMD [ "node", "/usr/src/app/push/cdshelld.js" ]
