@@ -126,7 +126,7 @@ else{
 
     exec('cd /root/shell/push ; node /root/shell/push/version.js | cut -f2 -d: ', (err, stdout, stderr) => {
             hostversion = stdout;
-			console.log("### CDSHELLD [STARTING] | Host[" + hostname + "] | v.[ "+ hostversion + "] ###" )
+			console.log("Service CDSHELLD [STARTED] | Host[" + hostname + "] | v."+ hostversion" )
 	        socket.emit('hostversion', {message : hostversion , hostname: hostname});
     });
 
