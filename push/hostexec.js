@@ -12,16 +12,16 @@
 	    console.log("HOSTEXEC [ " + fqdn + " ] " )
 		socket.emit('hostexec', {hostname : fqdn, command: command}) 
 
-/*		socket.on("log", (data) => {
-	        console.log("LOG[ " + data.username + " ]: " + data.message )
+		socket.on("log.linux", (data) => {
+	        console.log("SAIDA[ " + data + " ]: "  )
 			socket.emit('sair', {message : "sair" })
 		})
-*/
+
 		socket.on("sair", (data) => {
 			console.log("Saindo: " + data.username + ": " + data.message )
 	    	socket.disconnect()
 		})
 
-		socket.emit('sair', {message : "sair" })
+//		socket.emit('sair', {message : "sair" })
 
 
