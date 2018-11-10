@@ -27,7 +27,7 @@ function sleep() {
 	    	socket.disconnect();
 			return process.exit(1);;
 }
-setTimeout(sleep, 3000);
+setTimeout(sleep, 8000);
 
 
 
