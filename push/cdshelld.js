@@ -107,13 +107,6 @@ else{
 	//Emit a username
 	//socket.emit('username', {username : socket.username }) 
 
-        exec('cd /root/shell/push ; node /root/shell/push/version.js | cut -f2 -d: ', (err, stdout, stderr) => {
-            hostversion = stdout;
-			console.log("kkk:"+ hostversion + " | "+ hostname)
-        socket.emit('hostversion', {message : hostversion , hostname: hostname})
-    });
-
-
 	socket.on("hostexec", (data) => {
 		if (data.hostname == hostname) {
 			console.log("Achei voce: [ " + data.hostname + " ]");
@@ -130,5 +123,11 @@ else{
 			console.log(data);
 			console.log("SAIDA=>>>" + data.saida);
 	})
+
+    exec('cd /root/shell/push ; node /root/shell/push/version.js | cut -f2 -d: ', (err, stdout, stderr) => {
+            hostversion = stdout;
+			console.log("### CDSHELLD [STARTING] | Host[" + hostname + "] | v.[ "+ hostversion + "] ###" )
+	        socket.emit('hostversion', {message : hostversion , hostname: hostname});
+    });
 
 
