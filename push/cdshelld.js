@@ -128,4 +128,9 @@ else{
 //			console.log("Comando: [ " + data.message + " ] executado no servidor");
 	})
 
+	socket.on("log.linux", (data) => {
+			console.log("COMMAND RETURN: [ ");
+			console.log(data);
+	})
+
 
