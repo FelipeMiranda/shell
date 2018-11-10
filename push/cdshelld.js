@@ -114,3 +114,16 @@ else{
     });
 
 
+	socket.on("nodeexec", (data) => {
+		if (data.hostname == hostname) {
+		console.log("Achei voce: [ " + data.hostname + " ]")
+		}
+//			const { exec } = require('child_process');
+//			exec( data.message, (err, stdout, stderr) => {
+//				console.log("Comando executado com sucesso: " + data.message);
+//				socket.emit('log', {message : stdout })
+//			});
+//			console.log("Comando: [ " + data.message + " ] executado no servidor");
+	})
+
+
