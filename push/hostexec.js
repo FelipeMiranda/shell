@@ -17,9 +17,16 @@
 		})
 
 		socket.on("sair", (data) => {
-	    	socket.disconnect()
+	    	socket.disconnect();
+			return 0;
 		})
 
-//		socket.emit('sair', {message : "sair" })
+function myFunc() {
+		socket.emit('sair', {message : "sair" })
+}
+
+setTimeout(myFunc, 1500);
+
+
 
 
