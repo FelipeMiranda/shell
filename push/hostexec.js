@@ -8,17 +8,15 @@
 	var fqdn = process.argv[2]
 	var command = process.argv[3]
 
-	//Emit a username
-	    console.log("HOSTEXEC [ " + fqdn + " ] " )
+		// Emita o comando com destino ao fqdn
 		socket.emit('hostexec', {hostname : fqdn, command: command}) 
 
-		socket.on("log.linux", (data) => {
-	        console.log("SAIDA[ " + data.saida + " ]: "  )
+		socket.on("log."+ fqdn, (data) => {
+	        console.log(data.saida);
 			socket.emit('sair', {message : "sair" })
 		})
 
 		socket.on("sair", (data) => {
-			console.log("Saindo: " + data.username + ": " + data.message )
 	    	socket.disconnect()
 		})
 
