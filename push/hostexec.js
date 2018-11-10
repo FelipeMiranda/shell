@@ -13,7 +13,7 @@
 		socket.emit('hostexec', {hostname : fqdn, command: command}) 
 
 		socket.on("log.linux", (data) => {
-	        console.log("SAIDA[ " + data + " ]: "  )
+	        console.log("SAIDA[ " + data.saida + " ]: "  )
 			socket.emit('sair', {message : "sair" })
 		})
 
