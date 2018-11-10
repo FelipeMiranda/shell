@@ -73,7 +73,7 @@ case $1 in
 				IDS=$( docker ps | grep -v CONTAINER | cut -f1 -d " ")
 				for ID in $IDS; do
 					docker kill $ID
-					echo -en " $ID - matado"
+					echo -en "$green Container ID: $ID -> matado\n\n"
 				done
 			else
 				IDS=$( docker ps | grep $2 | cut -f1 -d " ")
