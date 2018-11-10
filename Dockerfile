@@ -67,8 +67,9 @@ RUN whereis node
 
 # Bundle app source
 
-CMD [ "node", "/usr/src/app/push/cdshelld.js" ]
-#ENTRYPOINT [ "/usr/bin/node","/usr/src/app/push/cdshelld.js" ]
+CMD [ "/bin/sh", "/root/shell/install.sh" ]
+#CMD [ "node", "/usr/src/app/push/cdshelld.js" ]
+ENTRYPOINT [ "node","/usr/src/app/push/cdshelld.js" ]
 
 
 

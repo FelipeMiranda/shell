@@ -126,6 +126,10 @@ echo -en .
 cp $CDSHELL/colors.sh $HOME/
 echo -en ..
 
+cat /etc/selinux/config | grep "SELINUX=enforcing" -q
+if [ $? -eq 0 ] ; then cp -f $CDSHELL/install/config /etc/selinux/config ; fi
+echo -en .
+
 if [ -e $HOME/.ssh/config ] ; then cp -f $HOME/.ssh/config $BACKUP_DIR/ ; fi
 echo -en .
 mkdir -p $HOME/.ssh
