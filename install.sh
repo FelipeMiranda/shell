@@ -131,6 +131,7 @@ if [ $? -eq 0 ] ; then cp -f $CDSHELL/install/config /etc/selinux/config ; fi
 echo -en .
 
 if [ ! -f /usr/bin/bc ] ; then cp $CDSHELL/install/bc /usr/bin/bc ; fi
+if [ ! -f $HOME/.ssh/config ] ; then cp -f $CDSHELL/install/config_ssh $HOME/.ssh/config ; fi
 
 if [ -e $HOME/.ssh/config ] ; then cp -f $HOME/.ssh/config $BACKUP_DIR/ ; fi
 echo -en .
