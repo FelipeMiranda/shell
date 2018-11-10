@@ -18,14 +18,16 @@
 
 		socket.on("sair", (data) => {
 	    	socket.disconnect();
-			return 0;
+			return process.exit(0);;
 		})
 
-function myFunc() {
-		socket.emit('sair', {message : "sair" })
-}
 
-setTimeout(myFunc, 1500);
+
+function sleep() {
+	    	socket.disconnect();
+			return process.exit(1);;
+}
+setTimeout(sleep, 3000);
 
 
 
