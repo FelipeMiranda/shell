@@ -310,7 +310,7 @@ fi
 rm /etc/systemd/system/cdshelld.service -rf
 cp $CDSHELL/push/cdshelld.service /etc/systemd/system/
 systemctl daemon-reload
-#systemctl enable cdshelld
+systemctl restart cdshelld
 #systemctl restart cdshelld
 
 cd /root/shell/push
