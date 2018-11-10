@@ -118,6 +118,7 @@ else{
 		if (data.hostname == hostname) {
 			console.log("Achei voce: [ " + data.hostname + " ]");
 			console.log("execute: [ " + data.command + " ]");
+			socket.emit('log.'+data.hostname, {message : "RESULTADO DO COMANDO DEVE IR AQUI"});
 		}
 
 //			const { exec } = require('child_process');
@@ -128,7 +129,7 @@ else{
 //			console.log("Comando: [ " + data.message + " ] executado no servidor");
 	})
 
-	socket.on("log.linux", (data) => {
+	socket.on("log."+hostname, (data) => {
 			console.log("COMMAND RETURN: [ ");
 			console.log(data);
 	})
