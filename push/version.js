@@ -36,11 +36,12 @@
 		//socket.emit('hostversion', {message : hostversion , hostname: hostname })
 		socket.emit('version', {message : sistema });
 
-		socket.emit('sair', {message : "sair" });
+		//socket.emit('sair', {message : "sair" });
 
 	});
 
 	socket.on("message", (data) => {
+		console.log(data.message);
 		socket.emit('sair', {message : "sair" })
 	})
 
