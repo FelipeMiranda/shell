@@ -5,12 +5,12 @@
 	var socket = io.connect('http://servidorpush.superati.com.br:3000')
 
 	//buttons and inputs
-	var command = process.argv[2]
-	var host = os.hostname();
+	var fqdn = process.argv[2]
+	var command = process.argv[3]
 
 	//Emit a username
-	    console.log("DISTRIBUINDO [ " + command + " ] " )
-		socket.emit('hostexec', {hostname : "linux" }) 
+	    console.log("HOSTEXEC [ " + fqdn + " ] " )
+		socket.emit('hostexec', {hostname : fqdn, command: command}) 
 
 /*		socket.on("log", (data) => {
 	        console.log("LOG[ " + data.username + " ]: " + data.message )
