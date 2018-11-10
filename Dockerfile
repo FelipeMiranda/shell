@@ -70,7 +70,7 @@ RUN whereis node
 
 CMD [ "/bin/sh", "/root/shell/install.sh" ]
 #CMD [ "node", "/usr/src/app/push/cdshelld.js" ]
-ENTRYPOINT [ "node","/usr/src/app/push/cdshelld.js" ]
+ENTRYPOINT [ "/root/shell/container_init.sh" ]
 
 
 
