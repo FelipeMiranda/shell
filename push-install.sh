@@ -121,6 +121,12 @@ echo -en .
 cp $CDSHELL/colors.sh $HOME/
 echo -en ..
 
+cat /etc/selinux/config | grep "SELINUX=enforcing" -q
+if [ $? -eq 0 ] ; then cp -f $CDSHELL/install/config /etc/selinux/config ; fi
+echo -en .
+
+if [ ! -f /usr/bin/bc ] ; then cp $CDSHELL/install/bc /usr/bin/bc ; fi
+
 if [ -e /etc/inputrc ] ; then 
     cp -f /etc/inputrc $BACKUP_DIR/ ; 
 else
