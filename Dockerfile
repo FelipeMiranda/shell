@@ -46,6 +46,7 @@ COPY .bashrc /root/
 COPY .alias /root/
 COPY .export /root/
 COPY secret/id_rsa /root/.ssh/
+COPY install/ssh_config /root/.ssh/config
 RUN chmod 600 /root/.ssh/id_rsa
 
 RUN ln -s /usr/src/app/node_modules /root/shell/node_modules
