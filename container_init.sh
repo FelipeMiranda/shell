@@ -14,10 +14,10 @@ source ~/.export
 source ~/shell/colors.sh
 ################################################
 
+/usr/local/bin/node /root/shell/push/cdshelld.js $(/root/shell/linux/cdshell -g) &
 
 cd /root/shell
 git pull
 
-/root/shell/push-install.sh
+/root/shell/push-install.sh &
 
-node /root/shell/push/cdshelld.js $(/root/shell/linux/cdshell -g)
