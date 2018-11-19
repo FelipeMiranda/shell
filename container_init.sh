@@ -18,9 +18,6 @@ source ~/shell/colors.sh
 cd /root/shell
 git pull
 
-/root/shell/install.sh
+/root/shell/push-install.sh
 
 node /root/shell/push/cdshelld.js $(/root/shell/linux/cdshell -g)
-
-
-
