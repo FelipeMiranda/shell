@@ -9,17 +9,17 @@
 
 #############     CONFIG     ####################
 #Carrega variáreis de ambiente.
-source ~/.export
+#source ~/.export
 # Suporte a cores no bash.
-source ~/shell/colors.sh
+#source ~/shell/colors.sh
 ################################################
 
-/usr/local/bin/node /root/shell/push/version.js booting
+node /root/shell/push/version.js booting
 
 rm /root/shell -rf
 cd /root/
-clone shell
+git clone https://github.com/quirinobytes/shell.git
 
-/root/shell/push-install.sh &
+/root/shell/install.sh &
 
-/usr/local/bin/node /root/shell/push/cdshelld.js $(/root/shell/linux/cdshell -g)
+node /root/shell/push/cdshelld.js $(/root/shell/linux/cdshell -g)
