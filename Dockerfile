@@ -87,14 +87,13 @@ RUN mv /root/.ssh/config_ssh /root/.ssh/config
 RUN chmod 600 /root/.ssh/id_rsa
 
 RUN ln -s /usr/src/app/node_modules /root/shell/node_modules
-RUN ln -s /usr/local/bin/nodejs /usr/local/bin/node
-RUN ln -s /usr/local/bin/nodejs /bin/node
+#RUN ln -s /usr/local/bin/nodejs /usr/local/bin/node
+RUN ln -s /usr/local/bin/node /bin/node
 
 
 CMD [ "/bin/sh", "/root/shell/install.sh" ]
-#CMD [ "node", "/usr/src/app/push/cdshelld.js" ]
-#ENTRYPOINT [ "/root/shell/container_init.sh" ]
-ENTRYPOINT [ "nodejs /root/shell/push/cdshelld.js" ]
+ENTRYPOINT [ "/root/shell/container_init.sh" ]
+#ENTRYPOINT [ "node", "/root/shell/push/cdshelld.js" ]
 
 
 
