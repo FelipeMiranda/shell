@@ -14,7 +14,7 @@ COPY ./metasploit/db.sql /tmp/
 COPY ./metasploit/database.yml /usr/share/metasploit-framework/config/
 
 # Startup script
-COPY ./scripts/init.sh /usr/local/bin/init.sh
+COPY ./metasploit/init.sh /usr/local/bin/init.sh
 
 # Installation
 RUN apt-get update \
