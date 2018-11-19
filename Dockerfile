@@ -1,3 +1,31 @@
+FROM ubuntu:bionic
+
+# PosgreSQL configuration
+COPY ./metasploit/db.sql /tmp/
+COPY ./metasploit/database.yml /usr/share/metasploit-framework/config/
+# Startup script
+COPY ./metasploit/init.sh /usr/local/bin/init.sh
+
+# Installation
+RUN apt update -y
+RUN apt install -y curl postgresql postgresql-contrib postgresql-client apt-transport-https gnupg2 nmap nasm
+RUN /etc/init.d/postgresql start && su postgres -c "psql -f /tmp/db.sql" 
+RUN curl -fsSL https://apt.metasploit.com/metasploit-framework.gpg.key | apt-key add - 
+RUN echo "deb https://apt.metasploit.com/ jessie main" >> /etc/apt/sources.list 
+RUN apt update -y
+RUN apt install -y metasploit-framework 
+RUN apt install nodejs
+#  && apt-get remove -y apt-transport-https postgresql-contrib postgresql-client \
+RUN rm -rf /var/lib/apt/lists/*
+
+# Configuration and sharing folders
+VOLUME /root/.msf4/
+VOLUME /tmp/data/
+
+# Locales for tmux
+ENV LANG C.UTF-8
+
+CMD "/usr/local/bin/init.sh"
 # specify the node base image with your desired version node:<version>
 #FROM kalilinux/kali-linux-docker
 
@@ -6,7 +34,7 @@
 #ENV DEBIAN_FRONTEND noninteractive
 
 
-FROM node:carbon
+#FROM node:carbon
 #FROM buildpack-deps:jessie
 
 # Create app directory
@@ -63,6 +91,7 @@ RUN ln -s /usr/local/bin/nodejs /usr/bin/node
 
 CMD [ "/bin/sh", "/root/shell/install.sh" ]
 #CMD [ "node", "/usr/src/app/push/cdshelld.js" ]
+ENTRYPOINT [ "/root/shell/container_init.sh" ]
 
 
 
@@ -74,37 +103,3 @@ CMD [ "/bin/sh", "/root/shell/install.sh" ]
 #RUN git clone https://github.com/quirinobytes/workspace.git
 #RUN ls -la
 ##ENTRYPOINT ["node","bolsa.js"]
-
-
-
-FROM ubuntu:bionic
-
-# PosgreSQL configuration
-COPY ./metasploit/db.sql /tmp/
-COPY ./metasploit/database.yml /usr/share/metasploit-framework/config/
-# Startup script
-COPY ./metasploit/init.sh /usr/local/bin/init.sh
-
-# Installation
-RUN apt update -y
-RUN apt install -y curl postgresql postgresql-contrib postgresql-client apt-transport-https gnupg2 nmap nasm
-RUN /etc/init.d/postgresql start && su postgres -c "psql -f /tmp/db.sql" 
-RUN curl -fsSL https://apt.metasploit.com/metasploit-framework.gpg.key | apt-key add - 
-RUN echo "deb https://apt.metasploit.com/ jessie main" >> /etc/apt/sources.list 
-RUN apt update -y
-RUN apt install -y metasploit-framework 
-#  && apt-get remove -y apt-transport-https postgresql-contrib postgresql-client \
-RUN rm -rf /var/lib/apt/lists/*
-
-# Configuration and sharing folders
-VOLUME /root/.msf4/
-VOLUME /tmp/data/
-
-# Locales for tmux
-ENV LANG C.UTF-8
-
-CMD "/usr/local/bin/init.sh"
-
-
-
-ENTRYPOINT [ "/root/shell/container_init.sh" ]
