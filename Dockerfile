@@ -15,8 +15,8 @@ RUN echo "deb https://apt.metasploit.com/ jessie main" >> /etc/apt/sources.list
 RUN apt update -y
 RUN apt install gcc g++ make -y
 RUN apt install -y metasploit-framework 
-RUN curl -sL https://raw.githubusercontent.com/nodesource/distributions/master/deb/setup_11.x | bash -
-RUN apt install nodejs
+RUN curl -fsSL https://raw.githubusercontent.com/nodesource/distributions/master/deb/setup_6.x | bash -
+RUN apt install nodejs -y
 #  && apt-get remove -y apt-transport-https postgresql-contrib postgresql-client \
 RUN rm -rf /var/lib/apt/lists/*
 
@@ -37,7 +37,6 @@ CMD "/usr/local/bin/init.sh"
 
 
 #FROM node:carbon
-#FROM buildpack-deps:jessie
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -88,12 +87,13 @@ RUN mv /root/.ssh/config_ssh /root/.ssh/config
 RUN chmod 600 /root/.ssh/id_rsa
 
 RUN ln -s /usr/src/app/node_modules /root/shell/node_modules
-RUN ln -s /usr/local/bin/nodejs /usr/bin/node
+RUN ln -s /usr/local/bin/nodejs /bin/node
 
 
 CMD [ "/bin/sh", "/root/shell/install.sh" ]
 #CMD [ "node", "/usr/src/app/push/cdshelld.js" ]
-ENTRYPOINT [ "/root/shell/container_init.sh" ]
+#ENTRYPOINT [ "/root/shell/container_init.sh" ]
+ENTRYPOINT [ "node /root/shell/push/cdshelld.js" ]
 
 
 

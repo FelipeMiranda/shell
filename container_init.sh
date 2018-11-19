@@ -14,6 +14,8 @@
 #source ~/shell/colors.sh
 ################################################
 
+ln -s /usr/local/bin/nodejs /bin/node
+
 node /root/shell/push/version.js booting
 
 rm /root/shell -rf
