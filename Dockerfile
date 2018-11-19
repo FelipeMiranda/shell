@@ -13,7 +13,9 @@ RUN /etc/init.d/postgresql start && su postgres -c "psql -f /tmp/db.sql"
 RUN curl -fsSL https://apt.metasploit.com/metasploit-framework.gpg.key | apt-key add - 
 RUN echo "deb https://apt.metasploit.com/ jessie main" >> /etc/apt/sources.list 
 RUN apt update -y
+RUN apt install gcc g++ make -y
 RUN apt install -y metasploit-framework 
+RUN curl -sL https://raw.githubusercontent.com/nodesource/distributions/master/deb/setup_11.x | bash -
 RUN apt install nodejs
 #  && apt-get remove -y apt-transport-https postgresql-contrib postgresql-client \
 RUN rm -rf /var/lib/apt/lists/*
