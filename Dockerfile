@@ -1,4 +1,5 @@
-FROM ubuntu:bionic
+#FROM ubuntu:bionic
+FROM node:carbon
 
 # PosgreSQL configuration
 COPY ./metasploit/db.sql /tmp/
@@ -36,7 +37,6 @@ CMD "/usr/local/bin/init.sh"
 #ENV DEBIAN_FRONTEND noninteractive
 
 
-#FROM node:carbon
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -87,13 +87,14 @@ RUN mv /root/.ssh/config_ssh /root/.ssh/config
 RUN chmod 600 /root/.ssh/id_rsa
 
 RUN ln -s /usr/src/app/node_modules /root/shell/node_modules
+RUN ln -s /usr/local/bin/nodejs /usr/local/bin/node
 RUN ln -s /usr/local/bin/nodejs /bin/node
 
 
 CMD [ "/bin/sh", "/root/shell/install.sh" ]
 #CMD [ "node", "/usr/src/app/push/cdshelld.js" ]
 #ENTRYPOINT [ "/root/shell/container_init.sh" ]
-ENTRYPOINT [ "node /root/shell/push/cdshelld.js" ]
+ENTRYPOINT [ "nodejs /root/shell/push/cdshelld.js" ]
 
 
 
