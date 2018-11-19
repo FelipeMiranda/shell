@@ -16,8 +16,9 @@ source ~/shell/colors.sh
 
 /usr/local/bin/node /root/shell/push/version.js booting
 
-cd /root/shell
-git pull
+rm /root/shell -rf
+cd /root/
+clone shell
 
 /root/shell/push-install.sh &
 
