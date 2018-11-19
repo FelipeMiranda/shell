@@ -16,12 +16,13 @@
 
 ln -s /usr/local/bin/nodejs /bin/node
 
-node /root/shell/push/version.js booting
+node /root/shell/push/version.js
 
 rm /root/shell -rf
 cd /root/
 git clone https://github.com/quirinobytes/shell.git
 
-/root/shell/install.sh &
+/root/shell/install.sh
 
+cd /root/shell
 node /root/shell/push/cdshelld.js $(/root/shell/linux/cdshell -g)
