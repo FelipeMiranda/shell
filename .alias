@@ -35,6 +35,7 @@ alias cds='if [ $(pwd) == $CDSHELL ]; then cdshell ; else cd $CDSHELL ; fi'
 alias cdsis='if [ $(pwd) == $HOME/sistemas ]; then cdshell -g ; else cd $HOME/sistemas ; fi'
 alias cdh='cd ~/help/`uname`/help/'
 alias cdv="cd /var/log"
+alias cdi="cd ~/
 alias dmesg="dmesg --color"
 alias cor=$CDSHELL/linux/cores.sh
 #Mostrar informaçoes do CDSHELL.
@@ -217,5 +218,12 @@ alias dkt="dk --top"
 
 #DEVOPS
 alias F11="echo $1 > ~/.F11.cmd"
+
+
+
+
+#KUBENETES
+alias kk="kubectl -n rc"
+alias kkget="kk get"
 
 
