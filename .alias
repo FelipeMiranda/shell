@@ -227,3 +227,8 @@ alias kk="kubectl -n rc"
 alias kkget="kk get"
 
 
+
+
+
+
+
