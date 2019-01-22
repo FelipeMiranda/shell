@@ -1,5 +1,9 @@
 # .bashrc
 
+if [ -e ~/source.sh ] ; 
+	source ~/colors.sh
+fi
+
 # Caso exista, execute os exports personalizados em .export
 if [ -e ~/.export ]; then
 	. ~/.export
