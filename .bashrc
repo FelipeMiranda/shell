@@ -1,6 +1,6 @@
 # .bashrc
 
-if [ -e ~/source.sh ] ; 
+if [ -e ~/source.sh ] ; then
 	source ~/colors.sh
 fi
 

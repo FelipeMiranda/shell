@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/colors.sh
+
 OSTYPE=`uname`
 
 
@@ -35,7 +37,7 @@ alias cds='if [ $(pwd) == $CDSHELL ]; then cdshell ; else cd $CDSHELL ; fi'
 alias cdsis='if [ $(pwd) == $HOME/sistemas ]; then cdshell -g ; else cd $HOME/sistemas ; fi'
 alias cdh='cd ~/help/`uname`/help/'
 alias cdv="cd /var/log"
-alias cdi="cd ~/
+alias cdi="cd ~/IT-Am-Wm-RC"
 alias dmesg="dmesg --color"
 alias cor=$CDSHELL/linux/cores.sh
 #Mostrar informaçoes do CDSHELL.
@@ -143,7 +145,6 @@ alias arroz="echo Gzuis"
 #GIT 
 alias sta='git status'
 alias com='git commit -a'
-alias log='git log'
 alias ga='git add . --all'
 alias pull='echo -e "\n\t ${alert}PULL${normal} xando\n\n\t ${green}LOCAL <- ${yellow} WWW ${blue} ($(git config remote.origin.url)) ${normal}\n" && git pull '
 alias push='echo -e "\n\t ${alert}emPURRANDO${normal}\n\n\t ${yellow}LOCAL -> ${green} WWW ${blue} ($(git config remote.origin.url)) ${normal}\n" && git push origin master '
