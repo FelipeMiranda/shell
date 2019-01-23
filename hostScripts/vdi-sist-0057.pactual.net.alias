@@ -13,3 +13,4 @@ source ~/colors.sh
 
 # Host's aliases 
 alias k='kubectl'
+alias code="code --user-data-dir ~/.code"
