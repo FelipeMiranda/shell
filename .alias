@@ -230,7 +230,7 @@ alias kkget="kk get"
 
 
 #RECEITAS & COMMISOES
-reb="cd ~/IT-Am-Wm-RC/RCWeb/project ; docker-compose down; docker volume prune -f; ./startcom3.sh; cd -"
+alias reb="cd ~/IT-Am-Wm-RC/RCWeb/project ; docker-compose down; docker volume prune -f; ./startcom3.sh; cd -"
 
 
 
