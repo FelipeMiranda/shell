@@ -12,6 +12,15 @@ source ~/colors.sh
 
 
 # Host's aliases 
-alias k='kubectl'
+alias kk='kubectl'
+alias kget='kubectl -n rc get'
+alias kdescribe="kubectl -n rc describe"
 alias code="code --user-data-dir ~/.code"
 alias bra="git branch"
+
+
+
+#RECEITAS & COMMISOES
+alias reb="cd ~/IT-Am-Wm-RC/RCWeb/project ; docker-compose down; docker volume prune -f; ./startcom3.sh; cd -"
+
+
