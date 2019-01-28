@@ -12,9 +12,6 @@ source ~/colors.sh
 
 
 # Host's aliases 
-alias kk='kubectl'
-alias kget='kubectl -n rc get'
-alias kdescribe="kubectl -n rc describe"
 alias code="code --user-data-dir ~/.code"
 alias bra="git branch"
 
@@ -24,3 +21,7 @@ alias bra="git branch"
 alias reb="cd ~/IT-Am-Wm-RC/RCWeb/project ; docker-compose down; docker volume prune -f; ./startcom3.sh; cd -"
 
 
+#KUBERNETES
+alias kget='kubectl -n rc get'
+alias kdescribe="kubectl -n rc describe"
+alias kcontext="kubectl config get-contexts"
