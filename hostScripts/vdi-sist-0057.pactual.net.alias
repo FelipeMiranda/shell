@@ -25,3 +25,4 @@ alias reb="cd ~/IT-Am-Wm-RC/RCWeb/project ; docker-compose down; docker volume p
 alias kget='kubectl -n rc get'
 alias kdescribe="kubectl -n rc describe"
 alias kcontext="kcontext.sh"
+alias kcluster-info="kubectl cluster-info"
