@@ -17,14 +17,13 @@ source ~/shell/colors.sh
 
 
 
-
 ################################################
 #############        MAIN       ################
 case $1 in
 
 		"" )	
 			# Quando executa sem opcao, chama funcao versao acima.
-			kubectl config get-context 
+			kubectl config get-contexts
 		;;
 
 		* )
