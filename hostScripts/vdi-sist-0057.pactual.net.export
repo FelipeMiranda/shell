@@ -15,3 +15,10 @@ GIT_SSL_NO_VERIFY=true
 
 export DISPLAY KUBECONFIG GIT_SSL_NO_VERIFY
 echo -en "Alias $alert VDI $normal $yellow criados $green sucesso! $normal\n\n"
+
+
+
+
+
+
+source <(kubectl completion bash)
