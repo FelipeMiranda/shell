@@ -21,7 +21,7 @@
       - 8.8.8.8
       - 4.4.4.4
 
-    resolv_domain: vertzon.intranet
+    resolv_domain: pactual.net
     resolv_search:
       - vertzon.intranet
       - home

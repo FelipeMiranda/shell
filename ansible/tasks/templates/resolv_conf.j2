@@ -3,7 +3,7 @@
 # search – Especifica uma lista de nomes de domí­nio alternativos ao procurar por um computador, separados por espaços.
 # nameserver – Especifica o endereço IP de um servidor de nomes de domí­nio, o Servidor DNS. Pode ser usado várias vezes.
 domain {{ vars['resolv_domain'] }}
-search {{ vars['resolv_search'] }}
+#search {{ vars['resolv_search'] }}
 {% for resolver in vars['resolv_nameservers'] %}
 nameserver {{ resolver }}
 {% endfor %}
