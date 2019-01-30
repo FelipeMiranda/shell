@@ -1,4 +1,4 @@
 ---
-ansible_ip: '167.99.173.26'
+ansible_ip: '192.168.15.3'
 ansible_hostname: 'servidorpush.superati.com.br'
-ansible_default_ipv4: '167.99.173.26'
+ansible_default_ipv4: '192.168.15.3'
