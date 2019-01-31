@@ -2,7 +2,7 @@
 source ~/colors.sh
 
 # Nao remover, usado para controle do tempo de apresetacao do Tarefas.
-TAREFAS_SHOWED_AT_TIME=1548899518
+TAREFAS_SHOWED_AT_TIME=1548899717
 
 # Tempo para exibir tarefas novamente, em segundos.
 TAREFAS_TIME_TO_WAIT=10
@@ -18,9 +18,9 @@ HISTSIZE=10000
 TZ='America/Sao_Paulo'; export TZ
 VISUAL=vim
 EDITOR=vim
-PS1="$red\u$yellow@$green\h $cyan\W> $normal"
-PS1="\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[31m\]\u\[\033[34m\]@\[\033[32m\]\h|\[\033[35m\]$MSYSTEM|\[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]$>"
-
+#PS1="$red\u$yellow@$green\h $cyan\W> $normal"
+#PS1="\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[31m\]\u\[\033[34m\]@\[\033[32m\]\h \[\033[35m\]$MSYSTEM\[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]$>"
+PS1="\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[31m\]\u\[\033[34m\]@\[\033[32m\]\h \[\033[35m\]\[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]$>"
 
 #NODE_MODULES
 NODE_MODULES=/lib/node_modules
