@@ -11,14 +11,14 @@
     "type": "git",
     "url": "https://github.com/quirinobytes/workspace.git"
   },
-  "author": "Rafael Quirino ®",
-  "license": "BSD",
+  "author": "Rafael Castro - quirinobytes®",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/quirinobytes/workspace/issues"
   },
   "dependencies": {
     "nodemon": "^1.18.4",
-    "request": "^2.87.0"
-	"deep-extend": ">=0.5.1"
+    "request": "^2.87.0",
+    "deep-extend": ">=0.5.1"
   }
 }
