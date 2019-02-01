@@ -19,5 +19,6 @@
   "dependencies": {
     "nodemon": "^1.18.4",
     "request": "^2.87.0"
+	"deep-extend": ">=0.5.1"
   }
 }
