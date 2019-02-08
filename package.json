@@ -20,6 +20,7 @@
     "nodemon": "^1.18.4",
     "request": "^2.87.0",
     "deep-extend": ">=0.5.1",
-    "randomatic": ">=3.0.0"
+    "randomatic": ">=3.0.0",
+    "mpath": "~>0.5.1"
   }
 }
