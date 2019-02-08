@@ -103,7 +103,12 @@ echo -en ..
 if [ -e $HOME/.vimrc ] ; 	then cp -f $HOME/.vimrc $BACKUP_DIR/ ; fi
 echo -en .
 cp $CDSHELL/.vimrc $HOME/
-echo -en ...
+echo -en .
+
+if [ -e $HOME/git-prompt.sh ] ; 	then cp -f $HOME/git-prompt.sh $BACKUP_DIR/ ; fi
+echo -en .
+cp $CDSHELL/git-prompt.sh $HOME/
+echo -en .
 
 if [ -e $HOME/.config/mc/ini ] ;	then cp -f $HOME/.config/mc/ini $BACKUP_DIR/.midnightcom.ini ; fi
 echo -en .
