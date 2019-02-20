@@ -123,8 +123,8 @@ alias ¢¢=®®
 alias 88="ping 8.8.8.8 -c 1 -w 5"
 
 # |SERVIDOR PUSH| ADMIN
-alias GetNodes = "curl http://servidorpush.superati.com,br:3000/rest/nodes"
-alias GetCommands = "curl http://servidorpush.superati.com,br:3000/rest/commands"
+alias get_Nodes = "curl http://servidorpush.superati.com,br:3000/rest/nodes"
+alias get_Commands = "curl http://servidorpush.superati.com,br:3000/rest/commands"
 
 
 # Shortcuts para SERVIDORES
