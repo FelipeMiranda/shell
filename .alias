@@ -9,7 +9,7 @@ OSTYPE=`uname`
 alias clitxt='curl -F \"upfile=@-\" https://clitxt.com'
 
 
-#OPCOES COMUNS
+# OPCOES COMUNS
 alias ..='cd ..'
 alias b='bash'
 alias c=cat
