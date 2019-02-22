@@ -23,7 +23,7 @@ TZ='America/Sao_Paulo'; export TZ
 VISUAL=vim
 EDITOR=vim
 #PS1="$red\u$yellow@$green\h $cyan\W> $normal"
-PS1="\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[31m\]\u\[\033[34m\]@\[\033[32m\]\h \[\033[35m\]\[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]$>"
+#PS1="\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[31m\]\u\[\033[34m\]@\[\033[32m\]\h \[\033[35m\]\[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]$>"
 PS1='\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[31m\]\u\[\033[34m\]@\[\033[32m\]\h:\[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\] $>'
 
 #NODE_MODULES
