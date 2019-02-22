@@ -9,6 +9,7 @@
 #Config 
 source ~/colors.sh
 
+git config --global user.email rafael.castro@btgpactual.com
 
 
 # Host's aliases 

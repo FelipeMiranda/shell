@@ -4,20 +4,23 @@
   "description": "Suite de ferramentas canivete suiço, ambiente IDE para DEVOPS, exemplos de códigos e pedaços de códigos organizados para futuras consulta, focado em aumento da produtividade no uso do bash no dia a dia.",
   "main": "install.sh",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm audit",
     "start": "node cdshelld.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/quirinobytes/workspace.git"
   },
-  "author": "Rafael Quirino ®",
-  "license": "BSD",
+  "author": "Rafael Castro - quirinobytes®",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/quirinobytes/workspace/issues"
   },
   "dependencies": {
     "nodemon": "^1.18.4",
-    "request": "^2.87.0"
+    "request": "^2.87.0",
+    "deep-extend": ">=0.5.1",
+    "randomatic": ">=3.0.0",
+    "mpath": "~>0.5.1"
   }
 }

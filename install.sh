@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 ####################################################
 #  CDSHELL - Install.sh                            #
 #  Arquivo de instalação do CDSHELL                #	

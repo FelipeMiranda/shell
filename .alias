@@ -9,7 +9,7 @@ OSTYPE=`uname`
 alias clitxt='curl -F \"upfile=@-\" https://clitxt.com'
 
 
-#OPCOES COMUNS
+# OPCOES COMUNS
 alias ..='cd ..'
 alias b='bash'
 alias c=cat
@@ -122,6 +122,11 @@ alias R=®
 alias ¢¢=®®
 alias 88="ping 8.8.8.8 -c 1 -w 5"
 
+# |SERVIDOR PUSH| ADMIN
+alias GetNodes="curl http://servidorpush.superati.com.br:3000/rest/nodes"
+alias GetCommands="curl http://servidorpush.superati.com.br:3000/rest/commands"
+
+
 # Shortcuts para SERVIDORES
 alias d1="ssh dev1"
 alias d2="ssh dev2"
@@ -193,15 +198,16 @@ fi
 
 
 
-#SO ADMIN
+# S.O. / SySADMIN
 alias 0="read -n 1 -p 'Digite s(sim) ou qualquer coisa pra sair ' CONFIRM ; if [ \$CONFIRM == 's' ]; then init 0 ; else echo '\n\n\t$alert Exit $normal \n\n'; fi " 
 alias 6="echo -en 'Are you sure???? \n\n\t Reboot? s -> sim ou qualquer tecla -> sair\' ; read -n 1 -p '' CONFIRM ; if [ \$CONFIRM == 's' ]; then init 6 ; else echo '\n\n\t$alert Exit $normal \n\n'; fi " 
 
-#SECURITY UTILS
+# SECURITY UTILS
 alias b64decode="cat | base64 -d <<<"
 alias b64encode="echo -n | base64 <<<"
 alias TCP-syn="tcpdump -Annvi $IF_INTERNET 'tcp[13]==2'"
 
+# EASY EDIT 
 alias ea="cdshellvim.sh --edit-alias"
 alias ecdshell="cdshellvim.sh --edit-cdshell"
 alias ee="cdshellvim.sh --edit-export"

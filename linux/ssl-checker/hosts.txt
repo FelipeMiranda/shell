@@ -1,3 +1,4 @@
+receitascomissoes-01.dev.pactual.net 443
 tira-teima.as.uol.com.br 443
 afmail.uol.com.br 443
 autodiscover.uol.com.br 443
