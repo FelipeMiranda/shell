@@ -1,8 +1,12 @@
 #!/bin/bash
 source ~/colors.sh
 
+if [ -e ~/git_ps1.sh ]; then
+	source ~/git_ps1.sh 
+fi
+
 # Nao remover, usado para controle do tempo de apresetacao do Tarefas.
-TAREFAS_SHOWED_AT_TIME=1548874888
+TAREFAS_SHOWED_AT_TIME=1550714802
 
 # Tempo para exibir tarefas novamente, em segundos.
 TAREFAS_TIME_TO_WAIT=10
