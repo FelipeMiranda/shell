@@ -234,6 +234,7 @@ alias F11="echo $1 > ~/.F11.cmd"
 #KUBENETES
 alias kk="kubectl -n rc"
 alias kkget="kk get"
+alias knspace=knspace.sh
 
 
 
