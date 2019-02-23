@@ -35,6 +35,12 @@ if [ $OSTYPE == "Linux" ]; then
 		      echo -en "$green ** $atention UBUNTU -$yellow like found $green ** $normal\n\n"
 		      FLAVOR=debian
 			PACK_MANAGER="apt -y" 
+		 
+		 apt install curl -y
+		 curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
+		 curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+		 apt install nodejs -y
+
 		fi
 
 	else
