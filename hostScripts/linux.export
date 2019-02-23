@@ -9,7 +9,7 @@
 #Configs
 source ~/colors.sh
 
-KUBECONFIG=$HOME/.kube/cluster.yml
+KUBECONFIG=$HOME/.kube/kube_config_cluster.yml
 DISPLAY=192.168.15.2:0
 GIT_SSL_NO_VERIFY=true
 
