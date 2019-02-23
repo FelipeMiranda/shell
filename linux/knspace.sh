@@ -1,4 +1,3 @@
-####!/bin/bash
 
 #################################################
 # Bash script - Modelo					#
@@ -10,7 +9,7 @@
 
 ##########  Funcao       #######################
 function help(){
-    echo -en "$\n\n\t $alert Use: $green $0 $PARAMETERS $normal \n\n"
+    echo -en "$\n\n\t $alert Use: $green $0 NAMESPACE $normal \n\n"
 }
 
 
@@ -32,7 +31,7 @@ case $1 in
 		* )
 			# Executa com opcao que nao tem.
 			export NAMESPACE=$1
-			echo -en "NAMESPACE=$red$1$green exported $normal\n\n"
+			echo -en "NAMESPACE=$red$1\n\n $green \t Namespace exported! $normal\n\n"
 		;;
 esac
 #############        FIM      ##################
