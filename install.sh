@@ -263,12 +263,14 @@ cd - > /dev/null
 if [ ! -e /etc/bash_completion.d ]; then
 	mkdir -p /etc/bash_completion.d
 fi
+
 echo -en "\n Configurando$yellow bash_completion.d$normal ........"
-mkdir -p /etc/bash_completion.d/
+mkdir -p /etc/bash_completion.d
+
 cp $CDSHELL/etc+bash_completion.d+git /etc/bash_completion.d/git
 echo -en "....... $green Done $normal\n"
 
-# Instalando .bash_completion.d/
+# Instalando PERSONAL .bash_completion.d/
 echo -en "\n Copiando arquivos$yellow bash_completion.d$normal ........"
 if [ ! -d $HOME/.bash_completion.d ]; then
 	mkdir $HOME/.bash_completion.d
