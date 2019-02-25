@@ -1,0 +1,30 @@
+#!/bin/bash
+
+##################### HOSTSCRIPT - MODELO ##################
+# alias - Definir opções específicas por host.
+# Nomear o arquivo com o nome do $HOSTNAME.alias que será
+# executado no bash login.
+############################################################
+
+#Config 
+source ~/colors.sh
+
+git config --global user.email rafael.castro@btgpactual.com
+
+
+# Host's aliases 
+alias code="code --user-data-dir ~/.code"
+alias bra="git branch"
+
+
+
+#RECEITAS & COMMISOES
+alias reb="cd ~/IT-Am-Wm-RC/RCWeb/project ; docker-compose down; docker volume prune -f; ./startcom3.sh; cd -"
+
+
+#KUBERNETES
+alias kget='kubectl -n $NAMESPACE get'
+alias kdescribe="kubectl -n $NAMESPACE describe"
+alias kcontext="kcontext.sh"
+alias kcluster-info="kubectl cluster-info"
+alias klogs="kubectl -n $NAMESPACE logs"

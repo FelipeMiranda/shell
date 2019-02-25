@@ -1,8 +1,12 @@
 #!/bin/bash
 
 source ~/colors.sh
+#if [ -e ~/git_ps1.sh ]; then
+#	source ~/git_ps1.sh 
+#fi
+
 # Nao remover, usado para controle do tempo de apresetacao do Tarefas.
-TAREFAS_SHOWED_AT_TIME=1548874888
+TAREFAS_SHOWED_AT_TIME=1550714802
 
 # Tempo para exibir tarefas novamente, em segundos.
 TAREFAS_TIME_TO_WAIT=10
@@ -25,8 +29,6 @@ if [ -e ~/git-prompt.sh ]; then
 else
 	PS1="\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[31m\]\u\[\033[34m\]@\[\033[32m\]\h \[\033[35m\]\[\033[33m\]\w\[\033[0m\]$>"
 fi
-
-
 
 #NODE_MODULES
 NODE_MODULES=/lib/node_modules
