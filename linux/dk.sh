@@ -56,7 +56,7 @@ case $1 in
 
 
 
-		"--exec")	
+		"--bash")	
 			if [ ! -n "$2" ]; then
 			    	CONT=0
 				IMAGES=$(docker ps | grep -v CONTAINER | grep -vE "REPOSITORY|<none>" | cut -f1 -d' ' | uniq)
