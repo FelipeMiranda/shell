@@ -34,7 +34,7 @@ function versao(){
 #############        MAIN       ################
 case $1 in
 
-		"" )	
+		"-v" )	
 			# Quando executa sem opcao, chama funcao versao acima.
 			versao
 		;;
@@ -44,6 +44,12 @@ case $1 in
 			help
 		;;
 
+		"" )	
+			# Quando executa sem opcao, chama funcao versao acima.
+			echo -en "$alert -> Images Running: \n$normal" 
+			$DOCKER ps | awk '{ print $2 }' | sed 'd/ID/'
+			echo -en $normal
+		;;
 
 		* )
 			# Executa com opcao que nao tem.
