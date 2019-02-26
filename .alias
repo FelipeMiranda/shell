@@ -95,7 +95,7 @@ alias ctl='ctl.sh $1 $2 $3'
 alias start='start.sh'
 alias stop='stop.sh $1 $2 $3'
 alias dk="docker"
-alias dklogs='if [ -n $1 ]; then docker logs $(docker ps | grep $1 | awk "{ print $1}" ) -f; fi'
+alias dklogs="dklogs.sh"
 alias forever="forever.sh"
 alias ok=ok.sh
 
