@@ -53,10 +53,17 @@ case $1 in
 		;;
 
 		* )
-			# Executa com opcao que nao tem.
-			CONTAINER_ID=$($DOCKER ps | grep $1 | awk '{ print $1 }' )
+			check=`echo "$1" | grep -E ^\-?[0-9]*\.?[0-9]+$`
 
-			$DOCKER logs $CONTAINER_ID -f
+			if [ "$check" != '' ]; then    
+			      # it IS numeric
+				echo "Yeap!"
+			else
+				# it is NOT numeric.
+				# Executa com opcao que nao tem.
+				CONTAINER_ID=$($DOCKER ps | grep $1 | awk '{ print $1 }' )
+				$DOCKER logs $CONTAINER_ID -f
+			fi
 		;;
 esac
 #############        FIM      ##################
