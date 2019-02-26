@@ -57,13 +57,24 @@ case $1 in
 
 
 		"--exec")	
-			# Faça isso... 
-			IDS=$( docker ps | grep vendedor | cut -f1 -d " ")
-
-			if [ $( echo $IDS| wc -l | cut -f1 -d " " ) -gt 1 ]; then
-			    echo "vai ter q selecionar uma"
-			    #docker exec -it 
+			if [ ! -n "$2" ]; then
+			    	CONT=0
+				IMAGES=$(docker ps | grep -v CONTAINER | grep -vE "REPOSITORY|<none>" | cut -f1 -d' ' | uniq)
+				CONTAINER_ID=$(docker ps | grep -v CONTAINER  | awk '{print $NF}' )
+				echo -en " Escolha uma imagem para INICIAR ...\n\n "
+				for ID in $CONTAINER_ID ; do 
+				    ARRAY[$CONT]=$ID
+				    CONT=$(( $CONT +1 ))
+				    echo -en "\t $green $CONT $normal - $ID\n"
+				done
+				read RESPOSTA
+				OPTION=$(( RESPOSTA -1 ))
+				echo ${ARRAY[ $OPTION ]}
+				docker exec -it ${ARRAY[$OPTION]} /bin/bash
+			else
+				docker exec -it $2 /bin/bash
 			fi
+
 		;;
 
 

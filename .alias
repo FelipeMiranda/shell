@@ -95,6 +95,7 @@ alias ctl='ctl.sh $1 $2 $3'
 alias start='start.sh'
 alias stop='stop.sh $1 $2 $3'
 alias dk="docker"
+alias dkb="dk --bash"
 alias dklogs="dklogs.sh"
 alias forever="forever.sh"
 alias ok=ok.sh
