@@ -9,7 +9,7 @@ OSTYPE=`uname`
 alias clitxt='curl -F \"upfile=@-\" https://clitxt.com'
 
 
-# OPCOES COMUNS
+#OPCOES COMUNS
 alias ..='cd ..'
 alias b='bash'
 alias c=cat
@@ -93,10 +93,9 @@ alias ys="yum search"
 alias ssyi="yum search"
 alias ctl='ctl.sh $1 $2 $3'
 alias start='start.sh'
-alias enable='ctl enable'
-alias disable='ctl disable'
 alias stop='stop.sh $1 $2 $3'
 alias dk="docker"
+alias dklogs="if [ ! -n $1 ]; then docker logs $(docker ps | grep nginx | awk '{ print $1}' ) -f; fi"
 alias forever="forever.sh"
 alias ok=ok.sh
 
@@ -123,11 +122,6 @@ alias ¢=®
 alias R=®
 alias ¢¢=®®
 alias 88="ping 8.8.8.8 -c 1 -w 5"
-
-# |SERVIDOR PUSH| ADMIN
-alias GetNodes="curl http://servidorpush.superati.com.br:3000/rest/nodes"
-alias GetCommands="curl http://servidorpush.superati.com.br:3000/rest/commands"
-
 
 # Shortcuts para SERVIDORES
 alias d1="ssh dev1"
@@ -200,16 +194,15 @@ fi
 
 
 
-# S.O. / SySADMIN
+#SO ADMIN
 alias 0="read -n 1 -p 'Digite s(sim) ou qualquer coisa pra sair ' CONFIRM ; if [ \$CONFIRM == 's' ]; then init 0 ; else echo '\n\n\t$alert Exit $normal \n\n'; fi " 
 alias 6="echo -en 'Are you sure???? \n\n\t Reboot? s -> sim ou qualquer tecla -> sair\' ; read -n 1 -p '' CONFIRM ; if [ \$CONFIRM == 's' ]; then init 6 ; else echo '\n\n\t$alert Exit $normal \n\n'; fi " 
 
-# SECURITY UTILS
+#SECURITY UTILS
 alias b64decode="cat | base64 -d <<<"
 alias b64encode="echo -n | base64 <<<"
 alias TCP-syn="tcpdump -Annvi $IF_INTERNET 'tcp[13]==2'"
 
-# EASY EDIT 
 alias ea="cdshellvim.sh --edit-alias"
 alias ecdshell="cdshellvim.sh --edit-cdshell"
 alias ee="cdshellvim.sh --edit-export"
@@ -234,7 +227,6 @@ alias F11="echo $1 > ~/.F11.cmd"
 #KUBENETES
 alias kk="kubectl -n rc"
 alias kkget="kk get"
-alias knspace='if [ -z $1 ]; then echo "Digite o namespace"; else export NAMESPACE=$1; fi'
 
 
 
