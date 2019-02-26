@@ -46,8 +46,8 @@ case $1 in
 
 		"" )	
 			# Quando executa sem opcao, chama funcao versao acima.
-			echo -en "$alert -> Images Running: \n$normal" 
-			$DOCKER ps | awk '{ print $2 }' | sed 'd/ID/'
+			echo -en "$alert -> Images Running:$normal \n$green" 
+			$DOCKER ps | grep -v "CONTAINER ID" | awk '{ print "\033[31m " NR "\033[32m -> " $2 }' 
 			echo -en $normal
 		;;
 
