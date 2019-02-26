@@ -67,7 +67,9 @@ case $1 in
 				    CONT=$(( $CONT +1 ))
 				    echo -en "\t $green $CONT $normal - $ID\n"
 				done
-				read RESPOSTA
+				echo -en "$green \n"
+				read -p "  /bin/bash em: " RESPOSTA
+				echo -en "$normal \n"
 				OPTION=$(( RESPOSTA -1 ))
 				echo ${ARRAY[ $OPTION ]}
 				docker exec -it ${ARRAY[$OPTION]} /bin/bash
