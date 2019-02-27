@@ -9,7 +9,7 @@
 #Config 
 source ~/colors.sh
 
-#git config --global user.email rafael.castro@btgpactual.com
+git config --global user.email rafael.castro@btgpactual.com
 
 
 # Host's aliases 
@@ -23,8 +23,8 @@ alias reb="cd ~/IT-Am-Wm-RC/RCWeb/project ; docker-compose down; docker volume p
 
 
 #KUBERNETES
-alias kget='kubectl -n rc get'
-alias kdescribe="kubectl -n rc describe"
+alias kget='kubectl -n $NAMESPACE get'
+alias kdescribe="kubectl -n $NAMESPACE describe"
 alias kcontext="kcontext.sh"
 alias kcluster-info="kubectl cluster-info"
-alias klogs="kubectl -n rc logs"
+alias klogs="kubectl -n $NAMESPACE logs"

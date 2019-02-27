@@ -8,18 +8,14 @@
 # Coleta o início da execução.
 START=$(date +%s)
 
-git config --global user.name "Rafael Castro"
-git config --global user.email "quirinobytes@gmail.com"
-
 # Suporte as cores. (cdshell -c) para ver cores do CDSHELL
 source $CDSHELL/colors.sh || source colors.sh
 
 # Git Config
-git config --global user.email quirinobytes@gmail.com
-git config --global user.name Rafael Castro
+###################git config --global user.email quirinobytes@gmail.com
+git config --global user.name "Rafael Castro"
 git config credential.helper store
 git config --global push.default simple
-
 
 
 # Configurando Variável do CDSHELL
@@ -102,7 +98,12 @@ echo -en ..
 if [ -e $HOME/.vimrc ] ; 	then cp -f $HOME/.vimrc $BACKUP_DIR/ ; fi
 echo -en .
 cp $CDSHELL/.vimrc $HOME/
-echo -en ...
+echo -en .
+
+if [ -e $HOME/git-prompt.sh ] ; 	then cp -f $HOME/git-prompt.sh $BACKUP_DIR/ ; fi
+echo -en .
+cp $CDSHELL/git-prompt.sh $HOME/
+echo -en .
 
 if [ -e $HOME/.config/mc/ini ] ;	then cp -f $HOME/.config/mc/ini $BACKUP_DIR/.midnightcom.ini ; fi
 echo -en .
@@ -263,12 +264,14 @@ cd - > /dev/null
 if [ ! -e /etc/bash_completion.d ]; then
 	mkdir -p /etc/bash_completion.d
 fi
+
 echo -en "\n Configurando$yellow bash_completion.d$normal ........"
-mkdir -p /etc/bash_completion.d/
+mkdir -p /etc/bash_completion.d
+
 cp $CDSHELL/etc+bash_completion.d+git /etc/bash_completion.d/git
 echo -en "....... $green Done $normal\n"
 
-# Instalando .bash_completion.d/
+# Instalando PERSONAL .bash_completion.d/
 echo -en "\n Copiando arquivos$yellow bash_completion.d$normal ........"
 if [ ! -d $HOME/.bash_completion.d ]; then
 	mkdir $HOME/.bash_completion.d
