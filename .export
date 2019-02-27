@@ -2,7 +2,7 @@
 
 source ~/colors.sh
 # Nao remover, usado para controle do tempo de apresetacao do Tarefas.
-TAREFAS_SHOWED_AT_TIME=1551304207
+TAREFAS_SHOWED_AT_TIME=1551305644
 
 # Tempo para exibir tarefas novamente, em segundos.
 TAREFAS_TIME_TO_WAIT=10
@@ -27,9 +27,6 @@ else
 fi
 
 
-
-#NODE_MODULES
-#NODE_MODULES=/lib/node_modules
 
 ##escapacoes \[\] para o PS1 funcionar: wrap line, backpacesem comer peda;os malucos kkkk
 #
@@ -65,6 +62,7 @@ fi
 ###################
 #	  Node.JS	  #
 ###################
-export NODE_PATH=/lib/node_modules
-
+#NODE_MODULES
+#NODE_MODULES=/lib/node_modules
+#export NODE_PATH=/lib/node_modules
 
