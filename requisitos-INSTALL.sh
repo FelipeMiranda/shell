@@ -32,14 +32,25 @@ if [ $OSTYPE == "Linux" ]; then
 		
 		cat /etc/*rele* | grep Ubuntu -q
 		if [ $? == 0 ]; then
+
 		      echo -en "$green ** $atention UBUNTU -$yellow like found $green ** $normal\n\n"
+			
+# GAMBI PARA INSTALAR O NODEJS RAPIDO NO UBUNTU
+			 apt install curl -y
+			 curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
+			 curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+			 apt install nodejs -y
+
 		      FLAVOR=debian
 			PACK_MANAGER="apt -y" 
+<<<<<<< HEAD
 		 
 		 apt install curl -y
 		 curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
 		 curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
 		 apt install nodejs -y
+=======
+>>>>>>> 305a78fe482572370f10abfb9878331e02b38e5e
 
 		fi
 
