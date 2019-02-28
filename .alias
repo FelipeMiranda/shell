@@ -239,6 +239,6 @@ alias kk="kubectl -n rc"
 alias kkget="kk get"
 alias kdeployments="kubectl get deployments"
 alias kbash=kbash.sh
-alias kns=NAMESPACE=
+alias kns=NAMESPACE=$1
 
 
