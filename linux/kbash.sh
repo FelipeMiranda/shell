@@ -40,7 +40,7 @@ case $1 in
 
 		"" )	
 
-			kget pods
+			kubectl get pods -n $NAMESPACE
 			
 		;;
 
