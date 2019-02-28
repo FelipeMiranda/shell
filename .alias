@@ -235,8 +235,6 @@ alias F11="echo $1 > ~/.F11.cmd"
 
 
 #KUBENETES
-alias kk="kubectl -n rc"
-alias kkget="kk get"
 alias kdeployments="kubectl get deployments"
 alias kbash=kbash.sh
 alias kns='NAMESPACE=$1'
