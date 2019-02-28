@@ -1,1 +1,1 @@
-$(knspace.sh $1)
+source $CDSHELL/linux/knspace.sh $1

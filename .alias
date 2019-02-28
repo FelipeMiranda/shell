@@ -235,6 +235,7 @@ alias F11="echo $1 > ~/.F11.cmd"
 
 
 #KUBENETES
+alias kns="source $CDSHELL/linux/knspace.sh"
 alias kdeployments="kubectl get deployments"
 alias kbash=kbash.sh
 alias kget='echo -en "\n\t *Namespace=$red$NAMESPACE$normal\n\t *Contexto=\n" ; kubectl -n $NAMESPACE get'

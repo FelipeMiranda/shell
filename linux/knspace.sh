@@ -34,6 +34,7 @@ case $1 in
 			# Executa com opcao que nao tem.
 			#echo -en "NAMESPACE=$red$1\n\n $green \t Namespace exported! $normal\n\n"
 			echo declare -x NAMESPACE=$1 
+			NAMESPACE=$1 
 			export NAMESPACE
 		;;
 esac
