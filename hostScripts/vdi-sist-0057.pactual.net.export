@@ -22,4 +22,4 @@ PS1='\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[31m\]\u\[\033[34m\]@\[\033[32m\]\h
 
 export PS1
 
-source <(kubectl completion bash)
+#source <(kubectl completion bash)
