@@ -228,7 +228,7 @@ alias dkk="dk --kill"
 alias dkr="dk --run"
 alias dkt="dk --top"
 alias dklogs="dklogs.sh"
-alias dkccom="dk --compose"
+alias dkcom="dk --compose"
 
 #DEVOPS
 alias F11="echo $1 > ~/.F11.cmd"
