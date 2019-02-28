@@ -1,0 +1,19 @@
+#!/bin/bash
+
+############################################################
+# hostScripts exports - Definir opções específicas por host.
+# Nomear o arquivo com o nome do $HOSTNAME.export que sera 
+# executado no bash login.
+############################################################
+
+#Configs
+source ~/colors.sh
+
+
+#Variavéis
+KUBECONFIG=$HOME/.kube/kube_config_cluster.yml
+
+
+
+#Exportando
+export KUBECONFIG
