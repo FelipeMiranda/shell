@@ -40,6 +40,11 @@ complete -d cd
 #Usando git bash_completion
 . /etc/bash_completion.d/git
 
+#KUBERNETES AUTOCOMPLETE
+which kubectl
+if [ $? == 0 ]; then
+	source <(kubectl completion bash)
+fi
 
 # Instalacao das Funcoes ZZ (www.funcoeszz.net)
 export ZZOFF=""  # desligue funcoes indesejadas
