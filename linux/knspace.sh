@@ -21,7 +21,7 @@ case $1 in
 
 		"" )	
 			# Quando executa sem opcao, chama funcao versao acima.
-			echo -en "NAMESPACE=$red$1\n\n $green \t Namespace exported! $normal\n\n"
+			echo -en "\n\tNAMESPACE=$green$NAMESPACE$normal\n"
 		;;
 
 		"-h"| "--help" )	
@@ -32,11 +32,9 @@ case $1 in
 
 		* )
 			# Executa com opcao que nao tem.
-			#echo -en "NAMESPACE=$red$1\n\n $green \t Namespace exported! $normal\n\n"
-			#echo declare -x NAMESPACE=$1 
 			NAMESPACE=$1 
 			export NAMESPACE
-			echo -en "NAMESPACE=$red$1\n\n $green \t Namespace exported! $normal\n\n"
+			echo -en "NAMESPACE=$yellow$1\n $green \t Namespace exported! $normal\n"
 		;;
 esac
 #############        FIM      ##################
