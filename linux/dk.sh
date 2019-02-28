@@ -79,6 +79,17 @@ case $1 in
 
 		;;
 
+		"--compose")	
+			if [ ! -n "$2" ]; then
+				
+				echo -en '$green DOCKER COMPOSE - CTL$normal\n\n' ; docker-compose $2
+			else
+				docker-compose ps
+			fi
+
+		;;
+
+
 
 		"-k"|"--kill" )	
 			# se nao passar uma, mata tudo.
