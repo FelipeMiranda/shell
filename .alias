@@ -221,7 +221,6 @@ alias eh="cdshellvim.sh --help"
 alias etodos="cdshellvim.sh --check-all"
 
 # DOCKER ALIAS
-alias dkb="dk --bash"
 
 alias dk="$CDSHELL/linux/dk.sh"
 alias dkk="dk --kill"
@@ -229,15 +228,15 @@ alias dkr="dk --run"
 alias dkt="dk --top"
 alias dklogs="dklogs.sh"
 alias dkcom="dk --compose"
+alias dkbash="dk --bash"
 
 #DEVOPS
 alias F11="echo $1 > ~/.F11.cmd"
-
-
 
 
 #KUBENETES
 alias kk="kubectl -n rc"
 alias kkget="kk get"
 alias kdeployments="kubectl get deployments"
+alias kbash=kbash.sh
 
