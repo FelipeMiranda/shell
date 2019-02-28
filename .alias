@@ -238,5 +238,9 @@ alias F11="echo $1 > ~/.F11.cmd"
 alias kdeployments="kubectl get deployments"
 alias kbash=kbash.sh
 alias kns='NAMESPACE=$1'
-
+alias kget='echo -en "\n\t *Namespace=$red$NAMESPACE$normal\n\t *Contexto=\n; $kubectl -n rc get'
+alias kdescribe="kubectl -n rc describe"
+alias kcontext="kcontext.sh"
+alias kcluster-info="kubectl cluster-info"
+alias klogs="kubectl -n rc logs"
 
