@@ -39,8 +39,9 @@ case $1 in
 
 
 		"" )	
-			# Quando executa sem opcao, chama funcao versao acima.
-			help
+
+			kget pods
+			
 		;;
 
 
