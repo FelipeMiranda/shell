@@ -92,7 +92,7 @@ case $1 in
 
 
 		"-k"|"--kill" )	
-			# se nao passar uma, mata tudo.
+			# se nao passar um nome UNICO pra selecao, mata tudo.
 			if [ -n $2 ]; then
 				IDS=$( docker ps | grep -v CONTAINER | cut -f1 -d " ")
 				for ID in $IDS; do
