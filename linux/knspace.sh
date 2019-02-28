@@ -1,3 +1,5 @@
+#!/bin/bash
+
 
 #################################################
 # Bash script - Modelo					#
@@ -30,8 +32,8 @@ case $1 in
 
 		* )
 			# Executa com opcao que nao tem.
-			export NAMESPACE=$1
-			echo -en "NAMESPACE=$red$1\n\n $green \t Namespace exported! $normal\n\n"
+			#echo -en "NAMESPACE=$red$1\n\n $green \t Namespace exported! $normal\n\n"
+			echo declare -x NAMESPACE=$1 
 		;;
 esac
 #############        FIM      ##################
