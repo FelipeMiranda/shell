@@ -1,0 +1,2 @@
+git config --global alias.feature '!sh ~/.feature'
+git config --global alias.release '!sh ~/.release'
