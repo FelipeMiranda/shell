@@ -104,10 +104,6 @@ alias ssyi="yum search"
 alias ctl='ctl.sh $1 $2 $3'
 alias start='start.sh'
 alias stop='stop.sh $1 $2 $3'
-alias dk="docker"
-alias dkb="dk --bash"
-alias dkc="echo -en '$green DOCKER COMPOSE - CTL$normal\n\n' ; docker-compose"
-alias dklogs="dklogs.sh"
 alias forever="forever.sh"
 alias ok=ok.sh
 
@@ -225,10 +221,14 @@ alias eh="cdshellvim.sh --help"
 alias etodos="cdshellvim.sh --check-all"
 
 # DOCKER ALIAS
+alias dkb="dk --bash"
+
 alias dk="$CDSHELL/linux/dk.sh"
 alias dkk="dk --kill"
 alias dkr="dk --run"
 alias dkt="dk --top"
+alias dklogs="dklogs.sh"
+alias dkccom="dk --compose"
 
 #DEVOPS
 alias F11="echo $1 > ~/.F11.cmd"
