@@ -1,0 +1,1 @@
+$(knspace.sh $1)
