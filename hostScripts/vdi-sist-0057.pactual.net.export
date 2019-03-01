@@ -17,9 +17,7 @@ export DISPLAY KUBECONFIG GIT_SSL_NO_VERIFY
 echo -en "Alias $alert VDI $normal $yellow criados $green sucesso! $normal\n\n"
 
 
-PS1='\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[31m\]\u\[\033[34m\]@\[\033[32m\]\h:\[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]$>'
-
-
-export PS1
+#PS1='\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[31m\]\u\[\033[34m\]@\[\033[32m\]\h:\[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]$>'
+#export PS1
 
 #source <(kubectl completion bash)
