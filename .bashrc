@@ -21,6 +21,9 @@ if [ -e ~/git-prompt.sh ] ; then
 	source ~/git-prompt.sh
 fi
 
+if [ -e ~/$CDSHELL/linux/cdw.sh ] ; then
+	source ~/$CDSHELL/linux/cdw.sh
+fi
 
 # Caso exista, execute os alias personalizados em .alias
 # Atençao: "como se usa variaveis dentro do .alias, nao se deve colocar ele antes do .export acima"
