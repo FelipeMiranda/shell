@@ -52,7 +52,6 @@ alias dmesg="dmesg --color"
 alias cor=$CDSHELL/linux/cores.sh
 #Mostrar informaçoes do CDSHELL.
 #alias cdshell="echo -en '`cat $CDSHELL/backup/data_ultima_instalacao.txt `  \n '"
-alias cdw='cd $( /root/shell/linux/cdworkspace.sh )'
 alias cdb='cd ~/sistemas/bEOS'
 alias cdp='cd /etc/puppet/environments/devel'
 alias cdco='cd ~/codigo-fonte'
