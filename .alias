@@ -101,25 +101,35 @@ alias stop='stop.sh $1 $2 $3'
 alias forever="forever.sh"
 alias ok=ok.sh
 
-# AGIL INSTALL
-FLAVOR=$( $CDSHELL/linux/flavor,sh )
+# <AGIL INSTALL>
 
-case $FLAVOR = "Ubuntu"
-
-fi
-
-if [ $( flavor.sh Centos ]; then
+if [ $( flavor.sh Centos) == 0 ]; then
 alias yr="yum remove"
 alias yi="yum install -y"
+alias yu="yum update -y"
 alias iiys="yum install -y"
 alias ys="yum search"
 alias install="yum install -y"
 fi
 
+if [ $(flavor.sh Ubuntu) == 0 ]; then
+alias ar="apt remove"
+alias au="apt update"
+alias ai="apt install -y"
+alias ays="apt install -y"
+alias as="apt search"
+alias install="apt install -y"
+fi
+
+
+
+# -AGIL INSTALL-
+
+
 alias tlog="tail -f /var/log/messages"
 alias squidlog.sh="tail -s 0.5 -f /var/log/squid/access.log | awk '{ printf strftime(\"%H:%M %d/%m \") } $0'"
 
-#BLUEMONEY
+#BOLSA-SYSTEMS 
 alias menu="cd /root/workspace/bolsa-systems/blueMoney/dataMining/ && menu.sh && cd -"
 
 #PREGUICAS
