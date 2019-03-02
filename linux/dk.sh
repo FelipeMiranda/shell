@@ -107,7 +107,14 @@ case $1 in
 			fi
 		;;
 
-	
+			"-i"|"--images" )	
+			# se nao passar um nome UNICO pra selecao, mata tudo.
+			if [ -n $2 ]; then
+				    docker images
+			fi
+		;;
+
+
 		* )
 			# Executa com opcao que nao tem.
 			docker ps
