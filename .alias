@@ -94,11 +94,6 @@ alias nd='nodemon'
 alias sss='ss -s'
 alias ps1='source $CDSHELL/linux/ps1_mini.sh'
 alias ps2='source $CDSHELL/linux/ps2_normal.sh'
-alias install="yum install -y"
-alias yr="yum remove"
-alias yi="yum install -y"
-alias iiys="yum install -y"
-alias ys="yum search"
 alias ssyi="yum search"
 alias ctl='ctl.sh $1 $2 $3'
 alias start='start.sh'
@@ -106,6 +101,20 @@ alias stop='stop.sh $1 $2 $3'
 alias forever="forever.sh"
 alias ok=ok.sh
 
+# AGIL INSTALL
+FLAVOR=$( $CDSHELL/linux/flavor,sh )
+
+case $FLAVOR = "Ubuntu"
+
+fi
+
+if [ $( flavor.sh Centos ]; then
+alias yr="yum remove"
+alias yi="yum install -y"
+alias iiys="yum install -y"
+alias ys="yum search"
+alias install="yum install -y"
+fi
 
 alias tlog="tail -f /var/log/messages"
 alias squidlog.sh="tail -s 0.5 -f /var/log/squid/access.log | awk '{ printf strftime(\"%H:%M %d/%m \") } $0'"

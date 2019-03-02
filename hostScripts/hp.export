@@ -11,7 +11,7 @@ source ~/colors.sh
 
 
 #Variavéis
-KUBECONFIG=$HOME/.kube/kube_config_cluster.yml
+KUBECONFIG=$HOME/.kube/kube_config_cluster.yml:~/.kube/rancher_config.yml
 
 
 
