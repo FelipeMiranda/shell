@@ -161,10 +161,16 @@ function TestCheckList(){
 		((CONT++))
 		echo $CONT
 	done
-
-	grep -E "<<<<<<<|HEAD" $CDSHELL/* -R > /dev/null
+    
+	cd $CDSHELL
+	/bin/grep "<<<<<<< HEAD" * -R > /dev/null
 	if [ $? == 0 ]; then
-		return 1
+		echo -en "\n $alert $red Achei Caralho <<<<<< HEAD !!! $normal \n\n"
+		return 2 
+	else
+		((CONT++))
+		echo -en "\n $yellow $CONT ... $green Nao contem $alert <<<<<< HEAD $normal\n"
+		return 0
 	fi
 
 	return $EXIT_CODE
@@ -178,8 +184,8 @@ function runTests(){
 	
 	# Rodando os testes de cima.( para nao ficar repetitivo) 
     TestCheckList	
+	EXIT_CODE=$?
 
-	
 	# Simule falha, então código de retorno > 0
 	#EXIT_CODE=11
 	return $EXIT_CODE
@@ -373,6 +379,7 @@ case $1 in
 								EXIT_CODE=""
 								runTests
 								EXIT_CODE=$?
+								echo EXIT_CODE=$EXIT_CODE
 								if [ $EXIT_CODE == 0 ]; then
 									echo -en "\n Testes realizados com $green sucesso.$normal\n"
 								else
