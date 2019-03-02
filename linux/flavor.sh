@@ -28,18 +28,26 @@ function flavor(){
 	cat /etc/*rele* | grep ubuntu > /dev/null
 	if [ $? == 0 ]; then
 	    echo -en "Ubuntu"
-	    exit
+	    return 0
 	fi
 
 	cat /etc/*rele* | grep centos > /dev/null
 	if [ $? == 0 ]; then
-	    echo -en "Ubuntu"
-	    exit
+	    echo -en "Centos"
+	    return 0
 	fi
-
 }
 
+function testeflavor(){
 
+if [ -n $1 ]; then
+	if [ $(flavor) == "$1" ]; then
+	    	echo 0
+	else
+		echo 1
+	fi
+fi
+}
 
 ################################################
 #############        MAIN       ################
@@ -48,6 +56,12 @@ case $1 in
 		"" )	
 			# Quando executa sem opcao, chama funcao versao acima.
 			flavor
+		;;
+
+
+		* )	
+			# Quando executa sem opcao, chama funcao versao acima.
+			testeflavor $1
 		;;
 
 		"-h"| "--help" )	
