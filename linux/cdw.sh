@@ -21,6 +21,18 @@ function cdw(){
 
 		    ;;
 
+		    "-h","--help" )	
+					help
+		    ;;
+
+		    "-r","--reset" )	
+		    			if [ -e ~/.workspace_rc ]; then
+						rm -rf ~/.workspace_rc
+						echo -en "Excluido com$green sucesso.$normal\n"
+					fi
+		    ;;
+
+
 		    "" )
 			    if [ -e ~/.workspace_rc ]; then
 				    WORK_DIR=$( cat ~/.workspace_rc )
