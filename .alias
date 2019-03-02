@@ -247,6 +247,7 @@ alias dkt="dk --top"
 alias dklogs="dklogs.sh"
 alias dkcom="dk --compose"
 alias dkbash="dk --bash"
+alias dki="dk --images"
 
 #DEVOPS
 alias F11="echo $1 > ~/.F11.cmd"
