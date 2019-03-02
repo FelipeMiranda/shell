@@ -147,6 +147,7 @@ function atualizaJSON() {
 
 # funcao TestCheckList
 function TestCheckList(){
+	# retorna zero se sucesso.
 	EXIT_CODE=0
 	CONT=0
 	FILES_NEED_EXISTS="
@@ -160,6 +161,12 @@ function TestCheckList(){
 		((CONT++))
 		echo $CONT
 	done
+
+	grep -E "<<<<<<<|HEAD" $CDSHELL/* -R > /dev/null
+	if [ $? == 0 ]; then
+		return 1
+	fi
+
 	return $EXIT_CODE
 }
 
