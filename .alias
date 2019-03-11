@@ -97,6 +97,7 @@ alias ps2='source $CDSHELL/linux/ps2_normal.sh'
 alias ssyi="yum search"
 alias ctl='ctl.sh $1 $2 $3'
 alias start='start.sh'
+alias restart='restart.sh'
 alias stop='stop.sh $1 $2 $3'
 alias forever="forever.sh"
 alias ok=ok.sh
