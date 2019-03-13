@@ -24,6 +24,22 @@ function help(){
 }
 
 
+function commit(){
+
+if [ -n $1 ]; then
+    git add .
+    git commit -m "$1" . || ERROR_CODE=1
+    git push || ERROR_CODE=1
+else
+    git add .
+    git commit -m "Commiting my job!" . || ERROR_CODE=1
+    git push || ERROR_CODE=1
+
+fi
+
+
+}
+
 ################################################
 #############        MAIN       ################
 case $1 in
@@ -40,10 +56,9 @@ case $1 in
 			
 			#cd $CDSHELL
 			
-			git add .
-			git commit -m "OK" . || ERROR_CODE=1
-			git push || ERROR_CODE=1
+			commit
 			echo -en "\n\n\t $alert Feito o rr$normal \n\n"
+
 			if [ $? -eq 0 ]; then
 				echo -en "$green Todo $atention $(git config remote.origin.url | cut -d '/' -f2- | cut -d'.' -f1) $normal enviado com sucesso!\n\n"
 				ERROR_CODE=0
@@ -56,13 +71,12 @@ case $1 in
 		echo "\t Finalizado com status erro=$EERRO_CODE\n\n"
 		fi
 		cd - > /dev/null
-		echo -en "$green \n\n\tVersao enviada: " $(csshell -g) "\n$normal\n"
+		echo -en "$green \n\n\tVersao enviada: " $(cdshell -g) "\n$normal\n"
 		;;
 
 	
 		* )
-			# Executa com opcao que nao tem.
-			echo -en "O comando $red $1 $normal não existe.\n"
+			commit $1
 		;;
 esac
 #############        FIM      ##################
