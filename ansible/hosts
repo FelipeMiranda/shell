@@ -23,6 +23,6 @@ dev10 			ansible_ssh_host=192.168.15.110
 
 
 
-node1 			ansible_ssh_host=192.168.15.101
-node2			ansible_ssh_host=192.168.15.102
-node3 			ansible_ssh_host=192.168.15.103
+node1 			ansible_ssh_host=192.168.15.201
+node2			ansible_ssh_host=192.168.15.202
+node3 			ansible_ssh_host=192.168.15.203

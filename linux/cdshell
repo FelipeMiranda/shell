@@ -241,7 +241,6 @@ case $1 in
 	"-a"|"--add")	
 				if [ -n "$1" ]; then
 					
-					
 					NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
 					NEXT_ID=$(( $NEXT_ID + 1 ))
 					TEXTO=$( echo $* | sed 's/\-a //g' )
@@ -263,7 +262,7 @@ case $1 in
 	"-a2")		if [ -n "$1" ]; then
 					NEXT_ID=$(cat $CDSHELL_VAR/cdshell_tarefas.next_id)
 					NEXT_ID=$(( $NEXT_ID + 1 ))
-					TEXTO=$( echo $* | sed 's/\-a3 //g' )
+					TEXTO=$( echo $* | sed 's/\-a2 //g' )
 					echo TEXTO=$TEXTO
 					JSON=`jq ".item += [{\"id\":$NEXT_ID,\"tarefa\":{\"priority\": 2, \"text\":\"$TEXTO\"}}]" $CDSHELL_VAR/cdshell_tarefas.json`
 					atualizaJSON $JSON
