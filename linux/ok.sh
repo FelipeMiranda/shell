@@ -26,9 +26,9 @@ function help(){
 
 function commit(){
 
-if [ -n $1 ]; then
+if [ -n $* ]; then
     git add .
-    git commit -m "$1" . || ERROR_CODE=1
+    git commit -m "$*" . || ERROR_CODE=1
     git push || ERROR_CODE=1
 else
     git add .
@@ -76,7 +76,7 @@ case $1 in
 
 	
 		* )
-			commit $1
+			commit $*
 		;;
 esac
 #############        FIM      ##################
