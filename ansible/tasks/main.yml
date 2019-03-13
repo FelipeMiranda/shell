@@ -13,6 +13,7 @@
       - servidorpush.superati.com.br
       - dev1
       - dev10
+	  - node1
 
     resolv_nameservers:
       - 192.168.15.10
@@ -31,8 +32,8 @@
       - rotate
 
   tasks:
-#      - debug:
-#          msg: "{{ vars['nodes'] }}"
+      - debug:
+          msg: "{{ vars['nodes'] }}"
 
       - name: update /etc/hosts file
         blockinfile:
