@@ -175,7 +175,8 @@ function TestCheckList(){
 	done
     
 	cd $CDSHELL
-	/bin/grep "<<<<<<< HEAD" * -R > /tmp/grep.tmp
+	# Colocando esse echo para fazer uma jogada para o grep nao encontrar o <<x5 HEAD, kkkkk ;)
+	grep "$(echo -en "<<<<<<< FLAG" | sed 's/FLAG/HEAD/g')" * -R > /tmp/grep.tmp
 	if [ $? == 0 ]; then
 		echo -en "\n $alert $red Achei Caralho <<<<<< HEAD !!! $normal \n\n"
 		cat /tmp/grep.tmp
