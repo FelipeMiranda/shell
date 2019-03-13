@@ -13,7 +13,9 @@
       - servidorpush.superati.com.br
       - dev1
       - dev10
-	  - node1
+      - node1
+      - node2
+      - node3
 
     resolv_nameservers:
       - 192.168.15.10
