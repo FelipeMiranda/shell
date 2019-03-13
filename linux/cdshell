@@ -45,7 +45,7 @@ function exibe_versao_git_local_version(){
 }
 
 function exibe_somente_o_numero_da_versao_git_local_version(){
-	V=`git rev-list HEAD | wc -l`
+	V=`git rev-list HEAD 2> /dev/null | wc -l `
 	VERSION=`echo "scale=2; $V/100" | bc`
 
 	if [ $V -eq 0 ]; then 
