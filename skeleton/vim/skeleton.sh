@@ -27,7 +27,20 @@ function versao(){
     echo -en "$\n\n\t $alert Versao: $green $0 $VERSION $normal \n\n"
 }
 
-
+function hasParams(){
+    if [ $# -lt 1 ]; then
+	 echo "Faltou utilizar pelo menos um argumento!"
+	 exit 1
+    fi
+     
+    echo "Numero de argumentos: $#"
+     
+    COUNT=0
+    for ARG in $*; do
+	 COUNT=`expr $COUNT + 1`
+	 echo "Argumento $COUNT: $ARG"
+    done
+}
 
 ################################################
 #############        MAIN       ################
@@ -51,7 +64,8 @@ case $1 in
 
 		* )
 			# Executa com opcao que nao tem.
-			echo -en "O comando $red $1 $normal não existe.\n"
+			echo -en "Verificando os parametros passados $red $* $normal se existe algum.\n"
+			hasParams $*
 		;;
 esac
 #############        FIM      ##################
