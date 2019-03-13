@@ -26,7 +26,7 @@ function help(){
 
 function commit(){
 
-if [ -n $* ]; then
+if [ -n $1 ]; then
     git add .
     git commit -m "$*" . || ERROR_CODE=1
     git push || ERROR_CODE=1
