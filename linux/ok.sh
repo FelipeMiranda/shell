@@ -6,7 +6,6 @@
 # v_1.0.1							#
 #################################################
 
-
 #############     CONFIG     ####################
 #Carrega variáreis de ambiente.
 source ~/.export
@@ -22,7 +21,7 @@ function help(){
 
 }
 
-
+### FUNCAO COMMIT ( um texto como se fosse, varios parametros )
 function commit(){
 
 if [ -n $1 ]; then
