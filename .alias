@@ -175,7 +175,6 @@ alias sta='git status'
 alias com='git commit -a'
 alias ga='git add . --all'
 alias gl='git log'
-alias gb='git branch'
 alias pull='echo -e "\n\t ${alert}PULL${normal} xando\n\n\t ${green}LOCAL <- ${yellow} WWW ${blue} ($(git config remote.origin.url)) ${normal}\n" && git pull '
 alias push='echo -e "\n\t ${alert}emPURRANDO${normal}\n\n\t ${yellow}LOCAL -> ${green} WWW ${blue} ($(git config remote.origin.url)) ${normal}\n" && git push origin master '
 
