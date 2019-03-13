@@ -163,9 +163,11 @@ function TestCheckList(){
 	done
     
 	cd $CDSHELL
-	/bin/grep "<<<<<<< HEAD" * -R > /dev/null
+	/bin/grep "<<<<<<< HEAD" * -R > /tmp/grep.tmp
 	if [ $? == 0 ]; then
 		echo -en "\n $alert $red Achei Caralho <<<<<< HEAD !!! $normal \n\n"
+		cat /tmp/grep.tmp
+		rm /tmp/grep.tmp
 		return 2 
 	else
 		((CONT++))
