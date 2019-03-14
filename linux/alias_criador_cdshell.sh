@@ -71,7 +71,7 @@ case $1 in
 				  ISSO='/'
 				  AQUILO='\/'
 				  COMANDAO="$COMANDAO $(echo ${myparams[$ARG]} )"
-				  COMANDAO= $( echo $COMANDAO | sed 's/$ISSO/$AQUILO/g')
+				  COMANDAO= $( echo $COMANDAO | tr '/' '\' )
 			    done
 			    echo -en "$magenta COMANDAO= $COMANDAO \n"
 			    echo sed "s/ALIAS_CRIADOR/ALIAS_CRIADOR\nalias $1='$COMANDAO'" -i $CDSHELL/.alias
