@@ -26,6 +26,7 @@ function help(){
 
 function install(){
     curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+    echo -en "$red NAO ESQUECER DE MANDAR o YUM INSTALL\n"
 }
 
 
