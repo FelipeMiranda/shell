@@ -266,3 +266,13 @@ alias kcluster-info="kubectl cluster-info"
 alias klogs="kubectl -n rc logs"
 alias kbash=kbash.sh
 alias kexec=kexec.sh
+
+
+
+# :) ALIAS_CRIADOR
+alias rafael= echo teste 
+alias rafael= dsjkajdaskldask djsakdjas dsajkdas 
+alias rafael=
+alias rafael= 2
+alias rafael= 2
+alias rafael= 2
