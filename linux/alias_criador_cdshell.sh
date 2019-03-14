@@ -1,5 +1,3 @@
-#!/bin/bash
-
 #################################################
 # Bash script - Modelo					#
 # Use como modelo para criar seus scripts bash. #
@@ -68,13 +66,11 @@ case $1 in
 			if [ $NUMBER_PARAMS -ge 2 ]; then
 			    for ARG in $(seq 1 $NUMBER_PARAMS) ; do
 				  echo ARG=$ARG ${myparams[$ARG]}
-				  ISSO='/'
-				  AQUILO='\/'
 				  COMANDAO="$COMANDAO $(echo ${myparams[$ARG]} )"
-				  COMANDAO= $( echo $COMANDAO | tr '/' '\' )
+				  COMANDAO="$(echo $COMANDAO | sed 's/\//\\\//g')"
 			    done
 			    echo -en "$magenta COMANDAO= $COMANDAO \n"
-			    echo sed "s/ALIAS_CRIADOR/ALIAS_CRIADOR\nalias $1='$COMANDAO'" -i $CDSHELL/.alias
+			    alias "$1"="$COMANDAO"
 			else
 			    echo -en "Necessario somente 2 parametros: tem $? $red $0 <NOME ALIAS> COMANDO DESEJADO $normal\n"
 			fi
