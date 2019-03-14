@@ -25,16 +25,19 @@ function versao(){
     echo -en "$\n\n\t $alert Versao: $green $0 $VERSION $normal \n\n"
 }
 
-#funcao que retorna o numero de parametros, caso tenha, 
 function hasParams(){
     if [ $# -lt 1 ]; then
 	 echo "Faltou utilizar pelo menos um argumento!"
-    	 echo "Numero de argumentos: $#"
-	 return 0
-    else
-	 echo "Tem $#"
-	 return $#
+	 exit 1
     fi
+     
+    echo "Numero de argumentos: $#"
+     
+    COUNT=0
+    for ARG in $*; do
+	 COUNT=`expr $COUNT + 1`
+	 echo "Argumento $COUNT: $ARG"
+    done
 }
 
 ################################################
@@ -49,7 +52,6 @@ case $1 in
 		"" )	
 			# Quando executa sem opcao, chama funcao versao acima.
 			versao
-			hasParams $*
 		;;
 
 		"-h"| "--help" )	
@@ -60,21 +62,8 @@ case $1 in
 
 		* )
 			# Executa com opcao que nao tem.
-			echo -en "Parametros passados $red $* $normal, checando.\n"
-			myparams=( "$@" ) 
+			echo -en "Verificando os parametros passados $red $* $normal se existe algum.\n"
 			hasParams $*
-			NUMBER_PARAMS=$?
-			echo NUMBER_PARAM=$NUMBER_PARAMS
-			if [ $NUMBER_PARAMS -ge 2 ]; then
-			    for ARG in $(seq 1 $NUMBER_PARAMS) ; do
-				  echo ARG=$ARG ${myparams[$ARG]}
-				  COMANDAO="$COMANDAO ${myparams[$ARG]}"
-			    done
-			    	echo -en "$magenta COMANDAO= $COMANDAO \n"
-				sed "s/ALIAS_CRIADOR/ALIAS_CRIADOR\nalias $1\=\"$COMANDAO\"/g" -i $CDSHELL/.alias
-			else
-			    echo -en "Necessrio somente 2 parametros: tem $? $red $0 <NOME ALIAS> COMANDO DESEJADO $normal\n"
-			fi
 		;;
 esac
 #############        FIM      ##################
