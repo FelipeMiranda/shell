@@ -29,9 +29,9 @@
 	//Emit a username
 	const { exec } = require('child_process');
 
-
-		exec("cd /root/shell ; git rev-list HEAD | wc -l | tr '\n' ' ' ", (err, stdout, stderr) => {
+		exec("cd /root/shell ; git rev-list HEAD | wc -l | tr -d '\n'", (err, stdout, stderr) => {
 			hostversion = stdout;
+			console.log(hostversion);
 		socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {mainfunction:"default", autoupdate:true} })
 		//socket.emit('hostversion', {message : hostversion , hostname: hostname })
 		socket.emit('version', {message : sistema });
