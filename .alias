@@ -9,7 +9,7 @@ OSTYPE=`uname`
 alias clitxt='curl -F \"upfile=@-\" https://clitxt.com'
 
 #CDSHELL
-alias Getnodes='curl http://localhost:3000/rest/nodes'
+alias Getnodes=Getnodes.sh
 alias Getcommands=Getnodes.sh
 
 
