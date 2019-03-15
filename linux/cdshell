@@ -460,7 +460,7 @@ case $1 in
 
 	# Exibe versao atual
     "-V") 
-		cat $CDSHELL/backup/versao_ultima_instalacao.txt
+		cat $CDSHELL/backup/versao_ultima_instalacao.txt | tr -d '\n'
     ;;
 
 
