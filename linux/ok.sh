@@ -32,14 +32,14 @@ function commit(){
 if [ $# -gt 1 ]; then
     hello $*
     git add .
-    git commit -m "$*" . | realce.awk "master" || ERROR_CODE=1
+    git commit -m "$*" . | realce.awk "up to date" || ERROR_CODE=1
     git push || ERROR_CODE=1
 fi
 
 if [ $# -eq 0 ]; then
     hello "Commiting my job"
     git add .
-    git commit -m "Commiting my job!" . | realce.awk "master" || ERROR_CODE=1
+    git commit -m "Commiting my job!" . | realce.awk "up to date" || ERROR_CODE=1
     git push || ERROR_CODE=1
 fi
 
