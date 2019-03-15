@@ -230,7 +230,7 @@ SAIDA=$SAIDA"$blue#$normal  Server Hostname: $WHITE $HOST $normal \n"
 SAIDA=$SAIDA"$blue#$normal  Instalador: $REDALERT $0 $normal \n"
 SAIDA=$SAIDA"$blue##########################################################################$normal \n"
 echo $SAIDA > $BACKUP_DIR/data_ultima_instalacao.txt
-echo $VERSION | head 1 > $BACKUP_DIR/versao_ultima_instalacao.txt
+echo $VERSION | tr -d '\n' > $BACKUP_DIR/versao_ultima_instalacao.txt
 echo -en ".......... $green Done $normal\n"
 
 # Instalacao do POST COMMIT do GIT HOOKS !

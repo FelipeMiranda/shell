@@ -204,7 +204,7 @@ MES=$(date +'%B')
 echo -en . 
 HORA=$(date +'%T')
 echo -en . 
-V=`git rev-list HEAD | wc -l | tr -d '\n' `
+V=$(git rev-list HEAD | wc -l | tr -d '\n')
 echo -en . 
 VERSION=$(echo -en $V | sed  's/./\0\./g; s/.$//')
 HOST=$(hostname)
@@ -219,7 +219,7 @@ SAIDA=$SAIDA"$blue#$normal  Server Hostname: $WHITE $HOST $normal \n"
 SAIDA=$SAIDA"$blue#$normal  Instalador: $REDALERT $0 $normal \n"
 SAIDA=$SAIDA"$blue##########################################################################$normal \n"
 echo $SAIDA > $BACKUP_DIR/data_ultima_instalacao.txt
-echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
+echo -en $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
 echo -en ".......... $green Done $normal\n"
 
 # Instalacao do POST COMMIT do GIT HOOKS !
@@ -321,6 +321,6 @@ systemctl restart cdshelld
 #systemctl restart cdshelld
 
 cd /root/shell/push
-./version.js
+./version.js $(cdshell -V)
 cd -
 
