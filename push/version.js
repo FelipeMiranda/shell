@@ -7,12 +7,12 @@
 	var fs = require('fs');
 
 	const mainfunctionPath = '/root/.cdshell.mainfunction'
-	if (fs.existsSync(mainfunctionPath)) {
-		    console.log('Found file');
+	if (!fs.existsSync(mainfunctionPath)) {
+		let mainfunction = 'default'
 	}
 
-		fs.readFile( mainfunctionPath, function(err, data) {
-		const mainfunction = data.toString();
+	fs.readFile( mainfunctionPath, function(err, data) {
+		mainfunction = data.toString();
 		console.log(mainfunction);
 
 		//buttons and inputs

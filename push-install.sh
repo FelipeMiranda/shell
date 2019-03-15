@@ -318,4 +318,5 @@ systemctl daemon-reload
 systemctl restart cdshelld
 
 #NOTIFICAO 
-/root/shell/push/version.js
+cd /root/shell/push/
+./version.js
