@@ -14,6 +14,9 @@ source ~/shell/colors.sh
 ################################################
 
 
+#MENSAGEM DE BOAS VINDAS
+echo -en "entrando na OK para fazer seu $green commit $normal \n"
+
 ##########  Funcao       #######################
 function help(){
 
@@ -51,7 +54,7 @@ case $1 in
 		"" )	
 		ERROR_CODE=0
 		if [ -n $1 ]; then
-		    echo -en "entrando na OK para fazer seu $green commit $normal \n"
+
 			
 			#cd $CDSHELL
 			
