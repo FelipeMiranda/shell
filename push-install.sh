@@ -310,16 +310,12 @@ if [ $? == 1 ]; then
 #	screen -p instalado -X source "$CDSHELL/.screenrc"
 fi
 
-#cd $CDSHELL/push
-#/usr/bin/npm install -g
-#systemctl stop cdshelld
-#systemctl disable cdshelld
+
+# INSTALANDO SERVICO CDSHELLD nos Clients
 rm /etc/systemd/system/cdshelld.service -rf
 cp $CDSHELL/push/cdshelld.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl restart cdshelld
-#systemctl restart cdshelld
-
 
 #NOTIFICAO 
 /root/shell/push/version.js
