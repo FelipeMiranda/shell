@@ -32,7 +32,7 @@ case $1 in
 	
 		"--top" | "top" | "-t")	
 			# Faça isso... 
-			docker stats
+			docker stats -n 3
 		;;
 
 		"--run")	
