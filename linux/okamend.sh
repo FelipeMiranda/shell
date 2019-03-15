@@ -22,10 +22,10 @@ function help(){
 }
 
 ### FUNCAO COMMIT ( um texto como se fosse, varios parametros )
-function commitAmend(){
+function commitAmendMessage(){
 
 if [ -n $1 ]; then
-    git commit -amend -m "$*" || ERROR_CODE=1
+    git commit --amend -m "$*" || ERROR_CODE=1
 else
 	echo -en "$red Erro: $yellow variavel nula, sem mensagem\n"
 fi
@@ -40,11 +40,11 @@ case $1 in
 
 
 		"" )	
-			commit $*
+			commitAmendMessage $*
 		;;
 
 		* )
-			commit $*
+			commitAmendMessage $*
 		;;
 esac
 #############        FIM      ##################
