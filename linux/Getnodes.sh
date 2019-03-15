@@ -27,6 +27,7 @@ function versao(){
 }
 
 function exibeNodes(){
+    	echo -en "$magente My hostname: $(hostname) $normal \n"
  	#curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | " + (.hostconfig{}) '
  	curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | Farm: (" + (.hostconfig.mainfunction)+ ")" '
 }
