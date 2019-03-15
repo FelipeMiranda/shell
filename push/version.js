@@ -5,14 +5,15 @@
 	var socket = io.connect('http://servidorpush.superati.com.br:3000')
 
 	var fs = require('fs');
-	var buffer = fs.readFileSync('/root/','.cdshell.mainfuncion','r');
 
-	//buttons and inputs
-	var sistema = process.argv[2]
-	var hostname = os.hostname();
-	var hostversion = "";
-	mainfunction = mainfunctionFile.toString();
-	console.log("mainfuncion="+mainfunction);
+	fs.readFile('/root/.cdshell.mainfunction', function(err, data) {
+		const mainfunction = data.toString();
+		console.log(mainfunction);
+
+		//buttons and inputs
+		var sistema = process.argv[2]
+		var hostname = os.hostname();
+		var hostversion = "";
 
 	if ( sistema == "-h") {
 		console.log("\n\t ### version.js help ### \n")
@@ -34,7 +35,7 @@
 	//Emit a username
 	const { exec } = require('child_process');
 
-		exec("cd /root/shell ; git rev-list HEAD | wc -l | tr -d '\n'", (err, stdout, stderr) => {
+		exec("/root/shell/linux/cdshell -V", (err, stdout, stderr) => {
 			hostversion = stdout;
 			hostversion.replace(/\n$/,'');
 		socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {mainfunction:mainfunction, autoupdate:true} })
@@ -53,3 +54,6 @@
 	socket.on("sair", (data) => {
     	socket.disconnect()
 	})
+})
+
+
