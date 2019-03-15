@@ -8,6 +8,10 @@
 
 #Config
 source ~/colors.sh
+source ~/.bashrc
+. ~/.alias
+. ~/.export
+
 
 
 #Ler o comando
@@ -15,7 +19,7 @@ COMANDO=$(cat ~/.F11.cmd)
 
 
 #Executando
-echo -en "\n  $alert - F11 Launcher -${normal}\n\n\n\n${yellow}  # COMANDO #\n\n$WHITE[ $COMANDO ]$normal\n\n\n\n$cyan  # RESULTADO #\n$WHITE"
+echo -en "\n  $alert - F11 Launcher -${normal}\n\n\n\n${yellow} \n\t  # COMANDO #\n\t  ----------- \n\n$WHITE[ $COMANDO ]$normal\n\n\n$cyan  \n\t  # RESULTADO #\n\t  -------------\n\n\n$WHITE"
 $COMANDO
 
 
