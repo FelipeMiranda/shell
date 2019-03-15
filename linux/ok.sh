@@ -23,7 +23,7 @@ function help(){
 
 function hello(){
 	#MENSAGEM DE BOAS VINDAS
-	echo -en "entrando na OK para fazer seu $green commit (\"${yellow}$*${green}\") $normal \n"
+	echo -en " $blue -> $normal Chamando ${alert}ok.sh${normal} para fazer seu $green commit (\"${yellow}$*${green}\") $normal \n"
 }
 
 ### FUNCAO COMMIT ( um texto como se fosse, varios parametros )
