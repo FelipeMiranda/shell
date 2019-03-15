@@ -32,12 +32,12 @@ function exibeNodes(){
 function watchExibeNodes(){
     while (true); do
 	  exibeNodes
-	  read -n 1 -t 0.1 KEY
+	  read -n 1 -t 0.2 KEY
 	  if [[ $KEY = 'q' ]]; then
 		exit
 	  else
 	 	echo -en "\n\n $alert Digite (q) para sair $normal \n\n"
-		sleep .5
+		sleep .8
 		clear
 	  fi
     done
