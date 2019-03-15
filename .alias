@@ -21,7 +21,7 @@ alias c=cat
 alias d='dig'
 alias e='EGREP.sh'
 alias f='file'
-alias g='grep -i'
+alias g='grep -n -i'
 alias h='miniman h'
 
 # alias i
