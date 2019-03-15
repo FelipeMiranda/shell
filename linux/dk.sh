@@ -79,16 +79,16 @@ case $1 in
 
 		;;
 
-		"--compose")	
-			if [ ! -n "$2" ]; then
-				
-				echo -en '$green DOCKER COMPOSE - CTL$normal\n\n' ; docker-compose $*
-			else
-				docker-compose ps
-			fi
-
-		;;
-
+#		"--compose")	
+#			if [ ! -n "$2" ]; then
+#				
+#				echo -en '$green DOCKER COMPOSE - CTL$normal\n\n' ; docker-compose $*
+#			else
+#				docker-compose ps
+#			fi
+#
+#		;;
+#
 
 
 		"-k"|"--kill" )	
