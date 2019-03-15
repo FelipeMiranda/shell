@@ -29,6 +29,14 @@ function exibeNodes(){
  	curl http://localhost:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "]"'
 }
 
+function watchExibeNodes(){
+    while(true); do
+	  exibeNodes
+	  read -
+    done
+}
+
+
 ################################################
 #############        MAIN       ################
 case $1 in
@@ -47,6 +55,13 @@ case $1 in
 			# Quando executa sem opcao, chama funcao versao acima.
 			help
 		;;
+
+
+		"-w"| "--watch" )	
+			# Quando executa sem opcao, chama funcao versao acima.
+			watchExibeNodes
+		;;
+
 
 
 		* )
