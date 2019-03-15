@@ -1,12 +1,17 @@
-db:
-  image: mongodb
-
 web:
-  image: bolsa
+  image: quirinobytes/bolsa
   volumes:
     - .:/root/shell
   ports:
     - 80:3000
+db:
+  image: mariadb
+  ports:
+    - 3306:3306
+  volumes:
+    - .:/database
   links:
-  - db
+    - web
+
+
 

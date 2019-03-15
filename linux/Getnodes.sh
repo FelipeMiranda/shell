@@ -26,13 +26,20 @@ function versao(){
 }
 
 function exibeNodes(){
- 	curl http://localhost:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "]"'
+ 	curl -s http://localhost:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "]"'
 }
 
 function watchExibeNodes(){
-    while(true); do
+    while (true); do
 	  exibeNodes
-	  read -
+	  read -n 1 -t 0.1 KEY
+	  if [[ $KEY = 'q' ]]; then
+		exit
+	  else
+	 	echo -en "\n\n $alert Digite (q) para sair $normal \n\n"
+		sleep .5
+		clear
+	  fi
     done
 }
 
