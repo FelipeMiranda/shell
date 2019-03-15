@@ -111,8 +111,12 @@ alias start='start.sh'
 alias restart='restart.sh'
 alias stop='stop.sh $1 $2 $3'
 alias forever="forever.sh"
+
+
+# COMMIT FACILITIES
 alias ok=ok.sh
 alias okamend=okamend.sh
+alias fix="ok 'Bug Fixed'"
 
 # <AGIL INSTALL>
 
