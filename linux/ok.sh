@@ -34,6 +34,7 @@ if [ $# -gt 1 ]; then
     git add .
     git commit -m "$*" . | realce.awk "master" || ERROR_CODE=1
     git push || ERROR_CODE=1
+    return 0
 fi
 
 if [ $# -eq 0 ]; then
@@ -41,6 +42,7 @@ if [ $# -eq 0 ]; then
     git add .
     git commit -m "Commiting my job!" . | realce.awk "master" || ERROR_CODE=1
     git push || ERROR_CODE=1
+    return 0
 fi
 
 echo -en  "\n\t $red Erro: $normal tem que ter $yellow _zero_ $normal parametros ou $WHITE _mais_ $normal de uma palavra. Larga preguiça Jaum.\n"
