@@ -43,6 +43,8 @@ if [ $# -eq 0 ]; then
     git push || ERROR_CODE=1
 fi
 
+echo -en  "\n\t $red Erro: $normal tem que ter $yellow _zero_ $normal parametros ou $WHITE _mais_ $normal de uma palavra. Larga preguiça Jaum.\n"
+
 return $ERROR_CODE
 }
 
