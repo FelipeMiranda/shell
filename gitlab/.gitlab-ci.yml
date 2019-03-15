@@ -1,0 +1,6 @@
+job1:
+  script: "cdshell -t"
+
+job2:
+  script: "cdshell -tt"
+

@@ -27,7 +27,8 @@ function versao(){
 }
 
 function exibeNodes(){
- 	curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "]"'
+ 	#curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | " + (.hostconfig{}) '
+ 	curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | Farm: (" + (.hostconfig.mainfunction)+ ")" '
 }
 
 function watchExibeNodes(){
