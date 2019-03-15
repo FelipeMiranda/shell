@@ -32,8 +32,7 @@ function commit(){
 if [ $# -gt 1 ]; then
     hello $*
     git add .
-    git commit -m "$*" . | realce.awk <<< echo "'$*'" 
-#|| ERROR_CODE=1
+    git commit -m "$*" . | realce.awk "Done" || ERROR_CODE=1
     git push || ERROR_CODE=1
 fi
 
