@@ -129,7 +129,7 @@ else{
 			hostversion.replace("\n","");
 			console.log(hostversion);
 			console.log("Service CDSHELLD [STARTED] | Host[" + hostname + "] | v."+ hostversion )
-	        socket.emit('hostversion', {message : hostversion , hostname: hostname});
+	        socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {mainfunction:"vai",autoupdate:true }});
     });
 
 
