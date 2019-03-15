@@ -3,7 +3,7 @@ After=network.service
 Description= CDSHELLD - Client Service
 
 [Service]
-ExecStart=/usr/bin/node cdshelld.js 1.1.1 >> /tmp/cdshell.log
+ExecStart=/usr/bin/node cdshelld.js $(cdshell -V) >> /tmp/cdshell.log
 WorkingDirectory=/root/shell/push
 Restart=always
 #Restart=on-failure
