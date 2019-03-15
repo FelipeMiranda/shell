@@ -15,7 +15,7 @@ source ~/shell/colors.sh
 
 
 #MENSAGEM DE BOAS VINDAS
-echo -en "entrando na OK para fazer seu $green commit $normal \n"
+echo -en "entrando na OK para fazer seu $green commit(${yellow} $* ${green} ) $normal \n"
 
 ##########  Funcao       #######################
 function help(){
