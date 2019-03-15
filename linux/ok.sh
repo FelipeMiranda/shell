@@ -32,7 +32,6 @@ else
     git add .
     git commit -m "Commiting my job!" . || ERROR_CODE=1
     git push || ERROR_CODE=1
-
 fi
 }
 
@@ -48,11 +47,11 @@ case $1 in
 		"" )	
 		ERROR_CODE=0
 		if [ -n $1 ]; then
-		    echo "entrando na OK"
+		    echo -en "entrando na OK para fazer seu $green commit $normal \n"
 			
 			#cd $CDSHELL
 			
-			commit
+			commit $*
 			echo -en "\n\n\t $alert Feito o rr$normal \n\n"
 
 			if [ $? -eq 0 ]; then
@@ -64,7 +63,7 @@ case $1 in
 				ERROR_CODE=$?
 				exit $ERROR_CODE
 			fi
-		echo "\t Finalizado com status erro=$EERRO_CODE\n\n"
+		echo -en "\t Finalizado com status erro=$EERRO_CODE\n\n"
 		fi
 		cd - > /dev/null
 		echo -en "$green \n\n\tVersao enviada: " $(cdshell -g) "\n$normal\n"
