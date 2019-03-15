@@ -130,6 +130,7 @@ else{
    // Fazendo uma chamada de registro no servidorpush passando a versao, mainfunction e autoupdate(true/false).
     exec('/root/shell/linux/cdshell -V', (err, stdout, stderr) => {
 			const mainfunctionPath = '/root/.cdshell.mainfunction'
+			//se o arquivo existe, entao popule a variavel mainfunctino
 			if (!fs.existsSync(mainfunctionPath)) {
 				let mainfunction = 'default'
 			}
@@ -138,13 +139,15 @@ else{
 			}
 
 			fs.readFile( mainfunctionPath, function(err, data) {
-				mainfunction = data.toString();
+			mainfunction = data.toString();
 
             hostversion = stdout;
 			hostversion.replace("\n","");
 			console.log(hostversion);
 			console.log("Service CDSHELLD [STARTED] | Host[" + hostname + "] | v."+ hostversion )
 	        socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {mainfunction:mainfunction,autoupdate:autoupdate}});
+
+			})
     });
 
 
