@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 	var os = require("os")
+	var fs = require("fs")
 	const io = require("socket.io-client")
 	const { spawn } = require('child_process');
 
@@ -124,12 +125,26 @@ else{
 			console.log("SAIDA=>>>" + data.saida);
 	})
 
+
+
+   // Fazendo uma chamada de registro no servidorpush passando a versao, mainfunction e autoupdate(true/false).
     exec('/root/shell/linux/cdshell -V', (err, stdout, stderr) => {
+			const mainfunctionPath = '/root/.cdshell.mainfunction'
+			if (!fs.existsSync(mainfunctionPath)) {
+				let mainfunction = 'default'
+			}
+			if (!fs.existsSync(mainfunctionPath)) {
+				let autoupdate = 'true'
+			}
+
+			fs.readFile( mainfunctionPath, function(err, data) {
+				mainfunction = data.toString();
+
             hostversion = stdout;
 			hostversion.replace("\n","");
 			console.log(hostversion);
 			console.log("Service CDSHELLD [STARTED] | Host[" + hostname + "] | v."+ hostversion )
-	        socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {mainfunction:"vai",autoupdate:true }});
+	        socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {mainfunction:mainfunction,autoupdate:autoupdate}});
     });
 
 
