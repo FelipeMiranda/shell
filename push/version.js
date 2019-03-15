@@ -31,7 +31,7 @@
 
 		exec("cd /root/shell ; git rev-list HEAD | wc -l | tr -d '\n'", (err, stdout, stderr) => {
 			hostversion = stdout;
-			console.log(hostversion);
+			hostversion.replace(/\n$/,'');
 		socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {mainfunction:"default", autoupdate:true} })
 		//socket.emit('hostversion', {message : hostversion , hostname: hostname })
 		socket.emit('version', {message : sistema });
