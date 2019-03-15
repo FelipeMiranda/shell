@@ -131,13 +131,12 @@ else{
     exec('/root/shell/linux/cdshell -V', (err, stdout, stderr) => {
 			const mainfunctionPath = '/root/.cdshell.mainfunction'
 
-			fs.readFile( mainfunctionPath, function(err, data) {
+			fs.readFile( mainfunctionPath, function(err, mainfunction) {
 			if (!fs.existsSync(mainfunctionPath)) {
 				let mainfunction = 'default'
 			}
 
 			let autoupdate = 'true'
-			mainfunction = data.toString()
             hostversion = stdout
 			console.log("Service CDSHELLD [STARTED] | Host[" + hostname + "] | v."+ hostversion )
 	        socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {mainfunction:mainfunction,autoupdate:autoupdate}})
