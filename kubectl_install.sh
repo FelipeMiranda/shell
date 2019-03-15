@@ -21,12 +21,22 @@ source ~/shell/colors.sh
 
 ##########  Funcao       #######################
 function help(){
-    echo -en "$\n\n\t $alert Use: $0 $green -i $normal \t Para instalar o $alert NODEJS $normal  versao $yellow 10.X $normal\n"
+    echo -en "$\n\n\t $alert Use: $0 $green -i $normal \t Para instalar o docker versao 17.03.02\n"
 }
 
 function install(){
-    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-    echo -en "$red NAO ESQUECER DE MANDAR o YUM INSTALL\n"
+    FLAVOR=$(flavor.sh)
+
+if [ $FLAVOR == "Ubuntu" ]; then
+    sudo apt-get update && sudo apt-get install -y apt-transport-https
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+    echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+    sudo apt-get update
+    sudo apt-get install -y kubectl
+    exit
+fi
+
+
 }
 
 

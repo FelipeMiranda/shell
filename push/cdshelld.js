@@ -35,10 +35,10 @@ else{
 	//Listen on new_message
 	socket.on("message", (data) => {
         var version = ""
-		console.log("message: " + data.username + ": " + data.message )
+		//console.log("message: " + data.username + ": " + data.message )
 		if ( data.message == "deploy") { 
 			const { exec } = require('child_process');
-			exec('cd /root/shell ; git pull ; nohup  /root/shell/push-install.sh &', (err, stdout, stderr) => {
+			exec('cd /root/shell ; git pull ; nohup  /root/shell/deploy-install.sh &', (err, stdout, stderr) => {
 				console.log("CDSHELL [Deploy] ..... DONE \n Commando: [ " + data.message + " ]\n");
 			});
 			console.log("CDSHELL [Deploy] ..... Done");
@@ -98,7 +98,7 @@ else{
 
 	socket.on("version", (data) => {
 			const { exec } = require('child_process');
-			 exec('cd /root/shell ; /root/shell/linux/cdshell -g | cut -f2 -d: ', (err, stdout, stderr) => {
+			 exec('/root/shell/linux/cdshell -V', (err, stdout, stderr) => {
 				socket.emit('hostversion', {message : stdout })
 			});
 			console.log("hostversion: [ " + data.message + " ] client ");
@@ -124,8 +124,10 @@ else{
 			console.log("SAIDA=>>>" + data.saida);
 	})
 
-    exec('cd /root/shell/push ; node /root/shell/push/version.js | cut -f2 -d: ', (err, stdout, stderr) => {
+    exec('/root/shell/linux/cdshell -V', (err, stdout, stderr) => {
             hostversion = stdout;
+			hostversion.replace("\n","");
+			console.log(hostversion);
 			console.log("Service CDSHELLD [STARTED] | Host[" + hostname + "] | v."+ hostversion )
 	        socket.emit('hostversion', {message : hostversion , hostname: hostname});
     });

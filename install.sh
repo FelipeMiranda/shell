@@ -215,9 +215,9 @@ MES=$(date +'%B')
 echo -en . 
 HORA=$(date +'%T')
 echo -en . 
-V=`git rev-list HEAD | wc -l `
+V=$(git rev-list HEAD | wc -l | tr -d '\n')
 echo -en . 
-VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
+VERSION=$(echo -en $V | sed  's/./\0\./g; s/.$//')
 HOST=$(hostname)
 # Montando a SAIDA para carimbar o arquivo.
 SAIDA="$alert ________________________________________________________________________ $normal \n"
@@ -230,7 +230,7 @@ SAIDA=$SAIDA"$blue#$normal  Server Hostname: $WHITE $HOST $normal \n"
 SAIDA=$SAIDA"$blue#$normal  Instalador: $REDALERT $0 $normal \n"
 SAIDA=$SAIDA"$blue##########################################################################$normal \n"
 echo $SAIDA > $BACKUP_DIR/data_ultima_instalacao.txt
-echo $VERSION > $BACKUP_DIR/versao_ultima_instalacao.txt
+echo $VERSION | tr -d '\n' > $BACKUP_DIR/versao_ultima_instalacao.txt
 echo -en ".......... $green Done $normal\n"
 
 # Instalacao do POST COMMIT do GIT HOOKS !
@@ -365,10 +365,9 @@ else
 	echo -en "\nCriando diretório padrão /lib/node_modules para comportar variável $alert NODE_MODULES $normal\n"
 fi
 
-echo -en "\n\n $green Try executing: $> node deploy.js \$(cdshell -V) \n\n"
-# Avisando do DEPLOY VIA PUSH
-cd /root/shell/push/
-echo /usr/bin/node deploy.js $( /root/shell/linux/cdshell -V )
+#NOTIFICACAO
+#echo -en "\n\n $green Try executing: $> node deploy.js \$(cdshell -V) \n\n"
+/root/shell/push/version.js
 
 if [ $? -ne 0 ]; then
     echo -en "\n\n\t (X) erro ao executar o DEPLOY PUSH NOTIFICATION $normal \n\n"

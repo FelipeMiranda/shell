@@ -1,0 +1,19 @@
+#!/bin/bash
+
+############################################################
+# hostScripts exports - Definir opções específicas por host.
+# Nomear o arquivo com o nome do $HOSTNAME.export que sera 
+# executado no bash login.
+############################################################
+
+#Configs
+source ~/colors.sh
+
+
+#Variavéis
+KUBECONFIG=$HOME/.kube/kube_config_cluster.yml:~/.kube/rancher_config.yml
+PS1='\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[31m\]\u\[\033[34m\]@\[\033[32m\]\h:\[\033[33m\]\w\[\033[36m\]`__git_ps1;cdshell -G`\[\033[0m\] $>'
+
+
+#Exportando
+export KUBECONFIG PS1

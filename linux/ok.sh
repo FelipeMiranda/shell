@@ -21,21 +21,29 @@ function help(){
 
 }
 
+function hello(){
+	#MENSAGEM DE BOAS VINDAS
+	echo -en "\n $blue -> $normal Chamando ${alert}ok.sh${normal} para fazer seu $green commit (\"${yellow}$*${green}\") $normal \n"
+}
+
 ### FUNCAO COMMIT ( um texto como se fosse, varios parametros )
 function commit(){
 
-if [ -n $1 ]; then
+if [ $# -gt 1 ]; then
+    hello $*
     git add .
     git commit -m "$*" . || ERROR_CODE=1
     git push || ERROR_CODE=1
-else
+fi
+
+if [ $# -eq 0 ]; then
+    hello "Commiting my job"
     git add .
     git commit -m "Commiting my job!" . || ERROR_CODE=1
     git push || ERROR_CODE=1
-
 fi
 
-
+return $ERROR_CODE
 }
 
 ################################################
@@ -50,11 +58,11 @@ case $1 in
 		"" )	
 		ERROR_CODE=0
 		if [ -n $1 ]; then
-		    echo "entrando na OK"
+
 			
 			#cd $CDSHELL
 			
-			commit
+			commit $*
 			echo -en "\n\n\t $alert Feito o rr$normal \n\n"
 
 			if [ $? -eq 0 ]; then
@@ -66,7 +74,7 @@ case $1 in
 				ERROR_CODE=$?
 				exit $ERROR_CODE
 			fi
-		echo "\t Finalizado com status erro=$EERRO_CODE\n\n"
+		echo -en "\t Finalizado com status erro=$EERRO_CODE\n\n"
 		fi
 		cd - > /dev/null
 		echo -en "$green \n\n\tVersao enviada: " $(cdshell -g) "\n$normal\n"

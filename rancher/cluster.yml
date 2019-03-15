@@ -1,0 +1,16 @@
+nodes:
+    - address: 192.168.15.201
+      user: root
+      role:
+        - controlplane
+        - etcd
+    - address: 192.168.15.202
+      user: root
+      role:
+        - etcd
+        - worker
+    - address: 192.168.15.203
+      user: root
+      role:
+        - worker
+        - controlplane

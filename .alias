@@ -8,6 +8,11 @@ OSTYPE=`uname`
 # CLItxt
 alias clitxt='curl -F \"upfile=@-\" https://clitxt.com'
 
+#CDSHELL
+alias Getnodes=Getnodes.sh
+alias Getcommands=Getnodes.sh
+
+
 
 #OPCOES COMUNS
 alias ..='cd ..'
@@ -101,6 +106,7 @@ alias restart='restart.sh'
 alias stop='stop.sh $1 $2 $3'
 alias forever="forever.sh"
 alias ok=ok.sh
+alias okamend=okamend.sh
 
 # <AGIL INSTALL>
 
@@ -248,7 +254,7 @@ alias dkk="dk --kill"
 alias dkr="dk --run"
 alias dkt="dk --top"
 alias dklogs="dklogs.sh"
-alias dkcom="dk --compose"
+alias dkcom="docker-compose"
 alias dkbash="dk --bash"
 alias dki="dk --images"
 
@@ -259,10 +265,12 @@ alias F11="echo $1 > ~/.F11.cmd"
 #KUBENETES
 alias kns="source $CDSHELL/linux/knspace.sh"
 alias kdeployments="kubectl get deployments"
-alias kget='echo -en "\n\t *Namespace=$red$NAMESPACE$normal\n\t *Contexto=\n" ; kubectl -n $NAMESPACE get'
-alias kdescribe="kubectl -n rc describe"
+alias kget='echo -en "\n\t *Namespace=$magenta$NAMESPACE$normal\n\t *Contexto=\n" ; kubectl -n $NAMESPACE get'
+alias kdescribe="kubectl -n NAMESPACE describe"
 alias kcontext="kcontext.sh"
 alias kcluster-info="kubectl cluster-info"
-alias klogs="kubectl -n rc logs"
+alias klogs="kubectl -n $NAMESPACE logs"
 alias kbash=kbash.sh
 alias kexec=kexec.sh
+
+# :) ALIAS_CRIADOR

@@ -1,6 +1,3 @@
-
-
-
 #!/bin/bash
 
 #################################################
@@ -8,8 +5,6 @@
 # Use como modelo para criar seus scripts bash. #
 # v_1.0.1							#
 #################################################
-VERSION=1.0
-
 
 #############     CONFIG     ####################
 #Carrega variáreis de ambiente.
@@ -21,36 +16,35 @@ source ~/shell/colors.sh
 
 ##########  Funcao       #######################
 function help(){
-    echo -en "$\n\n\t $alert Use: $0 $green -i $normal \t Para instalar o $alert NODEJS $normal  versao $yellow 10.X $normal\n"
+
+    echo -en "$\n\n\t $alert Use: $green $0 $PARAMETERS $normal \n\n"
+
 }
 
-function install(){
-    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-    echo -en "$red NAO ESQUECER DE MANDAR o YUM INSTALL\n"
+### FUNCAO COMMIT ( um texto como se fosse, varios parametros )
+function commitAmendMessage(){
+
+if [ -n $1 ]; then
+    git commit --amend -m "$*" || ERROR_CODE=1
+else
+	echo -en "$red Erro: $yellow variavel nula, sem mensagem\n"
+fi
 }
-
-
 
 ################################################
 #############        MAIN       ################
 case $1 in
-
-		"-i" )	
-			# Quando executa sem opcao, chama funcao versao acima.
-			install
-			exit
-		;;
-
-		"-h"| "--help" )	
-			# Quando executa sem opcao, chama funcao versao acima.
+		"-h" | "--help")	
 			help
-			exit
 		;;
 
+
+		"" )	
+			commitAmendMessage $*
+		;;
 
 		* )
-			# Executa com opcao que nao tem.
-			echo -en "O comando $red $1 $normal não existe\n\n\t Use $green $0 --help.$normal\n"
+			commitAmendMessage $*
 		;;
 esac
 #############        FIM      ##################
