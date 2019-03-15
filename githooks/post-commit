@@ -4,7 +4,7 @@
 # commit is made.
 #
 # To enable this hook, rename this file to "post-commit".
-source ~/color.sh
+source ~/colors.sh
 
 #: Nothing
 
