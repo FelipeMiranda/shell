@@ -6,7 +6,12 @@
 
 	var fs = require('fs');
 
-	fs.readFile('/root/.cdshell.mainfunction', function(err, data) {
+	const mainfunctionPath = '/root/.cdshell.mainfunction'
+	if (fs.existsSync(mainfunctionPath)) {
+		    console.log('Found file');
+	}
+
+		fs.readFile( mainfunctionPath, function(err, data) {
 		const mainfunction = data.toString();
 		console.log(mainfunction);
 
@@ -38,7 +43,8 @@
 		exec("/root/shell/linux/cdshell -V", (err, stdout, stderr) => {
 			hostversion = stdout;
 			hostversion.replace(/\n$/,'');
-		socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {mainfunction:mainfunction, autoupdate:true} })
+			console.log(mainfunction);
+		socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {'mainfunction':mainfunction , 'autoupdate':true} })
 		//socket.emit('hostversion', {message : hostversion , hostname: hostname })
 		socket.emit('version', {message : sistema });
 
@@ -54,6 +60,8 @@
 	socket.on("sair", (data) => {
     	socket.disconnect()
 	})
+
 })
+
 
 
