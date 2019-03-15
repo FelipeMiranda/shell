@@ -14,9 +14,6 @@ source ~/shell/colors.sh
 ################################################
 
 
-#MENSAGEM DE BOAS VINDAS
-echo -en "entrando na OK para fazer seu $green commit (\"${yellow}$*${green}\") $normal \n"
-
 ##########  Funcao       #######################
 function help(){
 
@@ -24,16 +21,23 @@ function help(){
 
 }
 
+function hello(){
+	#MENSAGEM DE BOAS VINDAS
+	echo -en "entrando na OK para fazer seu $green commit (\"${yellow}$*${green}\") $normal \n"
+}
+
 ### FUNCAO COMMIT ( um texto como se fosse, varios parametros )
 function commit(){
 
 if [ $# -gt 1 ]; then
+    hello $*
     git add .
     git commit -m "$*" . || ERROR_CODE=1
     git push || ERROR_CODE=1
 fi
 
 if [ $# -eq 0 ]; then
+    hello "Commiting my job"
     git add .
     git commit -m "Commiting my job!" . || ERROR_CODE=1
     git push || ERROR_CODE=1
