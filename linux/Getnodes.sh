@@ -15,10 +15,11 @@ source ~/.export
 source ~/shell/colors.sh
 ################################################
 
-
 ##########  Funcao       #######################
 function help(){
+    echo -en "Mostra os $magenta nodes $normal que existem registrados no $alert servidorPush $normal \n"
     echo -en "$\n\n\t $alert Use: $green $0 $PARAMETERS $normal \n\n"
+
 }
 
 function versao(){
