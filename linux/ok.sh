@@ -32,7 +32,7 @@ function commit(){
 if [ $# -gt 1 ]; then
     hello $*
     git add .
-    git commit -m "$*" . || ERROR_CODE=1
+    git commit -m "$*" .| realce "$*" || ERROR_CODE=1
     git push || ERROR_CODE=1
 fi
 
