@@ -13,8 +13,6 @@
 
 	fs.readFile( mainfunctionPath, function(err, data) {
 		mainfunction = data.toString();
-		console.log(mainfunction);
-
 		//buttons and inputs
 		var sistema = process.argv[2]
 		var hostname = os.hostname();
@@ -43,7 +41,6 @@
 		exec("/root/shell/linux/cdshell -V", (err, stdout, stderr) => {
 			hostversion = stdout;
 			hostversion.replace(/\n$/,'');
-			console.log(mainfunction);
 		socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {'mainfunction':mainfunction , 'autoupdate':true} })
 		//socket.emit('hostversion', {message : hostversion , hostname: hostname })
 		socket.emit('version', {message : sistema });
