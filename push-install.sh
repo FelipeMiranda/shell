@@ -206,7 +206,7 @@ HORA=$(date +'%T')
 echo -en . 
 V=`git rev-list HEAD | wc -l | tr -d '\n' `
 echo -en . 
-VERSION=$(echo $V  | sed  's/./\0\./g; s/.$//')
+VERSION=$(echo -en $V | sed  's/./\0\./g; s/.$//')
 HOST=$(hostname)
 # Montando a SAIDA para carimbar o arquivo.
 SAIDA="$alert ________________________________________________________________________ $normal \n"
