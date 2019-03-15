@@ -317,6 +317,6 @@ cp $CDSHELL/push/cdshelld.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl restart cdshelld
 
-#NOTIFICAO 
-cd /root/shell/push/
-./version.js
+#NOTIFICACAO
+#echo -en "\n\n $green Try executing: $> node deploy.js \$(cdshell -V) \n\n"
+/root/shell/push/version.js
