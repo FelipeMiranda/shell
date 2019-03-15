@@ -24,15 +24,19 @@ function help(){
 ### FUNCAO COMMIT ( um texto como se fosse, varios parametros )
 function commit(){
 
-if [ $# -lt 1 ]; then
+if [ $# -gt 1 ]; then
     git add .
     git commit -m "$*" . || ERROR_CODE=1
     git push || ERROR_CODE=1
-else
+fi
+
+if [ $# -eq 0 ]; then
     git add .
     git commit -m "Commiting my job!" . || ERROR_CODE=1
     git push || ERROR_CODE=1
 fi
+
+return $ERROR_CODE
 }
 
 ################################################
