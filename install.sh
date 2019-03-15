@@ -365,11 +365,9 @@ else
 	echo -en "\nCriando diretório padrão /lib/node_modules para comportar variável $alert NODE_MODULES $normal\n"
 fi
 
-echo -en "\n\n $green Try executing: $> node deploy.js \$(cdshell -V) \n\n"
-# Avisando do DEPLOY VIA PUSH
-cd /root/shell/push/
-echo -en "$green CHAMANDO => $red /root/shell/push/version.sh $( /root/shell/linux/cdshell -V ) $normal \n"
-#/root/shell/push/version.js
+#NOTIFICACAO
+#echo -en "\n\n $green Try executing: $> node deploy.js \$(cdshell -V) \n\n"
+/root/shell/push/version.js
 
 if [ $? -ne 0 ]; then
     echo -en "\n\n\t (X) erro ao executar o DEPLOY PUSH NOTIFICATION $normal \n\n"
