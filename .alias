@@ -20,6 +20,7 @@ alias cdco='cd ~/codigo-fonte'
 alias cdc='cd ~/codigo-fonte'
 alias cdl='cd $CDSHELL/linux'
 alias cdww='if [ -e $HOME/workspace ]; then cd $HOME/workspace ; fi'
+alias cdpu='if [ -e $CDSHELL/push ]; then cd $CDSHELL/workspace ; fi'
 alias backup="$CDSHELL/linux/backup.sh"
 
 
