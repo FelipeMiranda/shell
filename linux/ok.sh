@@ -66,7 +66,7 @@ case $1 in
 			echo -en "\n\n\t $alert Feito o rr$normal \n\n"
 
 			if [ $? -eq 0 ]; then
-				echo -en "$green Todo $atention $(git config remote.origin.url | cut -d '/' -f2- | cut -d'.' -f1) $normal enviado com sucesso!\n\n"
+				echo -en "$normal Repositorio: $atention $(git config remote.origin.url | cut -d '/' -f2- | cut -d'.' -f1) $normal enviado com $green sucesso! $normal\n\n"
 				ERROR_CODE=0
 				exit $ERROR_CODE
 			else
