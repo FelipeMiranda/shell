@@ -321,6 +321,6 @@ systemctl restart cdshelld
 #systemctl restart cdshelld
 
 cd /root/shell/push
-./version.js $(cdshell -V)
+./version.js
 cd -
 
