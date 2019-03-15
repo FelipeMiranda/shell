@@ -27,7 +27,7 @@ function versao(){
 }
 
 function exibeNodes(){
-    	echo -en "$magente \tMy_host: $red[$yellow$(hostname)$red]$normal \n\t-----------------\n\n"
+    	echo -en "$magente \n\t$cyan My_host: $red[$yellow$(hostname)$red]$normal \n\t-----------------\n\n"
  	#curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | " + (.hostconfig{}) '
  	curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | Farm: (" + (.hostconfig.mainfunction)+ ")" '
 }
