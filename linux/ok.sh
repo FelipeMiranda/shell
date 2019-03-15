@@ -24,7 +24,7 @@ function help(){
 ### FUNCAO COMMIT ( um texto como se fosse, varios parametros )
 function commit(){
 
-if [ -n $1 ]; then
+if [ ! -n $1 ]; then
     git add .
     git commit -m "$*" . || ERROR_CODE=1
     git push || ERROR_CODE=1
