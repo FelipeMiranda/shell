@@ -41,7 +41,7 @@ if [ "$1" == "-e" ]; then
 			cd /root/help/Linux/help
 			if [ -n "$2" ]; then
 				vi -c "echo 'Editando o arquivo'" $2.md
-				cd -
+				echo -en "Veja se o arquivo foi criado e nao esquece de fazer o $green commit $normal \n"	
 				exit 0
 			fi
 	fi

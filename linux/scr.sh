@@ -34,11 +34,12 @@ case $1 in
 		"" )	
 			# Quando executa sem opcao, chama funcao versao acima.
 			LISTA=$(screen -ls | grep -vE "There|Socket" | cut -d'.' -f1 )
-			echo $LISTA
-			foreach $pid $(cat $LISTA); do
-				screen -d -r $pid
-				echo -en "Tinha outro aberto, entrando...."
-				read -n 1
+			echo -en "---\n$green LISTA=$LISTA $normal\n---"
+			for each in $(echo $LISTA); do
+				screen -d -r $each
+				echo -en "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t$WHITE Tinha outro$alert ($magenta $each ) $normal $WHITE aberto, entrando nele:$normal \n\n\n\n\n\t\t $yellow $> screen -d -r [$each].pts-0.hp $normal \n\n\n\n\n\n\n\t\t -> pressione $green qq tecla para continuar <- $normal \n\n\n\n\n\t\t\t\t\t\t\t\t $yellow ... pause $normal \n"
+				ULTIMO=$each
+				read -n 1 
 			done
 		;;
 
