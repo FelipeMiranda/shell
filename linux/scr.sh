@@ -42,7 +42,7 @@ case $1 in
 				screen -x
 			fi
                   
-                  if [[ $ITEMS = 0 ]]; then ABRA='sim'; fi
+                  if [[ "$ITEMS" = 0 ]]; then ABRA='sim'; fi
 
 			# Se tiver mais de uma sessao
 			if [ $ITEMS -gt 1 ]; then
@@ -67,7 +67,7 @@ case $1 in
 			    done
 		 	fi
                   
-                  if [ $ABRA = 'sim' ]; then
+                  if [[ "$ABRA" = 'sim' ]]; then
                     screen 
                   else
 			  echo -en "\n\n\t$red Não $normal havia mais nenhuma $yellow *SESSION ABERTA* $normal \n\n\n"
