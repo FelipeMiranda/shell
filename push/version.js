@@ -3,17 +3,15 @@
 	var os = require("os")
 	const io = require("socket.io-client")
 	var socket = io.connect('http://servidorpush.superati.com.br:3000')
-
 	var fs = require('fs');
+	const { exec } = require('child_process');
 
 	const mainfunctionPath = '/root/.cdshell.mainfunction'
 	if (!fs.existsSync(mainfunctionPath)) {
 		let mainfunction = 'default'
 	}
 
-	fs.readFile( mainfunctionPath, function(err, data) {
-		mainfunction = data.toString();
-		//buttons and inputs
+			//buttons and inputs
 		var sistema = process.argv[2]
 		var hostname = os.hostname();
 		var hostversion = "";
@@ -36,17 +34,21 @@
 
 
 	//Emit a username
-	const { exec } = require('child_process');
 
 		exec("/root/shell/linux/cdshell -V", (err, stdout, stderr) => {
+      fs.readFile( mainfunctionPath, function(err, data) {
+      mainfunction = ""
+      mainfunction = (data.toString()).replace('\n','')
+      console.log("STRINGifying" + JSON.stringify(mainfunction))
 			hostversion = stdout;
-			hostversion.replace(/\n$/,'');
-		socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {'mainfunction':mainfunction , 'autoupdate':true} })
-		//socket.emit('hostversion', {message : hostversion , hostname: hostname })
-		socket.emit('version', {message : sistema });
+			hostversion.replace('\n','');
 
-		//socket.emit('sair', {message : "sair" });
+      socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {'mainfunction':'suave' , 'autoupdate':true} })
+	    //socket.emit('hostversion', {message : hostversion , hostname: hostname })
 
+		  socket.emit('version', {message : sistema });
+		  //socket.emit('sair', {message : "sair" });
+     })
 	});
 
 	socket.on("message", (data) => {
@@ -58,7 +60,6 @@
     	socket.disconnect()
 	})
 
-})
 
 
 
