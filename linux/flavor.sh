@@ -75,7 +75,7 @@ case $1 in
 			getDistroPackageManagerInstallCmdline
 		;;
 
-            "--test-flavor")
+            "-t","--test-flavor")
                   testflavor $1
             ;;
 
