@@ -28,14 +28,16 @@ function versao(){
 
 function exibeNodes(){
 
-	    INSTALL=$(flavor.sh --get-distro-package-manager)
+	    flavor.sh --get-distro-package-manager
 	    echo $INSTALL 
 
 	    echo -en "\n\nNao tem curl instalado. \n\n\t\t Instalando em 3..2..1.. \t\t\t $alert beleza? -> s/S(sim)?$normal \n"
 	    read -n 1 RESPOSTA 
 	    if [[ $RESPOSTA = 's' ]] || [[ $RESPOSTA = 'S' ]]; then
-		echo -en "Resposta=simmmm  ....   \n\n\t\t   \o/ pressione uma tecla para continaur a $green instalacao do CURL$normal\n\n\t\t\t ... pause\n"
-		$INSTALL curl
+		echo -en "Resposta=simmmm  ....   \n\n\t\t   \o/ pressione uma tecla para continaur a $green instalacao do CURL$normal\n\n\t\t\t ... pause\n"a
+            read -n 1
+            echo $INSTALL curl
+
           fi
 
     	echo -en "$magente \n\t$cyan My_host: $red[$yellow$(hostname)$red]$normal \n\t-----------------\n\n"

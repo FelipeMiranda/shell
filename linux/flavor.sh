@@ -37,7 +37,7 @@ function flavor(){
 	fi
 }
 
-function testeflavor(){
+function testflavor(){
 	if [ -n $1 ]; then
 		if [ $(flavor) == "$1" ]; then
 		    	echo 0
@@ -48,11 +48,12 @@ function testeflavor(){
 }
 
 function getDistroPackageManagerInstallCmdline(){
-	if [ flavor = "Ubuntu" ]; then
+      FLAVOR=$(flavor.sh)
+	if [ $FLAVOR == "Ubuntu" ]; then
 	    echo -en "apt install -y"
 	    return 0;
 	fi
-	if [ flavor = "Centos" ]; then
+	if [ $FLAVOR == "Centos" ]; then
 	    echo -en "yum install -y"
 	    return 0;
 	fi
@@ -70,16 +71,13 @@ case $1 in
 			flavor
 		;;
 
-
-		* )	
-			# Quando executa sem opcao, chama funcao versao acima.
-			testeflavor $1
-		;;
-
 		"--get-distro-package-manager" )
-
 			getDistroPackageManagerInstallCmdline
 		;;
+
+            "--test-flavor")
+                  testflavor $1
+            ;;
 
 		"-h"| "--help" )	
 			# Quando executa sem opcao, chama funcao versao acima.
