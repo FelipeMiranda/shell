@@ -27,9 +27,29 @@ function versao(){
 }
 
 function exibeNodes(){
+    	$CURL = $(which curl)
+
+	if [ -n $CURL ]; then
+
+	    echo -en "\n\nNao tem curl instalado, instalando, ok? \n\n\t\t -> s/S(sim)?$normal \n"
+	    read -n 1 RESPOSTA 
+
+	    if [[ $RESPOSTA = 's' ]] || [[ $RESPOSTA = 'S' ]]; then
+		echo -en "Resposta=simmmm  ....   \n\n\t\t   \o/ pressione uma tecla para continaur a $green instalacao do CURL$normal\n\n\t\t\t ... pause\n"
+		INSTALL=flavor.sh --get-distro-package-manager
+		$INSTALL curl
+	     fi
+
     	echo -en "$magente \n\t$cyan My_host: $red[$yellow$(hostname)$red]$normal \n\t-----------------\n\n"
  	#curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | " + (.hostconfig{}) '
  	curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | Farm: (" + (.hostconfig.mainfunction)+ ")" '
+
+	fi
+	if [ $? -ne 0 ]; then
+
+
+	curl -s http://servidorpush.superati.com.br:3000/rest/nodes 
+	fi
 }
 
 function watchExibeNodes(){

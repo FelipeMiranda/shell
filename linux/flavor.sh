@@ -24,7 +24,6 @@ function help(){
 }
 
 function flavor(){
-
 	cat /etc/*rele* | grep ubuntu > /dev/null
 	if [ $? == 0 ]; then
 	    echo -en "Ubuntu"
@@ -39,14 +38,27 @@ function flavor(){
 }
 
 function testeflavor(){
-
-if [ -n $1 ]; then
-	if [ $(flavor) == "$1" ]; then
-	    	echo 0
-	else
-		echo 1
+	if [ -n $1 ]; then
+		if [ $(flavor) == "$1" ]; then
+		    	echo 0
+		else
+			echo 1
+		fi
 	fi
-fi
+}
+
+function getDistroPackageManagerInstallCmdline(){
+	if [ flavor = "Ubuntu" ]; then
+	    echo -en "apt install -y"
+	    return 0;
+	fi
+	if [ flavor = "Centos" ]; then
+	    echo -en "yum install -y"
+	    return 0;
+	fi
+echo -en "\n\n\t Infelizmente, não encontrei o tipo da Distro na minha lista\n $red (: \n"
+	
+return 1;
 }
 
 ################################################
@@ -62,6 +74,11 @@ case $1 in
 		* )	
 			# Quando executa sem opcao, chama funcao versao acima.
 			testeflavor $1
+		;;
+
+		"--get-distro-package-manager" )
+
+			getDistroPackageManagerInstallCmdline
 		;;
 
 		"-h"| "--help" )	
