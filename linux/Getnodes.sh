@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 #################################################
 # Bash script - Modelo					#
@@ -19,34 +19,36 @@ source ~/shell/colors.sh
 function help(){
     echo -en "Mostra os $magenta nodes $normal que existem registrados no $alert servidorPush $normal \n"
     echo -en "$\n\n\t $alert Use: $green $0 $PARAMETERS $normal \n\n"
-
 }
 
 function versao(){
     echo -en "$\n\n\t $alert Versao: $green $0 $VERSION $normal \n\n"
 }
 
+
+# Essa funcao garante que o comando passado como parametro existe e retorna seu path.
+function ensure_command_path(){
+            which $1 && return
+            INSTALL=$(flavor.sh --get-distro-package-manager)
+            $INSTALL $1 -y && which $1 && return
+            
+            echo -en "$red ERRO: $normal Nao consegui instalar o curl e devolver seu caminho\n"
+            exit 1;
+}
+
+function show_header(){
+    	echo -en "$magente \n\t$cyan My_host: $red[$yellow$(hostname)$red]$normal \n\t-----------------\n\n"
+}
+
 function exibeNodes(){
 
-	    flavor.sh --get-distro-package-manager
-	    echo $INSTALL 
-
-	    echo -en "\n\nNao tem curl instalado. \n\n\t\t Instalando em 3..2..1.. \t\t\t $alert beleza? -> s/S(sim)?$normal \n"
-	    read -n 1 RESPOSTA 
-	    if [[ $RESPOSTA = 's' ]] || [[ $RESPOSTA = 'S' ]]; then
-		echo -en "Resposta=simmmm  ....   \n\n\t\t   \o/ pressione uma tecla para continaur a $green instalacao do CURL$normal\n\n\t\t\t ... pause\n"a
-            read -n 1
-            echo $INSTALL curl
-
-          fi
-
-    	echo -en "$magente \n\t$cyan My_host: $red[$yellow$(hostname)$red]$normal \n\t-----------------\n\n"
- 	#curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | " + (.hostconfig{}) '
- 	curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | Farm: (" + (.hostconfig.mainfunction)+ ")" '
+      show_header
+      CURL_CMD=$(ensure_command_path curl)
+ echo	$CURL_CMD -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | Farm: (" + (.hostconfig.mainfunction)+ ")" '
 
 	# jq bug bix - workaround when jq fails, show without formatting
 	if [ $? -ne 0 ]; then
-		curl -s http://servidorpush.superati.com.br:3000/rest/nodes 
+		$CURL_CMD -s http://servidorpush.superati.com.br:3000/rest/nodes 
 	fi
 }
 

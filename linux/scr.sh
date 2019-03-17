@@ -35,9 +35,10 @@ case $1 in
 			# Quando executa sem opcao, chama funcao versao acima.
 			LISTA=$(screen -ls | grep -v "There" | grep -v "Socket" | cut -d'.' -f1 )
                   ITEMS=$(echo $LISTA | wc -w)
+                  PASSOU=0
 
-			# Se tiver somente uma sessao, entra nela com screen -x
-			if [ $ITEMS -eq 1 ]; then
+			# Se tiver somente uma sessao, entra nela com screen -x, ou se já rodou o while 3 vezes vai fora
+			if [[ $ITEMS = 1 ]] || [[ $PASSOU = 3 ]]; then
 				screen -x
 			fi
 
@@ -49,7 +50,7 @@ case $1 in
                           fi
 				  for each in $(echo $LISTA); do
 					  screen -x $each
-					  echo -en "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t$WHITE Tem mais sessao aberta aqui $red PORRA => $alert ($magenta $each ) $normal $WHITE aberto, entrando nele:$normal \n\n\n\n\n\t\t $yellow $> screen -d -r [$each].pts-0.hp $normal \n\n\n\n\n\n\n\t\t -> pressione $red $alert (q/d) $normal -> $red Sair $normal \t\t Ou $green qualquer tecla para continuar <- $normal \n\n\n\n\n\t\t\t\t\t\t\t\t $yellow ... pause $normal \n"
+					  echo -en "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t$WHITE Tem mais uma $red PORRA => $alert ($magenta $each ) $normal $WHITE de sessão aberta. \n\n\n\t ... entrando ......$normal \n\n\n\n\n\t\t $normal \n\n\n\n\n\n\n\t\t -> pressione $red $alert (q/d) $normal -> $red Sair $normal \n\t\t\t\t\t\t\t\t\t\t\t $yellow ... pause $normal \n\n"
 					  ULTIMO=$each
 					  read -n 1 QUIT
 					  if [[ $QUIT = 'q' ]] || [[ $QUIT = 'd' ]]; then
@@ -60,10 +61,11 @@ case $1 in
                       # Atualiza a lista, pois pode terem encerrado alguma sessao
       		    LISTA=$(screen -ls | grep -v "There" | grep -v "Socket" | cut -d'.' -f1 )
                       ITEMS=$(echo $LISTA | wc -w)
+                      PASSOU=$(($PASSOU + 1))
 			    done
 		 	fi
 
-			echo -en "Nao havia nenhuma $yellow SESSION ABERTA $normal /n"
+			echo -en "\n\n\t$red Não $normal havia mais nenhuma $yellow *SESSION ABERTA* $normal \n\n\n"
 		;;
 
 		"-h"| "--help" )	
