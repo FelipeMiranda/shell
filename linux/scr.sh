@@ -41,6 +41,8 @@ case $1 in
 			if [[ $ITEMS = 1 ]] || [[ $PASSOU = 3 ]]; then
 				screen -x
 			fi
+                  
+                  if [[ $ITEMS = 0 ]]; then ABRA='sim'; fi
 
 			# Se tiver mais de uma sessao
 			if [ $ITEMS -gt 1 ]; then
@@ -64,8 +66,12 @@ case $1 in
                       PASSOU=$(($PASSOU + 1))
 			    done
 		 	fi
-
-			echo -en "\n\n\t$red Não $normal havia mais nenhuma $yellow *SESSION ABERTA* $normal \n\n\n"
+                  
+                  if [ $ABRA = 'sim' ]; then
+                    screen 
+                  else
+			  echo -en "\n\n\t$red Não $normal havia mais nenhuma $yellow *SESSION ABERTA* $normal \n\n\n"
+                  fi
 		;;
 
 		"-h"| "--help" )	
