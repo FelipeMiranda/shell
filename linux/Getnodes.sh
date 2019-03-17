@@ -27,28 +27,24 @@ function versao(){
 }
 
 function exibeNodes(){
-    	$CURL = $(which curl)
 
-	if [ -n $CURL ]; then
+	    INSTALL=$(flavor.sh --get-distro-package-manager)
+	    echo $INSTALL 
 
-	    echo -en "\n\nNao tem curl instalado, instalando, ok? \n\n\t\t -> s/S(sim)?$normal \n"
+	    echo -en "\n\nNao tem curl instalado. \n\n\t\t Instalando em 3..2..1.. \t\t\t $alert beleza? -> s/S(sim)?$normal \n"
 	    read -n 1 RESPOSTA 
-
 	    if [[ $RESPOSTA = 's' ]] || [[ $RESPOSTA = 'S' ]]; then
 		echo -en "Resposta=simmmm  ....   \n\n\t\t   \o/ pressione uma tecla para continaur a $green instalacao do CURL$normal\n\n\t\t\t ... pause\n"
-		INSTALL=flavor.sh --get-distro-package-manager
 		$INSTALL curl
-	     fi
+		fi
 
     	echo -en "$magente \n\t$cyan My_host: $red[$yellow$(hostname)$red]$normal \n\t-----------------\n\n"
  	#curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | " + (.hostconfig{}) '
  	curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | Farm: (" + (.hostconfig.mainfunction)+ ")" '
 
-	fi
+	# jq bug bix - workaround when jq fails, show without formatting
 	if [ $? -ne 0 ]; then
-
-
-	curl -s http://servidorpush.superati.com.br:3000/rest/nodes 
+		curl -s http://servidorpush.superati.com.br:3000/rest/nodes 
 	fi
 }
 

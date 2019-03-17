@@ -33,14 +33,34 @@ function versao(){
 case $1 in
 		"" )	
 			# Quando executa sem opcao, chama funcao versao acima.
-			LISTA=$(screen -ls | grep -vE "There|Socket" | cut -d'.' -f1 )
-			echo -en "---\n$green LISTA=$LISTA $normal\n---"
-			for each in $(echo $LISTA); do
-				screen -d -r $each
-				echo -en "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t$WHITE Tinha outro$alert ($magenta $each ) $normal $WHITE aberto, entrando nele:$normal \n\n\n\n\n\t\t $yellow $> screen -d -r [$each].pts-0.hp $normal \n\n\n\n\n\n\n\t\t -> pressione $green qq tecla para continuar <- $normal \n\n\n\n\n\t\t\t\t\t\t\t\t $yellow ... pause $normal \n"
-				ULTIMO=$each
-				read -n 1 
-			done
+			LISTA=$(screen -ls | grep -vE "There|Sockets" | cut -d'.' -f1 )
+			ITEMS=0
+			for i in $(echo $LISTA); do
+				ITEMS=$(( $ITEMS + 1 ))
+                  done
+
+			# Se tiver somente uma sessao, entra nela com screen -x
+			if [ $ITEMS -eq 1 ]; then
+				screen -x
+			fi
+
+			# Se tiver mais de uma sessao
+			if [ $ITEMS -gt 1 ]; then
+			    while (true); do
+				  echo -en "---\n$green LISTA=$LISTA $normal\n---"
+				  for each in $(echo $LISTA); do
+					  screen -d -r $each
+					  echo -en "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t$WHITE Tem mais sessao aberta aqui $red PORRA => $alert ($magenta $each ) $normal $WHITE aberto, entrando nele:$normal \n\n\n\n\n\t\t $yellow $> screen -d -r [$each].pts-0.hp $normal \n\n\n\n\n\n\n\t\t -> pressione $red $alert (q/Q) $normal -> Sair \t\t Ou $green qualquer tecla $normal para $green continuar <- $normal \n\n\n\n\n\t\t\t\t\t\t\t\t $yellow ... pause $normal \n"
+					  ULTIMO=$each
+					  read -n 1 QUIT
+					  if [[ $QUIT = 'q' ]] || [[ $QUIT = 'Q' ]]; then
+					    exit 0	
+					  fi
+				  done
+			    done
+		 	fi
+
+			echo -en "Nao havia nenhuma $yellow SESSION ABERTA $normal /n"
 		;;
 
 		"-h"| "--help" )	
