@@ -120,7 +120,8 @@ alias fix="ok 'Bug Fixed'"
 
 # <AGIL INSTALL>
 
-if [ $( flavor.sh --test-flavor Centos) == 0 ]; then
+flavor.sh --test-flavor Centos
+if [ $? == 0 ]; then
 alias yr="yum remove"
 alias yi="yum install -y"
 alias yu="yum update -y"
@@ -129,7 +130,8 @@ alias ys="yum search"
 alias install="yum install -y"
 fi
 
-if [ $(flavor.sh --test-flavor Ubuntu) == 0 ]; then
+flavor.sh --test-flavor Ubuntu
+if [ $? == 0 ]; then
 alias ar="apt remove"
 alias au="apt update"
 alias ai="apt install -y"
