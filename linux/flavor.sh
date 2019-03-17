@@ -76,7 +76,7 @@ case $1 in
 		;;
 
             "-t","--test-flavor")
-                  testflavor $1
+                  testflavor $2
             ;;
 
 		"-h"| "--help" )	
