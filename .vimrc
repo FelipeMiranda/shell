@@ -96,8 +96,7 @@ map ,mm :set noic<cr>
 au BufNewFile,BufRead *.t2t   set ft=txt2tags "spell
 
 
-"################ MAPEAMENTO DE ATALHOS (F1-F12) #############################
-"
+"----------------  MAPEAMENTO DE ATALHOS (F1-F12) ----------------------------
 " F1 - GERADOR AUTOMATICO DE ARQUIVOS MINIMAN - gera manual pages e html pages
 noremap <F1> <esc>:!ronn -r -5 %<cr>
 noremap <F1> :!ronn -r -5 %<cr>
@@ -117,10 +116,9 @@ inoremap <F10> <esc>:wa!<cr>i
 imap <F10><F10> <esc>:wqa!<cr>
 noremap <F10><F10> :wqa!<cr>
 "
-" F10(i) - No modo INSERT para o F10 nao escreve <F10> na tela, uuurgh!!!
-" inoremap <F10> <ESC>
-"
-"##############################################################################
+"   F10(i)   -  No modo INSERT para o F10 nao escreve <F10> na tela, uuurgh!!!
+"   inoremap -  <F10> <ESC>
+"-----------------------------------------------------------------------------
 
 
 
@@ -175,12 +173,11 @@ endif " has autocmd
 "..................OPCOES DO SET..............................
 "(IncrementedSearch, HighLightedSearch, IgnoreCase, SmartCaSe)
 "-------------------------------------------------------------
-set ttyfast        "Envia mais caracteres ao terminal, melhorando o redraw de janelas.
-set sw=2           "numero de colunas para o comando > (ShiftWidth):   INDENTAR (>>)
+set ttyfast         "Envia mais caracteres ao terminal, melhorando o redraw de janelas.
 set is hls ic scs magic   "opcoes espertas de busca
-set sm             "ShowMatch: mostra o par do parenteses/chaves recem fechado
-set hid            "HIDden: nao lembro pra que servia mas era massa
-set aw             "AutoWrite: gravacao automatica a cada alteracao
+set sm              "ShowMatch: mostra o par do parenteses/chaves recem fechado
+set hid             "HIDden: nao lembro pra que servia mas era massa
+set aw              "AutoWrite: gravacao automatica a cada alteracao
 "set ai             "AutoIndent: identacao automatica
 
 " qdo estiver identando no modo VISUAL nao perde o selection, pode identar varias vezes  >>> (identa x 3)
@@ -188,26 +185,27 @@ set aw             "AutoWrite: gravacao automatica a cada alteracao
 vnoremap > >gv
 vnoremap < <gv
 
-
-
+set sw=2            "numero de colunas para o comando > (ShiftWidth):   INDENTAR (>>)
 set ts=2           	"TabStop: numero de caracteres de avanco do TAB
 set report=0       	"reporta acoes com linhas
 set shm=filmnrwxt  	"SHortMessages: encurta as mensagem do rodape
-set et             "ExpandTab: troca TABs por espacos
-retab              "converter os TABs ja existentes em espaços.
+set et              "ExpandTab: troca TABs por espacos
+retab               "converter os TABs ja existentes em espaços.
 set ruler          	"mostra a posicao do cursor, regua
-set showcmd        "mostra o comando sendo executado
+set showcmd         "mostra o comando sendo executado
 set laststatus=2   	"mostra N linhas de estado (status)
 "set textwidth=70   "quebra de linha
 "set bs=2           "comportamento do backspace
 "set backspace=2
 set backspace=eol,indent,start
-set smartindent  	"Ligando pois NAO esta padrao no mundo *N?X 
+set smartindent  	  "Ligando pois NAO esta padrao no mundo *N?X 
 set visualbell     	"pisca a tela ao inves de bipar
-set nowrap           "forca a quebra de linha
+set nowrap          "forca a quebra de linha
 set nojoinspaces   	"! coloca 2 espacos apos o . quando usando o gq
 set wildmode=longest,list:full  "para completacao do TAB igual bash
 set number         	"Mostrar o numero das linhas
+syntax on           "ligando a sintaxe colorida
+
 
 "........................................................................CORES
 " Cores no terminal com a sintaxe
@@ -223,10 +221,6 @@ set background=dark     "eh importante o bg estar ANTES do terminfo
 "  set t_Sf=m
 "  set t_Sb=m
 "endif
-syntax on               "ligando a sintaxe colorida
-
-
-
 ".........................................................COMANDOS AUTOMATICOS
 
 " Arquivos .sh sao sempre bash, e não sh

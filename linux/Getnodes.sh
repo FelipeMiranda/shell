@@ -36,7 +36,7 @@ function exibeNodes(){
 	    if [[ $RESPOSTA = 's' ]] || [[ $RESPOSTA = 'S' ]]; then
 		echo -en "Resposta=simmmm  ....   \n\n\t\t   \o/ pressione uma tecla para continaur a $green instalacao do CURL$normal\n\n\t\t\t ... pause\n"
 		$INSTALL curl
-		fi
+          fi
 
     	echo -en "$magente \n\t$cyan My_host: $red[$yellow$(hostname)$red]$normal \n\t-----------------\n\n"
  	#curl -s http://servidorpush.superati.com.br:3000/rest/nodes | jq '.[] | (.hostname) + " => [" + (.version) + "] | " + (.hostconfig{}) '
