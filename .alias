@@ -167,6 +167,7 @@ alias ¢=®
 alias R=®
 alias ¢¢=®®
 alias 88="ping 8.8.8.8 -c 1 -w 5"
+alias meuip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 # Shortcuts para SERVIDORES
 alias d1="ssh dev1"
