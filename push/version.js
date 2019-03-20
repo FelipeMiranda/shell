@@ -3,15 +3,11 @@
 	var os = require("os")
 	const io = require("socket.io-client")
 	var socket = io.connect('http://servidorpush.superati.com.br:3000')
-	var fs = require('fs');
-	const { exec } = require('child_process');
+	var fs = require('fs')
+	const { exec } = require('child_process')
+	var Promise = require("Bluebird")
 
-	const mainfunctionPath = '/root/.cdshell.mainfunction'
-	if (!fs.existsSync(mainfunctionPath)) {
-		let mainfunction = 'default'
-	}
-
-			//buttons and inputs
+		//buttons and inputs
 		var sistema = process.argv[2]
 		var hostname = os.hostname();
 		var hostversion = "";
@@ -35,21 +31,25 @@
 
 	//Emit a username
 
-		exec("/root/shell/linux/cdshell -V", (err, stdout, stderr) => {
-      fs.readFile( mainfunctionPath, function(err, data) {
-      mainfunction = ""
-      mainfunction = (data.toString()).replace('\n','')
-      console.log("STRINGifying" + JSON.stringify(mainfunction))
-			hostversion = stdout;
-			hostversion.replace('\n','');
-
-      socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {'mainfunction':'suave' , 'autoupdate':true} })
+	exec("/root/shell/linux/cdshell -V", (err, stdout, stderr) => {
+		const mainfunctionPath = '/root/.cdshell.mainfunction'
+		var mainfunction = ''
+		if (!fs.existsSync(mainfunctionPath)) {
+			mainfunction = 'default'
+		}
+		else{
+			mainfunction = fs.readFile( mainfunctionPath, (err, data) => {	return data.toString().replace('\n','') })
+		}
+		console.log("mainfunction" + mainfunction)
+		hostversion = stdout;
+		hostversion.replace('\n','');
+		
+		socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {'mainfunction': mainfunction , 'autoupdate':true} })
 	    //socket.emit('hostversion', {message : hostversion , hostname: hostname })
 
-		  socket.emit('version', {message : sistema });
-		  //socket.emit('sair', {message : "sair" });
-     })
-	});
+		socket.emit('version', {message : sistema });
+		//socket.emit('sair', {message : "sair" });
+    })
 
 	socket.on("message", (data) => {
 		console.log(data.message);
