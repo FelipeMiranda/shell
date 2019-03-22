@@ -59,16 +59,14 @@ else{
 			});
 		}
 
-	
-		if ( data.message == "tt") { 
-			const { exec } = require('child_process');
-			exec("cdshell -tt", (err, stdout, stderr) => {
+ 	  if ( data.message == "tt") { 
+		  const { exec } = require('child_process');
+		  exec("cdshell -tt", (err, stdout, stderr) => {
 				console.log("CDSHELL [-tt] ..... DONE \n Commando: [ " + data.message + " ]\n");
-			});
-		}
+		  });
+	  }
 
-
-	})
+  })
 //	socket.on("username", (data) => {
 //		console.log("username: " + data.username )
 //		
@@ -126,21 +124,17 @@ else{
 	})
 
 
+  // Fazendo uma chamada de registro no servidorpush passando a versao, mainfunction e autoupdate(true/false).
+  exec('/root/shell/linux/cdshell -V', (err, stdout, stderr) => {
+    const mainfunctionPath = '/root/.cdshell.mainfunction'
+    var mainfunction = 'default'
+    var autoupdate = 'true'
+    var hostversion = stdout
 
-   // Fazendo uma chamada de registro no servidorpush passando a versao, mainfunction e autoupdate(true/false).
-    exec('/root/shell/linux/cdshell -V', (err, stdout, stderr) => {
-			const mainfunctionPath = '/root/.cdshell.mainfunction'
+    if (fs.existsSync(mainfunctionPath)) {
+      mainfunction = fs.readFileSync(mainfunctionPath, 'utf8').toString().replace('\n', '')
+    }
 
-			fs.readFile( mainfunctionPath, function(err, mainfunction) {
-			if (!fs.existsSync(mainfunctionPath)) {
-				let mainfunction = 'default'
-			}
-
-			let autoupdate = 'true'
-            hostversion = stdout
-			console.log("Service CDSHELLD [STARTED] | Host[" + hostname + "] | v."+ hostversion )
-	        socket.emit('hostversion', {message : hostversion , hostname: hostname, hostconfig: {mainfunction:mainfunction,autoupdate:autoupdate}})
+		console.log("Service CDSHELLD [STARTED] | Host[" + hostname + "] | v."+ hostversion )
+    socket.emit('hostversion', { message: hostversion, hostname: hostname, hostconfig: { mainfunction: mainfunction, autoupdate: autoupdate } })
 		})
-    });
-
-
