@@ -10,7 +10,7 @@ const { exec } = require('child_process')
 const mainfunctionPath = '/root/.cdshell.mainfunction'
 var mainfunction = 'default'
 
-// caso o arquivo de mainfunction exista, pegar a funcao nele.
+// caso o arquivo de mainfunction exista, carregue-o.
 if (fs.existsSync(mainfunctionPath)) {
   mainfunction = fs.readFileSync(mainfunctionPath, 'utf8').toString().replace('\n', '')
 }
