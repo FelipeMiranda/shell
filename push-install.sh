@@ -312,12 +312,10 @@ fi
 
 #NOTIFICACAO
 #echo -en "\n\n $green Try executing: $> node deploy.js \$(cdshell -V) \n\n"
-#/root/shell/push/version.js
+/root/shell/push/version.js
 
 # INSTALANDO SERVICO CDSHELLD nos Clients
 rm /etc/systemd/system/cdshelld.service -rf
 cp $CDSHELL/push/cdshelld.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl restart cdshelld
-
-
