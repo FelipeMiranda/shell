@@ -13,7 +13,7 @@ source ~/colors.sh
 #Variavéis
 KUBECONFIG=$HOME/.kube/kube_config_cluster.yml:~/.kube/rancher_config.yml
 PS1='\[\033]0;$TITLEPREFIX:$PWD\007\]\n\[\033[31m\]\u\[\033[34m\]@\[\033[32m\]\h:\[\033[33m\]\w\[\033[36m\]`__git_ps1;cdshell -G`\[\033[0m\] $>'
-
+DISPLAY=192.168.15.2:0.0
 
 #Exportando
-export KUBECONFIG PS1
+export KUBECONFIG PS1 DISPLAY
