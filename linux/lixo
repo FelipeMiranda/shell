@@ -10,5 +10,7 @@ echo Manda de novo o comando agora.
 else
 # SOLUCAO ELEGANTE, nao precisa parsear a porra do array da linha de comando procurando os parametros.
 mv $@ ~/.lixeira/
+if [ $? == 0 ] ; then
+  echo -en "\nArquivo $@ movido com $green sucesso.$normal \n
 fi
 
