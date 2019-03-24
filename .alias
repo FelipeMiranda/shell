@@ -118,6 +118,7 @@ alias forever="forever.sh"
 alias ok=ok.sh
 alias okamend=okamend.sh
 alias fix="ok 'Bug Fixed'"
+alias lixeira='ls -la ~/.lixeira'
 
 # <AGIL INSTALL>
 
