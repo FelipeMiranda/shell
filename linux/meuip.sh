@@ -30,8 +30,14 @@ function with_curl_dyndns(){
 
 
 function with_dig(){
-      dig +short myip.opendns.com @resolver1.opendns.com
-      return $?
+      result=$(dig +short myip.opendns.com @resolver1.opendns.com)
+
+      if [ -n $result ]; then
+        return 1
+      else
+        echo $result
+        return 0
+      fi
 }
 
 
@@ -47,7 +53,7 @@ case $1 in
 	
 		# Para qualquer nome de serviço
 		* )
-                  with_curl_ipinfo || with_curl_dyndns
+                  with_curl_ipinfo || with_curl_dyndns || with_dig
 		;;
 esac
 #############        FIM      ##################
