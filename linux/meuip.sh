@@ -18,17 +18,20 @@ source ~/shell/colors.sh
 
 
 ##########  Funcao       #######################
-function with_curl_ipinfo.io(){
+function with_curl_ipinfo(){
       curl https://ipinfo.io/ip
+      return $?
 }
 
-function with_curl_dyndns.org(){
+function with_curl_dyndns(){
       curl -s https://checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
+      return $?
 }
 
 
 function with_dig(){
       dig +short myip.opendns.com @resolver1.opendns.com
+      return $?
 }
 
 
@@ -44,7 +47,7 @@ case $1 in
 	
 		# Para qualquer nome de serviço
 		* )
-                  with_dig || with_curl_ipinfo.io || with_curl_dyndns.org
+                  with_curl_ipinfo || with_curl_dyndns
 		;;
 esac
 #############        FIM      ##################
