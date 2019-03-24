@@ -1,0 +1,9 @@
+nnt [32m $ ./certificados... n
+ echo -en 
+ [35m ./certificados
+./certificados/cert.csr
+./certificados/pem
+./certificados/pem/privkey.pem
+./certificados/keys
+./certificados/keys/cert.pem
+./certificados/keys/key.pem [0;0m 
