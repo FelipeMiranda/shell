@@ -19,8 +19,14 @@ source ~/shell/colors.sh
 
 ##########  Funcao       #######################
 function help(){
-    echo -en "$\n\n\t $alert Use: $green $0 $PARAMETERS $normal \n"
-    echo -en "Tenta descobrir o flavor do linux instalado, Fedora, Debian, Ubuntu, Centos, RedHat, etc...\n"
+    echo -en "\n\n\t$alert Use: $green $0 $PARAMETERS $normal\n"
+    echo -en "\t--------------------\n\n"
+    echo -en "\tTenta descobrir o flavor do linux instalado, Fedora, Debian, Ubuntu, Centos, RedHat, etc...\n"
+    echo -en "\n\tflavor  \t\t\t -> Tenta descobrir o sabor de linux instalado."
+    echo -en "\n\t-h | --help \t\t\t -> Help"
+    echo -en "\n\t--get-distro-package-manager \t -> Retorna o nome da distro caso encontre."
+    echo -en "\n\t-t | --test-flavor <FLAVOR> \t -> Testa se a <FLAVOR> passada eh a atual, printa 0 se sucesso."
+    echo -en "\n\n\n"
 }
 
 function flavor(){
