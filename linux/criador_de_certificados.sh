@@ -11,12 +11,12 @@ if [ -e ./certificados ]; then
  echo -en "$cyan------------------------------$normal"
  echo -en "\n $magenta $F $normal \n"
  echo -en "$cyan------------------------------$normal\n"
- echo -en "\n\n\n$green -> Vamos precisar $red _limpar_$normal tudo, ok?\n\n\t$normal o->$green s/S $normal -> continuar: "
+ echo -en "\n\n\n$green -> Vamos precisar $red _limpar_$normal tudo, ok?\n\n\t$normal -->$green s/S $normal -> continuar: "
  read -n 1 resposta
       if [ "$resposta" == 's' ] || [ "$resposta" == 'S' ]; then
          rm -rf certificados\*
          if [ $? == 0 ]; then
-            echo -en "\n\n\t o-> Arquivos$red excluidos $normal com $green sucesso \n\n\n"
+            echo -en "\n\n\t --> Arquivos$red excluidos $normal com $green sucesso \n\n\n"
             else
             echo -en "$red Erro ao excluir os arquivos\n"
             exit 1
@@ -32,11 +32,13 @@ echo -en "-> Deixar suas keys $magenta keys.pem $normal e $magenta cert.pem $nor
 echo -en " $magenta [cert.pem] $normal  => $green certificados/keys/${magenta}cert.pem$normal\n"
 echo -en " $magenta [cert.pem] $normal  => $green certificados/keys/${magenta}keys.pem$normal\n"
 mkdir ./certificados/keys -p
-openssl req -new > certificados/cert.csr
+openssl req -new > certificados/cert.csr 
 openssl rsa -in privkey.pem -out certificados/keys/key.pem
 openssl x509 -in certificados/cert.csr -out certificados/keys/cert.pem -req -signkey certificados/keys/key.pem -days 1001
-
-mkdir certificados/pem -p
-mv *.pem certificados/pem
-
-echo -en "$green $alert Certificados criados com $normal $green sucesso ! $normal na pasta $magenta './certificados
+if [ $? == 0 ]; then
+      mkdir certificados/pem -p
+      mv *.pem certificados/pem
+      echo -en "$green $alert Certificados criados com $normal $green sucesso ! $normal na pasta $magenta ['$(pwd)/certificados'] $normal \n"
+else
+      echo -en "$red Error: Erro ao gerar certificados: ['$(pwd)/certificados'] $normal \n"
+fi
