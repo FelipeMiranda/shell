@@ -346,6 +346,15 @@ case $1 in
 					fi
     ;;
 
+	# Mostrar versao GIT do diretório atual
+    "-g"|"--git"|--git-version) 
+		exibe_versao_git_local_version
+    ;;
+
+  # Mostrar versao GIT do diretório atual
+    "-G") 
+		exibe_somente_o_numero_da_versao_git_local_version
+    ;;
 
 
 
@@ -464,15 +473,6 @@ case $1 in
     ;;
 
 
-	# Mostrar versao GIT do diretório atual
-    "-g"|"--git"|--git-version) 
-		exibe_versao_git_local_version
-    ;;
-
-# Mostrar versao GIT do diretório atual
-    "-G") 
-		exibe_somente_o_numero_da_versao_git_local_version
-    ;;
 
 	# Watch (cat arquivo_de_versao)
     "-w") 
